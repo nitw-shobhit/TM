@@ -1,0 +1,1 @@
+INSERT INTO TM_USER_INFO VALUES (1, 'A10000', 'IEJUXlVB', 'POWER', 'Shobhit Tyagi', 'nitw.shobhit@gmail.com', '982972099', 'ADM', null, CURRENT_TIMESTAMP, null, TRUE);

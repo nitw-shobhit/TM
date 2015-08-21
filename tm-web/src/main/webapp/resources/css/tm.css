@@ -1,0 +1,275 @@
+@CHARSET "ISO-8859-1";
+
+.baseBody {
+	background: url(../images/background.jpg);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 750px;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	box-shadow: 3px 3px 3px #888, -3px 3px 3px #888, 3px -3px 3px #888, -3px -3px 3px #888;
+}
+.logoBox {
+	background: url(../images/logo.png);
+	background-size: 996px 27px;
+    background-repeat: no-repeat;
+	height: 27px;
+   	width: 996px;
+   	margin-left: 2px;
+}
+.logoBoxSp {	
+	background: url(../images/logoSp.png);
+	background-size: 996px 27px;
+    background-repeat: no-repeat;
+	height: 27px;
+   	width: 996px;
+   	margin-left: 2px;
+}
+.logo {
+	height: 27px;
+	width: 782px;
+    float: left;
+}
+
+.userInfo {
+	float: left;
+	height: 27px;
+	width: 213px;
+	border: 1px solid;
+}
+.menuBox {
+	background-color: #FFF;
+	height: 22px;
+	width: 996px;
+	margin-top: 2px;
+	margin-left: 2px;
+}
+.contentBox {
+	background: url(../images/background.jpg);
+	background-size: 996px 700px;
+	height: 690px;
+	width: 996px;
+	margin: 2px;
+}
+.content {
+	margin: 5px;
+}
+.errorBox {
+	background: url(../images/error.png);
+	height: 400px;
+	width: 700px;
+	background-size: 700px 400px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+.errorContent {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	margin-top: 30px;
+}
+.errorTable {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+.errorButtonHome {
+	margin-top: 241px;
+	margin-left: 189px;
+}
+.errorButtonContact {
+	margin-top: 241px;
+}
+.paddingl-5px {
+	padding: 5px;
+}
+.paddingr-5px {
+	padding: 5px;
+}
+.paddingt-5px {
+	padding: 5px;
+}
+.paddingb-5px {
+	padding: 5px;
+}
+.padding-5px {
+	padding: 5px;
+}
+.loginBox {
+	background: url(../images/loginbox.jpg);
+	height: 300px;
+	width: 400px;
+	background-size: 400px 300px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+.loginFields {
+	height: 31px;
+	width: 246px;
+}
+.loginSubmit {
+	font-weight: bold;
+}
+.loginButtons {
+	margin-top: 24px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.loginUserNameBox {
+	margin-top: 93px;
+}
+.loginPasswordBox {
+	margin-top: 22px;
+}
+.userInfoNameSpan {
+	font-size: 12px;
+	margin-left: 5px;
+	margin-top: 6px;
+}
+.userInfoProfilePic {
+	height: 25px;
+	width: 25px;
+}
+.menuLink {
+	text-decoration: none;
+	color: #000;
+	cursor: pointer;
+	font-size: 11px;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+.menuBg:hover {
+	background: #91C8FF;
+	color: #FFF;
+}
+.menuSelect {
+	background: #91C8FF;
+}
+.underline {
+	text-decoration: underline;
+}
+.header {
+	font-size: 12px;
+}
+.summaryBox {
+	height: 342px;
+	width: 100%;
+}
+.dbSummaryBox {
+	margin-top: 5px;
+}
+.userInfoLinkImg {
+	height: 20px;
+	width: 20px;
+}
+.userInfoLink {
+	float: right;
+}
+.userInfoDropdown {
+	width: 220px;
+	font-size: 10px;
+}
+
+.errorPanelDropdown {
+	width: 996px;
+	font-size: 10px;
+	background-color: red;
+}
+.userInfoTable {
+	vertical-align: top;
+	margin: 5px;
+}
+.userInfoContent {
+	margin-left: 20px;
+}
+legend {
+	background-color: #FFF;
+}
+.projectSideMenu {
+	height: 125px;
+	width: 20px;
+	float: left;
+	opacity: 0.5;
+	filter: alpha(opacity=30);
+}
+.projectSideMenu:hover {
+	height: 125px;
+	width: 20px;
+	float: left;
+  	cursor: pointer;
+  	opacity: 1;
+	filter: alpha(opacity=100);
+}
+.activeBg {
+	background-color: #82E976;
+}
+.projectSideMenuLink {
+	width: 20px;
+	float: right;
+}
+.projectFolder {
+	height: 125px;
+	width: 160px;
+	margin-right: 10px;
+	margin-left: 10px;
+	box-shadow: 7px 7px 7px #888;
+}
+.newProjectFolderContent {
+	height: 125px;
+	width: 160px; 
+	float: left;
+	background-color: #FFF;
+}
+.projectFolderContent {
+	height: 125px;
+	width: 140px; 
+	float: left;
+	background-color: #FFF;
+}
+.projectBoxScrollDiv {
+	overflow: auto;
+	height: 150px;
+	width: 960px;
+}
+.projectDescription {
+	height: 45px;
+	width: 130px;
+	overflow:auto;
+	margin-left:5px;
+	font-size: 10px;
+}
+.worklistTable {
+	font-size: 10px;
+}
+.worklistBox {
+	height: 100%;
+	width: 100%;
+}
+.overlay-panel {
+	position: absolute;
+}
+.errorSuccessPanel {
+	width: 1000px;
+}
+.successPanelIcon {
+	 color: #3c763d;
+	 margin-top:2px;
+	 margin-right: 5px;
+}
+.errorPanelIcon {
+	 color: #a94442;
+	 margin-top:2px;
+	 margin-right: 5px;
+}
+.formStructure {
+	margin-left: auto; 
+	margin-right: auto; 
+	width:100%; 
+	font-size: 12px;
+}
