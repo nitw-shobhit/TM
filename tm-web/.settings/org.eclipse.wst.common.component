@@ -10,6 +10,9 @@
         <dependent-module archiveName="tm-dao-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/tm-dao/tm-dao">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="tm-bpm-core-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/tm-bpm-core/tm-bpm-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="tm-core-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/tm-core/tm-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>

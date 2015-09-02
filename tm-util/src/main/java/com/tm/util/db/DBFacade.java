@@ -11,8 +11,6 @@ public interface DBFacade<T, PK> {
 	
 	void remove(T obj);
 	
-	void removeByPk(PK obj);
-	
 	T findByPk(PK obj);
 	
 	List<T> findAll(String query);

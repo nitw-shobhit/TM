@@ -1,0 +1,19 @@
+package com.tm.dao.db.impl;
+
+import java.util.List;
+
+import com.tm.core.entity.TmUserProject;
+import com.tm.core.entity.manager.DBFacadeImpl;
+import com.tm.dao.db.UserProjectDao;
+import com.tm.util.db.Param;
+
+public class UserProjectDaoImpl extends DBFacadeImpl<TmUserProject, Long> implements UserProjectDao {
+
+	@Override
+	public List<TmUserProject> getUserProjectByProjId(long projectId) {
+		Param [] params = new Param[1];
+		params[0] = new Param(PARAM_PROJ_ID, projectId);
+		List<TmUserProject> resultList = findByParams(GET_USERPROJ_BY_PROJ_ID, params);
+		return resultList;
+	}
+}

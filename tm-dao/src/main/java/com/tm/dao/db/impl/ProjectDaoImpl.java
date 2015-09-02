@@ -12,8 +12,8 @@ public class ProjectDaoImpl extends DBFacadeImpl<TmProject, Long> implements Pro
 	@Override
 	public List<TmProject> getProjectsByUserId(Long id) {
 		Param [] params = new Param[1];
-		params[0] = new Param("paramUserId", id);
-		List<TmProject> resultList = findByParams("getProjectsByUserId", params);
+		params[0] = new Param(PARAM_USER_ID, id);
+		List<TmProject> resultList = findByParams(GET_PROJECT_BY_USER, params);
 		return resultList;
 	}
 }

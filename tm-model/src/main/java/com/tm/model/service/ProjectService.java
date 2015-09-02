@@ -12,5 +12,9 @@ public interface ProjectService {
 
 	void disableProject(long id);
 
+	void enableProject(long id);
+	
 	void deleteProject(long id);
+
+	ProjectBean editProject(ProjectBean projectBean);
 }

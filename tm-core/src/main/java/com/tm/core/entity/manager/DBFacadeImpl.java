@@ -8,11 +8,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import com.tm.core.query.QueryConstants;
 import com.tm.util.db.DBFacade;
 import com.tm.util.db.MultipleQueryBean;
 import com.tm.util.db.Param;
 
-public class DBFacadeImpl<T, PK> implements DBFacade<T, PK> {
+public class DBFacadeImpl<T, PK> extends QueryConstants implements DBFacade<T, PK> {
 
 	protected Class<T> entityClass;
 	
@@ -47,12 +48,15 @@ public class DBFacadeImpl<T, PK> implements DBFacade<T, PK> {
 
 	@Override
 	public void remove(T obj) {
-		getEntityManager().remove(obj);
-	}
-	
-	@Override
-	public void removeByPk(PK obj) {
-		remove(findByPk(obj));
+		EntityTransaction etx = getEntityManager().getTransaction();
+		try {
+			etx.begin();
+			getEntityManager().remove(obj);
+			etx.commit();
+		} catch(Exception e) {
+			etx.rollback();
+			throw e;
+		}
 	}
 	
 	@Override

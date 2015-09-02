@@ -1,5 +1,13 @@
 @CHARSET "ISO-8859-1";
 
+fieldset {
+	border: 1px solid #575757;
+	border-radius: 5px;
+}
+legend {
+	background-color: #FFF;
+	border: 1px solid #575757;
+}
 .baseBody {
 	background: url(../images/background.jpg);
 	-webkit-background-size: cover;
@@ -108,6 +116,7 @@
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
+	box-shadow: 7px 7px 7px #888;
 }
 .loginFields {
 	height: 31px;
@@ -117,9 +126,10 @@
 	font-weight: bold;
 }
 .loginButtons {
-	margin-top: 24px;
+	margin-top: 12px;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 5px;
 }
 .loginUserNameBox {
 	margin-top: 93px;
@@ -187,9 +197,7 @@
 }
 .userInfoContent {
 	margin-left: 20px;
-}
-legend {
-	background-color: #FFF;
+	text-align: left;
 }
 .projectSideMenu {
 	height: 125px;
@@ -197,6 +205,7 @@ legend {
 	float: left;
 	opacity: 0.5;
 	filter: alpha(opacity=30);
+	transition: opacity 1s;
 }
 .projectSideMenu:hover {
 	height: 125px;
@@ -208,6 +217,12 @@ legend {
 }
 .activeBg {
 	background-color: #82E976;
+}
+.inactiveBg {
+	background-color: #ff7979;
+}
+.projectMainDiv {
+	height: 180px;
 }
 .projectSideMenuLink {
 	width: 20px;
@@ -235,7 +250,21 @@ legend {
 .projectBoxScrollDiv {
 	overflow: auto;
 	height: 150px;
-	width: 960px;
+	width: 788px;
+}
+.projectFieldSet {
+	width: 810px;
+	float: left;
+}
+.arcProjectBoxScrollDiv {
+	overflow-x: auto;
+	height: 150px;
+	width: 140px;
+}
+.arcProjectFieldSet {
+	width: 150px;
+	float: left;
+	margin-left:8px;
 }
 .projectDescription {
 	height: 45px;
@@ -272,4 +301,162 @@ legend {
 	margin-right: auto; 
 	width:100%; 
 	font-size: 12px;
+}
+.archivedProjectBg {
+	background-color: #FFF;
+	border-bottom: 1px solid gray;
+	height: 25px;
+	width: 120px;
+	box-shadow: 4px 4px 4px #888;
+	font-size: 12px;
+}
+.archivedProjectContentTabl {
+	padding-bottom: 3px;
+}
+.archivedProjectContent {
+	height: 25px;
+	width: 80px;
+	float: left;
+	text-align: left;
+}
+.archivedProjectSideMenu {
+	height: 22px;
+	width: 40px;
+	float: left;
+	margin-top: 2px;
+	opacity: 0.5;
+	transition: opacity 1s;
+	filter: alpha(opacity=30);
+}
+.archivedProjectSideMenu:hover {
+	height: 22px;
+	width: 40px;
+	float: left;
+	margin-top: 2px;
+	cursor: pointer;
+  	opacity: 1;
+	filter: alpha(opacity=100);
+}
+.archivedProjectList {
+	vertical-align: middle;
+	margin-left: 5px;
+}
+.archivedLink {
+	height:24px;
+	width:80px;
+	text-align:left;
+}
+.projectLink {
+	width:135px;
+}
+.projectDetailsBox {
+	width:230px; 
+	height:230px;
+	float:left;
+}
+.projectTeamBox {
+	width:300px;
+	height:230px;
+	float:left;
+	margin-left:11px;
+}
+.projectModulesBox {
+	width:414px; 
+	height:230px;
+	float:left;
+	margin-left:11px;
+}
+.projectRequestBox {
+	height: 260px;
+	width: 980px;
+}
+.userSearchBox {
+	height: 20px;
+	width: 260px;
+}
+.userSearchLink {
+	padding: 0;
+}
+.projectTeamMembers {
+	margin-top:5px;
+	height: 27px;
+	width: 245px; 
+	margin-left:5px; 
+	background-color:#FFF; 
+	box-shadow: 4px 4px 4px #888;
+}
+.projectTeamMembersBox {
+	margin-top: 10px;
+	 border: 1px solid;
+	 height: 170px;
+	 width: 290;
+	 overflow-x: auto;
+}
+.projectDetailTableFields {
+	background-color: #4E4E4E; 
+	color: #FFF; 
+	padding: 5px; 
+	font-weight: bold;
+	border-bottom: 1px solid #FFF;
+}
+.projectDetailTableFieldLabels {
+	background-color: #FFF; 
+	border-bottom: 1px solid;
+}
+.projectDetailsContentBox {
+	margin-top:5px; 
+	height:190px; 
+	width:220px; 
+	font-size:11px;
+}
+.facebook-icon {
+	font-family: fantasy;
+}
+.google-icon {
+	font-family: icon;
+}
+.registerSpan {
+	font-size: 12px;
+}
+.registerLink {
+	text-decoration: underline;
+	font-size: 12px;
+}
+.tabBox {
+	font-size: 15px;
+	color: rgb(62, 62, 62);
+	margin: 10px;
+}
+.tabHead {
+	float: left;
+	border-radius: 5px;
+	border: solid 1px rgb(198, 198, 198);
+	padding: 7px 11px;
+	background-color: rgb(248,248,248);
+	margin-left: 10px;
+	padding: 0;
+}
+.tabList {
+	float: left;
+	padding: 5px 19px;
+	margin: 5px 2px 5px 0px;
+	color: black;
+	list-style: none;
+}
+tabList:hover, tabList:hover {
+	background-color: #91C8FF;
+	color:white;
+}
+tabList {
+	text-decoration: none;
+	color: white;
+	text-shadow: 1px 0px 3px rgb(157, 157, 157);
+}
+tabList:nth-child(1) { border-radius: 4px 0px 0px 4px; margin-left: 1px;}
+tabList:nth-child(3) { border-radius: 0px 4px 4px 0px;}
+.active {
+	background-color: #91C8FF;
+}
+.tabLink {
+	cursor: pointer;
 }

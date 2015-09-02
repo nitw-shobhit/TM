@@ -2,10 +2,18 @@
 <entity-mappings version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
 	
 	<named-query name="getUserByUserId">
-		<query>Select a from TmUserInfo a where a.userId = :paramUserId and a.visible = TRUE </query>
+		<query>Select a from TmUserInfo a where a.userId = :paramUserId and a.visible = TRUE</query>
 	</named-query>
 	
-	<named-query name="getProjectsByUserId">
-		<query>Select a from TmProject a where a.projOwner = :paramUserId and a.visible = TRUE </query>
+	<named-query name="getProjectsByUser">
+		<query>Select a from TmProject a where a.projOwner = :paramUserId</query>
+	</named-query>
+	
+	<named-query name="getUserProjectByProjectId">
+		<query>Select a from TmUserProject a where a.projId = :paramProjId</query>
+	</named-query>
+	
+	<named-query name="getUsersByQuery">
+		<query>Select a from TmUserInfo a where a.userId like :paramQuery or a.userName like :paramQuery or a.userEmail like :paramQuery</query>
 	</named-query>
 </entity-mappings>

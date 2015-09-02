@@ -43,16 +43,34 @@ public class ProjectController {
 		return JsonUtils.toJson(projectBean);
 	}
 	
+	@RequestMapping(method = RequestMethod.POST, value="/editProject")
+	public @ResponseBody String editProject(@RequestParam("projectBean") String jsonObj) throws LoginValidationFailedException, FileLoadException, CipherException, InternalApplicationException {
+		ProjectBean projectBean = null;
+		try {
+			projectBean = (ProjectBean) JsonUtils.toPojo(jsonObj, ProjectBean.class);
+			projectBean = projectService.editProject(projectBean);
+		} catch(Exception e) {
+			throw new InternalApplicationException("Something went wrong with the application", e);
+		}
+		return JsonUtils.toJson(projectBean);
+	}
+	
 	@RequestMapping(method = RequestMethod.POST, value="/disableProject")
 	public @ResponseBody String disableProject(@RequestParam("id") long id) throws LoginValidationFailedException, FileLoadException, CipherException {
 		projectService.disableProject(id);
-		return null;
+		return "Success";
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/enableProject")
+	public @ResponseBody String enableProject(@RequestParam("id") long id) throws LoginValidationFailedException, FileLoadException, CipherException {
+		projectService.enableProject(id);
+		return "Success";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/deleteProject")
 	public @ResponseBody String deleteProject(@RequestParam("id") long id) throws LoginValidationFailedException, FileLoadException, CipherException {
 		projectService.deleteProject(id);
-		return null;
+		return "Success";
 	}
 	
 	public ProjectService getProjectService() {

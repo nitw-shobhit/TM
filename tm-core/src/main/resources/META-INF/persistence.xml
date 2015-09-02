@@ -4,9 +4,11 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<non-jta-data-source>java:/jdbc/tmDS</non-jta-data-source>
 		<mapping-file>META-INF/orm.xml</mapping-file>
+		<class>com.tm.core.entity.TmBase</class>
 		<class>com.tm.core.entity.TmUserInfo</class>
 		<class>com.tm.core.entity.TmProject</class>
-		<class>com.tm.core.entity.TmBase</class>
+		<class>com.tm.core.entity.TmUserProject</class>
+		<class>com.tm.core.entity.TmModule</class>
 		<properties/>
 	</persistence-unit>
 </persistence>

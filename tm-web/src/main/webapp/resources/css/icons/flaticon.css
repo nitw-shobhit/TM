@@ -11,23 +11,23 @@
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
 	font-family: Flaticon;
-        font-size: 10px;
+        font-size: 16px;
 font-style: normal;
-}.flaticon-arrow16:before {
+}.flaticon-edit45:before {
 	content: "\e000";
 }
-.flaticon-delete97:before {
+.flaticon-garbage21:before {
 	content: "\e001";
 }
-.flaticon-file94:before {
+.flaticon-lights7:before {
 	content: "\e002";
 }
-.flaticon-power10:before {
+.flaticon-list6:before {
 	content: "\e003";
 }
-.flaticon-shape51:before {
+.flaticon-notification3:before {
 	content: "\e004";
 }
-.flaticon-tools6:before {
+.flaticon-power107:before {
 	content: "\e005";
 }

@@ -35,7 +35,17 @@ public class ProjectServiceImpl implements ProjectService {
 		projectDao.persist(projectEntity);
 		return projectEntity.toBean();
 	}
-
+	
+	@Override
+	public ProjectBean editProject(ProjectBean projectBean) {
+		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
+		TmProject projectEntity = projectDao.findByPk(projectBean.getId());
+		projectEntity.setProjName(projectBean.getProjName());
+		projectEntity.setProjDesc(projectBean.getProjDesc());
+		projectDao.merge(projectEntity);
+		return projectEntity.toBean();
+	}
+	
 	@Override
 	public void disableProject(long id) {
 		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
@@ -43,11 +53,19 @@ public class ProjectServiceImpl implements ProjectService {
 		projectEntity.setVisible(false);
 		projectDao.merge(projectEntity);
 	}
+	
+	@Override
+	public void enableProject(long id) {
+		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
+		TmProject projectEntity = projectDao.findByPk(id);
+		projectEntity.setVisible(true);
+		projectDao.merge(projectEntity);
+	}
 
 	@Override
 	public void deleteProject(long id) {
 		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
-		projectDao.removeByPk(id);
+		TmProject projectEntity = projectDao.findByPk(id);
+		projectDao.remove(projectEntity);
 	}
-
 }

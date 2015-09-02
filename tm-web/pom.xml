@@ -31,6 +31,11 @@
 		</dependency>
 		<dependency>
 			<groupId>com.tm</groupId>
+			<artifactId>tm-bpm-core</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tm</groupId>
 			<artifactId>tm-core</artifactId>
 			<version>0.1</version>
 		</dependency>
@@ -69,5 +74,11 @@
 			<artifactId>gson</artifactId>
 			<version>2.3.1</version>
 		</dependency>
+		<dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 </project>

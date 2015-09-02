@@ -1,0 +1,44 @@
+JBOSS
+
+Property to allow multiple data sources : 
+
+<system-properties>
+	<property name="com.arjuna.ats.arjuna.allowMultipleLastResources" value="true"/>
+</system-properties>
+
+Data sources and driver config : 
+
+<datasources>
+    <datasource jndi-name="java:/jdbc/tmDS" pool-name="tmDS" enabled="true" use-java-context="true">
+        <connection-url>jdbc:mysql://localhost:3306/tm_core?zeroDateTimeBehavior=convertToNull</connection-url>
+        <driver>mysql</driver>
+        <security>
+            <user-name>root</user-name>
+            <password>root</password>
+        </security>
+    </datasource>
+    <datasource jndi-name="java:/jdbc/tmBpmDS" pool-name="tmBpmDS" enabled="true" use-java-context="true">
+        <connection-url>jdbc:mysql://localhost:3306/tm_bpm?zeroDateTimeBehavior=convertToNull</connection-url>
+        <driver>mysql</driver>
+        <security>
+            <user-name>root</user-name>
+            <password>root</password>
+        </security>
+    </datasource>
+    <drivers>
+        <driver name="mysql" module="com.mysql">
+            <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+        </driver>
+    </drivers>
+</datasources>
+
+Module.xml content :
+
+<module xmlns="urn:jboss:module:1.3" name="com.mysql">
+	<resources>
+		<resource-root path="mysql-connector-java-5.1.6.jar"/>
+	</resources>
+	<dependencies>
+		<module name="javax.api"/>
+	</dependencies>
+</module>

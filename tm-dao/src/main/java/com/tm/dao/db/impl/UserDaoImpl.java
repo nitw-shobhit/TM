@@ -13,12 +13,19 @@ public class UserDaoImpl extends DBFacadeImpl<TmUserInfo, Long> implements UserD
 	public TmUserInfo getUserByUserId(String userId) {
 		TmUserInfo userEntity = null;
 		Param [] params = new Param[1];
-		params[0] = new Param("paramUserId", userId);
-		List<TmUserInfo> resultList = findByParams("getUserByUserId", params);
+		params[0] = new Param(PARAM_USER_ID, userId);
+		List<TmUserInfo> resultList = findByParams(GET_USER_BY_USER_ID, params);
 		if(resultList != null && resultList.size() == 1) {
 			userEntity = resultList.get(0);
 		}
 		return userEntity;
+	}
+
+	@Override
+	public List<TmUserInfo> getUsersByQuery(String query) {
+		Param [] params = new Param[1];
+		params[0] = new Param(PARAM_QUERY, '%' + query +'%');
+		return findByParams(GET_USERS_BY_QUERY, params);
 	}
 
 }

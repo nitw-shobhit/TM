@@ -1,5 +1,7 @@
 package com.tm.web.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tm.core.bean.UserBean;
 import com.tm.model.service.UserService;
-import com.tm.util.cipher.CipherUtils;
 import com.tm.util.exceptions.InternalApplicationException;
 import com.tm.util.spring.JsonUtils;
 
@@ -34,14 +35,31 @@ public class UserController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/changePassword")
-	public @ResponseBody String changePassword(@RequestParam("password") String password) throws InternalApplicationException {
-		String encryptedPassword = null;
+	public @ResponseBody String changePassword(@RequestParam("password") String password, @RequestParam("id") long userId) throws InternalApplicationException {
+		String updatedPassword = null;
 		try {
-			encryptedPassword = CipherUtils.encrypt(password);
+			updatedPassword = userService.changePassword(userId, password);
 		} catch(Exception e) {
 			throw new InternalApplicationException("Something went wrong with the application", e);
 		}
-		return encryptedPassword;
+		return updatedPassword;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/requestAdminPrivilege")
+	public @ResponseBody String requestAdminPrivilege(@RequestParam("id") long userId) throws InternalApplicationException {
+		String requestId = null;
+		try {
+			requestId = userService.requestAdminPrivilege(userId);
+		} catch(Exception e) {
+			throw new InternalApplicationException("Something went wrong with the application", e);
+		}
+		return requestId;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/searchUser")
+	public @ResponseBody String searchUser(@RequestParam("query") String query) {
+		List<UserBean> userBeans = userService.searchUsers(query);
+		return JsonUtils.toJson(userBeans);
 	}
 	
 	public UserService getUserService() {

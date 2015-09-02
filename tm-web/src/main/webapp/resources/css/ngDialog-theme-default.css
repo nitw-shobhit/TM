@@ -196,7 +196,7 @@
 
 .ngdialog.ngdialog-theme-default.profileBox .ngdialog-content {
 	width: 500px;
-	height: 365px;
+	height: 335px;
 }
 
 .ngdialog.ngdialog-theme-default.changePassword .ngdialog-content {
@@ -204,7 +204,11 @@
 	height: 225px;
 }
 
-.ngdialog.ngdialog-theme-default.addProject .ngdialog-content {
+.ngdialog.ngdialog-theme-default.addEditProject .ngdialog-content {
 	width: 400px;
 	height: 230px;
+}
+.ngdialog.ngdialog-theme-default.userSearchBox .ngdialog-content {
+	width: 400px;
+	height: 365px;
 }

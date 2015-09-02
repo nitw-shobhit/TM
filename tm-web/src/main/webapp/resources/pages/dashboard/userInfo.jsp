@@ -43,20 +43,13 @@
 						</td>
 					</tr>
 					<tr>
-						<td style="padding: 2px;"><label>Password</label></td>
-						<td style="padding: 2px;">
-							<button ng-dialog-controller="userInfoController" ng-dialog="changePassword" ng-dialog-class="ngdialog-theme-default changePassword" class="btn btn-link btn-xs" >Change Password</button>
-						</td>
-						<td style="padding: 2px;">
-						</td>
-					</tr>
-					<tr>
 						<td style="padding: 2px;"><label>Access Type</label></td>
 						<td style="padding: 2px;">
 							<input class="form-control input-sm" type="text" data-ng-model ="ngDialogData.userType" disabled="disabled"/>
 						</td>
 						<td style="padding: 2px;">
-							<button class="btn btn-link btn-xs">Update privileges</button>
+							<button class="btn btn-link btn-xs" data-ng-click="requestAdminPrivilege()">Request power privileges</button>
+							{{ngDialogData.requestStatus}}
 						</td>
 					</tr>
 					<tr>
@@ -120,35 +113,43 @@
 </script>
 </head>
 <body>
-	<img data-ng-show="{{userBean.userImage == null}}" class="userInfoProfilePic" src="../resources/images/default_p_img.png" />
-	<div class="btn-group" role="group" aria-label="...">
-		<div class="btn-group" role="group">
-		    <span class="userInfoNameSpan">{{userBean.userId}}</span>
-		    <a class="dropdown-toggle userInfoLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><img src="<%= request.getContextPath()%>/resources/images/open-link.ico" class="userInfoLinkImg" /></a>
-		    <div class="dropdown-menu userInfoDropdown">
-				<table class="userInfoTable">
-					<tr>
-						<td>
-							<img data-ng-show="{{userBean.userImage == null}}" height="64" width="64" src="<%= request.getContextPath()%>/resources/images/default_p_img.png" />
-						</td>
-						<td>
-							<div class="userInfoContent">
-		          				<label>Name :</label> {{userBean.userName}}<br>
-		          				<label>Email :</label> {{userBean.userEmail}}<br>
-		         				<label>Access Type :</label> {{userBean.userType}}<br>
-		          				<label>Phone :</label> {{userBean.userPhone}}
-		        			</div>
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>
-							<button class="btn btn-default btn-xs" data-ng-click="openProfileBox()">View Profile</button>
-							<button class="btn btn-danger btn-xs" data-ng-click="logout()">Logout</button>
-						</td>
-					</tr>
-				</table>
-		    </div>
+	<div class="logoBox">
+		<div class="logo">
+		</div>
+		<div data-ui-view="userInfo">
+			<img data-ng-show="{{userBean.userImage == null}}" class="userInfoProfilePic" src="<%= request.getContextPath()%>/resources/images/default_p_img.png" />
+			<div class="btn-group" role="group" aria-label="...">
+				<div class="btn-group" role="group">
+				    <span class="userInfoNameSpan">{{userBean.userId}}</span>
+				    <a class="dropdown-toggle userInfoLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><img src="<%= request.getContextPath()%>/resources/images/open-link.ico" class="userInfoLinkImg" /></a>
+				    <div class="dropdown-menu userInfoDropdown">
+						<table class="userInfoTable">
+							<tr>
+								<td>
+									<img data-ng-show="{{userBean.userImage == null}}" height="64" width="64" src="<%= request.getContextPath()%>/resources/images/default_p_img.png" />
+								</td>
+								<td>
+									<div class="userInfoContent">
+				          				<label>Name :</label> {{userBean.userName}}<br>
+				          				<label>Email :</label> {{userBean.userEmail}}<br>
+				         				<label>Access Type :</label> {{userBean.userType}}<br>
+				          				<label>Phone :</label> {{userBean.userPhone}}<br>
+				        			</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<button class="btn btn-default btn-xs" data-ng-click="openProfileBox()">View Profile</button>
+								</td>
+								<td>
+									<button class="btn btn-primary btn-xs" ng-dialog-controller="userInfoController" ng-dialog="changePassword" ng-dialog-class="ngdialog-theme-default changePassword">Change Password</button>
+									<button class="btn btn-danger btn-xs" data-ng-click="logout()">Logout</button>
+								</td>
+							</tr>
+						</table>
+				    </div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
