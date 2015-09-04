@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import com.inspiresoftware.lib.dto.geda.assembler.DTOAssembler;
@@ -20,7 +19,6 @@ import com.tm.core.bean.ProjectBean;
  */
 @Entity
 @Table(name="tm_project")
-@NamedQuery(name="TmProject.findAll", query="SELECT t FROM TmProject t")
 public class TmProject extends TmBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 

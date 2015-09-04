@@ -11,23 +11,38 @@
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
 	font-family: Flaticon;
-        font-size: 16px;
+        font-size: 15px;
 font-style: normal;
-}.flaticon-edit45:before {
+}.flaticon-arrow16:before {
 	content: "\e000";
 }
-.flaticon-garbage21:before {
+.flaticon-businessman13:before {
 	content: "\e001";
 }
-.flaticon-lights7:before {
+.flaticon-done2:before {
 	content: "\e002";
 }
-.flaticon-list6:before {
+.flaticon-edit45:before {
 	content: "\e003";
 }
-.flaticon-notification3:before {
+.flaticon-info28:before {
 	content: "\e004";
 }
-.flaticon-power107:before {
+.flaticon-lock81:before {
 	content: "\e005";
+}
+.flaticon-menu48:before {
+	content: "\e006";
+}
+.flaticon-padlock79:before {
+	content: "\e007";
+}
+.flaticon-power6:before {
+	content: "\e008";
+}
+.flaticon-users10:before {
+	content: "\e009";
+}
+.flaticon-verification5:before {
+	content: "\e00a";
 }

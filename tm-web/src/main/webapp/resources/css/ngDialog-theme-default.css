@@ -77,7 +77,7 @@
   font-family: 'Helvetica',sans-serif;
   font-size: 1.1em;
   line-height: 1.5em;
-  margin: 0 auto;
+  margin: -140px auto;
   max-width: 100%;
   padding: 1em;
   position: relative;
@@ -208,7 +208,33 @@
 	width: 400px;
 	height: 230px;
 }
+
+.ngdialog.ngdialog-theme-default.projectInfo .ngdialog-content {
+	width: 400px;
+	height: 250px;
+}
+
 .ngdialog.ngdialog-theme-default.userSearchBox .ngdialog-content {
 	width: 400px;
 	height: 365px;
+}
+
+.ngdialog.ngdialog-theme-default.projectTeam .ngdialog-content {
+	width: 350px;
+	height: 380px;
+}
+
+.ngdialog.ngdialog-theme-default.projectModules .ngdialog-content {
+	width: 1400px;
+	height: 700px;
+}
+
+.ngdialog.ngdialog-theme-default.addModule .ngdialog-content {
+	width: 400px;
+	height: 230px;
+}
+
+.ngdialog.ngdialog-theme-default.confirmBox .ngdialog-content {
+	width: 300px;
+	height: 230px;
 }

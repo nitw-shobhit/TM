@@ -66,8 +66,8 @@ public class DBFacadeImpl<T, PK> extends QueryConstants implements DBFacade<T, P
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findAll(String query) {
-		Query namedQuery = getEntityManager().createNamedQuery(query);
+	public List<T> findAll() {
+		Query namedQuery = getEntityManager().createQuery("Select a from "+ getGenericClass().getSimpleName() + " a");
 		return namedQuery.getResultList();
 	}
 

@@ -27,9 +27,9 @@
 					<a data-ng-click="tab = 4" class="tabLink" >Requests</a> 
 				</li>
 			</ul>
-			<br><br><br>
+			<br><br>
 			<div class="tabBox" data-ng-show="tab === 1">
-				<div class="projectDetailsContentBox">
+				<div class="projectDetailsContentBox tabInnerBox">
 					<table style="">
 						<tr>
 							<td class="projectDetailTableFields">
@@ -59,13 +59,14 @@
 				</div>
 			</div>
 			<div class="tabBox" data-ng-show="tab === 2">
-				
+				<div class="tabInnerBox">
+				</div>
 			</div>
 			<div class="tabBox" data-ng-show="tab === 3">
 				<%@include file="projectTeam.jsp" %>
 			</div>
 			<div class="tabBox" data-ng-show="tab === 4">
-				<%@include file="taskList.jsp" %>
+				<%@include file="../taskList.jsp" %>
 			</div>
 		</section>
 	</fieldset>

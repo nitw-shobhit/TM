@@ -22,4 +22,6 @@ public interface UserService {
 	String requestAdminPrivilege(long userId) throws BpmException;
 	
 	Map<String, String> getUserGroups();
+
+	List<UserBean> getAllUsers();
 }

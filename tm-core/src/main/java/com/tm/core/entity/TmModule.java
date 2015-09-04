@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import com.inspiresoftware.lib.dto.geda.assembler.DTOAssembler;
+import com.tm.core.bean.ModuleBean;
 
 
 /**
@@ -17,7 +19,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="tm_module")
-@NamedQuery(name="TmModule.findAll", query="SELECT t FROM TmModule t")
 public class TmModule extends TmBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -78,5 +79,11 @@ public class TmModule extends TmBase implements Serializable {
 
 	public void setProjId(long projId) {
 		this.projId = projId;
+	}
+	
+	public ModuleBean toBean() {
+		ModuleBean moduleBean = new ModuleBean();
+		DTOAssembler.newAssembler(moduleBean.getClass(), this.getClass()).assembleDto(moduleBean, this, null, null);
+		return moduleBean;
 	}
 }

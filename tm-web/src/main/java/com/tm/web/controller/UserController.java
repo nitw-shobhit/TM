@@ -34,6 +34,17 @@ public class UserController {
 		return JsonUtils.toJson(userBean);
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, value="/getAllUsers")
+	public @ResponseBody String getAllUsers() throws InternalApplicationException {
+		List<UserBean> userBeanList = null;
+		try {
+			userBeanList = userService.getAllUsers();
+		} catch(Exception e) {
+			throw new InternalApplicationException("Something went wrong with the application", e);
+		}
+		return JsonUtils.toJson(userBeanList);
+	}
+	
 	@RequestMapping(method = RequestMethod.POST, value="/changePassword")
 	public @ResponseBody String changePassword(@RequestParam("password") String password, @RequestParam("id") long userId) throws InternalApplicationException {
 		String updatedPassword = null;

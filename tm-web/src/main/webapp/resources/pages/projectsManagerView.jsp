@@ -20,15 +20,19 @@
 							<div class="projectFolder">
 								<div class="projectFolderContent">
 									<br><br>
-									<button class="btn btnLink projectLink" data-ng-click="getProjectData(project)"><font size="3">{{project.projNameTooltip}}</font></button>
+									<div style="background-color: #EEE; border-radius: 4px; height:25px;"><font size="3">{{project.projNameTooltip}}</font></div>
 								</div>
 								<div class="projectSideMenu activeBg">
+									<a ng-dialog="projectInfo" ng-dialog-class="ngdialog-theme-default projectInfo" ng-dialog-data="{{project}}" 
+										class="projectSideMenuLink" title="Project Details"><i class="flaticon-info28"></i></a><br>
 									<a ng-dialog-controller="projectController" ng-dialog="editProject" ng-dialog-class="ngdialog-theme-default addEditProject" ng-dialog-data="{{project}}"
-										class="projectSideMenuLink"><i class="flaticon-edit45"></i></a><br>
-									<a data-ng-click=""
-										class="projectSideMenuLink"><i class="flaticon-list6"></i></a><br>
+										class="projectSideMenuLink" title="Edit"><i class="flaticon-edit45"></i></a><br>
+									<a data-ng-click="getProjectTeam(project)"
+										class="projectSideMenuLink" title="Project Team"><span class="flaticon-users10"></span></a><br>
+									<a data-ng-click="getProjectModules(project.id)"
+										class="projectSideMenuLink" title="Project Modules"><span class="flaticon-menu48"></span></a><br>
 									<a data-ng-click="disableProject(project.id)"
-										class="projectSideMenuLink"><span class="flaticon-power107"></span></a><br>
+										class="projectSideMenuLink" title="Disable"><span class="flaticon-lock81"></span></a><br>
 								</div>
 							</div>
 						</td>
@@ -36,7 +40,7 @@
 							<div class="projectFolder">
 								<div class="newProjectFolderContent">
 									<br><br>
-									<button ng-dialog-controller="projectController" ng-dialog="addProject" ng-dialog-class="ngdialog-theme-default addEditProject" class="btn btnLink"><font size="3">ADD A PROJECT</font></button>
+									<button style="padding: 0 12px;" ng-dialog-controller="projectController" ng-dialog="addProject" ng-dialog-class="ngdialog-theme-default addEditProject" class="btn btn-link"><font size="3">ADD A PROJECT</font></button>
 								</div>
 							</div>
 						</td>
@@ -54,15 +58,13 @@
 						<td class="archivedProjectContentTabl">
 							<div class="archivedProjectBg">
 								<div class="archivedProjectContent">
-									<button class="btnLink archivedLink" data-ng-click="getProjectData(project)">
-										<font size="1"><span class="archivedProjectList">{{project.projNameTooltip}}</span></font>
-									</button>
+									<font size="1"><span class="archivedProjectList">{{project.projNameTooltip}}</span></font>
 								</div>
 								<div class="archivedProjectSideMenu inactiveBg">
 									<a data-ng-click="enableProject(project.id)"
-										class="projectSideMenuLink"><span class="flaticon-power107"></span></a>
+										class="projectSideMenuLink" title="Enable"><span class="flaticon-padlock79"></span></a>
 									<a data-ng-click="deleteProject(project.id)"
-										class="projectSideMenuLink"><span class="flaticon-garbage21"></span></a>
+										class="projectSideMenuLink" title="Remove"><span class="flaticon-power6"></span></a>
 								</div>
 							</div>
 						</td>

@@ -370,10 +370,6 @@ legend {
 	height: 260px;
 	width: 980px;
 }
-.userSearchBox {
-	height: 20px;
-	width: 260px;
-}
 .userSearchLink {
 	padding: 0;
 }
@@ -388,9 +384,12 @@ legend {
 .projectTeamMembersBox {
 	margin-top: 10px;
 	 border: 1px solid;
-	 height: 170px;
+	 height: 260px;
 	 width: 290;
 	 overflow-x: auto;
+}
+.tabInnerBox {
+	margin:5px;
 }
 .projectDetailTableFields {
 	background-color: #4E4E4E; 
@@ -426,6 +425,9 @@ legend {
 	font-size: 15px;
 	color: rgb(62, 62, 62);
 	margin: 10px;
+	height: 370px;
+    background-color:#FFF;
+    width: 943px;
 }
 .tabHead {
 	float: left;
@@ -459,4 +461,14 @@ tabList:nth-child(3) { border-radius: 0px 4px 4px 0px;}
 }
 .tabLink {
 	cursor: pointer;
+}
+.popupFieldset {
+	background: url(../images/background.jpg);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height:100%;
+	font-size: 13px;
+	box-shadow: 1px 1px 1px #888;
 }

@@ -91,11 +91,22 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Map<String, String> getUserGroups() {
 		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
-		List<TmUserInfo> userEntityList = userDao.findAll("TmUserInfo.findAll");
+		List<TmUserInfo> userEntityList = userDao.findAll();
 		Map<String, String> userGroups = new HashMap<String, String>();
 		for(TmUserInfo userEntity : userEntityList) {
 			userGroups.put(userEntity.getUserId(), userEntity.getUserGroupId());
 		}
 		return userGroups;
+	}
+
+	@Override
+	public List<UserBean> getAllUsers() {
+		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		List<TmUserInfo> userEntityList = userDao.findAll();
+		List<UserBean> userBeanList = new ArrayList<UserBean>();
+		for(TmUserInfo userEntity : userEntityList) {
+			userBeanList.add(userEntity.toBean());
+		}
+		return userBeanList;
 	}
 }

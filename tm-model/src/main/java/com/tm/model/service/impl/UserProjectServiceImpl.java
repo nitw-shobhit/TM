@@ -25,4 +25,13 @@ public class UserProjectServiceImpl implements UserProjectService {
 		return userList;
 	}
 
+	@Override
+	public void addUserToProject(long userId, long projectId) {
+		UserProjectDao userProjectDao = (UserProjectDao) DaoFactory.generateService(DaoType.USER_PROJECT);
+		TmUserProject userProject = new TmUserProject();
+		userProject.setProjId(projectId);
+		userProject.setUserId(userId);
+		userProjectDao.persist(userProject);
+	}
+
 }

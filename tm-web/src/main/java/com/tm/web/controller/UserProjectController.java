@@ -30,6 +30,12 @@ public class UserProjectController {
 		return JsonUtils.toJson(userList);
 	}
 	
+	@RequestMapping(method = RequestMethod.POST, value="/addUserToProject")
+	public @ResponseBody String addUserToProject(@RequestParam("userId") long userId, @RequestParam("projectId") long projectId) throws LoginValidationFailedException, FileLoadException, CipherException {
+		userProjectService.addUserToProject(userId, projectId);
+		return "";
+	}
+	
 	public UserProjectService getUserProjectService() {
 		return userProjectService;
 	}

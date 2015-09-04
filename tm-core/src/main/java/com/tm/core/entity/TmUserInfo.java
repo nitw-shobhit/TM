@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import com.inspiresoftware.lib.dto.geda.assembler.DTOAssembler;
@@ -21,7 +20,6 @@ import com.tm.core.bean.UserBean;
  */
 @Entity
 @Table(name="tm_user_info")
-@NamedQuery(name="TmUserInfo.findAll", query="SELECT t FROM TmUserInfo t")
 public class TmUserInfo extends TmBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 

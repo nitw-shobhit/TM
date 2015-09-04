@@ -16,4 +16,9 @@
 	<named-query name="getUsersByQuery">
 		<query>Select a from TmUserInfo a where a.userId like :paramQuery or a.userName like :paramQuery or a.userEmail like :paramQuery</query>
 	</named-query>
+	
+	<named-query name="getModulesByProjectId">
+		<query>Select a from TmModule a where a.projId = :paramProjId</query>
+	</named-query>
+	
 </entity-mappings>

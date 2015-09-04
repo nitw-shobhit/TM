@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import com.inspiresoftware.lib.dto.geda.annotations.Dto;
 import com.inspiresoftware.lib.dto.geda.annotations.DtoField;
+import com.inspiresoftware.lib.dto.geda.assembler.DTOAssembler;
+import com.tm.core.entity.TmModule;
 
 @Dto
 public class ModuleBean extends BaseBean implements Serializable {
@@ -65,5 +67,11 @@ public class ModuleBean extends BaseBean implements Serializable {
 
 	public void setProjId(long projId) {
 		this.projId = projId;
+	}
+	
+	public TmModule toEntity() {
+		TmModule moduleEntity = new TmModule();
+		DTOAssembler.newAssembler(this.getClass(), moduleEntity.getClass()).assembleEntity(this, moduleEntity, null, null);
+		return moduleEntity;
 	}
 }

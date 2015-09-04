@@ -13,7 +13,7 @@ public interface DBFacade<T, PK> {
 	
 	T findByPk(PK obj);
 	
-	List<T> findAll(String query);
+	List<T> findAll();
 	
 	List<T> findByParams(String query, Param[] param);
 	

@@ -20,8 +20,10 @@
     <userTask id="_jbpm-unique-0" name="Manager Approval" >
       <ioSpecification>
         <dataInput id="_jbpm-unique-0_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-0_NodeNameInput" name="NodeName" />
         <inputSet>
           <dataInputRefs>_jbpm-unique-0_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-0_NodeNameInput</dataInputRefs>
         </inputSet>
         <outputSet>
         </outputSet>
@@ -33,9 +35,16 @@
           <to xsi:type="tFormalExpression">_jbpm-unique-0_TaskNameInput</to>
         </assignment>
       </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-0_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Manager Approval</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-0_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
       <potentialOwner>
         <resourceAssignmentExpression>
-          <formalExpression>#{manager}</formalExpression>
+          <formalExpression>{manager}</formalExpression>
         </resourceAssignmentExpression>
       </potentialOwner>
     </userTask>

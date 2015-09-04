@@ -8,4 +8,6 @@ public interface UserProjectService {
 
 	List<UserBean> getProjectTeam(long projectId);
 
+	void addUserToProject(long userId, long projectId);
+
 }
