@@ -14,7 +14,7 @@ angular.module('tm-app').controller("userInfoController", function ($scope, $sta
 				return true;
 			}
 		});
-	}
+	};
 	
 	$scope.updateProfile = function(userBean) {
 		
@@ -26,13 +26,13 @@ angular.module('tm-app').controller("userInfoController", function ($scope, $sta
 		    success: function(data) {
 		    	$rootScope.userBean = data;
 		    	ngDialog.close();
-				$rootScope.panelMessage = "User profile updated."
+				$rootScope.panelMessage = "User profile updated.";
 				$rootScope.successBoxFlag = true;
 				$timeout( function(){ $rootScope.autoHide(); }, 2000);
 		    }
 		}).fail(function() {
 			ngDialog.close();
-	    	$rootScope.panelMessage = "Could not update user profile at this moment."
+	    	$rootScope.panelMessage = "Could not update user profile at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 		});
@@ -49,7 +49,7 @@ angular.module('tm-app').controller("userInfoController", function ($scope, $sta
 		    	ngDialog.close();
 		    	$rootScope.userBean.userPass = data;
 		    	console.log($rootScope.userBean.userPass);
-		    	$rootScope.panelMessage = "Password updated."
+		    	$rootScope.panelMessage = "Password updated.";
 				$rootScope.successBoxFlag = true;
 				$timeout( function(){ $rootScope.autoHide(); }, 2000);
 		    }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<jsp:include page="project/projectPopups.jsp" />
+<jsp:include page="projectPopups.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +8,13 @@
 <title>TM</title>
 </head>
 <body>
+	<ol class="breadcrumb">
+		<li class="active">Projects</li>
+	</ol>
 	<div class="projectMainDiv">
 		<fieldset class="projectFieldSet">
 			<legend>	
-				<span class="header">PROJECTS</span>
+				<span class="header">ACTIVE</span>
 			</legend>
 			<div class="projectBoxScrollDiv">
 				<table>

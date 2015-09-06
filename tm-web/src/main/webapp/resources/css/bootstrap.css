@@ -1415,6 +1415,7 @@ ul,
 ol {
   margin-top: 0;
   margin-bottom: 0;
+  padding: 0;
 }
 ul ul,
 ol ul,
@@ -4722,22 +4723,25 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #444;
 }
 .breadcrumb {
-  padding: 8px 15px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   list-style: none;
   background-color: #f5f5f5;
   border-radius: 4px;
+  font-size:14px;
+  padding-left: 5px;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 .breadcrumb > li {
   display: inline-block;
 }
 .breadcrumb > li + li:before {
   padding: 0 5px;
-  color: #ccc;
-  content: "/\00a0";
+  color: #000;
+  content: ">>";
 }
 .breadcrumb > .active {
-  color: #777;
+  color: green;
 }
 .pagination {
   display: inline-block;

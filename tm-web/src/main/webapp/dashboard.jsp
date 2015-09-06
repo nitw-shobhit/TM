@@ -32,10 +32,10 @@
 	<!-- CONTROLLERS -->
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/rootController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/loginController.js"></script>
-	<script src="<%= request.getContextPath()%>/resources/js/controllers/menuController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/userInfoController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/homeController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/projectController.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/controllers/moduleController.js"></script>
 	
 	<script src="<%= request.getContextPath()%>/resources/js/jquery-ui.custom.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/jquery.fancytree.js"></script>
@@ -64,7 +64,6 @@
 		    <strong>FAILURE! </strong>
 		    {{panelMessage}}
 		</div>
-		<div class="menuBox" data-ui-view="menu"></div>
 		<div class="contentBox">
 			<div data-ui-view="content" class="content">
 				

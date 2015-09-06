@@ -21,7 +21,7 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	    	}
 	    }
 	}).fail(function() {
-    	$rootScope.panelMessage = "Could not add the project at this moment."
+    	$rootScope.panelMessage = "Could not add the project at this moment.";
     	$rootScope.errorBoxFlag = true;
     	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	});
@@ -37,13 +37,13 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	        	$scope.projectList.push(data);
 	            $state.reload('app.dboard.project');
 	        	ngDialog.close();
-		    	$rootScope.panelMessage = "New project added successfully."
+		    	$rootScope.panelMessage = "New project added successfully.";
 				$rootScope.successBoxFlag = true;
 		    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	        }
 	    }).fail(function() {
 	    	ngDialog.close();
-	    	$rootScope.panelMessage = "Could not add the project at this moment."
+	    	$rootScope.panelMessage = "Could not add the project at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	    });
@@ -58,13 +58,13 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	        success: function(data) {
 	        	$state.reload('app.dboard.project');
 	        	ngDialog.close();
-		    	$rootScope.panelMessage = "Project updated successfully."
+		    	$rootScope.panelMessage = "Project updated successfully.";
 				$rootScope.successBoxFlag = true;
 		    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	        }
 	    }).fail(function() {
 	    	ngDialog.close();
-	    	$rootScope.panelMessage = "Could not delete the project at this moment."
+	    	$rootScope.panelMessage = "Could not delete the project at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	    });
@@ -85,12 +85,12 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	        			break;
 	        		}
 	        	}
-		    	$rootScope.panelMessage = "Project disabled successfully."
+		    	$rootScope.panelMessage = "Project disabled successfully.";
 				$rootScope.successBoxFlag = true;
 		    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	        }
 	    }).fail(function() {
-	    	$rootScope.panelMessage = "Could not disable the project at this moment."
+	    	$rootScope.panelMessage = "Could not disable the project at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	    });
@@ -111,12 +111,12 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	        			break;
 	        		}
 	        	}
-		    	$rootScope.panelMessage = "Project enabled successfully."
+		    	$rootScope.panelMessage = "Project enabled successfully.";
 				$rootScope.successBoxFlag = true;
 		    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	        }
 	    }).fail(function() {
-	    	$rootScope.panelMessage = "Could not enable the project at this moment."
+	    	$rootScope.panelMessage = "Could not enable the project at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	    });
@@ -135,12 +135,12 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	        			break;
 	        		}
 	        	}
-		    	$rootScope.panelMessage = "Project removed successfully."
+		    	$rootScope.panelMessage = "Project removed successfully.";
 				$rootScope.successBoxFlag = true;
 		    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	        }
 	    }).fail(function() {
-	    	$rootScope.panelMessage = "Could not delete the project at this moment."
+	    	$rootScope.panelMessage = "Could not delete the project at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	    });
@@ -186,7 +186,7 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	    		});
 	        }
 	    }).fail(function() {
-	    	$rootScope.panelMessage = "Could not retrieve the project team details at this moment."
+	    	$rootScope.panelMessage = "Could not retrieve the project team details at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	    });
@@ -203,62 +203,18 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	        	console.log(ngDialog);
 	        }
 	    }).fail(function() {
-	    	$rootScope.panelMessage = "Could not delete the project at this moment."
+	    	$rootScope.panelMessage = "Could not delete the project at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	    });
 	};
 	
 	$scope.getProjectModules = function(projectId) {
-		$.ajax({
-	        url: '/tm-web/tmModule/getProjectModules.do?id='+projectId,
-	        type: 'GET',
-	        dataType: 'json',
-	        async: false,
-	        success: function(data) {
-	        	if(data.length == 0) {
-	        		var popupData = {"data" : data, "emptyListMessage" : "This project does not contain any modules. Lets add some?", "projectId" : projectBean.id};
-	        	} else {
-	        		var popupData = {"data" : data, "emptyListMessage" : "", "projectId" : projectId};
-	        	}
-	        	
-	        	ngDialog.open({
-	    			template: 'projectModules',
-	    			data: popupData,
-	    			className: 'ngdialog-theme-default projectModules',
-	    			controller: 'projectController',
-	    			preCloseCallback: function(value) {
-	    				return true;
-	    			}
-	    		});
-	        }
-	    }).fail(function() {
-	    	$rootScope.panelMessage = "Could not retrieve the project modules at this moment."
-	    	$rootScope.errorBoxFlag = true;
-	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
-	    });
-		
-	};
-	
-	$scope.addModuleToProject = function(moduleBean) {
-		$.ajax({
-	        url: '/tm-web/tmModule/addModuleToProject.do?moduleBean='+JSON.stringify(moduleBean),
-	        type: 'POST',
-	        dataType: 'text',
-	        async: false,
-	        success: function(data) {
-	        	ngDialog.close();
-	        	$scope.getProjectModules(moduleBean.projId);
-	        }
-	    }).fail(function() {
-	    	ngDialog.close();
-	    	$rootScope.panelMessage = "Could not retrieve the project modules at this moment."
-	    	$rootScope.errorBoxFlag = true;
-	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
-	    });
+		$rootScope.projectId = projectId;
+		$state.go('app.dboard.module');
 	};
 	
 	$scope.getModuleIssues = function(moduleId) {
 		
-	}
+	};
 });

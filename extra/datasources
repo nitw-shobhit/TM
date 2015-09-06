@@ -13,21 +13,21 @@ Data sources and driver config :
         <connection-url>jdbc:mysql://localhost:3306/tm_core?zeroDateTimeBehavior=convertToNull</connection-url>
         <driver>mysql</driver>
         <security>
-            <user-name>root</user-name>
-            <password>root</password>
+            <user-name>bpsAdmin</user-name>
+            <password>bpsAdmin</password>
         </security>
     </datasource>
     <datasource jndi-name="java:/jdbc/tmBpmDS" pool-name="tmBpmDS" enabled="true" use-java-context="true">
         <connection-url>jdbc:mysql://localhost:3306/tm_bpm?zeroDateTimeBehavior=convertToNull</connection-url>
         <driver>mysql</driver>
         <security>
-            <user-name>root</user-name>
-            <password>root</password>
+            <user-name>bpsAdmin</user-name>
+            <password>bpsAdmin</password>
         </security>
     </datasource>
     <drivers>
         <driver name="mysql" module="com.mysql">
-            <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+            <driver-class>com.mysql.jdbc.Driver</driver-class>
         </driver>
     </drivers>
 </datasources>

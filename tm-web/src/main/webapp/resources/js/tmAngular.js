@@ -18,8 +18,8 @@ module.run(function($rootScope) {
 	    $rootScope.successBoxFlag = false;
 	    $rootScope.errorBoxFlag = false;
 	    $rootScope.panelMessage = "";
-	}
-})
+	};
+});
 
 //STATE ROUTES
 module.config(function ($stateProvider, $urlRouterProvider, $provide) {
@@ -46,13 +46,9 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 					templateUrl : 'resources/pages/dashboard/userInfo.jsp',
 					controller : 'userInfoController'
 				},
-				'menu@' : {
-					templateUrl : 'resources/pages/dashboard/menu.jsp',
-					controller : 'menuController'
-				},
 				'content@' : {
-					templateUrl : 'resources/pages/home.jsp',
-					controller : 'homeController'
+					templateUrl : 'resources/pages/projectsManagerView.jsp',
+					controller : 'projectController'
 				}
 			}
 		}
@@ -68,16 +64,16 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 			}
 		}
   	)
-  	.state('app.dboard.project.data',
-  		{
-	  		url: "",
+  	.state('app.dboard.module',
+		{
+			url: "",
 			views: {
-				'projectData' : {
-					templateUrl : 'resources/pages/project/projectData.jsp',
-					controller : 'projectController'
+				'content@' : {
+					templateUrl : 'resources/pages/modules.jsp',
+					controller : 'moduleController'
 				}
 			}
-  		}
+		}
   	)
   	.state('app.dboard.settings',
 		{
