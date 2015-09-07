@@ -23,7 +23,7 @@
 						<td style="padding: 2px;">
 							<input class="form-control input-sm" type="text" data-ng-model ="ngDialogData.userName" disabled="disabled"/>
 						</td>
-						<td style="padding: 2px;">
+						<td>
 						</td>
 					</tr>
 					<tr>
@@ -31,7 +31,7 @@
 						<td style="padding: 2px;">
 							<input class="form-control input-sm" type="text" data-ng-model ="ngDialogData.userId" disabled="disabled"/>
 						</td>
-						<td style="padding: 2px;">
+						<td>
 						</td>
 					</tr>
 					<tr>
@@ -47,9 +47,7 @@
 						<td style="padding: 2px;">
 							<input class="form-control input-sm" type="text" data-ng-model ="ngDialogData.userType" disabled="disabled"/>
 						</td>
-						<td style="padding: 2px;">
-							<button class="btn btn-link btn-xs" data-ng-click="requestAdminPrivilege()">Request power privileges</button>
-							{{ngDialogData.requestStatus}}
+						<td>
 						</td>
 					</tr>
 					<tr>
@@ -57,7 +55,7 @@
 						<td style="padding: 2px;">
 							<input class="form-control input-sm" type="text" data-ng-model ="ngDialogData.userPhone" />
 						</td>
-						<td style="padding: 2px;">
+						<td>
 						</td>
 					</tr>
 					<tr>
@@ -67,7 +65,7 @@
 						<td style="padding: 10px;">
 							<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">Cancel</button>
 						</td>
-						<td style="padding: 10px;">
+						<td>
 						</td>
 					</tr>
 				</table>

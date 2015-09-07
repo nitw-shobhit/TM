@@ -17,13 +17,13 @@
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/angular-busy.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/gh-fork-ribbon.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/angucomplete-alt.css">
-	<script src="<%= request.getContextPath()%>/resources/js/jquery-1.11.1.min.js"></script>
-	<script src="<%= request.getContextPath()%>/resources/js/bootstrap.js"></script>
-	<script src="<%= request.getContextPath()%>/resources/js/angular.min.js"></script>
-	<script src="<%= request.getContextPath()%>/resources/js/angular-route.min.js"></script>
-	<script src="<%= request.getContextPath()%>/resources/js/angular-ui-router.js"></script>
-	<script src="<%= request.getContextPath()%>/resources/js/angular-translate.js"></script>
-	<script src="<%= request.getContextPath()%>/resources/js/ngDialog.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/others/jquery-1.11.1.min.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/others/bootstrap.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/others/angular.min.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/others/angular-route.min.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/others/angular-ui-router.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/others/angular-translate.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/others/ngDialog.js"></script>
 	<!-- DIRECTIVES -->
 	<script src="<%= request.getContextPath()%>/resources/js/directives/confirmButtonDirective.js"></script>
 	
@@ -36,17 +36,18 @@
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/homeController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/projectController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/moduleController.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/controllers/issueController.js"></script>
 	
-	<script src="<%= request.getContextPath()%>/resources/js/jquery-ui.custom.js"></script>
-	<script src="<%= request.getContextPath()%>/resources/js/jquery.fancytree.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/others/jquery-ui.custom.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/others/jquery.fancytree.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/tm.js"></script>
-    <script src="<%= request.getContextPath()%>/resources/js/ui-bootstrap-tpls-0.13.0.js"></script>	
-    <script src="<%= request.getContextPath()%>/resources/js/angular-table.js"></script>
-    <script src="<%= request.getContextPath()%>/resources/js/angular.treeview.js"></script>
-    <script src="<%= request.getContextPath()%>/resources/js/angular-animate.js"></script>
-    <script src="<%= request.getContextPath()%>/resources/js/angular-busy.js"></script>
-    <script src="<%= request.getContextPath()%>/resources/js/angular-touch.min.js"></script>
-    <script src="<%= request.getContextPath()%>/resources/js/angucomplete-alt.js"></script>
+    <script src="<%= request.getContextPath()%>/resources/js/others/ui-bootstrap-tpls-0.13.0.js"></script>	
+    <script src="<%= request.getContextPath()%>/resources/js/others/angular-table.js"></script>
+    <script src="<%= request.getContextPath()%>/resources/js/others/angular.treeview.js"></script>
+    <script src="<%= request.getContextPath()%>/resources/js/others/angular-animate.js"></script>
+    <script src="<%= request.getContextPath()%>/resources/js/others/angular-busy.js"></script>
+    <script src="<%= request.getContextPath()%>/resources/js/others/angular-touch.min.js"></script>
+    <script src="<%= request.getContextPath()%>/resources/js/others/angucomplete-alt.js"></script>
 	<link rel="icon" type="image/x-icon" href="<%= request.getContextPath()%>/resources/images/favicon.ico" />
 </head>
 <body>

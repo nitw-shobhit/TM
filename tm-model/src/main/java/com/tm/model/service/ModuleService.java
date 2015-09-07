@@ -8,6 +8,6 @@ public interface ModuleService {
 
 	List<ModuleBean> getProjectModules(long projectId);
 
-	void addModuleToProject(ModuleBean moduleBean);
+	ModuleBean addModuleToProject(ModuleBean moduleBean);
 
 }

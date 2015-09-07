@@ -75,6 +75,17 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 			}
 		}
   	)
+  	.state('app.dboard.module.issue',
+		{
+			url: "",
+			views: {
+				'issue' : {
+					templateUrl : 'resources/pages/issues.jsp',
+					controller : 'issueController'
+				}
+			}
+		}
+  	)
   	.state('app.dboard.settings',
 		{
 			url: "",

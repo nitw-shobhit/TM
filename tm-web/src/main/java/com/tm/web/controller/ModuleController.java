@@ -38,7 +38,7 @@ public class ModuleController {
 		ModuleBean moduleBean = null;
 		try {
 			moduleBean = (ModuleBean) JsonUtils.toPojo(jsonObj, ModuleBean.class);
-			moduleService.addModuleToProject(moduleBean);
+			moduleBean = moduleService.addModuleToProject(moduleBean);
 		} catch(Exception e) {
 			throw new InternalApplicationException("Something went wrong with the application", e);
 		}

@@ -36,29 +36,29 @@
 </script>
 </head>
 <body>
-<ol class="breadcrumb">
-  <li><a data-ng-click="redirectToProjects()">Projects</a></li>
-  <li class="active">Modules</li>
-</ol>
-<fieldset class="moduleBox">
-	<legend>
-		<span class="header">MODULES</span>
-	</legend>
+	<ol class="breadcrumb">
+		<li><a data-ng-click="redirectToProjects()">Projects</a></li>
+		<li class="active">Modules</li>
+	</ol>
 	<table>
 		<tr>
 			<td>
-				<span style="font-size: 10px;">Need a new module? Click <a ng-dialog-controller="projectController" ng-dialog="addModule" ng-dialog-data='{"projId" : "{{ngDialogData.projectId}}"}' ng-dialog-class="ngdialog-theme-default addModule" class="btn-link">here</a> to get started.?</span>
+				<span style="font-size: 11px;">Need a new module? Click <a ng-dialog-controller="moduleController" ng-dialog="addModule" ng-dialog-class="ngdialog-theme-default addModule" class="btn-link">here</a> to get started.</span>
 			</td>
 		</tr>
 	</table>
+	<br>
 	<table style="vertical-align: middle;">
 		<tr>
-			<td data-ng-repeat="module in projectModules" style="padding:5px; border-bottom: 1px solid;">
-				<a class="menuLink" data-ng-click="getModuleIssues(module.id)"><div class="moduleTabs">{{module.modName}}</div></a>
+			<td style="width:.5%; border-bottom: 1px solid;"></td>
+			<td data-ng-repeat="module in projectModules" data-ng-class="module.open ? 'moduleTabActive' : 'moduleTabInActive'">
+				<a data-ng-click="getModuleIssues(module.module.id)"><div class="moduleTabs">{{module.module.modName}}</div></a>
 			</td>
+			<td style="width:100%; border-bottom: 1px solid;"></td>
 		</tr>
 	</table>
-	{{ngDialogData.emptyListMessage}}
-</fieldset>
+	{{emptyListMessage}}
+	<br>
+	<div data-ui-view="issue"></div>
 </body>
 </html>

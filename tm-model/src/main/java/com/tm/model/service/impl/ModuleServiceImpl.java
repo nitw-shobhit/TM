@@ -25,11 +25,11 @@ public class ModuleServiceImpl implements ModuleService {
 	}
 
 	@Override
-	public void addModuleToProject(ModuleBean moduleBean) {
+	public ModuleBean addModuleToProject(ModuleBean moduleBean) {
 		ModuleDao moduleDao = (ModuleDao) DaoFactory.generateService(DaoType.MODULE);
 		TmModule moduleEntity = moduleBean.toEntity();
 		moduleEntity.setVisible(true);
 		moduleEntity.setModStatus(ModuleStatus.STARTED.toString());
-		moduleDao.persist(moduleEntity).toBean();
+		return moduleDao.persist(moduleEntity).toBean();
 	}
 }
