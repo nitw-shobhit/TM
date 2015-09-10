@@ -7,7 +7,9 @@ import javax.naming.InitialContext;
 import javax.transaction.UserTransaction;
 
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.api.task.TaskService;
+import org.kie.api.task.model.Task;
 import org.kie.api.task.model.TaskSummary;
 
 import com.tm.bpm.core.BpmConfig;
@@ -19,15 +21,15 @@ public class BpmDaoImpl implements BpmDao {
 
 	@Override
 	public long createRequest(RequestType requestType, Map<String, Object> data) throws BpmException {
-		UserTransaction ut = null;
+//		UserTransaction ut = null;
 		long processInstanceId = 0;
 		try {
-			ut = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
-			ut.begin();
+//			ut = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+//			ut.begin();
 			KieSession ksession = BpmConfig.getSingletonSession();
 			BpmConfig.getTaskService();
 			processInstanceId = ksession.startProcess(requestType.getId(), data).getId();
-			ut.commit();
+//			ut.commit();
 		} catch (Exception e) {
 			throw new BpmException(e);
 		} 
@@ -38,5 +40,18 @@ public class BpmDaoImpl implements BpmDao {
 	public List<TaskSummary> getUserTasks(String userId) throws BpmException {
 		TaskService taskService = BpmConfig.getTaskService();
 		return taskService.getTasksAssignedAsPotentialOwner(userId, "en-UK");
+	}
+	
+	@Override
+	public Task getTaskById(long taskId) throws BpmException {
+		TaskService taskService = BpmConfig.getTaskService();
+		return taskService.getTaskById(taskId);
+	}
+
+	@Override
+	public ProcessInstance getProcessInstanceById(long processInstanceId)
+			throws BpmException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -10,7 +10,7 @@ import com.tm.util.db.Param;
 public class UserDaoImpl extends DBFacadeImpl<TmUserInfo, Long> implements UserDao {
 
 	@Override
-	public TmUserInfo getUserByUserId(String userId) {
+	public TmUserInfo byUserId(String userId) {
 		TmUserInfo userEntity = null;
 		Param [] params = new Param[1];
 		params[0] = new Param(PARAM_USER_ID, userId);
@@ -20,12 +20,4 @@ public class UserDaoImpl extends DBFacadeImpl<TmUserInfo, Long> implements UserD
 		}
 		return userEntity;
 	}
-
-	@Override
-	public List<TmUserInfo> getUsersByQuery(String query) {
-		Param [] params = new Param[1];
-		params[0] = new Param(PARAM_QUERY, '%' + query +'%');
-		return findByParams(GET_USERS_BY_QUERY, params);
-	}
-
 }

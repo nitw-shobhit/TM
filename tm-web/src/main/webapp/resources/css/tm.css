@@ -431,6 +431,8 @@ legend {
 .moduleTabInActive {
 	border-bottom: 1px solid;
 	padding:5px;
+	background-color: #B0CFF4;
+    border-left: 1px solid #EEE;
 }
 .moduleTabInActive:hover {
 	border-bottom: 1px solid;

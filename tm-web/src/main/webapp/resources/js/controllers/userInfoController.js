@@ -1,5 +1,5 @@
 angular.module('tm-app').controller("userInfoController", function ($scope, $state, ngDialog, $rootScope, $timeout) {
-
+	
 	$scope.logout = function() {
 		$state.go('app');
 	};
@@ -9,7 +9,19 @@ angular.module('tm-app').controller("userInfoController", function ($scope, $sta
 			template: 'userProfile',
 			data: $rootScope.userBean,
 			className: 'ngdialog-theme-default profileBox',
-			controller: 'userInfoController',
+			scope: $scope,
+			preCloseCallback: function(value) {
+				return true;
+			}
+		});
+	};
+	
+	$scope.openChangePasswordBox = function() {
+		$scope.ngDialogData = {};
+		ngDialog.open({
+			template: 'changePassword',
+			className: 'ngdialog-theme-default changePassword',
+			scope: $scope,
 			preCloseCallback: function(value) {
 				return true;
 			}

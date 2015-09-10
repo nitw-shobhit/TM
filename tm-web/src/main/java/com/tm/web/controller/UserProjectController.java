@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tm.core.bean.UserBean;
 import com.tm.model.service.UserProjectService;
-import com.tm.util.exceptions.CipherException;
-import com.tm.util.exceptions.FileLoadException;
-import com.tm.util.exceptions.LoginValidationFailedException;
+import com.tm.util.exceptions.DtoConversionException;
+import com.tm.util.exceptions.InternalApplicationException;
 import com.tm.util.spring.JsonUtils;
 
 @Controller
@@ -25,13 +24,18 @@ public class UserProjectController {
 	private UserProjectService userProjectService;
 
 	@RequestMapping(method = RequestMethod.GET, value="/getProjectTeam")
-	public @ResponseBody String getProjectTeam(@RequestParam("id") long projectId) throws LoginValidationFailedException, FileLoadException, CipherException {
-		List<UserBean> userList = userProjectService.getProjectTeam(projectId);
+	public @ResponseBody String getProjectTeam(@RequestParam("id") long projectId) throws InternalApplicationException {
+		List<UserBean> userList = null;
+		try {
+			userList = userProjectService.getProjectTeam(projectId);
+		} catch (DtoConversionException e) {
+			throw new InternalApplicationException("Something went wrong with the application", e);
+		}
 		return JsonUtils.toJson(userList);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/addUserToProject")
-	public @ResponseBody String addUserToProject(@RequestParam("userId") long userId, @RequestParam("projectId") long projectId) throws LoginValidationFailedException, FileLoadException, CipherException {
+	public @ResponseBody String addUserToProject(@RequestParam("userId") long userId, @RequestParam("projectId") long projectId) {
 		userProjectService.addUserToProject(userId, projectId);
 		return "";
 	}

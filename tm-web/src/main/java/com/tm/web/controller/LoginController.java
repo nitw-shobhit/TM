@@ -25,12 +25,13 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.GET, value="/validateLogin")
 	public @ResponseBody String validateLogin(@RequestParam("userBean") String jsonObj) throws LoginValidationFailedException, InternalApplicationException {
 		UserBean userBean = null;
+		UserBean userBeanRet = null;
 		try {
 			userBean = (UserBean) JsonUtils.toPojo(jsonObj, UserBean.class);
+			userBeanRet = userService.validateLogin(userBean);
 		} catch(Exception e) {
 			throw new InternalApplicationException("Something went wrong with the application", e);
 		}
-		UserBean userBeanRet = userService.validateLogin(userBean);
 		return JsonUtils.toJson(userBeanRet);
 	}
 	

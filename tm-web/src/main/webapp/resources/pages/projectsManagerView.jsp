@@ -28,7 +28,7 @@
 								<div class="projectSideMenu activeBg">
 									<a ng-dialog="projectInfo" ng-dialog-class="ngdialog-theme-default projectInfo" ng-dialog-data="{{project}}" 
 										class="projectSideMenuLink" title="Project Details"><i class="flaticon-info28"></i></a><br>
-									<a ng-dialog-controller="projectController" ng-dialog="editProject" ng-dialog-class="ngdialog-theme-default addEditProject" ng-dialog-data="{{project}}"
+									<a data-ng-click="openEditProjectBox(project)"
 										class="projectSideMenuLink" title="Edit"><i class="flaticon-edit45"></i></a><br>
 									<a data-ng-click="getProjectTeam(project)"
 										class="projectSideMenuLink" title="Project Team"><span class="flaticon-users10"></span></a><br>
@@ -43,7 +43,7 @@
 							<div class="projectFolder">
 								<div class="newProjectFolderContent">
 									<br><br>
-									<button style="padding: 0 12px;" ng-dialog-controller="projectController" ng-dialog="addProject" ng-dialog-class="ngdialog-theme-default addEditProject" class="btn btn-link"><font size="3">ADD A PROJECT</font></button>
+									<button data-ng-click="openAddProjectBox()" style="padding: 0 12px;" class="btn btn-link"><font size="3">ADD A PROJECT</font></button>
 								</div>
 							</div>
 						</td>

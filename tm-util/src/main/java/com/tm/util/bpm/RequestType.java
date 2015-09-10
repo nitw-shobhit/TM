@@ -6,7 +6,8 @@ import java.util.List;
 
 public enum RequestType {
 
-	ADMIN_PRIVILEGE_REQUEST("com.tm.flow.admin_privilege_request", "Admin_Privilege_Request");
+	ADMIN_PRIVILEGE_REQUEST("com.tm.flow.admin_privilege_request", "Admin_Privilege_Request"),
+	ISSUE_REQUEST("com.tm.flow.issue_request", "Issue_Request");
 	
 	private String id;
 	private String name;

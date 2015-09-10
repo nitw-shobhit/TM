@@ -7,6 +7,6 @@ import com.tm.util.db.DBFacade;
 
 public interface ModuleDao extends DBFacade<TmModule, Long>{
 
-	List<TmModule> getModulesByProjectId(long projectId);
+	List<TmModule> byProjectId(long projectId);
 
 }

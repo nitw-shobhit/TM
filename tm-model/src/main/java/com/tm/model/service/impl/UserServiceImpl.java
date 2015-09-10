@@ -9,24 +9,27 @@ import java.util.Map;
 
 import com.tm.core.bean.UserBean;
 import com.tm.core.entity.TmUserInfo;
+import com.tm.core.entity.TmUserProject;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.bpm.BpmDao;
 import com.tm.dao.db.UserDao;
 import com.tm.model.service.UserService;
+import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
 import com.tm.util.bpm.RequestType;
 import com.tm.util.cipher.CipherUtils;
 import com.tm.util.exceptions.BpmException;
 import com.tm.util.exceptions.CipherException;
+import com.tm.util.exceptions.DtoConversionException;
 import com.tm.util.exceptions.FileLoadException;
 import com.tm.util.exceptions.LoginValidationFailedException;
 
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean> implements UserService {
 
 	@Override
-	public UserBean validateLogin(UserBean userBean) throws LoginValidationFailedException {
+	public UserBean validateLogin(UserBean userBean) throws LoginValidationFailedException, DtoConversionException {
 		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
-		UserBean userBeanRet = userDao.getUserByUserId(userBean.getUserId()).toBean();
+		UserBean userBeanRet = toBean(userDao.byUserId(userBean.getUserId()));
 		if(userBeanRet == null) {
 			throw new LoginValidationFailedException("Invalid Details");
 		} else {
@@ -44,22 +47,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserBean updateUserProfile(UserBean userBean) {
+	public UserBean updateUserProfile(UserBean userBean) throws DtoConversionException {
 		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
 		TmUserInfo userEntity = userDao.findByPk(userBean.getId());
 		updateUserEntity(userEntity, userBean);
-		return userDao.merge(userEntity).toBean();
-	}
-
-	@Override
-	public List<UserBean> searchUsers(String query) {
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
-		List<UserBean> userBeanList = new ArrayList<UserBean>();
-		List<TmUserInfo> userEntityList = userDao.getUsersByQuery(query);
-		for(TmUserInfo userEntity : userEntityList) {
-			userBeanList.add(userEntity.toBean());
-		}
-		return userBeanList;
+		return toBean(userDao.merge(userEntity));
 	}
 	
 	private void updateUserEntity(TmUserInfo userEntity, UserBean userBean) {
@@ -100,13 +92,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<UserBean> getAllUsers() {
+	public List<UserBean> getAllUsers() throws DtoConversionException {
 		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
 		List<TmUserInfo> userEntityList = userDao.findAll();
 		List<UserBean> userBeanList = new ArrayList<UserBean>();
 		for(TmUserInfo userEntity : userEntityList) {
-			userBeanList.add(userEntity.toBean());
+			userBeanList.add(toBean(userEntity));
 		}
 		return userBeanList;
+	}
+	
+	public List<UserBean> getUsersFromUserProjectList(List<TmUserProject> userProjList) throws DtoConversionException {
+		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		List<UserBean> userList = new ArrayList<UserBean>();
+		for(TmUserProject userProj : userProjList) {
+			userList.add(toBean(userDao.findByPk(userProj.getUserId())));
+		}
+		return userList;
 	}
 }

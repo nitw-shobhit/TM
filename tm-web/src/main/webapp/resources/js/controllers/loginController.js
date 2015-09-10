@@ -1,6 +1,6 @@
 angular.module('tm-app').controller("loginController", function ($scope, $state, $rootScope, $timeout) {
 	$scope.userId = "A10000";
-	$scope.userPass = "A10000";
+	$scope.userPass = "1";
 	$scope.login = function() {
 		var userBean = {
 			"userId" : $scope.userId,

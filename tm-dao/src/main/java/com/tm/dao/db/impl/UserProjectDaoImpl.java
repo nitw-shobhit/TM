@@ -10,7 +10,7 @@ import com.tm.util.db.Param;
 public class UserProjectDaoImpl extends DBFacadeImpl<TmUserProject, Long> implements UserProjectDao {
 
 	@Override
-	public List<TmUserProject> getUserProjectByProjId(long projectId) {
+	public List<TmUserProject> byProjectId(long projectId) {
 		Param [] params = new Param[1];
 		params[0] = new Param(PARAM_PROJ_ID, projectId);
 		List<TmUserProject> resultList = findByParams(GET_USERPROJ_BY_PROJ_ID, params);

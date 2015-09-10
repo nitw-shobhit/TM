@@ -9,9 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.inspiresoftware.lib.dto.geda.assembler.DTOAssembler;
-import com.tm.core.bean.ModuleBean;
-
 
 /**
  * The persistent class for the tm_module database table.
@@ -79,11 +76,5 @@ public class TmModule extends TmBase implements Serializable {
 
 	public void setProjId(long projId) {
 		this.projId = projId;
-	}
-	
-	public ModuleBean toBean() {
-		ModuleBean moduleBean = new ModuleBean();
-		DTOAssembler.newAssembler(moduleBean.getClass(), this.getClass()).assembleDto(moduleBean, this, null, null);
-		return moduleBean;
 	}
 }

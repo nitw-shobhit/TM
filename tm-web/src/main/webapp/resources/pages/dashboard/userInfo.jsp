@@ -140,7 +140,7 @@
 									<button class="btn btn-default btn-xs" data-ng-click="openProfileBox()">View Profile</button>
 								</td>
 								<td>
-									<button class="btn btn-primary btn-xs" ng-dialog-controller="userInfoController" ng-dialog="changePassword" ng-dialog-class="ngdialog-theme-default changePassword">Change Password</button>
+									<button class="btn btn-primary btn-xs" data-ng-click="openChangePasswordBox()">Change Password</button>
 									<button class="btn btn-danger btn-xs" data-ng-click="logout()">Logout</button>
 								</td>
 							</tr>

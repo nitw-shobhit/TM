@@ -33,16 +33,35 @@ angular.module('tm-app').controller("moduleController", function ($scope, $rootS
 		$state.go('app.dboard.project');
 	};
 	
+	$scope.openAddModuleBox = function(projectBean) {
+		ngDialog.open({
+			template: 'addModule',
+			className: 'ngdialog-theme-default addModule',
+			scope: $scope,
+			preCloseCallback: function(value) {
+				return true;
+			}
+		});
+	};
+	
 	$scope.addModuleToProject = function(moduleBean) {
 		moduleBean.projId = $rootScope.projectId;
 		$.ajax({
 	        url: '/tm-web/tmModule/addModuleToProject.do?moduleBean='+JSON.stringify(moduleBean),
 	        type: 'POST',
-	        dataType: 'text',
+	        dataType: 'json',
 	        async: false,
 	        success: function(data) {
-	        	$scope.projectModules.push(data);
-	        	$state.reload('app.dboard.module');
+	        	for(var index = 0; index < $scope.projectModules.length; index ++) {
+	        		if($scope.projectModules[index].module.id == $rootScope.selectedModule) {
+	        			$scope.projectModules[index].open = false;
+	        			break
+	        		}
+	        	}
+	        	var temp = null;
+        		$rootScope.selectedModule = data.id;
+        		temp = {"open" : true, "module" : data};
+	        	$scope.projectModules.push(temp);
 	        	ngDialog.close();
 	        	$rootScope.panelMessage = "New module added successfully.";
 		    	$rootScope.successBoxFlag = true;

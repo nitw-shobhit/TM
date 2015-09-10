@@ -7,5 +7,5 @@ import com.tm.util.db.DBFacade;
 
 public interface ProjectDao extends DBFacade<TmProject, Long>{
 
-	List<TmProject> getProjectsByUserId(Long id);
+	List<TmProject> byUserId(Long id);
 }

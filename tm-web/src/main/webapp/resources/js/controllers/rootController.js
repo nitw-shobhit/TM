@@ -1,8 +1,7 @@
-angular.module('tm-app').controller("rootController", function ($scope, $rootScope) {
-	
+angular.module('tm-app').controller("rootController", function($scope, $rootScope) {
 	$scope.closePanel = function() {
-    	$rootScope.successBoxFlag = false;
-        $rootScope.errorBoxFlag = false;
-        $rootScope.panelMessage = "";
-    };
+		$rootScope.successBoxFlag = false;
+		$rootScope.errorBoxFlag = false;
+		$rootScope.panelMessage = "";
+	};
 });

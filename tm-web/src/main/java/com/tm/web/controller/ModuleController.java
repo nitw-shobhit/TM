@@ -42,7 +42,7 @@ public class ModuleController {
 		} catch(Exception e) {
 			throw new InternalApplicationException("Something went wrong with the application", e);
 		}
-		return "";
+		return JsonUtils.toJson(moduleBean);
 	}
 	
 	public ModuleService getModuleService() {

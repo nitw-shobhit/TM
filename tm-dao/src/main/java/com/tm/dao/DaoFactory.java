@@ -1,6 +1,7 @@
 package com.tm.dao;
 
 import com.tm.dao.bpm.impl.BpmDaoImpl;
+import com.tm.dao.db.impl.IssueDaoImpl;
 import com.tm.dao.db.impl.ModuleDaoImpl;
 import com.tm.dao.db.impl.ProjectDaoImpl;
 import com.tm.dao.db.impl.UserDaoImpl;
@@ -22,6 +23,8 @@ public class DaoFactory {
 			return new ModuleDaoImpl();
 		} else if(dType.equals(DaoType.BPM)) {
 			return new BpmDaoImpl();
+		} else if(dType.equals(DaoType.ISSUE)) {
+			return new IssueDaoImpl();
 		} else {
 			return null;
 		}

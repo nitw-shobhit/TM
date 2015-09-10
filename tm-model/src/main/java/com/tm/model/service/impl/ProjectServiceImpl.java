@@ -11,39 +11,41 @@ import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.ProjectDao;
 import com.tm.model.service.ProjectService;
+import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
+import com.tm.util.exceptions.DtoConversionException;
 
-public class ProjectServiceImpl implements ProjectService {
+public class ProjectServiceImpl extends DtoAssemblerFacadeImpl<TmProject, ProjectBean> implements ProjectService {
 
 	@Override
-	public List<ProjectBean> getAllProjects(Long userId) {
+	public List<ProjectBean> getAllProjects(Long userId) throws DtoConversionException {
 		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
-		List<TmProject> projectEntities = projectDao.getProjectsByUserId(userId);
+		List<TmProject> projectEntities = projectDao.byUserId(userId);
 		List<ProjectBean> projectBeanList = new ArrayList<ProjectBean>();
 		for(TmProject projectEntity : projectEntities) {
-			projectBeanList.add(projectEntity.toBean());
+			projectBeanList.add(toBean(projectEntity));
 		}
 		
 		return projectBeanList;
 	}
 
 	@Override
-	public ProjectBean addProject(ProjectBean projectBean) {
+	public ProjectBean addProject(ProjectBean projectBean) throws DtoConversionException {
 		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
-		TmProject projectEntity = projectBean.toEntity();
+		TmProject projectEntity = toEntity(projectBean);
 		projectEntity.setDtCreated(new Timestamp(new Date().getTime()));
 		projectEntity.setVisible(true);
 		projectDao.persist(projectEntity);
-		return projectEntity.toBean();
+		return toBean(projectEntity);
 	}
 	
 	@Override
-	public ProjectBean editProject(ProjectBean projectBean) {
+	public ProjectBean editProject(ProjectBean projectBean) throws DtoConversionException {
 		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
 		TmProject projectEntity = projectDao.findByPk(projectBean.getId());
 		projectEntity.setProjName(projectBean.getProjName());
 		projectEntity.setProjDesc(projectBean.getProjDesc());
 		projectDao.merge(projectEntity);
-		return projectEntity.toBean();
+		return toBean(projectEntity);
 	}
 	
 	@Override

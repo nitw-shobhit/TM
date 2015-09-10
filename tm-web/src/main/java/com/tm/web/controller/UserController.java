@@ -67,12 +67,6 @@ public class UserController {
 		return requestId;
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value="/searchUser")
-	public @ResponseBody String searchUser(@RequestParam("query") String query) {
-		List<UserBean> userBeans = userService.searchUsers(query);
-		return JsonUtils.toJson(userBeans);
-	}
-	
 	public UserService getUserService() {
 		return userService;
 	}

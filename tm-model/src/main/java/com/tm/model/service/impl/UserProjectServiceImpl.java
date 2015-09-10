@@ -1,28 +1,23 @@
 package com.tm.model.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.tm.core.bean.UserBean;
 import com.tm.core.entity.TmUserProject;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
-import com.tm.dao.db.UserDao;
 import com.tm.dao.db.UserProjectDao;
 import com.tm.model.service.UserProjectService;
+import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
+import com.tm.util.exceptions.DtoConversionException;
 
-public class UserProjectServiceImpl implements UserProjectService {
+public class UserProjectServiceImpl extends DtoAssemblerFacadeImpl<TmUserProject, UserBean> implements UserProjectService {
 
 	@Override
-	public List<UserBean> getProjectTeam(long projectId) {
+	public List<UserBean> getProjectTeam(long projectId) throws DtoConversionException {
 		UserProjectDao userProjectDao = (UserProjectDao) DaoFactory.generateService(DaoType.USER_PROJECT);
-		List<TmUserProject> userProjList = userProjectDao.getUserProjectByProjId(projectId);
-		List<UserBean> userList = new ArrayList<UserBean>();
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
-		for(TmUserProject userProj : userProjList) {
-			userList.add(userDao.findByPk(userProj.getUserId()).toBean());
-		}
-		return userList;
+		List<TmUserProject> userProjList = userProjectDao.byProjectId(projectId);
+		return new UserServiceImpl().getUsersFromUserProjectList(userProjList);
 	}
 
 	@Override

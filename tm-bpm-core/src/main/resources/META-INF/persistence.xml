@@ -58,6 +58,9 @@
 
 		<!-- deployment store -->
 		<class>org.jbpm.kie.services.impl.store.DeploymentStoreEntry</class>
+		
+		<!-- custom entity -->
+		<class>com.tm.bpm.core.CustomOrganizationalentity</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.max_fetch_depth" value="3" />
@@ -66,5 +69,11 @@
 			<property name="hibernate.id.new_generator_mappings" value="false" />
 			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
 		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="tm-bpm">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<non-jta-data-source>java:/jdbc/tmBpmDS</non-jta-data-source>
+		<class>com.tm.bpm.core.CustomOrganizationalentity</class>
 	</persistence-unit>
 </persistence>

@@ -1,4 +1,5 @@
 angular.module('tm-app').controller("projectController", function ($scope, $state, $rootScope, $timeout, ngDialog) {
+	console.log('refreshing controoller');
 	$.ajax({
 	    url: '/tm-web/tmProject/getAllUserProjects.do?id='+ $rootScope.userBean.id,
 	    type: 'GET',
@@ -26,6 +27,17 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
     	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	});
 	
+	$scope.openAddProjectBox = function(projectBean) {
+		ngDialog.open({
+			template: 'addProject',
+			className: 'ngdialog-theme-default addEditProject',
+			scope: $scope,
+			preCloseCallback: function(value) {
+				return true;
+			}
+		});
+	};
+		
 	$scope.addProject = function(projectBean) {
 		projectBean.projOwner = $rootScope.userBean.id;
 		$.ajax({
@@ -34,8 +46,13 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	        dataType: 'json',
 	        async: false,
 	        success: function(data) {
+	        	if(data.projName.length > 12) {
+	    			data.projNameTooltip = data.projName.substr(0, 9) + "...";
+	    		} else {
+	    			data.projNameTooltip = data.projName;
+	    		}
+	        	
 	        	$scope.projectList.push(data);
-	            $state.reload('app.dboard.project');
 	        	ngDialog.close();
 		    	$rootScope.panelMessage = "New project added successfully.";
 				$rootScope.successBoxFlag = true;
@@ -49,14 +66,36 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	    });
 	};
 	
+	$scope.openEditProjectBox = function(projectBean) {
+		ngDialog.open({
+			template: 'editProject',
+			data: projectBean,
+			className: 'ngdialog-theme-default addEditProject',
+			scope: $scope,
+			preCloseCallback: function(value) {
+				return true;
+			}
+		});
+	};
+		
 	$scope.editProject = function(projectBean) {
 		$.ajax({
 	        url: '/tm-web/tmProject/editProject.do?projectBean='+JSON.stringify(projectBean),
 	        type: 'POST',
-	        dataType: 'text',
+	        dataType: 'json',
 	        async: false,
 	        success: function(data) {
-	        	$state.reload('app.dboard.project');
+	        	if(data.projName.length > 12) {
+	    			data.projNameTooltip = data.projName.substr(0, 9) + "...";
+	    		} else {
+	    			data.projNameTooltip = data.projName;
+	    		}
+	        	for(var index = 0; index < $scope.projectList.length; index ++) {
+	        		if($scope.projectList[index].id == data.id) {
+	        			$scope.projectList[index].projNameTooltip = data.projNameTooltip;
+	        			break;
+	        		}
+	        	}
 	        	ngDialog.close();
 		    	$rootScope.panelMessage = "Project updated successfully.";
 				$rootScope.successBoxFlag = true;

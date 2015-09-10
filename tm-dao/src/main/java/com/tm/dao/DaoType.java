@@ -2,5 +2,5 @@ package com.tm.dao;
 
 public enum DaoType {
 
-	USER, PROJECT, USER_PROJECT, MODULE, BPM;
+	USER, PROJECT, USER_PROJECT, MODULE, BPM, ISSUE;
 }

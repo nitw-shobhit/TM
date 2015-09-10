@@ -10,9 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import com.inspiresoftware.lib.dto.geda.assembler.DTOAssembler;
-import com.tm.core.bean.UserBean;
-
 
 /**
  * The persistent class for the tm_user_info database table.
@@ -134,11 +131,5 @@ public class TmUserInfo extends TmBase implements Serializable {
 			.append(this.userGroupId).append(",'USER_TYPE':").append(this.userType).append(",'USER_EMAIL':")
 			.append(this.userEmail).append(",'USER_PHONE':").append(this.userPhone).append("]");
 		return tempBuffer.toString();
-	}
-
-	public UserBean toBean() {
-		UserBean userBean = new UserBean();
-		DTOAssembler.newAssembler(userBean.getClass(), this.getClass()).assembleDto(userBean, this, null, null);
-		return userBean;
 	}
 }

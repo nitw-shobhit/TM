@@ -43,7 +43,7 @@
 	<table>
 		<tr>
 			<td>
-				<span style="font-size: 11px;">Need a new module? Click <a ng-dialog-controller="moduleController" ng-dialog="addModule" ng-dialog-class="ngdialog-theme-default addModule" class="btn-link">here</a> to get started.</span>
+				<span style="font-size: 11px;">Need a new module? Click <a data-ng-click="openAddModuleBox()" class="btn-link">here</a> to get started.</span>
 			</td>
 		</tr>
 	</table>

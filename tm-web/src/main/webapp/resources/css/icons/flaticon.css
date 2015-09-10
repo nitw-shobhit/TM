@@ -40,9 +40,15 @@ font-style: normal;
 .flaticon-power6:before {
 	content: "\e008";
 }
-.flaticon-users10:before {
+.flaticon-refresh57:before {
 	content: "\e009";
 }
-.flaticon-verification5:before {
+.flaticon-text70:before {
 	content: "\e00a";
+}
+.flaticon-users10:before {
+	content: "\e00b";
+}
+.flaticon-verification5:before {
+	content: "\e00c";
 }

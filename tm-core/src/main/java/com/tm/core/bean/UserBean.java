@@ -4,10 +4,9 @@ import java.io.Serializable;
 
 import com.inspiresoftware.lib.dto.geda.annotations.Dto;
 import com.inspiresoftware.lib.dto.geda.annotations.DtoField;
-import com.tm.core.entity.TmUserInfo;
 
 @Dto
-public class UserBean implements Serializable {
+public class UserBean extends BaseBean implements Serializable {
 	
 	/**
 	 * 
@@ -114,9 +113,5 @@ public class UserBean implements Serializable {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
-	}
-	
-	public TmUserInfo toEntity() {
-		return null;
 	}
 }

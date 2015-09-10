@@ -19,6 +19,11 @@ public class BpmUserGroupCallbackImpl implements UserGroupCallback {
 	private Map<String, List<String>> groupStore = new HashMap<String, List<String>>();
 	private Set<String> allGroups = new HashSet<String>();
 	
+	private static final String USER = "User";
+	private static final String GROUP = "Group";
+	
+	private static OrganizationalEntityService orgEntityService = new OrganizationalEntityServiceImpl();
+	
 	public BpmUserGroupCallbackImpl(Map<String, String> userGroups) throws BpmException {
 		init(userGroups);
 	}
@@ -31,13 +36,19 @@ public class BpmUserGroupCallbackImpl implements UserGroupCallback {
 		Iterator<Entry<String, String>> iter = userGroups.entrySet().iterator();
 		
 		while (iter.hasNext()) {
-			String userId = iter.next().getKey();
-			String groupId = iter.next().getValue();
+			Entry<String, String> entry = iter.next();
+			String userId = entry.getKey();
+			String groupId = entry.getValue();
+			//Add user to OrganizationalEntity
+			orgEntityService.persist(userId, USER);
+			
 			allGroups.add(groupId);
 			List<String> temp;
 			if(groupStore.containsKey(groupId)) {
 				temp = groupStore.get(groupId);
 			} else {
+				//Add group if not already added
+				orgEntityService.persist(groupId, GROUP);
 				temp = new ArrayList<String>();
 			}
 			temp.add(userId);
@@ -49,7 +60,7 @@ public class BpmUserGroupCallbackImpl implements UserGroupCallback {
 			allGroups.add("Administrators");
 		}
 	}
-	
+
 	@Override
 	public boolean existsUser(String userId) {
 		return groupStore.containsKey(userId);

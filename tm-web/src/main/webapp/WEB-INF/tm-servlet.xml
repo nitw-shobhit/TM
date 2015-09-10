@@ -16,15 +16,18 @@
 		/> -->
 	<!-- </context:component-scan> -->
 
-	<!-- LISTENER -->
-	<bean name="starter" init-method="init" class="com.tm.model.service.StartupService" />
-
 	<!-- SERVICE BEANS -->
 	<bean id="userService" class="com.tm.model.service.impl.UserServiceImpl" />
 	<bean id="projectService" class="com.tm.model.service.impl.ProjectServiceImpl" />
 	<bean id="userProjectService" class="com.tm.model.service.impl.UserProjectServiceImpl" />
 	<bean id="moduleService" class="com.tm.model.service.impl.ModuleServiceImpl" />
-	
+	<bean id="issueService" class="com.tm.model.service.impl.IssueServiceImpl" />
+
+	<!-- LISTENER -->
+	<bean name="starter" init-method="init" class="com.tm.model.init.service.StartupService" >
+		<property name="userService" ref="userService"></property>
+	</bean>
+
 	<!-- CONTROLLERS -->
 	<bean name="/tmLogin/*" class="com.tm.web.controller.LoginController">
 		<property name="userService" ref="userService" />
@@ -40,6 +43,9 @@
 	</bean>
 	<bean name="/tmModule/*" class="com.tm.web.controller.ModuleController">
 		<property name="moduleService" ref="moduleService" />
+	</bean>
+	<bean name="/tmIssue/*" class="com.tm.web.controller.IssueController">
+		<property name="issueService" ref="issueService" />
 	</bean>
 	
 	<!-- I18N  -->

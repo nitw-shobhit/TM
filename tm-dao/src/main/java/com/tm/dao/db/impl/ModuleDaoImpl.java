@@ -10,7 +10,7 @@ import com.tm.util.db.Param;
 public class ModuleDaoImpl extends DBFacadeImpl<TmModule, Long> implements ModuleDao {
 
 	@Override
-	public List<TmModule> getModulesByProjectId(long projectId) {
+	public List<TmModule> byProjectId(long projectId) {
 		Param [] params = new Param[1];
 		params[0] = new Param(PARAM_PROJ_ID, projectId);
 		return findByParams(GET_MODULES_BY_PROJ_ID, params);

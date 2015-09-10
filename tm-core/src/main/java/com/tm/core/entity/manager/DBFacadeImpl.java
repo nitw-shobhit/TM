@@ -15,8 +15,6 @@ import com.tm.util.db.Param;
 
 public class DBFacadeImpl<T, PK> extends QueryConstants implements DBFacade<T, PK> {
 
-	protected Class<T> entityClass;
-	
 	@Override
 	public T persist(T obj) {
 		EntityTransaction etx = getEntityManager().getTransaction();
