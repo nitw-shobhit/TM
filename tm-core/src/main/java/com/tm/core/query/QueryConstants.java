@@ -7,4 +7,6 @@ public class QueryConstants extends ParamConstants {
 	public static final String GET_USERPROJ_BY_PROJ_ID = "getUserProjectByProjectId";
 	public static final String GET_MODULES_BY_PROJ_ID = "getModulesByProjectId";
 	public static final String GET_ISSUES_BY_MODULE_ID = "getIssuesByModuleId";
+	public static final String GET_COMMENTS_BY_ISSUE_ID = "getIssueCommentsByIssueId";
+	public static final String GET_ATTACHMENTS_BY_ISSUE_ID = "getIssueAttachmentsByIssueId";
 }

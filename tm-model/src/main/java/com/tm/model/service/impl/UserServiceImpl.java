@@ -12,13 +12,10 @@ import com.tm.core.entity.TmUserInfo;
 import com.tm.core.entity.TmUserProject;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
-import com.tm.dao.bpm.BpmDao;
 import com.tm.dao.db.UserDao;
 import com.tm.model.service.UserService;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
-import com.tm.util.bpm.RequestType;
 import com.tm.util.cipher.CipherUtils;
-import com.tm.util.exceptions.BpmException;
 import com.tm.util.exceptions.CipherException;
 import com.tm.util.exceptions.DtoConversionException;
 import com.tm.util.exceptions.FileLoadException;
@@ -28,8 +25,7 @@ public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean
 
 	@Override
 	public UserBean validateLogin(UserBean userBean) throws LoginValidationFailedException, DtoConversionException {
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
-		UserBean userBeanRet = toBean(userDao.byUserId(userBean.getUserId()));
+		UserBean userBeanRet = getUserByUserId(userBean.getUserId());
 		if(userBeanRet == null) {
 			throw new LoginValidationFailedException("Invalid Details");
 		} else {
@@ -72,12 +68,8 @@ public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean
 	}
 
 	@Override
-	public String requestAdminPrivilege(long userId) throws BpmException {
-		BpmDao bpmDao = (BpmDao) DaoFactory.generateService(DaoType.BPM);
-		Map<String, Object> data = new HashMap<String, Object>(); 
-		data.put("manager", "A10000");
-		long requestId = bpmDao.createRequest(RequestType.ADMIN_PRIVILEGE_REQUEST, data);
-		return String.valueOf(requestId);
+	public String requestAdminPrivilege(long userId) {
+		return null;
 	}
 
 	@Override
@@ -109,5 +101,12 @@ public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean
 			userList.add(toBean(userDao.findByPk(userProj.getUserId())));
 		}
 		return userList;
+	}
+
+	@Override
+	public UserBean getUserByUserId(String userId)
+			throws DtoConversionException {
+		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		return toBean(userDao.byUserId(userId));
 	}
 }

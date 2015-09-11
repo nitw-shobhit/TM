@@ -243,3 +243,8 @@
 	width: 300px;
 	height: 230px;
 }
+
+.ngdialog.ngdialog-theme-default.viewIssue .ngdialog-content {
+	width: 800px;
+	height: 500px;
+}

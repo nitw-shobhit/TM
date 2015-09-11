@@ -17,11 +17,17 @@
 	<!-- </context:component-scan> -->
 
 	<!-- SERVICE BEANS -->
+	<bean id="issueCommentService" class="com.tm.model.service.impl.IssueCommentServiceImpl" />
+	<bean id="issueAttachmentService" class="com.tm.model.service.impl.IssueAttachmentServiceImpl" />
 	<bean id="userService" class="com.tm.model.service.impl.UserServiceImpl" />
 	<bean id="projectService" class="com.tm.model.service.impl.ProjectServiceImpl" />
 	<bean id="userProjectService" class="com.tm.model.service.impl.UserProjectServiceImpl" />
 	<bean id="moduleService" class="com.tm.model.service.impl.ModuleServiceImpl" />
-	<bean id="issueService" class="com.tm.model.service.impl.IssueServiceImpl" />
+	<bean id="issueService" class="com.tm.model.service.impl.IssueServiceImpl">
+		<property name="userService" ref="userService"></property>
+		<property name="issueCommentService" ref="issueCommentService"></property>
+		<property name="issueAttachmentService" ref="issueAttachmentService"></property>
+	</bean>
 
 	<!-- LISTENER -->
 	<bean name="starter" init-method="init" class="com.tm.model.init.service.StartupService" >

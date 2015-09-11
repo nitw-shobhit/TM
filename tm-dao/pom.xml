@@ -28,10 +28,5 @@
 			<artifactId>tm-core</artifactId>
 			<version>0.1</version>
 		</dependency>
-		<dependency>
-			<groupId>com.tm</groupId>
-			<artifactId>tm-bpm-core</artifactId>
-			<version>0.1</version>
-		</dependency>
 	</dependencies>
 </project>

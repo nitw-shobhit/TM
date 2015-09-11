@@ -1,8 +1,7 @@
 package com.tm.core.bean;
 
 import java.io.Serializable;
-import java.sql.Blob;
-import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.inspiresoftware.lib.dto.geda.annotations.Dto;
@@ -20,9 +19,6 @@ public class IssueBean extends BaseBean implements Serializable {
 	private String issDesc;
 
 	@DtoField
-	private Timestamp issDuedate;
-
-	@DtoField
 	private String issName;
 
 	@DtoField
@@ -35,11 +31,18 @@ public class IssueBean extends BaseBean implements Serializable {
 	private long modId;
 
 	@DtoField
-	private String userId;
+	private long userId;
 	
-	private List<CommentBean> issComments;
+	private String userIdString;
 	
-	private List<Blob> issAttachments;
+	@DtoField
+	private long issOwner;
+	
+	private String issOwnerString;
+	
+	private List<IssueCommentBean> issComments;
+	
+	private List<IssueAttachmentBean> issAttachments;
 	
 	public long getId() {
 		return id;
@@ -55,14 +58,6 @@ public class IssueBean extends BaseBean implements Serializable {
 
 	public void setIssDesc(String issDesc) {
 		this.issDesc = issDesc;
-	}
-
-	public Timestamp getIssDuedate() {
-		return issDuedate;
-	}
-
-	public void setIssDuedate(Timestamp issDuedate) {
-		this.issDuedate = issDuedate;
 	}
 
 	public String getIssName() {
@@ -97,27 +92,65 @@ public class IssueBean extends BaseBean implements Serializable {
 		this.modId = modId;
 	}
 
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public List<CommentBean> getIssComments() {
+	public List<IssueCommentBean> getIssComments() {
 		return issComments;
 	}
 
-	public void setIssComments(List<CommentBean> issComments) {
+	public void setIssComments(List<IssueCommentBean> issComments) {
 		this.issComments = issComments;
 	}
 
-	public List<Blob> getIssAttachments() {
+	public List<IssueAttachmentBean> getIssAttachments() {
 		return issAttachments;
 	}
 
-	public void setIssAttachments(List<Blob> issAttachments) {
+	public void setIssAttachments(List<IssueAttachmentBean> issAttachments) {
 		this.issAttachments = issAttachments;
+	}
+
+	public void addIssueComment(IssueCommentBean issueCommentBean) {
+		if(this.issComments == null) {
+			this.issComments = new ArrayList<IssueCommentBean>();
+		}
+		this.issComments.add(issueCommentBean);
+	}
+
+	public void addIssueAttachment(IssueAttachmentBean issAttachmentBean) {
+		if(this.issAttachments == null) {
+			this.issAttachments = new ArrayList<IssueAttachmentBean>();
+		}
+		this.issAttachments.add(issAttachmentBean);
+	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	public String getUserIdString() {
+		return userIdString;
+	}
+
+	public void setUserIdString(String userIdString) {
+		this.userIdString = userIdString;
+	}
+
+	public long getIssOwner() {
+		return issOwner;
+	}
+
+	public void setIssOwner(long issOwner) {
+		this.issOwner = issOwner;
+	}
+
+	public String getIssOwnerString() {
+		return issOwnerString;
+	}
+
+	public void setIssOwnerString(String issOwnerString) {
+		this.issOwnerString = issOwnerString;
 	}
 }

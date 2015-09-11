@@ -21,4 +21,12 @@
 		<query>Select a from TmIssue a where a.modId = :paramModId</query>
 	</named-query>
 	
+	<named-query name="getIssueCommentsByIssueId">
+		<query>Select a from TmIssueComment a where a.issId = :paramIssId</query>
+	</named-query>
+	
+	<named-query name="getIssueAttachmentsByIssueId">
+		<query>Select a from TmIssueAttachment a where a.issId = :paramIssId</query>
+	</named-query>
+	
 </entity-mappings>

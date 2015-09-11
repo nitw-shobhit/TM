@@ -24,10 +24,8 @@
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-ui-router.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-translate.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/ngDialog.js"></script>
-	<script src="<%= request.getContextPath()%>/resources/js/others/bootstrap-table-export.js"></script>
 	<!-- DIRECTIVES -->
 	<script src="<%= request.getContextPath()%>/resources/js/directives/confirmButtonDirective.js"></script>
-	
 	<!-- MAIN ANGULAR -->
 	<script src="<%= request.getContextPath()%>/resources/js/tmAngular.js"></script>
 	<!-- CONTROLLERS -->

@@ -10,6 +10,8 @@
 		<class>com.tm.core.entity.TmUserProject</class>
 		<class>com.tm.core.entity.TmModule</class>
 		<class>com.tm.core.entity.TmIssue</class>
+		<class>com.tm.core.entity.TmIssueComment</class>
+		<class>com.tm.core.entity.TmIssueAttachment</class>
 		<properties/>
 	</persistence-unit>
 </persistence>

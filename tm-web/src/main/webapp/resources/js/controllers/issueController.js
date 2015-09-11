@@ -15,11 +15,11 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    async: false,
 		    success: function(data) {
 		    	$scope.issues = data;
-		    	console.log($scope.issues);
 		    	$scope.config = {
 	    		    itemsPerPage: 10,
 	    		    fillLastPage: false
 	    	    };
+		    	console.log($scope.issues);
 		    }
 		}).fail(function() {
 	    	$rootScope.panelMessage = "Could not retrieve the issues at this moment.";
@@ -41,11 +41,12 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 	
 	$scope.addIssueToModule = function(issueBean) {
 		issueBean.modId = $scope.moduleId;
-		issueBean.issDueDate = new Date();
+		issueBean.issOwner = $rootScope.userBean.id;
+		issueBean.issOwnerString = $rootScope.userBean.userId;
 		var tempCommentList = [];
 		var tempComment = {
-			"content" : issueBean.issComment,
-			"author" : $rootScope.userBean.userId
+			"comContent" : issueBean.issComment,
+			"userId" : $rootScope.userBean.id
 		};
 		tempCommentList.push(tempComment);
 		issueBean.issComments = tempCommentList;
@@ -65,6 +66,18 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 	    	$rootScope.panelMessage = "Could not retrieve the issues at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
+		});
+	};
+	
+	$scope.viewIssue = function(issueBean) {
+		ngDialog.open({
+			template: 'viewIssue',
+			className: 'ngdialog-theme-default viewIssue',
+			data: issueBean,
+			scope: $scope,
+			preCloseCallback: function(value) {
+				return true;
+			}
 		});
 	};
 });

@@ -256,12 +256,8 @@ legend {
 	margin-left:5px;
 	font-size: 10px;
 }
-.worklistTable {
+.issueTable {
 	font-size: 10px;
-}
-.worklistBox {
-	height: 100%;
-	width: 100%;
 }
 .overlay-panel {
 	position: absolute;

@@ -3,9 +3,11 @@ package com.tm.model.service;
 import java.util.List;
 
 import com.tm.core.bean.UserBean;
+import com.tm.core.entity.TmUserProject;
+import com.tm.util.assembler.DtoAssemblerFacade;
 import com.tm.util.exceptions.DtoConversionException;
 
-public interface UserProjectService {
+public interface UserProjectService extends DtoAssemblerFacade<TmUserProject, UserBean> {
 
 	List<UserBean> getProjectTeam(long projectId) throws DtoConversionException;
 

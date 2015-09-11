@@ -65,7 +65,7 @@
 	</table>
 </fieldset>
 </script>
-<!-- ##########################################PROJECT INFORMATION############################################# -->
+<!-- ##########################################PROJECT DETAILS############################################# -->
 <script type="text/ng-template" id="projectInfo">
 <fieldset class="popupFieldset">
 	<legend>

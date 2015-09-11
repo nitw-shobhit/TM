@@ -1,5 +1,4 @@
 angular.module('tm-app').controller("projectController", function ($scope, $state, $rootScope, $timeout, ngDialog) {
-	console.log('refreshing controoller');
 	$.ajax({
 	    url: '/tm-web/tmProject/getAllUserProjects.do?id='+ $rootScope.userBean.id,
 	    type: 'GET',
