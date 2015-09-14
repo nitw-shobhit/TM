@@ -80,4 +80,26 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 			}
 		});
 	};
+	
+	$scope.addCommentToIssue = function(issueBean) {
+		var newComment = {
+			"comContent" : issueBean.newComment,
+			"issId" : issueBean.id,
+			"userId" : $rootScope.userBean.id
+		};
+		
+		$.ajax({
+		    url: '/tm-web/tmCommentIssue/addCommentToIssue.do?issueCommentBean='+JSON.stringify(newComment),
+		    type: 'POST',
+		    dataType: 'json',
+		    async: false,
+		    success: function(data) {
+		    }
+		}).fail(function() {
+			ngDialog.close();
+	    	$rootScope.panelMessage = "Could not add the comment at this moment.";
+	    	$rootScope.errorBoxFlag = true;
+	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
+		});
+	};
 });

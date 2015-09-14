@@ -73,7 +73,7 @@
 	</legend>
 	<div style="width: 745px; height:360px;">
 		<div style="width: 550px; height:355px; border:1px solid; float:left;">
-			<table class="formStructure" style="margin:4px; width:540px; font-size:10px;">
+			<table class="formStructure" style="width:540px; font-size:10px;">
 				<tr>
 					<td>
 						<table style="width:100%;">
@@ -92,7 +92,7 @@
 							<tr>
 								<td style="padding: 2px; text-align: left;"><label>Description: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
-									<textarea row="2" cols="76" readonly="readonly">{{ngDialogData.issDesc}}</textarea>
+									<textarea row="2" readonly="readonly" style="width:463px;">{{ngDialogData.issDesc}}</textarea>
 								</td>
 							</tr>
 						</table>
@@ -118,7 +118,7 @@
 							<tr>
 								<td style="padding: 2px; text-align: left;"><label>Created on: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
-									<input type="text" readonly="readonly" value="{{ngDialogData.dtCreated}}" style="width:183px;"/>
+									<input type="text" readonly="readonly" value="{{ngDialogData.dtCreated}}" style="width:179px;"/>
 								</td>
 								<td style="padding: 2px; text-align: left;"><label>Last update: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
@@ -158,28 +158,28 @@
 				</tr>
 			</table>
 			<br><br><br>
-			<table style="width: 90%;">
+			<table style="width:99%; margin-left:auto; margin-right:auto;">
 				<tr>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 12px; padding:5px;">Accept</button>
+						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Accept</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 12px; padding:5px;">Reject</button>
+						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;Reject</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 12px; padding:5px;">Reassign</button>
+						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-random"></span>&nbsp;Reassign</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 12px; padding:5px;">Remove</button>
+						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ban-circle"></span>&nbsp;Remove</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 12px; padding:5px;">Reopen</button>
+						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Reopen</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 12px; padding:5px;">Mark as fixed</button>
+						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-tag"></span>&nbsp;Mark as fixed</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 12px; padding:5px;">Complete</button>
+						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ok"></span>&nbsp;Complete</button>
 					</td>
 				</tr>
 			</table>
@@ -190,8 +190,8 @@
 					<b>{{comment.userIdString}}</b> : {{comment.comContent}}
 				</div>
 			</div>
-			<textarea cols="17" rows="1" style="margin-left:2px;"></textarea>
-			<button class="btn btn-primary" style="height:45px; width: 47px; font-size:11px; padding:0;vertical-align:top;">Add</button>
+			<textarea style="margin-left:2px; margin-top:4px; height:45px; width:135px;" data-ng-model="ngDialogData.newComment"></textarea>
+			<button data-ng-click="addCommentToIssue(ngDialogData)" class="btn btn-primary" style="height:45px; margin-top:4px; width: 47px; font-size:11px; padding:0;vertical-align:top;">Add</button>
 		</div>
 	</div>
 	<div style="width: 745px; height:70px; border: 1px solid;">

@@ -53,6 +53,9 @@
 	<bean name="/tmIssue/*" class="com.tm.web.controller.IssueController">
 		<property name="issueService" ref="issueService" />
 	</bean>
+	<bean name="/tmCommentIssue/*" class="com.tm.web.controller.IssueCommentController">
+		<property name="issueCommentService" ref="issueCommentService" />
+	</bean>
 	
 	<!-- I18N  -->
 	<bean id="localeResolver"

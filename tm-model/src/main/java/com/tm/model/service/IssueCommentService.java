@@ -10,4 +10,6 @@ import com.tm.util.exceptions.DtoConversionException;
 public interface IssueCommentService extends DtoAssemblerFacade<TmIssueComment, IssueCommentBean> {
 
 	List<IssueCommentBean> getIssueComments(long issueId) throws DtoConversionException;
+
+	IssueCommentBean addCommentToIssue(IssueCommentBean issueCommentBean) throws DtoConversionException;
 }
