@@ -45,6 +45,16 @@ public class IssueController {
 		return JsonUtils.toJson(issueBean);
 	} 
 	
+	@RequestMapping(method = RequestMethod.POST, value="/acceptIssue")
+	public @ResponseBody void acceptIssue(@RequestParam("id") long issueId) {
+		issueService.acceptIssue(issueId);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/rejectIssue")
+	public @ResponseBody void rejectIssue(@RequestParam("id") long issueId) {
+		issueService.rejectIssue(issueId);
+	}
+	
 	public IssueService getIssueService() {
 		return issueService;
 	}

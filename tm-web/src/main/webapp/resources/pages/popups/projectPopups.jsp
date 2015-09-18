@@ -13,15 +13,21 @@
 	</legend>
 	<table class="formStructure">
 		<tr>
-			<td style="padding: 2px;"><label>Project name</label></td>
+			<td style="padding: 2px;float:left;"><label>Project name</label></td>
 			<td style="padding: 2px;">
-				<input class="form-control input-sm" type="text" data-ng-model="ngDialogData.projName" />
+				<input name="Project Name" class="form-control input-sm" type="text" data-ng-model="ngDialogData.proj.projName"/>
 			</td>
 		</tr>
 		<tr>
-			<td style="padding: 2px;"><label>Project description</label></td>
+			<td style="padding: 2px;float:left;"><label>Project description</label></td>
 			<td style="padding: 2px;">
- 				<textarea class="form-control" rows="2" data-ng-model="ngDialogData.projDesc"></textarea>
+ 				<textarea name="Project Description" class="form-control" rows="2" data-ng-model="ngDialogData.proj.projDesc"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 2px;float:left;"><label>Add preset modules</label></td>
+			<td style="padding: 2px;">
+ 				<input type="checkbox" style="float:left;" data-ng-model="ngDialogData.addDefaultModulesFlag"></textarea>
 			</td>
 		</tr>
 		<tr>

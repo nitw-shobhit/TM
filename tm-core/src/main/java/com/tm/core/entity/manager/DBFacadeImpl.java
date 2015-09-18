@@ -1,6 +1,8 @@
 package com.tm.core.entity.manager;
 
 import java.lang.reflect.ParameterizedType;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -8,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import com.tm.core.entity.TmBase;
 import com.tm.core.query.QueryConstants;
 import com.tm.util.db.DBFacade;
 import com.tm.util.db.MultipleQueryBean;
@@ -20,12 +23,21 @@ public class DBFacadeImpl<T, PK> extends QueryConstants implements DBFacade<T, P
 		EntityTransaction etx = getEntityManager().getTransaction();
 		try {
 			etx.begin();
-			getEntityManager().persist(obj);
+			obj = persistNoTx(obj);
 			etx.commit();
 		} catch(Exception e) {
 			etx.rollback();
 			throw e;
 		}
+		return obj;
+	}
+	
+	@Override
+	public T persistNoTx(T obj) {
+		((TmBase)obj).setDtCreated(new Timestamp(new Date().getTime()));
+		((TmBase)obj).setDtModified(new Timestamp(new Date().getTime()));
+		((TmBase)obj).setVisible(true);
+		getEntityManager().persist(obj);
 		return obj;
 	}
 
@@ -35,13 +47,19 @@ public class DBFacadeImpl<T, PK> extends QueryConstants implements DBFacade<T, P
 		T objRet = null;
 		try {
 			etx.begin();
-			objRet = getEntityManager().merge(obj);
+			objRet = mergeNoTx(obj);
 			etx.commit();
 		} catch(Exception e) {
 			etx.rollback();
 			throw e;
 		}
 		return objRet;
+	}
+	
+	@Override
+	public T mergeNoTx(T obj) {
+		((TmBase)obj).setDtModified(new Timestamp(new Date().getTime()));
+		return getEntityManager().merge(obj);
 	}
 
 	@Override
@@ -55,6 +73,11 @@ public class DBFacadeImpl<T, PK> extends QueryConstants implements DBFacade<T, P
 			etx.rollback();
 			throw e;
 		}
+	}
+	
+	@Override
+	public void removeNoTx(T obj) {
+		getEntityManager().remove(obj);
 	}
 	
 	@Override

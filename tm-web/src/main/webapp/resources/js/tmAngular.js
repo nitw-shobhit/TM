@@ -1,6 +1,6 @@
 var module = angular.module('tm-app', ['ui.router', 'ngDialog', 'pascalprecht.translate', 'ui.bootstrap',
                                        'angular-table', 'angularTreeview', 'ngAnimate', 'cgBusy', 'ngTouch',
-                                       'angucomplete-alt', 'tm-confirm-button']);
+                                       'angucomplete-alt', 'tm-confirm-button', 'LocalStorageModule']);
 
 //ROOT SCOPE ELEMENTS
 module.run(function($rootScope) {
@@ -47,7 +47,7 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 					controller : 'userInfoController'
 				},
 				'content@' : {
-					templateUrl : 'resources/pages/projectsManagerView.jsp',
+					templateUrl : 'resources/pages/projects.jsp',
 					controller : 'projectController'
 				}
 			}
@@ -58,7 +58,7 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 			url: "",
 			views: {
 				'content@' : {
-					templateUrl : 'resources/pages/projectsManagerView.jsp',
+					templateUrl : 'resources/pages/projects.jsp',
 					controller : 'projectController'
 				}
 			}
@@ -71,6 +71,17 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 				'content@' : {
 					templateUrl : 'resources/pages/modules.jsp',
 					controller : 'moduleController'
+				}
+			}
+		}
+  	)
+  	.state('app.dboard.release',
+		{
+			url: "",
+			views: {
+				'content@' : {
+					templateUrl : 'resources/pages/releases.jsp',
+					controller : 'releaseController'
 				}
 			}
 		}

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<jsp:include page="issuePopups.jsp" />
+<jsp:include page="popups/issuePopups.jsp" />
 <!DOCTYPE html>
 <html>
 <head>

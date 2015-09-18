@@ -45,6 +45,11 @@ public class ModuleController {
 		return JsonUtils.toJson(moduleBean);
 	}
 	
+	@RequestMapping(method = RequestMethod.POST, value="/deleteModule")
+	public @ResponseBody void deleteModule(@RequestParam("id") long id) throws InternalApplicationException {
+		moduleService.deleteModule(id);
+	}
+	
 	public ModuleService getModuleService() {
 		return moduleService;
 	}

@@ -3,7 +3,6 @@ package com.tm.web.controller;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,11 +32,6 @@ public class LoginController {
 			throw new InternalApplicationException("Something went wrong with the application", e);
 		}
 		return JsonUtils.toJson(userBeanRet);
-	}
-	
-	@RequestMapping(method = RequestMethod.GET, value="/getUserDetails")
-	public @ResponseBody String getUserDetails(@ModelAttribute("UserBean") UserBean userBean) throws InternalApplicationException {
-		return JsonUtils.toJson(userBean);
 	}
 
 	public UserService getUserService() {

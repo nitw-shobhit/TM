@@ -13,4 +13,6 @@ public interface ModuleService extends DtoAssemblerFacade<TmModule, ModuleBean> 
 
 	ModuleBean addModuleToProject(ModuleBean moduleBean) throws DtoConversionException;
 
+	void deleteModule(long id);
+
 }

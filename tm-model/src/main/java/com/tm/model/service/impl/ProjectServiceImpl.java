@@ -1,21 +1,28 @@
 package com.tm.model.service.impl;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import com.tm.core.bean.ModuleBean;
 import com.tm.core.bean.ProjectBean;
 import com.tm.core.entity.TmProject;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.ProjectDao;
+import com.tm.model.service.ModuleService;
 import com.tm.model.service.ProjectService;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
 import com.tm.util.exceptions.DtoConversionException;
 
 public class ProjectServiceImpl extends DtoAssemblerFacadeImpl<TmProject, ProjectBean> implements ProjectService {
 
+	@Resource
+	private ModuleService moduleService;
+	
 	@Override
 	public List<ProjectBean> getAllProjects(Long userId) throws DtoConversionException {
 		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
@@ -29,12 +36,16 @@ public class ProjectServiceImpl extends DtoAssemblerFacadeImpl<TmProject, Projec
 	}
 
 	@Override
-	public ProjectBean addProject(ProjectBean projectBean) throws DtoConversionException {
+	@Transactional
+	public ProjectBean addProject(ProjectBean projectBean, boolean addDefaultModules) throws DtoConversionException {
 		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
 		TmProject projectEntity = toEntity(projectBean);
-		projectEntity.setDtCreated(new Timestamp(new Date().getTime()));
-		projectEntity.setVisible(true);
-		projectDao.persist(projectEntity);
+		projectDao.persistNoTx(projectEntity);
+		if(addDefaultModules) {
+			for(ModuleBean moduleBean : ModuleHelper.createDefaultModuleEntities(projectEntity.getId())) {
+				moduleService.addModuleToProject(moduleBean);
+			}
+		}
 		return toBean(projectEntity);
 	}
 	
@@ -69,5 +80,13 @@ public class ProjectServiceImpl extends DtoAssemblerFacadeImpl<TmProject, Projec
 		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
 		TmProject projectEntity = projectDao.findByPk(id);
 		projectDao.remove(projectEntity);
+	}
+
+	public ModuleService getModuleService() {
+		return moduleService;
+	}
+
+	public void setModuleService(ModuleService moduleService) {
+		this.moduleService = moduleService;
 	}
 }

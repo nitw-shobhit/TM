@@ -69,7 +69,7 @@
 <script type="text/ng-template" id="viewIssue">
 <fieldset class="popupFieldset">
 	<legend>
-		<span class="header">ISSUE DETAILS</span>
+		<span class="header">ISSUE ID :<b>{{ngDialogData.id}}</b></span>
 	</legend>
 	<div style="width: 745px; height:360px;">
 		<div style="width: 550px; height:355px; border:1px solid; float:left;">
@@ -118,7 +118,7 @@
 							<tr>
 								<td style="padding: 2px; text-align: left;"><label>Created on: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
-									<input type="text" readonly="readonly" value="{{ngDialogData.dtCreated}}" style="width:179px;"/>
+									<input type="text" readonly="readonly" value="{{ngDialogData.dtCreated}}" style="width:180px;"/>
 								</td>
 								<td style="padding: 2px; text-align: left;"><label>Last update: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
@@ -134,7 +134,7 @@
 							<tr>
 								<td style="padding: 2px; text-align: left;"><label>Assigned to: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
-									<input type="text" readonly="readonly" value="{{ngDialogData.userIdString}}" style="width:192px;"/>
+									<input type="text" readonly="readonly" value="{{ngDialogData.userIdString}}" style="width:189px;"/>
 								</td>
 								<td style="padding: 2px; text-align: left;"><label>Logged by: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
@@ -161,36 +161,37 @@
 			<table style="width:99%; margin-left:auto; margin-right:auto;">
 				<tr>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Accept</button>
+						<button class="btn btn-default" data-ng-click="acceptIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Accept</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;Reject</button>
+						<button class="btn btn-default" data-ng-click="rejectIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;Reject</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-random"></span>&nbsp;Reassign</button>
+						<button class="btn btn-default" data-ng-click="openReassignIssueBox(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-random"></span>&nbsp;Reassign</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ban-circle"></span>&nbsp;Remove</button>
+						<button class="btn btn-default" data-ng-click="removeIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ban-circle"></span>&nbsp;Remove</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Reopen</button>
+						<button class="btn btn-default" data-ng-click="reOpenIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Reopen</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-tag"></span>&nbsp;Mark as fixed</button>
+						<button class="btn btn-default" data-ng-click="markIssueAsFixed(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-tag"></span>&nbsp;Mark as fixed</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ok"></span>&nbsp;Complete</button>
+						<button class="btn btn-default" data-ng-click="completeIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ok"></span>&nbsp;Complete</button>
 					</td>
 				</tr>
 			</table>
 		</div>
 		<div style="border: 1px solid; width: 190px; height: 355px; margin-left:5px; float:left; font-size:10px;">
-			<div style="height:300px; background-color:white;margin2px; border:1px solid;">
-				<div data-ng-repeat="comment in ngDialogData.issComments" style="margin:4px;">
-					<b>{{comment.userIdString}}</b> : {{comment.comContent}}
+			<div style="height:300px; background-color:white; border:1px solid; overflow-x:auto;">
+				<div data-ng-repeat="comment in ngDialogData.issComments" style="margin:4px; line-height:1.2em;">
+					<div><b>{{comment.userIdString}}</b> : {{comment.comContent}}</div>
+					<div style="font-size:8px; float:right; color:#999;">{{comment.dtCreated}}</div><br>
 				</div>
 			</div>
-			<textarea style="margin-left:2px; margin-top:4px; height:45px; width:135px;" data-ng-model="ngDialogData.newComment"></textarea>
+			<textarea placeholder="Add a comment.." style="margin-left:2px; margin-top:4px; height:45px; width:135px;" data-ng-model="ngDialogData.newComment"></textarea>
 			<button data-ng-click="addCommentToIssue(ngDialogData)" class="btn btn-primary" style="height:45px; margin-top:4px; width: 47px; font-size:11px; padding:0;vertical-align:top;">Add</button>
 		</div>
 	</div>

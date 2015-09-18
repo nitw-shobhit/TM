@@ -1,6 +1,8 @@
-angular.module('tm-app').controller("userInfoController", function ($scope, $state, ngDialog, $rootScope, $timeout) {
+angular.module('tm-app').controller("userInfoController", function ($scope, $state, ngDialog,
+		$rootScope, $timeout, localStorageService) {
 	
 	$scope.logout = function() {
+		localStorageService.remove("tmCookie")
 		$state.go('app');
 	};
 	
@@ -60,7 +62,6 @@ angular.module('tm-app').controller("userInfoController", function ($scope, $sta
 		    success: function(data) {
 		    	ngDialog.close();
 		    	$rootScope.userBean.userPass = data;
-		    	console.log($rootScope.userBean.userPass);
 		    	$rootScope.panelMessage = "Password updated.";
 				$rootScope.successBoxFlag = true;
 				$timeout( function(){ $rootScope.autoHide(); }, 2000);

@@ -10,9 +10,6 @@ import com.tm.dao.db.impl.UserProjectDaoImpl;
 
 public class DaoFactory {
 	
-	private DaoFactory() {
-	}
-	
 	public static Object generateService(DaoType dType) {
 		if(dType.equals(DaoType.USER)) {
 			return new UserDaoImpl();

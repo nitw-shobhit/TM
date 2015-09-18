@@ -32,9 +32,11 @@ public class IssueCommentServiceImpl extends DtoAssemblerFacadeImpl<TmIssueComme
 	@Override
 	public IssueCommentBean addCommentToIssue(IssueCommentBean issueCommentBean) throws DtoConversionException {
 		IssueCommentDao issueCommentDao = (IssueCommentDao) DaoFactory.generateService(DaoType.ISSUE_COMMENT);
+		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
 		TmIssueComment issueCommentEntity = toEntity(issueCommentBean);
-		issueCommentEntity.setVisible(true);
 		issueCommentDao.persist(issueCommentEntity);
-		return toBean(issueCommentEntity);
+		issueCommentBean = toBean(issueCommentEntity);
+		issueCommentBean.setUserIdString(userDao.findByPk(issueCommentBean.getUserId()).getUserId());
+		return issueCommentBean;
 	}
 }

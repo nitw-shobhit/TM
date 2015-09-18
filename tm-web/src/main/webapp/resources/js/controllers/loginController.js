@@ -1,6 +1,13 @@
-angular.module('tm-app').controller("loginController", function ($scope, $state, $rootScope, $timeout) {
+angular.module('tm-app').controller("loginController", function ($scope, $state, $rootScope, $timeout, localStorageService) {
+	console.log("loginController");
 	$scope.userId = "A10000";
 	$scope.userPass = "1";
+
+	if(localStorageService.get("tmCookie") != null) {
+		$rootScope.userBean = localStorageService.get("tmCookie").user;
+		$state.go('app.dboard');
+	}
+	
 	$scope.login = function() {
 		var userBean = {
 			"userId" : $scope.userId,
@@ -13,6 +20,11 @@ angular.module('tm-app').controller("loginController", function ($scope, $state,
 		    async: false,
 		    success: function(data) {
 		    	$rootScope.userBean = data;
+		    	var tmCookie = {
+		    		"user" : data,
+		    		"login_time" : new Date()
+		    	};
+		    	localStorageService.set("tmCookie", tmCookie);
 		    	$rootScope.panelMessage = "Welcome back " + data.userName + ". Nice to see you again!!";
 		    	$rootScope.successBoxFlag = true;
 		    	$timeout( function(){ $rootScope.autoHide(); }, 2000);

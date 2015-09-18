@@ -1,4 +1,5 @@
 angular.module('tm-app').controller("projectController", function ($scope, $state, $rootScope, $timeout, ngDialog) {
+	console.log("projectController");
 	$.ajax({
 	    url: '/tm-web/tmProject/getAllUserProjects.do?id='+ $rootScope.userBean.id,
 	    type: 'GET',
@@ -29,7 +30,7 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	$scope.openAddProjectBox = function(projectBean) {
 		ngDialog.open({
 			template: 'addProject',
-			className: 'ngdialog-theme-default addEditProject',
+			className: 'ngdialog-theme-default addProject',
 			scope: $scope,
 			preCloseCallback: function(value) {
 				return true;
@@ -37,10 +38,11 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 		});
 	};
 		
-	$scope.addProject = function(projectBean) {
-		projectBean.projOwner = $rootScope.userBean.id;
+	$scope.addProject = function(project) {
+		project.proj.projOwner = $rootScope.userBean.id;
+		
 		$.ajax({
-	        url: '/tm-web/tmProject/addProject.do?projectBean='+JSON.stringify(projectBean),
+	        url: '/tm-web/tmProject/addProject.do?projectBean='+JSON.stringify(project.proj)+'&addDefaultModules='+project.addDefaultModulesFlag,
 	        type: 'POST',
 	        dataType: 'json',
 	        async: false,
@@ -69,7 +71,7 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 		ngDialog.open({
 			template: 'editProject',
 			data: projectBean,
-			className: 'ngdialog-theme-default addEditProject',
+			className: 'ngdialog-theme-default editProject',
 			scope: $scope,
 			preCloseCallback: function(value) {
 				return true;
@@ -238,7 +240,6 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	        dataType: 'text',
 	        async: false,
 	        success: function(data) {
-	        	console.log(ngDialog);
 	        }
 	    }).fail(function() {
 	    	$rootScope.panelMessage = "Could not delete the project at this moment.";
@@ -252,7 +253,8 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 		$state.go('app.dboard.module');
 	};
 	
-	$scope.getModuleIssues = function(moduleId) {
-		
+	$scope.getProjectReleases = function(projectId) {
+		$rootScope.projectId = projectId;
+		$state.go('app.dboard.release');
 	};
 });

@@ -1,5 +1,5 @@
 angular.module('tm-app').controller("issueController", function ($state, $scope, $rootScope, $timeout, ngDialog) {
-	
+	console.log("issueController");
 	$scope.moduleId = $rootScope.selectedModule;
 	getIssuesByModuleId($scope.moduleId);
 	
@@ -19,7 +19,6 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 	    		    itemsPerPage: 10,
 	    		    fillLastPage: false
 	    	    };
-		    	console.log($scope.issues);
 		    }
 		}).fail(function() {
 	    	$rootScope.panelMessage = "Could not retrieve the issues at this moment.";
@@ -94,10 +93,118 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
+		    	issueBean.newComment="";
+		    	issueBean.issComments.push(data);
 		    }
 		}).fail(function() {
 			ngDialog.close();
 	    	$rootScope.panelMessage = "Could not add the comment at this moment.";
+	    	$rootScope.errorBoxFlag = true;
+	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
+		});
+	};
+	
+	$scope.acceptIssue = function(issueBean) {
+		
+		$.ajax({
+		    url: '/tm-web/tmIssue/acceptIssue.do?id='+issueBean.id,
+		    type: 'POST',
+		    async: false,
+		    success: function(data) {
+		    	issueBean.issStatus="ACCEPTED";
+		    }
+		}).fail(function() {
+			ngDialog.close();
+	    	$rootScope.panelMessage = "Could not accept the issue at this moment.";
+	    	$rootScope.errorBoxFlag = true;
+	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
+		});
+	};
+	
+	$scope.rejectIssue = function(issueBean) {
+		
+		$.ajax({
+		    url: '/tm-web/tmIssue/rejectIssue.do?id='+issueBean.id,
+		    type: 'POST',
+		    async: false,
+		    success: function(data) {
+		    	issueBean.issStatus="REJECTED";
+		    }
+		}).fail(function() {
+			ngDialog.close();
+	    	$rootScope.panelMessage = "Could not reject the issue at this moment.";
+	    	$rootScope.errorBoxFlag = true;
+	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
+		});
+	};
+	
+	$scope.openReassignIssueBox = function(issueId) {
+		
+	};
+	
+	$scope.removeIssue = function(issueBean) {
+		
+		$.ajax({
+		    url: '/tm-web/tmIssue/removeIssue.do?id='+issueBean.id,
+		    type: 'POST',
+		    async: false,
+		    success: function(data) {
+		    	issueBean.issStatus="CANCELLED";
+		    }
+		}).fail(function() {
+			ngDialog.close();
+	    	$rootScope.panelMessage = "Could not cancel the issue at this moment.";
+	    	$rootScope.errorBoxFlag = true;
+	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
+		});
+	};
+	
+	$scope.reOpenIssue = function(issueBean) {
+		
+		$.ajax({
+		    url: '/tm-web/tmIssue/reOpenIssue.do?id='+issueBean.id,
+		    type: 'POST',
+		    async: false,
+		    success: function(data) {
+		    	issueBean.issStatus="REOPENED";
+		    }
+		}).fail(function() {
+			ngDialog.close();
+	    	$rootScope.panelMessage = "Could not reopen the issue at this moment.";
+	    	$rootScope.errorBoxFlag = true;
+	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
+		});
+	};
+	
+	$scope.markIssueAsFixed = function(issueBean) {
+		
+		$.ajax({
+		    url: '/tm-web/tmIssue/rejectIssue.do?id='+issueBean.id,
+		    type: 'POST',
+		    async: false,
+		    success: function(data) {
+		    	issueBean.issStatus="REJECTED";
+		    }
+		}).fail(function() {
+			ngDialog.close();
+	    	$rootScope.panelMessage = "Could not reject the issue at this moment.";
+	    	$rootScope.errorBoxFlag = true;
+	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
+		});
+	};
+	
+	$scope.completeIssue = function(issueBean) {
+		
+		$.ajax({
+		    url: '/tm-web/tmIssue/completeIssue.do?id='+issueBean.id,
+		    type: 'POST',
+		    async: false,
+		    success: function(data) {
+		    	issueBean.issStatus="COMPLETED";
+		    }
+		}).fail(function() {
+			ngDialog.close();
+	    	$rootScope.panelMessage = "Could not reject the issue at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 		});

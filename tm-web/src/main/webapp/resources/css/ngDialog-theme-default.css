@@ -204,10 +204,16 @@
 	height: 225px;
 }
 
-.ngdialog.ngdialog-theme-default.addEditProject .ngdialog-content {
+.ngdialog.ngdialog-theme-default.addProject .ngdialog-content {
+	width: 400px;
+	height: 240px;
+}
+
+.ngdialog.ngdialog-theme-default.editProject .ngdialog-content {
 	width: 400px;
 	height: 230px;
 }
+
 
 .ngdialog.ngdialog-theme-default.projectInfo .ngdialog-content {
 	width: 400px;
@@ -230,6 +236,11 @@
 }
 
 .ngdialog.ngdialog-theme-default.addModule .ngdialog-content {
+	width: 400px;
+	height: 230px;
+}
+
+.ngdialog.ngdialog-theme-default.editModule .ngdialog-content {
 	width: 400px;
 	height: 230px;
 }

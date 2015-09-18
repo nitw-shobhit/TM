@@ -1,8 +1,6 @@
 package com.tm.model.service.impl;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +52,6 @@ public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean
 		userEntity.setUserEmail(userBean.getUserEmail());
 		userEntity.setUserPhone(userBean.getUserPhone());
 		userEntity.setUserPass(userBean.getUserPass());
-		userEntity.setDtModified(new Timestamp(new Date().getTime()));
 	}
 
 	@Override

@@ -1,4 +1,5 @@
 angular.module('tm-app').controller("moduleController", function ($scope, $rootScope, $state, ngDialog, $timeout) {
+	console.log("moduleController");
 	$.ajax({
         url: '/tm-web/tmModule/getProjectModules.do?id='+$rootScope.projectId,
         type: 'GET',
@@ -28,11 +29,7 @@ angular.module('tm-app').controller("moduleController", function ($scope, $rootS
     	$rootScope.errorBoxFlag = true;
     	$timeout( function(){ $rootScope.autoHide(); }, 2000);
     });
-	
-	$scope.redirectToProjects = function () {
-		$state.go('app.dboard.project');
-	};
-	
+
 	$scope.openAddModuleBox = function(projectBean) {
 		ngDialog.open({
 			template: 'addModule',
@@ -55,7 +52,7 @@ angular.module('tm-app').controller("moduleController", function ($scope, $rootS
 	        	for(var index = 0; index < $scope.projectModules.length; index ++) {
 	        		if($scope.projectModules[index].module.id == $rootScope.selectedModule) {
 	        			$scope.projectModules[index].open = false;
-	        			break
+	        			break;
 	        		}
 	        	}
 	        	var temp = null;
@@ -86,4 +83,49 @@ angular.module('tm-app').controller("moduleController", function ($scope, $rootS
 		$rootScope.selectedModule = moduleId;
 		$state.reload('app.dboard.module.issue');
 	};
+	
+	$scope.openEditModuleBox = function(moduleBean) {
+		ngDialog.open({
+			template: 'editModule',
+			className: 'ngdialog-theme-default editModule',
+			data: moduleBean.module,
+			scope: $scope,
+			preCloseCallback: function(value) {
+				return true;
+			}
+		});
+	}
+	
+	$scope.deleteModule = function(moduleId) {
+		$.ajax({
+	        url: '/tm-web/tmModule/deleteModule.do?id='+moduleId,
+	        type: 'POST',
+	        async: false,
+	        success: function(data) {
+	        	var allClosed = true;
+	        	for(var index = 0; index < $scope.projectModules.length; index ++) {
+	        		if($scope.projectModules[index].module.id == moduleId) {
+	        			$scope.projectModules.splice(index, 1);
+	        			break;
+	        		} else if($scope.projectModules[index].open) {
+	        			allClosed = false;
+	        		}
+	        	}
+	        	if($scope.projectModules.length > 0 && allClosed) {
+	        		$scope.projectModules[0].open = true;
+	        		$rootScope.selectedModule = $scope.projectModules[0].module.id;
+	        		$state.reload('app.dboard.module.issue');
+	        	}
+	        	ngDialog.close();
+	        	$rootScope.panelMessage = "Module deleted successfully.";
+		    	$rootScope.successBoxFlag = true;
+		    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
+	        }
+	    }).fail(function() {
+	    	ngDialog.close();
+	    	$rootScope.panelMessage = "Could not delete the project module at this moment.";
+	    	$rootScope.errorBoxFlag = true;
+	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
+	    });
+	}
 });

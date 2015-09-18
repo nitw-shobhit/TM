@@ -11,7 +11,7 @@ public interface ProjectService extends DtoAssemblerFacade<TmProject, ProjectBea
 
 	List<ProjectBean> getAllProjects(Long userId) throws DtoConversionException;
 
-	ProjectBean addProject(ProjectBean projectBean) throws DtoConversionException;
+	ProjectBean addProject(ProjectBean projectBean, boolean addDefaultModules) throws DtoConversionException;
 
 	void disableProject(long id);
 

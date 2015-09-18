@@ -13,4 +13,18 @@ public interface IssueService extends DtoAssemblerFacade<TmIssue, IssueBean> {
 	List<IssueBean> getIssuesByModule(long moduleId) throws DaoException, DtoConversionException;
 
 	IssueBean addIssueToModule(IssueBean issueBean) throws DtoConversionException;
+
+	void acceptIssue(long issueId);
+
+	void rejectIssue(long issueId);
+
+	void reAssignIssue(long issueId, String newUserId) throws DtoConversionException;
+
+	void reopenIssue(long issueId);
+
+	void markAsFixedIssue(long issueId);
+
+	void completeIssue(long issueId);
+
+	void removeIssue(long issueId);
 }

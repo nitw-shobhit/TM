@@ -453,8 +453,7 @@
         httpCanceller = $q.defer();
 
         scope.remoteApiHandler(str, httpCanceller.promise)
-          .then(httpSuccessCallbackGen(str))
-          .catch(httpErrorCallback);
+          .then(httpSuccessCallbackGen(str));
 
         /* IE8 compatible
         scope.remoteApiHandler(str, httpCanceller.promise)

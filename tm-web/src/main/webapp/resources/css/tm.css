@@ -13,6 +13,9 @@ legend {
 	background-color: #FFF;
 	border: 1px solid #575757;
 }
+.underlinedLink:hover {
+	text-decoration: underline;
+}
 .baseBody {
 	background: url(../images/background.jpg);
 	-webkit-background-size: cover;
@@ -413,9 +416,12 @@ legend {
 .moduleTabs {
 	margin-left:5px; 
 	padding-left:5px; 
-	padding-right:5px; 
-	margin-right:5px; 
-	font-size:12px; 
+	padding-right:7px; 
+	margin-right:10px; 
+	font-size:12px;
+	width:100%;
+	text-align:left;
+	white-space: nowrap;
 }
 .moduleTabActive {
 	border-top: 1px solid;
@@ -423,12 +429,14 @@ legend {
 	border-right: 1px solid;
 	padding:5px;
 	background-color: #FFF;
+	text-align: left;
 }
 .moduleTabInActive {
 	border-bottom: 1px solid;
 	padding:5px;
 	background-color: #B0CFF4;
     border-left: 1px solid #EEE;
+    text-align: left;
 }
 .moduleTabInActive:hover {
 	border-bottom: 1px solid;

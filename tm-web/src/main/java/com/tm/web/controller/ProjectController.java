@@ -35,11 +35,11 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/addProject")
-	public @ResponseBody String addProject(@RequestParam("projectBean") String jsonObj) throws InternalApplicationException {
+	public @ResponseBody String addProject(@RequestParam("projectBean") String jsonObj, @RequestParam("addDefaultModules") boolean addDefaultModules) throws InternalApplicationException {
 		ProjectBean projectBean = null;
 		try {
 			projectBean = (ProjectBean) JsonUtils.toPojo(jsonObj, ProjectBean.class);
-			projectBean = projectService.addProject(projectBean);
+			projectBean = projectService.addProject(projectBean, addDefaultModules);
 		} catch(Exception e) {
 			throw new InternalApplicationException("Something went wrong with the application", e);
 		}

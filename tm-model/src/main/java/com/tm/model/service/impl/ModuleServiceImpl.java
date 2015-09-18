@@ -3,6 +3,8 @@ package com.tm.model.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.tm.core.bean.ModuleBean;
 import com.tm.core.bean.ModuleStatus;
 import com.tm.core.entity.TmModule;
@@ -27,11 +29,18 @@ public class ModuleServiceImpl extends DtoAssemblerFacadeImpl<TmModule, ModuleBe
 	}
 
 	@Override
+	@Transactional
 	public ModuleBean addModuleToProject(ModuleBean moduleBean) throws DtoConversionException {
 		ModuleDao moduleDao = (ModuleDao) DaoFactory.generateService(DaoType.MODULE);
 		TmModule moduleEntity = toEntity(moduleBean);
-		moduleEntity.setVisible(true);
 		moduleEntity.setModStatus(ModuleStatus.STARTED.toString());
-		return toBean(moduleDao.persist(moduleEntity));
+		return toBean(moduleDao.persistNoTx(moduleEntity));
+	}
+
+	@Override
+	public void deleteModule(long id) {
+		ModuleDao moduleDao = (ModuleDao) DaoFactory.generateService(DaoType.MODULE);
+		TmModule moduleEntity = moduleDao.findByPk(id);
+		moduleDao.remove(moduleEntity);
 	}
 }
