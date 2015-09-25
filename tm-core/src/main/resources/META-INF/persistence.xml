@@ -12,6 +12,7 @@
 		<class>com.tm.core.entity.TmIssue</class>
 		<class>com.tm.core.entity.TmIssueComment</class>
 		<class>com.tm.core.entity.TmIssueAttachment</class>
+		<class>com.tm.core.entity.TmIssueHistory</class>
 		<properties/>
 	</persistence-unit>
 </persistence>

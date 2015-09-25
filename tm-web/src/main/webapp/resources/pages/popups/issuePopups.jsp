@@ -11,58 +11,100 @@
 	<legend>
 		<span class="header">ADD ISSUE</span>
 	</legend>
-	<table class="formStructure">
-		<tr>
-			<td style="padding: 2px;"><label>Name : </label></td>
-			<td style="padding: 2px;">
-				<input class="form-control input-sm" type="text" data-ng-model="ngDialogData.issName" />
-			</td>
-		</tr>
-		<tr>
-			<td style="padding: 2px;"><label>Description : </label></td>
-			<td style="padding: 2px;">
- 				<textarea class="form-control" rows="3" data-ng-model="ngDialogData.issDesc"></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td style="padding: 2px;"><label>Assign to : </label></td>
-			<td style="padding: 2px;">
-				<input class="form-control input-sm" type="text" data-ng-model="ngDialogData.userIdString" />
-			</td>
-		</tr>
-		<tr>
-			<td style="padding: 2px;"><label>Priority : </label></td>
-			<td style="padding: 2px;">
-				<table>
-					<tr>
-						<td style="padding-right:50px;"><input class="input-sm" type="radio" data-ng-model="ngDialogData.issPriority" value="Low" /><div style="background-color:green;color:white;padding-left:5px;padding-right:5px;">Low</div></td>
-						<td style="padding-right:50px;"><input class="input-sm" type="radio" data-ng-model="ngDialogData.issPriority" value="Medium"/><div style="background-color:blue;color:white;padding-left:5px;padding-right:5px;">Medium</div></td>
-						<td><input class="input-sm" type="radio" data-ng-model="ngDialogData.issPriority" value="High"/><div style="background-color:red;color:white;padding-left:5px;padding-right:5px;">High</div></td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td style="padding: 2px;"><label>Comments : </label></td>
-			<td style="padding: 2px;">
- 				<textarea class="form-control" rows="2" data-ng-model="ngDialogData.issComment"></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td style="padding: 2px;"><label>Attachments : </label></td>
-			<td style="padding: 2px;">
- 				<textarea class="form-control" rows="2" data-ng-model="ngDialogData.issAttachment"></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td style="padding: 10px; float: right;">
-				<button class="btn btn-primary btn-xs" data-ng-click="addIssueToModule(ngDialogData);">Add</button>
-			</td>
-			<td style="padding: 10px;">
-				<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">Cancel</button>
-			</td>		
-		</tr>
-	</table>
+			<table class="formStructure" style="width:540px; font-size:10px;">
+				<tr>
+					<td>
+						<table style="width:100%;">
+							<tr>
+								<td style="padding: 2px; text-align: left;"><label>Name: </label></td>
+								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
+									<input type="text" data-ng-model="ngDialogData.issName" style="width:463px;"/>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table style="width:100%;">
+							<tr>
+								<td style="padding: 2px; text-align: left;"><label>Description: </label></td>
+								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
+									<textarea style="width:463px;" data-ng-model="ngDialogData.issDesc"></textarea>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table style="width:100%;">
+							<tr>
+								<td style="padding: 2px; text-align: left;"><label>Priority: </label></td>
+								<td style="padding: 2px; padding-left: 4px; text-align: left;">
+									<select class="input-xlarge" ng-model="ngDialogData.issPriority" style="width:282px; height:23px;">
+ 										<option selected disabled>Choose one</option>										
+										<option value="Low">Low</option>
+										<option value="Medium">Medium</option>
+										<option value="High">High</option>
+									</select>							
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table style="width:100%;">
+							<tr>
+								<td style="padding: 2px; text-align: left;"><label>Comments: </label></td>
+								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
+ 									<textarea style="width:463px;" data-ng-model="ngDialogData.issComment"></textarea>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table style="width:100%;">
+							<tr>
+								<td style="padding: 2px; text-align: left;"><label>Attachments: </label></td>
+								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
+ 									<textarea style="width:463px;" data-ng-model="ngDialogData.issAttachment"></textarea>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table style="width:100%;">
+							<tr>
+								<td style="padding: 2px; text-align: left;"><label>Assigned to: </label></td>
+								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
+									<input type="text" data-ng-model="ngDialogData.userIdString" style="width:189px;"/>
+								</td>
+								<td style="padding: 2px; text-align: left;"><label>Logged by: </label></td>
+								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
+									<input type="text" readonly="readonly" value="{{ngDialogData.issOwnerString}}" style="width:200px;"/>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<table style="width:100%; margin-left:auto; margin-right:auto;">
+				<tr>
+					<td style="padding: 10px; float: right;">
+						<button class="btn btn-primary btn-xs" data-ng-click="addIssueToModule(ngDialogData);">Add</button>
+					</td>
+					<td>
+						<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float:left;">Cancel</button>
+					</td>
+				</tr>
+			</table>
 </fieldset>
 </script>
 <!-- ##########################################ISSUE DETAILS############################################# -->
@@ -71,8 +113,8 @@
 	<legend>
 		<span class="header">ISSUE ID :<b>{{ngDialogData.id}}</b></span>
 	</legend>
-	<div style="width: 745px; height:360px;">
-		<div style="width: 550px; height:355px; border:1px solid; float:left;">
+	<div style="width: 745px; height:405px;">
+		<div style="width: 550px; height:400px; border:1px solid; float:left;">
 			<table class="formStructure" style="width:540px; font-size:10px;">
 				<tr>
 					<td>
@@ -156,8 +198,21 @@
 						</table>
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<table style="width:100%;">
+							<tr>
+								<td style="padding: 2px; text-align: left;"><label>Attachments: </label></td>
+								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
+									<div style="height:100px; width:463px; border: 1px solid; background-color:#FFF; margin-bottom:15px;overflow-y:scroll;">
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</div>
 			</table>
-			<br><br><br>
 			<table style="width:99%; margin-left:auto; margin-right:auto;">
 				<tr>
 					<td>
@@ -184,7 +239,7 @@
 				</tr>
 			</table>
 		</div>
-		<div style="border: 1px solid; width: 190px; height: 355px; margin-left:5px; float:left; font-size:10px;">
+		<div style="border: 1px solid; width: 190px; height: 400px; margin-left:5px; float:left; font-size:10px;">
 			<div style="height:300px; background-color:white; border:1px solid; overflow-x:auto;">
 				<div data-ng-repeat="comment in ngDialogData.issComments" style="margin:4px; line-height:1.2em;">
 					<div><b>{{comment.userIdString}}</b> : {{comment.comContent}}</div>
@@ -195,7 +250,11 @@
 			<button data-ng-click="addCommentToIssue(ngDialogData)" class="btn btn-primary" style="height:45px; margin-top:4px; width: 47px; font-size:11px; padding:0;vertical-align:top;">Add</button>
 		</div>
 	</div>
-	<div style="width: 745px; height:70px; border: 1px solid;">
+	<div style="width: 745px; height:125px; border: 1px solid; overflow-y: scroll;">
+		<span style="margin-left:5px; font-size:12px;"><u>Issue History</u></span>
+		<div data-ng-repeat="act in ngDialogData.issHistory" style="margin-left:5px">
+			<font style="font-size:10px; color:#999;">{{act.hisCreated}}</font> : <font style="font-size:11px;"><a style="color: #23527C;" class="underlinedLink" href="#">{{act.hisUser}}</a>&nbsp;{{act.hisContent}}</font>
+		</div>
 	</div>
 </fieldset>
 </script>

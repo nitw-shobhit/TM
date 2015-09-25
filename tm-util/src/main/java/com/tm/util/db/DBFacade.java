@@ -5,13 +5,13 @@ import java.util.Set;
 
 public interface DBFacade<T, PK> {
 
-	T persist(T obj);
+	T persist(T obj, boolean baseFlag);
 	
-	T persistNoTx(T obj);
+	T persistNoTx(T obj, boolean baseFlag);
 	
-	T merge(T obj);
+	T merge(T obj, boolean baseFlag);
 	
-	T mergeNoTx(T obj);
+	T mergeNoTx(T obj, boolean baseFlag);
 	
 	void remove(T obj);
 	

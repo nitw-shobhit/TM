@@ -28,10 +28,12 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 	};
 	
 	$scope.openAddIssueBox = function() {
+		var newIssueData = {"issOwnerString" : $rootScope.userBean.userId};
 		ngDialog.open({
 			template: 'addIssue',
 			className: 'ngdialog-theme-default addIssue',
 			scope: $scope,
+			data: newIssueData,
 			preCloseCallback: function(value) {
 				return true;
 			}
@@ -41,7 +43,6 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 	$scope.addIssueToModule = function(issueBean) {
 		issueBean.modId = $scope.moduleId;
 		issueBean.issOwner = $rootScope.userBean.id;
-		issueBean.issOwnerString = $rootScope.userBean.userId;
 		var tempCommentList = [];
 		var tempComment = {
 			"comContent" : issueBean.issComment,
@@ -69,6 +70,7 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 	};
 	
 	$scope.viewIssue = function(issueBean) {
+		console.log(issueBean);
 		ngDialog.open({
 			template: 'viewIssue',
 			className: 'ngdialog-theme-default viewIssue',
@@ -109,9 +111,12 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		$.ajax({
 		    url: '/tm-web/tmIssue/acceptIssue.do?id='+issueBean.id,
 		    type: 'POST',
+		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
+		    	console.log(data);
 		    	issueBean.issStatus="ACCEPTED";
+		    	issueBean.issHistory.push(data);
 		    }
 		}).fail(function() {
 			ngDialog.close();

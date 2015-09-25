@@ -3,6 +3,7 @@ package com.tm.model.service;
 import java.util.List;
 
 import com.tm.core.bean.IssueBean;
+import com.tm.core.bean.IssueHistoryBean;
 import com.tm.core.entity.TmIssue;
 import com.tm.util.assembler.DtoAssemblerFacade;
 import com.tm.util.exceptions.DaoException;
@@ -12,9 +13,9 @@ public interface IssueService extends DtoAssemblerFacade<TmIssue, IssueBean> {
 
 	List<IssueBean> getIssuesByModule(long moduleId) throws DaoException, DtoConversionException;
 
-	IssueBean addIssueToModule(IssueBean issueBean) throws DtoConversionException;
+	IssueBean addIssueToModule(IssueBean issueBean) throws DtoConversionException, DaoException;
 
-	void acceptIssue(long issueId);
+	IssueHistoryBean acceptIssue(long issueId) throws DaoException, DtoConversionException;
 
 	void rejectIssue(long issueId);
 

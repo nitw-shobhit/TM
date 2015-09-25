@@ -34,7 +34,7 @@ public class IssueCommentServiceImpl extends DtoAssemblerFacadeImpl<TmIssueComme
 		IssueCommentDao issueCommentDao = (IssueCommentDao) DaoFactory.generateService(DaoType.ISSUE_COMMENT);
 		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
 		TmIssueComment issueCommentEntity = toEntity(issueCommentBean);
-		issueCommentDao.persist(issueCommentEntity);
+		issueCommentDao.persist(issueCommentEntity, true);
 		issueCommentBean = toBean(issueCommentEntity);
 		issueCommentBean.setUserIdString(userDao.findByPk(issueCommentBean.getUserId()).getUserId());
 		return issueCommentBean;

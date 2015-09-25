@@ -44,6 +44,8 @@ public class IssueBean extends BaseBean implements Serializable {
 	
 	private List<IssueAttachmentBean> issAttachments;
 	
+	private List<IssueHistoryBean> issHistory;
+	
 	public long getId() {
 		return id;
 	}
@@ -152,5 +154,13 @@ public class IssueBean extends BaseBean implements Serializable {
 
 	public void setIssOwnerString(String issOwnerString) {
 		this.issOwnerString = issOwnerString;
+	}
+
+	public List<IssueHistoryBean> getIssHistory() {
+		return issHistory;
+	}
+
+	public void setIssHistory(List<IssueHistoryBean> issHistory) {
+		this.issHistory = issHistory;
 	}
 }

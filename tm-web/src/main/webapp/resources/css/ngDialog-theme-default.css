@@ -246,8 +246,8 @@
 }
 
 .ngdialog.ngdialog-theme-default.addIssue .ngdialog-content {
-	width: 450px;
-	height: 520px;
+	width: 605px;
+	height: 485px;
 }
 
 .ngdialog.ngdialog-theme-default.confirmBox .ngdialog-content {
@@ -257,5 +257,5 @@
 
 .ngdialog.ngdialog-theme-default.viewIssue .ngdialog-content {
 	width: 800px;
-	height: 500px;
+	height: 600px;
 }

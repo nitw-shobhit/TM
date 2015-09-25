@@ -19,11 +19,11 @@ import com.tm.util.db.Param;
 public class DBFacadeImpl<T, PK> extends QueryConstants implements DBFacade<T, PK> {
 
 	@Override
-	public T persist(T obj) {
+	public T persist(T obj, boolean baseFlag) {
 		EntityTransaction etx = getEntityManager().getTransaction();
 		try {
 			etx.begin();
-			obj = persistNoTx(obj);
+			obj = persistNoTx(obj, baseFlag);
 			etx.commit();
 		} catch(Exception e) {
 			etx.rollback();
@@ -33,21 +33,23 @@ public class DBFacadeImpl<T, PK> extends QueryConstants implements DBFacade<T, P
 	}
 	
 	@Override
-	public T persistNoTx(T obj) {
-		((TmBase)obj).setDtCreated(new Timestamp(new Date().getTime()));
-		((TmBase)obj).setDtModified(new Timestamp(new Date().getTime()));
-		((TmBase)obj).setVisible(true);
+	public T persistNoTx(T obj, boolean baseFlag) {
+		if(baseFlag) {
+			((TmBase)obj).setDtCreated(new Timestamp(new Date().getTime()));
+			((TmBase)obj).setDtModified(new Timestamp(new Date().getTime()));
+			((TmBase)obj).setVisible(true);
+		}
 		getEntityManager().persist(obj);
 		return obj;
 	}
 
 	@Override
-	public T merge(T obj) {
+	public T merge(T obj, boolean baseFlag) {
 		EntityTransaction etx = getEntityManager().getTransaction();
 		T objRet = null;
 		try {
 			etx.begin();
-			objRet = mergeNoTx(obj);
+			objRet = mergeNoTx(obj, baseFlag);
 			etx.commit();
 		} catch(Exception e) {
 			etx.rollback();
@@ -57,8 +59,10 @@ public class DBFacadeImpl<T, PK> extends QueryConstants implements DBFacade<T, P
 	}
 	
 	@Override
-	public T mergeNoTx(T obj) {
-		((TmBase)obj).setDtModified(new Timestamp(new Date().getTime()));
+	public T mergeNoTx(T obj, boolean baseFlag) {
+		if(baseFlag) {
+			((TmBase)obj).setDtModified(new Timestamp(new Date().getTime()));
+		}
 		return getEntityManager().merge(obj);
 	}
 

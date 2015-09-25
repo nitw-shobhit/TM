@@ -8,20 +8,24 @@ import javax.annotation.Resource;
 import com.tm.core.bean.IssueAttachmentBean;
 import com.tm.core.bean.IssueBean;
 import com.tm.core.bean.IssueCommentBean;
+import com.tm.core.bean.IssueHistoryBean;
 import com.tm.core.bean.IssueStatus;
 import com.tm.core.entity.TmIssue;
 import com.tm.core.entity.TmIssueAttachment;
 import com.tm.core.entity.TmIssueComment;
+import com.tm.core.entity.TmIssueHistory;
+import com.tm.core.entity.TmUserInfo;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
-import com.tm.dao.db.IssueAttachmentDao;
-import com.tm.dao.db.IssueCommentDao;
 import com.tm.dao.db.IssueDao;
 import com.tm.dao.db.UserDao;
 import com.tm.model.service.IssueAttachmentService;
 import com.tm.model.service.IssueCommentService;
+import com.tm.model.service.IssueHistoryService;
 import com.tm.model.service.IssueService;
 import com.tm.model.service.UserService;
+import com.tm.model.service.helper.IssueHelper;
+import com.tm.model.service.helper.IssueHistoryType;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
 import com.tm.util.exceptions.DaoException;
 import com.tm.util.exceptions.DtoConversionException;
@@ -37,6 +41,9 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 	@Resource
 	private IssueCommentService issueCommentService;
 	
+	@Resource
+	private IssueHistoryService issueHistoryService;
+	
 	@Override
 	public List<IssueBean> getIssuesByModule(long moduleId) throws DaoException, DtoConversionException {
 		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
@@ -47,6 +54,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 			IssueBean issueBean = toBean(issueEntity);
 			issueBean.setIssAttachments(issueAttachmentService.getIssueAttachments(issueBean.getId()));
 			issueBean.setIssComments(issueCommentService.getIssueComments(issueBean.getId()));
+			issueBean.setIssHistory(issueHistoryService.getIssueHistory(issueBean.getId()));
 			issueBean.setUserIdString(userDao.findByPk(issueBean.getUserId()).getUserId());
 			issueBean.setIssOwnerString(userDao.findByPk(issueBean.getIssOwner()).getUserId());
 			issueList.add(issueBean);
@@ -55,51 +63,59 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 	}
 
 	@Override
-	public IssueBean addIssueToModule(IssueBean issueBean) throws DtoConversionException {
+	public IssueBean addIssueToModule(IssueBean issueBean) throws DtoConversionException, DaoException {
 		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
 		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
-		IssueCommentDao issueCommentDao = (IssueCommentDao) DaoFactory.generateService(DaoType.ISSUE_COMMENT);
-		IssueAttachmentDao issueAttachmentDao = (IssueAttachmentDao) DaoFactory.generateService(DaoType.ISSUE_ATTACHMENT);
-		IssueBean returnIssueBean = null;
-		//Issue
 		issueBean.setUserId(userService.getUserByUserId(issueBean.getUserIdString()).getId());
 		issueBean.setIssStatus(IssueStatus.OPEN.toString());
 		TmIssue issueEntity = toEntity(issueBean);
-		issueDao.persist(issueEntity);
-		returnIssueBean = toBean(issueEntity);
-		returnIssueBean.setUserIdString(issueBean.getUserIdString());
-		String issueOwner = userDao.findByPk(issueBean.getIssOwner()).getUserId();
-		returnIssueBean.setIssOwnerString(issueOwner);
-		//Issue Comment
+		TmUserInfo issueOwnerEntity = userDao.findByPk(issueBean.getIssOwner());
+		String issueOwner = issueOwnerEntity.getUserId();
+		TmIssueComment issueCommentEntity = null;
 		if(issueBean.getIssComments() != null && !issueBean.getIssComments().isEmpty()) {
-			IssueCommentBean issueCommentBean = issueBean.getIssComments().get(0);
-			issueCommentBean.setIssId(issueEntity.getId());
-			TmIssueComment issueCommentEntity = issueCommentService.toEntity(issueCommentBean);
-			issueCommentDao.persist(issueCommentEntity);
-			issueCommentBean = issueCommentService.toBean(issueCommentEntity);
-			issueCommentBean.setUserIdString(issueOwner);
-			returnIssueBean.addIssueComment(issueCommentBean);
+			issueCommentEntity = issueCommentService.toEntity(issueBean.getIssComments().get(0));
 		}
-		//Issue Attachment
+		List<TmIssueAttachment> issueAttachmentEntityList = null;
 		if(issueBean.getIssAttachments() != null) {
+			issueAttachmentEntityList = new ArrayList<TmIssueAttachment>();
 			for(IssueAttachmentBean issueAttachmentBean : issueBean.getIssAttachments()) {
-				issueAttachmentBean.setIssId(issueEntity.getId());
-				TmIssueAttachment issueAttachmentEntity = issueAttachmentService.toEntity(issueAttachmentBean);
-				issueAttachmentDao.persist(issueAttachmentEntity);
-				issueAttachmentBean = issueAttachmentService.toBean(issueAttachmentEntity);
-				issueAttachmentBean.setUserIdString(issueOwner);
-				returnIssueBean.addIssueAttachment(issueAttachmentBean);
+				issueAttachmentBean.setUserId(issueBean.getIssOwner());
+				issueAttachmentEntityList.add(issueAttachmentService.toEntity(issueAttachmentBean));
 			}
 		}
+		
+		TmIssueHistory issueHistoryEntity = IssueHelper.getHistoryEntity(issueOwnerEntity, IssueHistoryType.ISSUE_HISTORY_CREATE);
+		IssueHistoryBean issueHistoryBean = issueHistoryService.toBean(issueHistoryEntity);
+		issueHistoryBean.setHisContent(issueHistoryService.getHistoryProperties().getProperty(IssueHistoryType.ISSUE_HISTORY_CREATE.getValue(), IssueHistoryService.DEFAULT_MESSG));
+		List<IssueHistoryBean> issueHistoryBeanList = new ArrayList<IssueHistoryBean>();
+		issueHistoryBeanList.add(issueHistoryBean);
+		IssueBean returnIssueBean = toBean(issueDao.addIssueToModule(issueEntity, issueCommentEntity, issueAttachmentEntityList, issueHistoryEntity));
+		returnIssueBean.setUserIdString(issueBean.getUserIdString());
+		returnIssueBean.setIssOwnerString(issueOwner);
+		List<IssueCommentBean> issueCommentBeanList = new ArrayList<IssueCommentBean>();
+		IssueCommentBean issueCommentBean = issueCommentService.toBean(issueCommentEntity);
+		issueCommentBean.setUserIdString(issueOwner);
+		issueCommentBeanList.add(issueCommentBean);
+		returnIssueBean.setIssComments(issueCommentBeanList);
+		returnIssueBean.setIssAttachments(issueBean.getIssAttachments());
+		returnIssueBean.setIssHistory(issueHistoryBeanList);
 		return returnIssueBean;
 	}
 
 	@Override
-	public void acceptIssue(long issueId) {
+	public IssueHistoryBean acceptIssue(long issueId) throws DaoException, DtoConversionException {
 		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.ACCEPTED.toString());
-		issueDao.merge(issueEntity);
+		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		TmUserInfo issueOwnerEntity = userDao.findByPk(issueEntity.getIssOwner());
+		TmIssueHistory issueHistoryEntity = IssueHelper.getHistoryEntity(issueOwnerEntity, IssueHistoryType.ISSUE_HISTORY_ACCEPT);
+		issueHistoryEntity.setIssId(issueId);
+		issueHistoryEntity = issueDao.updateIssueStatus(issueEntity, issueHistoryEntity);
+		IssueHistoryBean issueHistoryBean = issueHistoryService.toBean(issueHistoryEntity);
+		issueHistoryBean.setHisContent(issueHistoryService.getHistoryProperties()
+				.getProperty(IssueHistoryType.ISSUE_HISTORY_ACCEPT.getValue(), IssueHistoryService.DEFAULT_MESSG));
+		return issueHistoryBean;
 	}
 	
 	@Override
@@ -107,7 +123,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.REJECTED.toString());
-		issueDao.merge(issueEntity);
+		issueDao.merge(issueEntity, true);
 	}
 	
 	@Override
@@ -116,7 +132,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.OPEN.toString());
 		issueEntity.setUserId(userService.getUserByUserId(newUserId).getId());
-		issueDao.merge(issueEntity);
+		issueDao.merge(issueEntity, true);
 	}
 	
 	@Override
@@ -124,7 +140,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.REOPENED.toString());
-		issueDao.merge(issueEntity);
+		issueDao.merge(issueEntity, true);
 	}
 	
 	@Override
@@ -132,7 +148,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.FIXED.toString());
-		issueDao.merge(issueEntity);
+		issueDao.merge(issueEntity, true);
 	}
 	
 	@Override
@@ -140,7 +156,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.COMPLETED.toString());
-		issueDao.merge(issueEntity);
+		issueDao.merge(issueEntity, true);
 	}
 	
 	@Override
@@ -149,7 +165,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.CANCELLED.toString());
 		issueEntity.setVisible(false);
-		issueDao.merge(issueEntity);
+		issueDao.merge(issueEntity, true);
 	}
 	
 	public IssueAttachmentService getIssueAttachmentService() {
@@ -175,5 +191,13 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
+	}
+
+	public IssueHistoryService getIssueHistoryService() {
+		return issueHistoryService;
+	}
+
+	public void setIssueHistoryService(IssueHistoryService issueHistoryService) {
+		this.issueHistoryService = issueHistoryService;
 	}
 }

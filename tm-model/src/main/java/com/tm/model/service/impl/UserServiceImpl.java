@@ -45,7 +45,7 @@ public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean
 		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
 		TmUserInfo userEntity = userDao.findByPk(userBean.getId());
 		updateUserEntity(userEntity, userBean);
-		return toBean(userDao.merge(userEntity));
+		return toBean(userDao.merge(userEntity, true));
 	}
 	
 	private void updateUserEntity(TmUserInfo userEntity, UserBean userBean) {
@@ -60,7 +60,7 @@ public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean
 		TmUserInfo userEntity = userDao.findByPk(id);
 		String encryptedPassword = CipherUtils.encrypt(password);
 		userEntity.setUserPass(encryptedPassword);
-		userDao.merge(userEntity);
+		userDao.merge(userEntity, true);
 		return encryptedPassword;
 	}
 

@@ -26,7 +26,7 @@ public class UserProjectServiceImpl extends DtoAssemblerFacadeImpl<TmUserProject
 		TmUserProject userProject = new TmUserProject();
 		userProject.setProjId(projectId);
 		userProject.setUserId(userId);
-		userProjectDao.persist(userProject);
+		userProjectDao.persist(userProject, false);
 	}
 
 }

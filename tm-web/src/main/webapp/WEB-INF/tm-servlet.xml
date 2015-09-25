@@ -7,9 +7,7 @@
    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
    http://www.springframework.org/schema/context 
    http://www.springframework.org/schema/context/spring-context-4.1.xsd
-   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-   http://www.springframework.org/schema/tx 
-   http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- ASPECTJ -->
 	<aop:aspectj-autoproxy />
@@ -18,11 +16,10 @@
 		<context:include-filter type="aspectj" expression="com.tm.web.validator.*" />
 	</context:component-scan>
 
-	<tx:annotation-driven />
-
 	<!-- SERVICE BEANS -->
 	<bean id="issueCommentService" class="com.tm.model.service.impl.IssueCommentServiceImpl" />
 	<bean id="issueAttachmentService" class="com.tm.model.service.impl.IssueAttachmentServiceImpl" />
+	<bean id="issueHistoryService" class="com.tm.model.service.impl.IssueHistoryServiceImpl" />
 	<bean id="userService" class="com.tm.model.service.impl.UserServiceImpl" />
 	<bean id="projectService" class="com.tm.model.service.impl.ProjectServiceImpl" >
 		<property name="moduleService" ref="moduleService"></property>
@@ -33,6 +30,7 @@
 		<property name="userService" ref="userService"></property>
 		<property name="issueCommentService" ref="issueCommentService"></property>
 		<property name="issueAttachmentService" ref="issueAttachmentService"></property>
+		<property name="issueHistoryService" ref="issueHistoryService"></property>
 	</bean>
 
 	<!-- LISTENER -->

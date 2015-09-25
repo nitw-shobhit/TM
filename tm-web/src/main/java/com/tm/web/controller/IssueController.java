@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tm.core.bean.IssueBean;
+import com.tm.core.bean.IssueHistoryBean;
 import com.tm.model.service.IssueService;
 import com.tm.util.exceptions.InternalApplicationException;
 import com.tm.util.spring.JsonUtils;
@@ -46,8 +47,14 @@ public class IssueController {
 	} 
 	
 	@RequestMapping(method = RequestMethod.POST, value="/acceptIssue")
-	public @ResponseBody void acceptIssue(@RequestParam("id") long issueId) {
-		issueService.acceptIssue(issueId);
+	public @ResponseBody String acceptIssue(@RequestParam("id") long issueId) throws InternalApplicationException {
+		IssueHistoryBean issueHistoryBean = null;
+		try {
+			issueHistoryBean = issueService.acceptIssue(issueId);
+		} catch(Exception e) {
+			throw new InternalApplicationException("Something went wrong with the application", e);
+		}
+		return JsonUtils.toJson(issueHistoryBean);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/rejectIssue")

@@ -2,10 +2,21 @@ package com.tm.dao.db.impl;
 
 import java.util.List;
 
+import javax.persistence.EntityTransaction;
+
 import com.tm.core.entity.TmIssue;
+import com.tm.core.entity.TmIssueAttachment;
+import com.tm.core.entity.TmIssueComment;
+import com.tm.core.entity.TmIssueHistory;
 import com.tm.core.entity.manager.DBFacadeImpl;
+import com.tm.dao.DaoFactory;
+import com.tm.dao.DaoType;
+import com.tm.dao.db.IssueAttachmentDao;
+import com.tm.dao.db.IssueCommentDao;
 import com.tm.dao.db.IssueDao;
+import com.tm.dao.db.IssueHistoryDao;
 import com.tm.util.db.Param;
+import com.tm.util.exceptions.DaoException;
 
 public class IssueDaoImpl extends DBFacadeImpl<TmIssue, Long> implements IssueDao {
 
@@ -14,5 +25,53 @@ public class IssueDaoImpl extends DBFacadeImpl<TmIssue, Long> implements IssueDa
 		Param [] params = new Param[1];
 		params[0] = new Param(PARAM_MODULE_ID, moduleId);
 		return findByParams(GET_ISSUES_BY_MODULE_ID, params);
+	}
+
+	@Override
+	public TmIssue addIssueToModule(TmIssue issueEntity, TmIssueComment issueCommentEntity,
+			List<TmIssueAttachment> issueAttachmentEntities, TmIssueHistory issueHistoryEntity) throws DaoException {
+		EntityTransaction tx = getEntityManager().getTransaction();
+		try {
+			tx.begin();
+			persistNoTx(issueEntity, true);
+			if(issueCommentEntity != null) {
+				issueCommentEntity.setIssId(issueEntity.getId());
+				IssueCommentDao issueCommentDao = (IssueCommentDao) DaoFactory.generateService(DaoType.ISSUE_COMMENT);
+				issueCommentDao.persistNoTx(issueCommentEntity, true);
+			}
+			
+			if(issueAttachmentEntities != null) {
+				for(TmIssueAttachment issueAttachment : issueAttachmentEntities) {
+					issueAttachment.setIssId(issueEntity.getId());
+					IssueAttachmentDao issueAttachmentDao = (IssueAttachmentDao) DaoFactory.generateService(DaoType.ISSUE_ATTACHMENT);
+					issueAttachmentDao.persistNoTx(issueAttachment, true);
+				}
+			}
+			issueHistoryEntity.setIssId(issueEntity.getId());
+			IssueHistoryDao issueHistoryDao = (IssueHistoryDao) DaoFactory.generateService(DaoType.ISSUE_HISTORY);
+			issueHistoryDao.persistNoTx(issueHistoryEntity, false);
+			tx.commit();
+		} catch(Exception e) {
+			tx.rollback();
+			throw new DaoException(e);
+		}
+		return issueEntity;
+	}
+
+	@Override
+	public TmIssueHistory updateIssueStatus(TmIssue issueEntity, TmIssueHistory issueHistoryEntity) throws DaoException {
+		EntityTransaction tx = getEntityManager().getTransaction();
+		try {
+			tx.begin();
+			mergeNoTx(issueEntity, true);
+			IssueHistoryDao issueHistoryDao = (IssueHistoryDao) DaoFactory.generateService(DaoType.ISSUE_HISTORY);
+			issueHistoryDao.persistNoTx(issueHistoryEntity, false);
+			tx.commit();
+		} catch(Exception e) {
+			tx.rollback();
+			throw new DaoException(e);
+		}
+		
+		return issueHistoryEntity;
 	}
 }
