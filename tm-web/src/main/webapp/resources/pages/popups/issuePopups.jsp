@@ -239,8 +239,8 @@
 				</tr>
 			</table>
 		</div>
-		<div style="border: 1px solid; width: 190px; height: 400px; margin-left:5px; float:left; font-size:10px;">
-			<div style="height:300px; background-color:white; border:1px solid; overflow-x:auto;">
+		<div style="border: 1px solid; width: 190px; height: 250px; margin-left:5px; float:left; font-size:10px;">
+			<div style="height:196px; background-color:white; border:1px solid; overflow-x:auto;">
 				<div data-ng-repeat="comment in ngDialogData.issComments" style="margin:4px; line-height:1.2em;">
 					<div><b>{{comment.userIdString}}</b> : {{comment.comContent}}</div>
 					<div style="font-size:8px; float:right; color:#999;">{{comment.dtCreated}}</div><br>
@@ -250,7 +250,7 @@
 			<button data-ng-click="addCommentToIssue(ngDialogData)" class="btn btn-primary" style="height:45px; margin-top:4px; width: 47px; font-size:11px; padding:0;vertical-align:top;">Add</button>
 		</div>
 	</div>
-	<div style="width: 745px; height:125px; border: 1px solid; overflow-y: scroll;">
+	<div style="width: 745px; height:100px; border: 1px solid; overflow-y: scroll;">
 		<span style="margin-left:5px; font-size:12px;"><u>Issue History</u></span>
 		<div data-ng-repeat="act in ngDialogData.issHistory" style="margin-left:5px">
 			<font style="font-size:10px; color:#999;">{{act.hisCreated}}</font> : <font style="font-size:11px;"><a style="color: #23527C;" class="underlinedLink" href="#">{{act.hisUser}}</a>&nbsp;{{act.hisContent}}</font>

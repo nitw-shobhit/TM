@@ -17,6 +17,9 @@
 		<tbody>
 			<tr>
 				<td>
+					<a><span class="glyphicon glyphicon-star" style="color: #AAA; font-size: 15px;"></span></a>
+				</td>
+				<td>
 					<img data-ng-show="item.issPriority == 'High'" src="<%= request.getContextPath()%>/resources/images/flag_red.ico" height="20" width="20" />
 					<img data-ng-show="item.issPriority == 'Medium'" src="<%= request.getContextPath()%>/resources/images/flag_blue.ico" height="20" width="20" />
 					<img data-ng-show="item.issPriority == 'Low'" src="<%= request.getContextPath()%>/resources/images/flag_green.ico" height="20" width="20" />
