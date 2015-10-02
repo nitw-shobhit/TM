@@ -1,5 +1,4 @@
 angular.module('tm-app').controller("loginController", function ($scope, $state, $rootScope, $timeout, localStorageService) {
-	console.log("loginController");
 	$scope.userId = "A10000";
 	$scope.userPass = "1";
 

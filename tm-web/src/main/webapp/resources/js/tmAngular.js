@@ -1,6 +1,7 @@
 var module = angular.module('tm-app', ['ui.router', 'ngDialog', 'pascalprecht.translate', 'ui.bootstrap',
                                        'angular-table', 'angularTreeview', 'ngAnimate', 'cgBusy', 'ngTouch',
-                                       'angucomplete-alt', 'tm-confirm-button', 'LocalStorageModule']);
+                                       'angucomplete-alt', 'tm-confirm-button', 'LocalStorageModule', 
+                                       'tm-tooltip']);
 
 //ROOT SCOPE ELEMENTS
 module.run(function($rootScope) {
@@ -34,7 +35,11 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 				'userInfo' : {
 					templateUrl : 'resources/pages/dashboard/blankUserInfo.jsp',
 					controller : 'userInfoController'
-				}			
+				},
+				'messageBox' : {
+					templateUrl : 'resources/pages/dashboard/messageBox.jsp',
+					controller : 'rootController'
+				}
 			}
 		}
 	)
@@ -49,6 +54,28 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 				'content@' : {
 					templateUrl : 'resources/pages/projects.jsp',
 					controller : 'projectController'
+				}
+			}
+		}
+	)
+	.state('app.dboard.notification',
+		{
+			url: "",
+			views: {
+				'content@' : {
+					templateUrl : 'resources/pages/notifications.jsp',
+					controller : 'notificationController'
+				}
+			}
+		}
+	)
+	.state('app.dboard.notification.archived',
+		{
+			url: "",
+			views: {
+				'content@' : {
+					templateUrl : 'resources/pages/archivedNotifications.jsp',
+					controller : 'notificationController'
 				}
 			}
 		}

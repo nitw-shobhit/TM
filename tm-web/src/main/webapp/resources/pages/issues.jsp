@@ -9,15 +9,21 @@
 </head>
 <body>
 	<div>
-		<a data-ng-click="openAddIssueBox()"><span class="flaticon-text70"></span></a>
-		<a data-ng-click="getIssuesByModule(moduleId)" style="margin-left:5px;"><span class="flaticon-refresh57"></span></a>
+		<button class="btn btn-default btn-xs" data-ng-click="openAddIssueBox()"><span class="flaticon-text70"></span> Add Issue</button>
+		<button class="btn btn-danger btn-xs" data-ng-click="getIssuesByModule(moduleId)" style="margin-left:5px;"><span class="flaticon-refresh57"></span> Refresh</button>
 	</div>
+	<br>
 	<table class="table table-striped issueTable" at-table at-paginated at-list="issues" at-config="config">
 		<thead></thead>
 		<tbody>
 			<tr>
 				<td>
-					<a><span class="glyphicon glyphicon-star" style="color: #AAA; font-size: 15px;"></span></a>
+					<a data-ng-show="!item.issSubscribed" data-ng-click="addIssueSubscription(item)">
+						<span class="glyphicon glyphicon-star" style="color: #AAA; font-size: 15px;"></span>
+					</a>
+					<a data-ng-show="item.issSubscribed" data-ng-click="removeIssueSubscription(item)">
+						<span class="glyphicon glyphicon-star" style="color: #DCEB14; font-size: 15px;"></span>
+					</a>
 				</td>
 				<td>
 					<img data-ng-show="item.issPriority == 'High'" src="<%= request.getContextPath()%>/resources/images/flag_red.ico" height="20" width="20" />

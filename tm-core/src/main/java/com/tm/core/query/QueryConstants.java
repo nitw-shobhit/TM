@@ -10,4 +10,7 @@ public class QueryConstants extends ParamConstants {
 	public static final String GET_COMMENTS_BY_ISSUE_ID = "getIssueCommentsByIssueId";
 	public static final String GET_ATTACHMENTS_BY_ISSUE_ID = "getIssueAttachmentsByIssueId";
 	public static final String GET_HISTORY_BY_ISSUE_ID = "getIssueHistoryByIssueId";
+	public static final String GET_SUBSCRIBER_BY_ISSUE_ID = "getIssueSubscriberByIssueId";
+	public static final String GET_NOTIFICATIONS_BY_USER_ID = "getNotificationsByUserId";
+	public static final String GET_VARIABLES_BY_NOTIFICATION_ID = "getVariablesByNotificationId";
 }

@@ -1,5 +1,4 @@
 angular.module('tm-app').controller("moduleController", function ($scope, $rootScope, $state, ngDialog, $timeout) {
-	console.log("moduleController");
 	$.ajax({
         url: '/tm-web/tmModule/getProjectModules.do?id='+$rootScope.projectId,
         type: 'GET',

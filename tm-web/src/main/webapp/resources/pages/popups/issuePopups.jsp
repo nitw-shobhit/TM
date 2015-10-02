@@ -239,19 +239,29 @@
 				</tr>
 			</table>
 		</div>
-		<div style="border: 1px solid; width: 190px; height: 250px; margin-left:5px; float:left; font-size:10px;">
-			<div style="height:196px; background-color:white; border:1px solid; overflow-x:auto;">
-				<div data-ng-repeat="comment in ngDialogData.issComments" style="margin:4px; line-height:1.2em;">
-					<div><b>{{comment.userIdString}}</b> : {{comment.comContent}}</div>
-					<div style="font-size:8px; float:right; color:#999;">{{comment.dtCreated}}</div><br>
+		<div style="width: 190px; height: 400px; float:left;">
+			<div style="border: 1px solid; width: 190px; height: 250px; margin-left:5px; font-size:10px;">
+				<div style="height:196px; background-color:white; border:1px solid; overflow-x:auto;">
+					<div data-ng-repeat="comment in ngDialogData.issComments" style="margin:4px; line-height:1.2em;">
+						<div><b>{{comment.userIdString}}</b> : {{comment.comContent}}</div>
+						<div style="font-size:8px; float:right; color:#999;">{{comment.dtCreated}}</div><br>
+					</div>
+				</div>
+				<textarea placeholder="Add a comment.." style="margin-left:2px; margin-top:4px; height:45px; width:135px;" data-ng-model="ngDialogData.newComment"></textarea>
+				<button data-ng-click="addCommentToIssue(ngDialogData)" class="btn btn-primary" style="height:45px; margin-top:4px; width: 47px; font-size:11px; padding:0;vertical-align:top;">Add</button>
+			</div>
+			<div style="border: 1px solid; width: 190px; height: 145px; margin-left:5px; margin-top:5px;" >
+				<span style="margin-left:5px; font-size:11px; background-color:#FFF;"><u>Issue Subscribers</u></span>
+				<div data-ng-repeat="sub in ngDialogData.issSubscribe" style="margin-left:5px">
+					<font style="font-size:11px;">
+						<a style="color: #23527C;" class="underlinedLink" href="#">{{sub.userIdString}}</a>
+					</font>
 				</div>
 			</div>
-			<textarea placeholder="Add a comment.." style="margin-left:2px; margin-top:4px; height:45px; width:135px;" data-ng-model="ngDialogData.newComment"></textarea>
-			<button data-ng-click="addCommentToIssue(ngDialogData)" class="btn btn-primary" style="height:45px; margin-top:4px; width: 47px; font-size:11px; padding:0;vertical-align:top;">Add</button>
 		</div>
 	</div>
 	<div style="width: 745px; height:100px; border: 1px solid; overflow-y: scroll;">
-		<span style="margin-left:5px; font-size:12px;"><u>Issue History</u></span>
+		<span style="margin-left:5px; font-size:11px; background-color:#FFF;"><u>Issue History</u></span>
 		<div data-ng-repeat="act in ngDialogData.issHistory" style="margin-left:5px">
 			<font style="font-size:10px; color:#999;">{{act.hisCreated}}</font> : <font style="font-size:11px;"><a style="color: #23527C;" class="underlinedLink" href="#">{{act.hisUser}}</a>&nbsp;{{act.hisContent}}</font>
 		</div>

@@ -1,5 +1,7 @@
 @CHARSET "ISO-8859-1";
-
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
 fieldset {
 	border: 1px solid #575757;
 	border-radius: 5px;
@@ -13,7 +15,7 @@ legend {
 	background-color: #FFF;
 	border: 1px solid #575757;
 }
-.underlinedLink:hover {
+.underlinedLink {
 	text-decoration: underline;
 }
 .baseBody {
@@ -263,6 +265,14 @@ legend {
 .issueTable {
 	font-size: 10px;
 }
+.notificationTable {
+	font-size: 10px;
+	background-color: #FFF;
+}
+
+.notificationTable th {
+	text-align: left;
+}
 .overlay-panel {
 	position: absolute;
 }
@@ -455,4 +465,14 @@ legend {
 	height:0px; 
 	width:0px;
 	color:#000;
+}
+.notification {
+	height:25px; 
+	float:left; 
+	width:25px; 
+	border: 1px solid;
+	margin-left: 15px;
+}
+.notificationUnread {
+	color: red;
 }

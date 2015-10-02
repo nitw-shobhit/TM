@@ -1,5 +1,4 @@
 angular.module('tm-app').controller("issueController", function ($state, $scope, $rootScope, $timeout, ngDialog) {
-	console.log("issueController");
 	$scope.moduleId = $rootScope.selectedModule;
 	getIssuesByModuleId($scope.moduleId);
 	
@@ -15,6 +14,17 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    async: false,
 		    success: function(data) {
 		    	$scope.issues = data;
+		    	for(var index1 = 0; index1 < $scope.issues.length; index1 ++) {
+		    		var isSubscribed = false;
+		    		for(var index2 = 0; index2 < $scope.issues[index1].issSubscribe.length; index2 ++) {
+		    			if($scope.issues[index1].issSubscribe[index2].userId == $rootScope.userBean.id) {
+		    				isSubscribed = true;
+		    				break;
+		    			}
+		    		}
+		    		$scope.issues[index1].issSubscribed = isSubscribed;
+		    	}
+		    	
 		    	$scope.config = {
 	    		    itemsPerPage: 10,
 	    		    fillLastPage: false
@@ -28,7 +38,10 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 	};
 	
 	$scope.openAddIssueBox = function() {
-		var newIssueData = {"issOwnerString" : $rootScope.userBean.userId};
+		var newIssueData = {
+			"issOwnerString" : $rootScope.userBean.userId,
+			"issPriority" : "Choose one"
+		};
 		ngDialog.open({
 			template: 'addIssue',
 			className: 'ngdialog-theme-default addIssue',
@@ -56,6 +69,7 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
+		    	data.issSubscribed = true;
 		    	$scope.issues.push(data);
 		    	ngDialog.close();
 		    	$rootScope.panelMessage = "New issue added successfully.";
@@ -70,7 +84,6 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 	};
 	
 	$scope.viewIssue = function(issueBean) {
-		console.log(issueBean);
 		ngDialog.open({
 			template: 'viewIssue',
 			className: 'ngdialog-theme-default viewIssue',
@@ -114,7 +127,6 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
-		    	console.log(data);
 		    	issueBean.issStatus="ACCEPTED";
 		    	issueBean.issHistory.push(data);
 		    }
@@ -131,9 +143,11 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		$.ajax({
 		    url: '/tm-web/tmIssue/rejectIssue.do?id='+issueBean.id,
 		    type: 'POST',
+		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
 		    	issueBean.issStatus="REJECTED";
+		    	issueBean.issHistory.push(data);
 		    }
 		}).fail(function() {
 			ngDialog.close();
@@ -206,6 +220,51 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    async: false,
 		    success: function(data) {
 		    	issueBean.issStatus="COMPLETED";
+		    }
+		}).fail(function() {
+			ngDialog.close();
+	    	$rootScope.panelMessage = "Could not reject the issue at this moment.";
+	    	$rootScope.errorBoxFlag = true;
+	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
+		});
+	};
+	
+	$scope.removeIssueSubscription = function(issueBean) {
+		var issueSubscribeId = null;
+		var issueIndex = -1;
+		for(var index = 0; index < issueBean.issSubscribe.length; index ++) {
+			if(issueBean.issSubscribe[index].userId == $rootScope.userBean.id) {
+				issueSubscribeId = issueBean.issSubscribe[index].id;
+				issueIndex = index;
+				break;
+			}
+		}
+		
+		$.ajax({
+		    url: '/tm-web/tmSubscribeIssue/removeSubscription.do?issueSubscribeId='+issueSubscribeId,
+		    type: 'POST',
+		    async: false,
+		    success: function(data) {
+		    	issueBean.issSubscribe.splice(issueIndex, 1);
+		    	issueBean.issSubscribed = !issueBean.issSubscribed;
+		    }
+		}).fail(function() {
+			ngDialog.close();
+	    	$rootScope.panelMessage = "Could not reject the issue at this moment.";
+	    	$rootScope.errorBoxFlag = true;
+	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
+		});
+	};
+	
+	$scope.addIssueSubscription = function(issueBean) {
+		$.ajax({
+		    url: '/tm-web/tmSubscribeIssue/addSubscription.do?userId='+$rootScope.userBean.id + '&issueId='+issueBean.id,
+		    type: 'POST',
+		    async: false,
+		    dataType: 'json',
+		    success: function(data) {
+		    	issueBean.issSubscribe.push(data);
+		    	issueBean.issSubscribed = !issueBean.issSubscribed;
 		    }
 		}).fail(function() {
 			ngDialog.close();

@@ -13,6 +13,9 @@
 		<class>com.tm.core.entity.TmIssueComment</class>
 		<class>com.tm.core.entity.TmIssueAttachment</class>
 		<class>com.tm.core.entity.TmIssueHistory</class>
+		<class>com.tm.core.entity.TmIssueSubscribe</class>
+		<class>com.tm.core.entity.TmNotification</class>
+		<class>com.tm.core.entity.TmNotificationVariable</class>
 		<properties/>
 	</persistence-unit>
 </persistence>

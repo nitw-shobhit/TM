@@ -17,7 +17,7 @@ public interface IssueService extends DtoAssemblerFacade<TmIssue, IssueBean> {
 
 	IssueHistoryBean acceptIssue(long issueId) throws DaoException, DtoConversionException;
 
-	void rejectIssue(long issueId);
+	IssueHistoryBean rejectIssue(long issueId) throws DaoException, DtoConversionException;
 
 	void reAssignIssue(long issueId, String newUserId) throws DtoConversionException;
 

@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TM</title>
+<!-- ##########################################ADD MODULE############################################# -->
 <script type="text/ng-template" id="addModule">
 <fieldset class="popupFieldset">
 	<legend>
@@ -34,6 +35,7 @@
 	</table>
 </fieldset>
 </script>
+<!-- ##########################################EDIT MODULE############################################# -->
 <script type="text/ng-template" id="editModule">
 <fieldset class="popupFieldset">
 	<legend>

@@ -1,120 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:include page="../popups/userInfoPopups.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TM</title>
-<script type="text/ng-template" id="userProfile">
-<fieldset>
-	<legend>
-		<span class="header">UPDATE PROFILE</span>
-	</legend>
-	<table class="formStructure">
-		<tr>
-			<td style="vertical-align:top; padding: 10px;">
-				<img height="80" width="80" src="<%= request.getContextPath()%>/resources/images/default_p_img.png" />
-			</td>
-			<td style="padding: 10px;">
-				<table style="font-size: 12px;">
-					<tr>
-						<td style="padding: 2px;"><label>Name</label></td>
-						<td style="padding: 2px;">
-							<input class="form-control input-sm" type="text" data-ng-model ="ngDialogData.userName" disabled="disabled"/>
-						</td>
-						<td>
-						</td>
-					</tr>
-					<tr>
-						<td style="padding: 2px;"><label>Id</label></td>
-						<td style="padding: 2px;">
-							<input class="form-control input-sm" type="text" data-ng-model ="ngDialogData.userId" disabled="disabled"/>
-						</td>
-						<td>
-						</td>
-					</tr>
-					<tr>
-						<td style="padding: 2px;"><label>Email</label></td>
-						<td style="padding: 2px;">
-							<input class="form-control input-sm" type="text" data-ng-model ="ngDialogData.userEmail" />
-						</td style="padding: 2px;">
-						<td>
-						</td>
-					</tr>
-					<tr>
-						<td style="padding: 2px;"><label>Access Type</label></td>
-						<td style="padding: 2px;">
-							<input class="form-control input-sm" type="text" data-ng-model ="ngDialogData.userType" disabled="disabled"/>
-						</td>
-						<td>
-						</td>
-					</tr>
-					<tr>
-						<td style="padding: 2px;"><label>Phone</label></td>
-						<td style="padding: 2px;">
-							<input class="form-control input-sm" type="text" data-ng-model ="ngDialogData.userPhone" />
-						</td>
-						<td>
-						</td>
-					</tr>
-					<tr>
-						<td style="padding: 10px; float: right;">
-							<button class="btn btn-primary btn-xs" data-ng-click="updateProfile(ngDialogData)">Update</button>
-						</td>
-						<td style="padding: 10px;">
-							<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">Cancel</button>
-						</td>
-						<td>
-						</td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-	</table>
-</fieldset>
-</script>
-<script type="text/ng-template" id="changePassword">
-<fieldset>
-	<legend>
-		<span class="header">CHANGE PASSWORD</span>
-	</legend>
-	<table class="formStructure">
-		<tr>
-			<td style="padding: 2px;"><label>Old password</label></td>
-			<td style="padding: 2px;">
-				<input class="form-control input-sm" type="password" data-ng-model ="ngDialogData.oldPassword" />
-			</td>
-		</tr>
-		<tr>
-			<td style="padding: 2px;"><label>New password</label></td>
-			<td style="padding: 2px;">
-				<input class="form-control input-sm" type="password" data-ng-model ="ngDialogData.newPassword" />
-			</td>
-		</tr>
-		<tr>
-			<td style="padding: 2px;"><label>Confirm new password</label></td>
-			<td style="padding: 2px;">
-				<input class="form-control input-sm" type="password" data-ng-model ="ngDialogData.confirmNewPassword" />
-			</td>
-		</tr>
-		<tr>
-			<td style="padding: 10px; float: right;">
-				<button class="btn btn-primary btn-xs" data-ng-click="changePassword()">Update</button>
-			</td>
-			<td style="padding: 10px;">
-				<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">Cancel</button>
-			</td>		
-		</tr>
-	</table>
-</fieldset>
-</script>
 </head>
 <body>
 	<div class="logoBox">
 		<div class="logo">
 		</div>
-		<div data-ui-view="userInfo">
+		<div style="float: left;">
 			<img data-ng-show="{{userBean.userImage == null}}" class="userInfoProfilePic" src="<%= request.getContextPath()%>/resources/images/default_p_img.png" />
 			<div class="btn-group" role="group" aria-label="...">
 				<div class="btn-group" role="group">
@@ -148,6 +45,11 @@
 				    </div>
 				</div>
 			</div>
+		</div>
+		<div style="float: left;" data-ng-controller="notificationController" class="ng-cloak">
+			<a data-ng-click="loadNotifications()">
+				<span class="glyphicon glyphicon-envelope" style="font-size:25px; margin-left: 15px;"><span data-ng-show="countUnreadNotifications > 0" class="badge" >{{countUnreadNotifications}}</span></span>
+			</a>
 		</div>
 	</div>
 </body>

@@ -32,4 +32,17 @@
 	<named-query name="getIssueHistoryByIssueId">
 		<query>Select a from TmIssueHistory a where a.issId = :paramIssId</query>
 	</named-query>
+	
+	<named-query name="getIssueSubscriberByIssueId">
+		<query>Select a from TmIssueSubscribe a where a.issId = :paramIssId</query>
+	</named-query>
+	
+	<named-query name="getNotificationsByUserId">
+		<query>Select a from TmNotification a where a.userId = :paramUserId</query>
+	</named-query>
+	
+	<named-query name="getVariablesByNotificationId">
+		<query>Select a from TmNotificationVariable a where a.notId = :paramNotId</query>
+	</named-query>
+	
 </entity-mappings>

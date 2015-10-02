@@ -8,6 +8,7 @@ import com.tm.core.entity.TmIssue;
 import com.tm.core.entity.TmIssueAttachment;
 import com.tm.core.entity.TmIssueComment;
 import com.tm.core.entity.TmIssueHistory;
+import com.tm.core.entity.TmIssueSubscribe;
 import com.tm.core.entity.manager.DBFacadeImpl;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
@@ -15,6 +16,7 @@ import com.tm.dao.db.IssueAttachmentDao;
 import com.tm.dao.db.IssueCommentDao;
 import com.tm.dao.db.IssueDao;
 import com.tm.dao.db.IssueHistoryDao;
+import com.tm.dao.db.IssueSubscribeDao;
 import com.tm.util.db.Param;
 import com.tm.util.exceptions.DaoException;
 
@@ -29,7 +31,8 @@ public class IssueDaoImpl extends DBFacadeImpl<TmIssue, Long> implements IssueDa
 
 	@Override
 	public TmIssue addIssueToModule(TmIssue issueEntity, TmIssueComment issueCommentEntity,
-			List<TmIssueAttachment> issueAttachmentEntities, TmIssueHistory issueHistoryEntity) throws DaoException {
+			List<TmIssueAttachment> issueAttachmentEntities, TmIssueHistory issueHistoryEntity,
+			List<TmIssueSubscribe> issueSubscribeEntities) throws DaoException {
 		EntityTransaction tx = getEntityManager().getTransaction();
 		try {
 			tx.begin();
@@ -41,10 +44,18 @@ public class IssueDaoImpl extends DBFacadeImpl<TmIssue, Long> implements IssueDa
 			}
 			
 			if(issueAttachmentEntities != null) {
-				for(TmIssueAttachment issueAttachment : issueAttachmentEntities) {
-					issueAttachment.setIssId(issueEntity.getId());
+				for(TmIssueAttachment issueAttachmentEntity : issueAttachmentEntities) {
+					issueAttachmentEntity.setIssId(issueEntity.getId());
 					IssueAttachmentDao issueAttachmentDao = (IssueAttachmentDao) DaoFactory.generateService(DaoType.ISSUE_ATTACHMENT);
-					issueAttachmentDao.persistNoTx(issueAttachment, true);
+					issueAttachmentDao.persistNoTx(issueAttachmentEntity, true);
+				}
+			}
+			
+			if(issueSubscribeEntities != null) {
+				for(TmIssueSubscribe issueSubscribeEntity : issueSubscribeEntities) {
+					issueSubscribeEntity.setIssId(issueEntity.getId());
+					IssueSubscribeDao issueSubscribeDao = (IssueSubscribeDao) DaoFactory.generateService(DaoType.ISSUE_SUBSCRIBE);
+					issueSubscribeDao.persistNoTx(issueSubscribeEntity, false);
 				}
 			}
 			issueHistoryEntity.setIssId(issueEntity.getId());

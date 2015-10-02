@@ -27,7 +27,7 @@
 		<tr>
 			<td style="padding: 2px;float:left;"><label>Add preset modules</label></td>
 			<td style="padding: 2px;">
- 				<input type="checkbox" style="float:left;" data-ng-model="ngDialogData.addDefaultModulesFlag"></textarea>
+ 				<input type="checkbox" style="float:left;" data-ng-model="ngDialogData.addDefaultModulesFlag" />
 			</td>
 		</tr>
 		<tr>

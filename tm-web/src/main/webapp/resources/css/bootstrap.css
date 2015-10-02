@@ -4947,16 +4947,18 @@ a.label:focus {
 .badge {
   display: inline-block;
   min-width: 10px;
-  padding: 3px 7px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: bold;
   line-height: 1;
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  vertical-align: middle;
+  vertical-align: top;
   background-color: firebrick;
   border-radius: 10px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  padding-right: 2px;
 }
 .badge:empty {
   display: none;

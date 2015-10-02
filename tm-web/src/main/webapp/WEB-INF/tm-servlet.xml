@@ -17,9 +17,12 @@
 	</context:component-scan>
 
 	<!-- SERVICE BEANS -->
+	
+	<bean id="notificationService" class="com.tm.model.service.impl.NotificationServiceImpl" />
 	<bean id="issueCommentService" class="com.tm.model.service.impl.IssueCommentServiceImpl" />
 	<bean id="issueAttachmentService" class="com.tm.model.service.impl.IssueAttachmentServiceImpl" />
 	<bean id="issueHistoryService" class="com.tm.model.service.impl.IssueHistoryServiceImpl" />
+	<bean id="issueSubscribeService" class="com.tm.model.service.impl.IssueSubscribeServiceImpl" />
 	<bean id="userService" class="com.tm.model.service.impl.UserServiceImpl" />
 	<bean id="projectService" class="com.tm.model.service.impl.ProjectServiceImpl" >
 		<property name="moduleService" ref="moduleService"></property>
@@ -31,6 +34,7 @@
 		<property name="issueCommentService" ref="issueCommentService"></property>
 		<property name="issueAttachmentService" ref="issueAttachmentService"></property>
 		<property name="issueHistoryService" ref="issueHistoryService"></property>
+		<property name="issueSubscribeService" ref="issueSubscribeService"></property>
 	</bean>
 
 	<!-- LISTENER -->
@@ -59,6 +63,12 @@
 	</bean>
 	<bean name="/tmCommentIssue/*" class="com.tm.web.controller.IssueCommentController">
 		<property name="issueCommentService" ref="issueCommentService" />
+	</bean>
+	<bean name="/tmSubscribeIssue/*" class="com.tm.web.controller.IssueSubscribeController">
+		<property name="issueSubscribeService" ref="issueSubscribeService" />
+	</bean>
+	<bean name="/tmNotification/*" class="com.tm.web.controller.NotificationController">
+		<property name="notificationService" ref="notificationService" />
 	</bean>
 	
 	<!-- I18N  -->

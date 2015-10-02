@@ -11,7 +11,6 @@
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/ngDialog.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/ngDialog-theme-default.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/ui.fancytree.css" >
-	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/tm.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/icons/flaticon.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/angular.treeview.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/angular-busy.css">
@@ -26,6 +25,7 @@
 	<script src="<%= request.getContextPath()%>/resources/js/others/ngDialog.js"></script>
 	<!-- DIRECTIVES -->
 	<script src="<%= request.getContextPath()%>/resources/js/directives/confirmButtonDirective.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/directives/toggleTooltipDirective.js"></script>
 	<!-- MAIN ANGULAR -->
 	<script src="<%= request.getContextPath()%>/resources/js/tmAngular.js"></script>
 	<!-- CONTROLLERS -->
@@ -36,6 +36,7 @@
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/projectController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/moduleController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/issueController.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/controllers/notificationController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/jquery-ui.custom.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/jquery.fancytree.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/tm.js"></script>
@@ -47,28 +48,15 @@
     <script src="<%= request.getContextPath()%>/resources/js/others/angular-touch.min.js"></script>
     <script src="<%= request.getContextPath()%>/resources/js/others/angucomplete-alt.js"></script>
     <script src="<%= request.getContextPath()%>/resources/js/others/local-storage.js"></script>
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/tm.css">
 	<link rel="icon" type="image/x-icon" href="<%= request.getContextPath()%>/resources/images/favicon.ico" />
 </head>
 <body>
 	<div class="baseBody">
 		<div data-ui-view="userInfo"></div>
-		<div data-ng-controller="rootController">
-			<div data-ng-show="successBoxFlag" class="alert alert-success overlay-panel errorSuccessPanel">
-			    <button type="button" class="close" data-ng-click="closePanel()">x</button>
-			    <span class="glyphicon glyphicon-ok successPanelIcon"></span>
-			    <strong>SUCCESS! </strong>
-			    {{panelMessage}}
-			</div>
-			<div data-ng-show="errorBoxFlag" class="alert alert-danger overlay-panel errorSuccessPanel">
-			    <button type="button" class="close" data-ng-click="closePanel()">x</button>
-			    <span class="glyphicon glyphicon-remove errorPanelIcon"></span>
-			    <strong>FAILURE! </strong>
-			    {{panelMessage}}
-			</div>
-		</div>
+		<div data-ui-view="messageBox"></div>
 		<div class="contentBox">
 			<div data-ui-view="content" class="content">
-				
 			</div>
 		</div>
 	</div>

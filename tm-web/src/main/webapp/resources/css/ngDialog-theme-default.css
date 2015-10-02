@@ -259,3 +259,8 @@
 	width: 800px;
 	height: 575px;
 }
+
+.ngdialog.ngdialog-theme-default.notificationInfo .ngdialog-content {
+	width: 547px;
+	height: 335px;
+}

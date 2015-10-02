@@ -4,10 +4,13 @@ import com.tm.dao.db.impl.IssueAttachmentDaoImpl;
 import com.tm.dao.db.impl.IssueCommentDaoImpl;
 import com.tm.dao.db.impl.IssueDaoImpl;
 import com.tm.dao.db.impl.IssueHistoryDaoImpl;
+import com.tm.dao.db.impl.IssueSubscribeDaoImpl;
 import com.tm.dao.db.impl.ModuleDaoImpl;
+import com.tm.dao.db.impl.NotificationDaoImpl;
 import com.tm.dao.db.impl.ProjectDaoImpl;
 import com.tm.dao.db.impl.UserDaoImpl;
 import com.tm.dao.db.impl.UserProjectDaoImpl;
+import com.tm.dao.db.impl.NotificationVariableDaoImpl;
 
 public class DaoFactory {
 	
@@ -24,6 +27,9 @@ public class DaoFactory {
 		private static final IssueCommentDaoImpl issueCommentDaoImpl = new IssueCommentDaoImpl();
 		private static final IssueAttachmentDaoImpl issueAttachmentDaoImpl = new IssueAttachmentDaoImpl();
 		private static final IssueHistoryDaoImpl issueHistoryDaoImpl = new IssueHistoryDaoImpl();
+		private static final IssueSubscribeDaoImpl issueSubscribeDaoImpl = new IssueSubscribeDaoImpl();
+		private static final NotificationDaoImpl notificationDaoImpl = new NotificationDaoImpl();
+		private static final NotificationVariableDaoImpl notificationVariableDaoImpl = new NotificationVariableDaoImpl();
 	}
 	
 	public static Object generateService(DaoType dType) {
@@ -43,6 +49,12 @@ public class DaoFactory {
 			return DaoFactoryHelper.issueAttachmentDaoImpl;
 		} else if(dType.equals(DaoType.ISSUE_HISTORY)) {
 			return DaoFactoryHelper.issueHistoryDaoImpl;
+		} else if(dType.equals(DaoType.ISSUE_SUBSCRIBE)) {
+			return DaoFactoryHelper.issueSubscribeDaoImpl;
+		} else if(dType.equals(DaoType.NOTIFICATION)) {
+			return DaoFactoryHelper.notificationDaoImpl;
+		} else if(dType.equals(DaoType.NOTIFICATION_VARIABLE)) {
+			return DaoFactoryHelper.notificationVariableDaoImpl;
 		} else {
 			return null;
 		}

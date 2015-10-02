@@ -1,5 +1,4 @@
-angular.module('tm-app').controller("rootController", function
-		($scope, $rootScope, $state, $timeout, localStorageService) {
+angular.module('tm-app').controller("rootController", function($scope, $rootScope, $state, $timeout, localStorageService) {
 
 	$scope.closePanel = function() {
 		$rootScope.successBoxFlag = false;

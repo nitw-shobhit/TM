@@ -30,7 +30,6 @@
 							<a class="underlinedLink" data-ng-click="getModuleIssues(module.module.id)" style="margin-right:5px;">
 								{{module.module.modName}}
 							</a>
-							<a><span class="badge">4</span></a>
 							<a data-ng-click="openEditModuleBox(module)" style="margin-left: 5px;">
 								<span class="glyphicon glyphicon-pencil editModule"></span>
 							</a>

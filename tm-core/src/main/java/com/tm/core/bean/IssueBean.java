@@ -46,6 +46,8 @@ public class IssueBean extends BaseBean implements Serializable {
 	
 	private List<IssueHistoryBean> issHistory;
 	
+	private List<IssueSubscribeBean> issSubscribe;
+	
 	public long getId() {
 		return id;
 	}
@@ -162,5 +164,13 @@ public class IssueBean extends BaseBean implements Serializable {
 
 	public void setIssHistory(List<IssueHistoryBean> issHistory) {
 		this.issHistory = issHistory;
+	}
+
+	public List<IssueSubscribeBean> getIssSubscribe() {
+		return issSubscribe;
+	}
+
+	public void setIssSubscribe(List<IssueSubscribeBean> issSubscribe) {
+		this.issSubscribe = issSubscribe;
 	}
 }

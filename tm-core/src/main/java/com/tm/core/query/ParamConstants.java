@@ -6,4 +6,5 @@ public class ParamConstants {
 	public static final String PARAM_PROJ_ID = "paramProjId";
 	public static final String PARAM_MODULE_ID = "paramModId";
 	public static final String PARAM_ISSUE_ID = "paramIssId";
+	public static final String PARAM_NOTIFICATION_ID = "paramNotId";
 }
