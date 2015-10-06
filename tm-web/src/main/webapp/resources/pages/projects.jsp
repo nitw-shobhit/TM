@@ -32,9 +32,9 @@
 										class="projectSideMenuLink" title="Edit"><i class="flaticon-edit45"></i></a><br>
 									<a data-ng-click="getProjectTeam(project)"
 										class="projectSideMenuLink" title="Project Team"><span class="flaticon-users10"></span></a><br>
-									<a data-ng-click="getProjectModules(project.id)"
-										class="projectSideMenuLink" title="Project Modules"><span class="flaticon-menu48"></span></a><br>
-									<a data-ng-click="getProjectReleases(project.id)"
+									<a data-ng-click="getProjectModules(project.id, 'issue')"
+										class="projectSideMenuLink" title="Project Issues"><span class="flaticon-menu48"></span></a><br>
+									<a data-ng-click="getProjectModules(project.id, 'release')"
 										class="projectSideMenuLink" title="Project Releases"><span class="glyphicon glyphicon-download-alt"></span></a><br>
 									<a data-ng-click="disableProject(project.id)"
 										class="projectSideMenuLink" title="Disable"><span class="flaticon-lock81"></span></a><br>

@@ -58,6 +58,17 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 			}
 		}
 	)
+	.state('app.dboard.about',
+		{
+			url: "",
+			views: {
+				'content@' : {
+					templateUrl : 'resources/pages/about.jsp',
+					controller : 'internalController'
+				}
+			}
+		}
+	)
 	.state('app.dboard.notification',
 		{
 			url: "",
@@ -102,11 +113,11 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 			}
 		}
   	)
-  	.state('app.dboard.release',
+  	.state('app.dboard.module.release',
 		{
 			url: "",
 			views: {
-				'content@' : {
+				'component' : {
 					templateUrl : 'resources/pages/releases.jsp',
 					controller : 'releaseController'
 				}
@@ -117,7 +128,7 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 		{
 			url: "",
 			views: {
-				'issue' : {
+				'component' : {
 					templateUrl : 'resources/pages/issues.jsp',
 					controller : 'issueController'
 				}

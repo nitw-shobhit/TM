@@ -10,7 +10,8 @@
 <body>
 	<ol class="breadcrumb">
 		<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController">Projects</a></li>
-		<li class="active">Modules</li>
+		<li data-ng-show="selectedSubModule == 'issue'" class="active">Issues</li>
+		<li data-ng-show="selectedSubModule == 'release'" class="active">Releases</li>
 	</ol>
 	<table>
 		<tr>
@@ -27,7 +28,7 @@
 				
 					<div class="moduleTabs">
 						<div>
-							<a class="underlinedLink" data-ng-click="getModuleIssues(module.module.id)" style="margin-right:5px;">
+							<a class="underlinedLink" data-ng-click="getModuleComponents(module.module.id)" style="margin-right:5px;">
 								{{module.module.modName}}
 							</a>
 							<a data-ng-click="openEditModuleBox(module)" style="margin-left: 5px;">
@@ -41,6 +42,6 @@
 	</table>
 	{{emptyListMessage}}
 	<br>
-	<div data-ui-view="issue"></div>
+	<div data-ui-view="component"></div>
 </body>
 </html>

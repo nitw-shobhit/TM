@@ -7,9 +7,6 @@
 <title>TM</title>
 </head>
 <body>
-<ol class="breadcrumb">
-	<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController">Projects</a></li>
-	<li class="active">Releases</li>
-</ol>
+	hii
 </body>
 </html>

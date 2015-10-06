@@ -37,6 +37,7 @@
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/moduleController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/issueController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/notificationController.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/controllers/internalController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/jquery-ui.custom.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/jquery.fancytree.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/tm.js"></script>

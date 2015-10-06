@@ -68,6 +68,17 @@ public class IssueController {
 		return JsonUtils.toJson(issueHistoryBean);
 	}
 	
+	@RequestMapping(method = RequestMethod.POST, value="/reAssignIssue")
+	public @ResponseBody String reAssignIssue(@RequestParam("id") long issueId, @RequestParam("userId") String userId) throws InternalApplicationException {
+		IssueHistoryBean issueHistoryBean = null;
+		try {
+			issueHistoryBean = issueService.rejectIssue(issueId);
+		} catch(Exception e) {
+			throw new InternalApplicationException("Something went wrong with the application", e);
+		}
+		return JsonUtils.toJson(issueHistoryBean);
+	}
+	
 	public IssueService getIssueService() {
 		return issueService;
 	}

@@ -21,7 +21,7 @@ angular.module('tm-app').controller("moduleController", function ($scope, $rootS
         	} else {
         		$scope.emptyListMessage = "";
         	}
-        	$state.go('app.dboard.module.issue');
+        	$state.go('app.dboard.module.'+$rootScope.selectedSubModule);
         }
     }).fail(function() {
     	$rootScope.panelMessage = "Could not retrieve the project modules at this moment.";
@@ -71,7 +71,7 @@ angular.module('tm-app').controller("moduleController", function ($scope, $rootS
 	    });
 	};
 	
-	$scope.getModuleIssues = function(moduleId) {
+	$scope.getModuleComponents = function(moduleId) {
 		for(var index = 0; index < $scope.projectModules.length; index ++) {
 			if($scope.projectModules[index].module.id == moduleId) {
 				$scope.projectModules[index].open = true;
@@ -80,7 +80,7 @@ angular.module('tm-app').controller("moduleController", function ($scope, $rootS
 			}
 		}
 		$rootScope.selectedModule = moduleId;
-		$state.reload('app.dboard.module.issue');
+		$state.reload('app.dboard.module.'+$rootScope.selectedSubModule);
 	};
 	
 	$scope.openEditModuleBox = function(moduleBean) {

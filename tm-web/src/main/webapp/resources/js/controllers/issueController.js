@@ -1,5 +1,7 @@
 angular.module('tm-app').controller("issueController", function ($state, $scope, $rootScope, $timeout, ngDialog) {
 	$scope.moduleId = $rootScope.selectedModule;
+	var statusArray = ["ACCEPTED", "REJECTED", "CANCELLED", "REOPENED", "FIXED", "COMPLETED"];
+	
 	getIssuesByModuleId($scope.moduleId);
 	
 	$scope.getIssuesByModule = function(moduleId) {
@@ -127,7 +129,7 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus="ACCEPTED";
+		    	issueBean.issStatus=statusArray[0];
 		    	issueBean.issHistory.push(data);
 		    }
 		}).fail(function() {
@@ -146,7 +148,7 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus="REJECTED";
+		    	issueBean.issStatus=statusArray[1];
 		    	issueBean.issHistory.push(data);
 		    }
 		}).fail(function() {
@@ -168,7 +170,8 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    type: 'POST',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus="CANCELLED";
+		    	issueBean.issStatus=statusArray[2];
+		    	issueBean.issHistory.push(data);
 		    }
 		}).fail(function() {
 			ngDialog.close();
@@ -185,7 +188,7 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    type: 'POST',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus="REOPENED";
+		    	issueBean.issStatus=statusArray[3];
 		    }
 		}).fail(function() {
 			ngDialog.close();
@@ -202,7 +205,7 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    type: 'POST',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus="REJECTED";
+		    	issueBean.issStatus=statusArray[4];
 		    }
 		}).fail(function() {
 			ngDialog.close();
@@ -219,7 +222,7 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    type: 'POST',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus="COMPLETED";
+		    	issueBean.issStatus=statusArray[5];
 		    }
 		}).fail(function() {
 			ngDialog.close();

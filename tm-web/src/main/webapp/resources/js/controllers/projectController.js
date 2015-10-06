@@ -247,13 +247,9 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	    });
 	};
 	
-	$scope.getProjectModules = function(projectId) {
+	$scope.getProjectModules = function(projectId, subModule) {
 		$rootScope.projectId = projectId;
+		$rootScope.selectedSubModule = subModule;
 		$state.go('app.dboard.module');
-	};
-	
-	$scope.getProjectReleases = function(projectId) {
-		$rootScope.projectId = projectId;
-		$state.go('app.dboard.release');
 	};
 });

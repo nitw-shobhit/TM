@@ -16,6 +16,7 @@
 		<class>com.tm.core.entity.TmIssueSubscribe</class>
 		<class>com.tm.core.entity.TmNotification</class>
 		<class>com.tm.core.entity.TmNotificationVariable</class>
+		<class>com.tm.core.entity.TmRelease</class>
 		<properties/>
 	</persistence-unit>
 </persistence>

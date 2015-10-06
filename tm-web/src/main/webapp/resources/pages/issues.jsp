@@ -9,8 +9,9 @@
 </head>
 <body>
 	<div>
-		<button class="btn btn-default btn-xs" data-ng-click="openAddIssueBox()"><span class="flaticon-text70"></span> Add Issue</button>
-		<button class="btn btn-danger btn-xs" data-ng-click="getIssuesByModule(moduleId)" style="margin-left:5px;"><span class="flaticon-refresh57"></span> Refresh</button>
+		<button class="btn btn-default btn-xs" data-ng-click="openAddIssueBox()"><span class="glyphicon glyphicon-plus"></span> Add Issue</button>
+		<button class="btn btn-default btn-xs" data-ng-click="exportIssues(moduleId)" style="margin-left:5px;"><span class="glyphicon glyphicon-export"></span> Export</button>
+		<button class="btn btn-danger btn-xs" data-ng-click="getIssuesByModule(moduleId)" style="margin-left:5px;"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
 	</div>
 	<br>
 	<table class="table table-striped issueTable" at-table at-paginated at-list="issues" at-config="config">

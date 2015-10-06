@@ -51,6 +51,11 @@
 				<span class="glyphicon glyphicon-envelope" style="font-size:25px; margin-left: 15px;"><span data-ng-show="countUnreadNotifications > 0" class="badge" >{{countUnreadNotifications}}</span></span>
 			</a>
 		</div>
+		<div style="float: left;" data-ng-controller="internalController" class="ng-cloak">
+			<a data-ng-click="showAboutMe()">
+				<span class="glyphicon glyphicon-info-sign" style="font-size:25px; margin-left: 15px; color: #FFF;"></span>
+			</a>
+		</div>
 	</div>
 </body>
 </html>
