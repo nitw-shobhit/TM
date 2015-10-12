@@ -45,4 +45,8 @@
 		<query>Select a from TmNotificationVariable a where a.notId = :paramNotId</query>
 	</named-query>
 	
+	<named-query name="getReleasesByModuleId">
+		<query>Select a from TmRelease a where a.modId = :paramModId</query>
+	</named-query>
+	
 </entity-mappings>

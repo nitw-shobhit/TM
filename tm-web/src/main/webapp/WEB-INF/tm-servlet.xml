@@ -36,6 +36,8 @@
 		<property name="issueHistoryService" ref="issueHistoryService"></property>
 		<property name="issueSubscribeService" ref="issueSubscribeService"></property>
 	</bean>
+	<bean id="releaseService" class="com.tm.model.service.impl.ReleaseServiceImpl">
+	</bean>
 
 	<!-- LISTENER -->
 	<bean name="starter" init-method="init" class="com.tm.model.init.service.StartupService" >
@@ -69,6 +71,9 @@
 	</bean>
 	<bean name="/tmNotification/*" class="com.tm.web.controller.NotificationController">
 		<property name="notificationService" ref="notificationService" />
+	</bean>
+	<bean name="/tmRelease/*" class="com.tm.web.controller.ReleaseController">
+		<property name="releaseService" ref="releaseService" />
 	</bean>
 	
 	<!-- I18N  -->
