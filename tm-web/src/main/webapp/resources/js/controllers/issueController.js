@@ -97,6 +97,18 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		});
 	};
 	
+	$scope.viewIssueStatus = function(issueBean) {
+		ngDialog.open({
+			template: 'viewIssueStatus',
+			className: 'ngdialog-theme-default viewIssue',
+			data: issueBean,
+			scope: $scope,
+			preCloseCallback: function(value) {
+				return true;
+			}
+		});
+	};
+	
 	$scope.addCommentToIssue = function(issueBean) {
 		var newComment = {
 			"comContent" : issueBean.newComment,

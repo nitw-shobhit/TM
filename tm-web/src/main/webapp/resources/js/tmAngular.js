@@ -3,6 +3,17 @@ var module = angular.module('tm-app', ['ui.router', 'ngDialog', 'pascalprecht.tr
                                        'angucomplete-alt', 'tm-confirm-button', 'LocalStorageModule', 
                                        'tm-tooltip']);
 
+//i18n & l10n
+module.config(function ($translateProvider) {
+	
+	$translateProvider.useStaticFilesLoader({
+	    prefix: 'resources/locale/messages-',
+	    suffix: '.json'
+	});
+	
+	$translateProvider.preferredLanguage('en');
+});
+
 //ROOT SCOPE ELEMENTS
 module.run(function($rootScope) {
 	$rootScope.successBoxFlag = false;

@@ -9,7 +9,7 @@
 <script type="text/ng-template" id="addIssue">
 <fieldset class="popupFieldset">
 	<legend>
-		<span class="header">ADD ISSUE</span>
+		<span class="header">{{'section_header.add_issue' | translate}}</span>
 	</legend>
 			<table class="formStructure" style="width:540px; font-size:10px;">
 				<tr>
@@ -98,10 +98,10 @@
 			<table style="width:100%; margin-left:auto; margin-right:auto;">
 				<tr>
 					<td style="padding: 10px; float: right;">
-						<button class="btn btn-primary btn-xs" data-ng-click="addIssueToModule(ngDialogData);">Add</button>
+						<button class="btn btn-primary btn-xs" data-ng-click="addIssueToModule(ngDialogData);">{{'button.add' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float:left;">Cancel</button>
+						<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float:left;">{{'button.cancel' | translate}}</button>
 					</td>
 				</tr>
 			</table>
@@ -111,7 +111,7 @@
 <script type="text/ng-template" id="viewIssue">
 <fieldset class="popupFieldset">
 	<legend>
-		<span class="header">ISSUE ID :<b>{{ngDialogData.id}}</b></span>
+		<span class="header">{{'section_header.issue_id' | translate}} :<b>{{ngDialogData.id}}</b></span>
 	</legend>
 	<div style="width: 745px; height:405px;">
 		<div style="width: 550px; height:400px; border:1px solid; float:left;">
@@ -216,25 +216,25 @@
 			<table style="width:99%; margin-left:auto; margin-right:auto;">
 				<tr>
 					<td>
-						<button class="btn btn-default" data-ng-click="acceptIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;Accept</button>
+						<button class="btn btn-default" data-ng-click="acceptIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;{{'button.accept' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="rejectIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;Reject</button>
+						<button class="btn btn-default" data-ng-click="rejectIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;{{'button.reject' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="openReassignIssueBox(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-random"></span>&nbsp;Reassign</button>
+						<button class="btn btn-default" data-ng-click="openReassignIssueBox(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-random"></span>&nbsp;{{'button.re_assign' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="removeIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ban-circle"></span>&nbsp;Remove</button>
+						<button class="btn btn-default" data-ng-click="removeIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ban-circle"></span>&nbsp;{{'button.remove' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="reOpenIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-repeat"></span>&nbsp;Reopen</button>
+						<button class="btn btn-default" data-ng-click="reOpenIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-repeat"></span>&nbsp;{{'button.re_open' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="markIssueAsFixed(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-tag"></span>&nbsp;Mark as fixed</button>
+						<button class="btn btn-default" data-ng-click="markIssueAsFixed(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-tag"></span>&nbsp;{{'button.mark_as_fixed' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="completeIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ok"></span>&nbsp;Complete</button>
+						<button class="btn btn-default" data-ng-click="completeIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ok"></span>&nbsp;{{'button.complete' | translate}}</button>
 					</td>
 				</tr>
 			</table>
@@ -248,7 +248,7 @@
 					</div>
 				</div>
 				<textarea placeholder="Add a comment.." style="margin-left:2px; margin-top:4px; height:45px; width:135px;" data-ng-model="ngDialogData.newComment"></textarea>
-				<button data-ng-click="addCommentToIssue(ngDialogData)" class="btn btn-primary" style="height:45px; margin-top:4px; width: 47px; font-size:11px; padding:0;vertical-align:top;">Add</button>
+				<button data-ng-click="addCommentToIssue(ngDialogData)" class="btn btn-primary" style="height:45px; margin-top:4px; width: 47px; font-size:11px; padding:0;vertical-align:top;">{{'button.add' | translate}}</button>
 			</div>
 			<div style="border: 1px solid; width: 190px; height: 145px; margin-left:5px; margin-top:5px;" >
 				<span style="margin-left:5px; font-size:11px; background-color:#FFF;"><u>Issue Subscribers</u></span>
@@ -266,6 +266,51 @@
 			<font style="font-size:10px; color:#999;">{{act.hisCreated}}</font> : <font style="font-size:11px;"><a style="color: #23527C;" class="underlinedLink" href="#">{{act.hisUser}}</a>&nbsp;{{act.hisContent}}</font>
 		</div>
 	</div>
+</fieldset>
+</script>
+<script type="text/ng-template" id="viewIssueStatus">
+<fieldset class="popupFieldset">
+	<legend>
+		<span class="header">{{'section_header.view_issue_status' | translate}}</span>
+	</legend>
+	<table style="margin-left: auto; margin-right: auto;">
+		<tr>
+			<td style="padding: 10px;">
+				<div data-ng-hide="ngDialogData.issStatus != 'CANCELLED'" style="height: 16px; width: 16px; border: 1px solid; margin-left: auto; margin-right: auto;"></div>
+				<div data-ng-show="ngDialogData.issStatus != 'CANCELLED'" style="height: 16px; width: 16px; border: 1px solid; margin-left: auto; margin-right: auto; background-color: green;"></div>
+				<span style="font-size: 12px; white-space: nowrap;">Opened / Re-Opened</span>
+			</td>
+
+			<td>
+				<div style="margin-left: auto; margin-right: auto; height: 0px; width: 100px; border: 1px solid;"></div>
+			</td>
+
+			<td style="padding: 10px;">
+				<div data-ng-hide="ngDialogData.issStatus != 'OPEN' && ngDialogData.issStatus != 'REOPEN' && ngDialogData.issStatus != 'CANCELLED'" style="height: 16px; width: 16px; border: 1px solid; margin-left: auto; margin-right: auto;"></div>
+				<div data-ng-show="ngDialogData.issStatus != 'OPEN' && ngDialogData.issStatus != 'REOPEN' && ngDialogData.issStatus != 'CANCELLED'" style="height: 16px; width: 16px; border: 1px solid; margin-left: auto; margin-right: auto; background-color: green;"></div>
+				<span style="font-size: 12px; white-space: nowrap;">Accepted / Rejected</span>
+			</td>
+
+			<td>
+				<div style="margin-left: auto; margin-right: auto; height: 0px; width: 100px; border: 1px solid;"></div>
+			</td>
+
+			<td style="padding: 10px;">
+				<div style="height: 16px; width: 16px; border: 1px solid; margin-left: auto; margin-right: auto;"></div>
+				<span style="font-size: 12px;">Fixed</span>
+			</td>
+
+			<td>
+				<div style="margin-left: auto; margin-right: auto; height: 0px; width: 100px; border: 1px solid;"></div>
+			</td>
+
+			<td style="padding: 10px;">
+				<div style="height: 16px; width: 16px; border: 1px solid; margin-left: auto; margin-right: auto;"></div>
+				<span style="font-size: 12px;">Completed</span>
+			</td>
+		</tr>
+	</table>
+	<hr style="border-top: 1px solid;">
 </fieldset>
 </script>
 </head>

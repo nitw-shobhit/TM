@@ -8,9 +8,9 @@
 </head>
 <body>
 	<div>
-		<button class="btn btn-default btn-xs" data-ng-click="openAddReleaseBox()"><span class="glyphicon glyphicon-plus"></span> Add Release</button>
-		<button class="btn btn-default btn-xs" data-ng-click="exportReleases(moduleId)" style="margin-left:5px;"><span class="glyphicon glyphicon-export"></span> Export</button>
-		<button class="btn btn-danger btn-xs" data-ng-click="getReleasesByModule(moduleId)" style="margin-left:5px;"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
+		<button class="btn btn-default btn-xs" data-ng-click="openAddReleaseBox()"><span class="glyphicon glyphicon-plus"></span> {{'button.add_release' | translate}}</button>
+		<button class="btn btn-default btn-xs" data-ng-click="exportReleases(moduleId)" style="margin-left:5px;"><span class="glyphicon glyphicon-export"></span> {{'button.export' | translate}}</button>
+		<button class="btn btn-danger btn-xs" data-ng-click="getReleasesByModule(moduleId)" style="margin-left:5px;"><span class="glyphicon glyphicon-refresh"></span> {{'button.refresh' | translate}}</button>
 	</div>
 	<br>
 	<table class="table table-striped releaseTable" at-table at-paginated at-list="releases" at-config="config">

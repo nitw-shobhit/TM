@@ -9,9 +9,9 @@
 </head>
 <body>
 	<ol class="breadcrumb">
-		<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController">Projects</a></li>
-		<li data-ng-show="selectedSubModule == 'issue'" class="active">Issues</li>
-		<li data-ng-show="selectedSubModule == 'release'" class="active">Releases</li>
+		<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController">{{'breadcrumb.projects' | translate}}</a></li>
+		<li data-ng-show="selectedSubModule == 'issue'" class="active">{{'breadcrumb.issues' | translate}}</li>
+		<li data-ng-show="selectedSubModule == 'release'" class="active">{{'breadcrumb.releases' | translate}}</li>
 	</ol>
 	<table>
 		<tr>

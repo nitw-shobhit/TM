@@ -10,4 +10,6 @@ import com.tm.util.exceptions.DtoConversionException;
 public interface ReleaseService extends DtoAssemblerFacade<TmRelease, ReleaseBean> {
 
 	List<ReleaseBean> getReleasesByModule(long moduleId) throws DtoConversionException;
+
+	ReleaseBean addReleaseToModule(ReleaseBean releaseBean) throws DtoConversionException;
 }

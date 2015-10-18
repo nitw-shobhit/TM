@@ -23,10 +23,10 @@
 			<table class=errorTable>
 				<tr>
 					<td class="padding-5px">
-						<button class="btn btn-default errorButtonHome" onclick="redirectTo('/tm-web/login.jsp')">HOME</button>
+						<button class="btn btn-default errorButtonHome" onclick="redirectTo('/tm-web/login.jsp')">{{'button.home_error' | translate}}</button>
 					</td>
 					<td class="padding-5px">
-						<button class="btn btn-default errorButtonContact" onclick="alert('Page is under construction!');">CONTACT US</button>
+						<button class="btn btn-default errorButtonContact" onclick="alert('Page is under construction!');">{{'button.contact_us_error' | translate}}</button>
 					</td>
 				</tr>
 			</table>

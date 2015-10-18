@@ -9,16 +9,16 @@
 </head>
 <body>
 	<ol class="breadcrumb">
-		<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController">Projects</a></li>
-		<li><a data-ng-click="loadNotifications()" >Notifications-Inbox</a></li>
-		<li class="active">Notifications-Archived</li>
+		<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController">{{'breadcrumb.projects' | translate}}</a></li>
+		<li><a data-ng-click="loadNotifications()" >{{'breadcrumb.notifications_inbox' | translate}}</a></li>
+		<li class="active">{{'breadcrumb.notifications_archived' | translate}}</li>
 	</ol>
 	<br>
 	<div>
-		<button class="btn btn-default btn-xs" data-ng-click="getUserNotifications()"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
-		<button class="btn btn-default btn-xs" data-ng-click="unArchiveSelectedNotifications()" style="margin-left:5px;"><span class="glyphicon glyphicon-list-alt"></span> Un-Archive selected</button>
-		<button class="btn btn-default btn-xs" data-ng-click="markAsReadSelectedNotifications('archived')" style="margin-left:5px;"><span class="glyphicon glyphicon-check"></span> Mark as read</button>
-		<button class="btn btn-danger btn-xs" data-ng-click="deleteSelectedNotifications()" style="margin-left:5px;"><span class="glyphicon glyphicon-trash"></span> Delete selected</button>
+		<button class="btn btn-default btn-xs" data-ng-click="getUserNotifications()"><span class="glyphicon glyphicon-refresh"></span> {{'button.refresh' | translate}}</button>
+		<button class="btn btn-default btn-xs" data-ng-click="unArchiveSelectedNotifications()" style="margin-left:5px;"><span class="glyphicon glyphicon-list-alt"></span> {{'button.un_archive_selected' | translate}}</button>
+		<button class="btn btn-default btn-xs" data-ng-click="markAsReadSelectedNotifications('archived')" style="margin-left:5px;"><span class="glyphicon glyphicon-check"></span> {{'button.mark_as_read' | translate}}</button>
+		<button class="btn btn-danger btn-xs" data-ng-click="deleteSelectedNotifications()" style="margin-left:5px;"><span class="glyphicon glyphicon-trash"></span> {{'button.delete_selected' | translate}}</button>
 	</div>
 	<br>
 	<table class="table notificationTable" at-table at-paginated at-list="archivedNotifications" at-config="config">

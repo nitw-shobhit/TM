@@ -9,12 +9,12 @@
 </head>
 <body>
 	<ol class="breadcrumb">
-		<li class="active">Projects</li>
+		<li class="active">{{'breadcrumb.projects' | translate}}</li>
 	</ol>
 	<div class="projectMainDiv">
 		<fieldset class="projectFieldSet">
 			<legend>	
-				<span class="header">ACTIVE</span>
+				<span class="header">{{'section_header.active' | translate}}</span>
 			</legend>
 			<div class="projectBoxScrollDiv">
 				<table>
@@ -37,7 +37,7 @@
 									<a data-ng-click="getProjectModules(project.id, 'release')"
 										class="projectSideMenuLink" title="Project Releases"><span class="glyphicon glyphicon-download-alt"></span></a><br>
 									<a data-ng-click="disableProject(project.id)"
-										class="projectSideMenuLink" title="Disable"><span class="flaticon-lock81"></span></a><br>
+										class="projectSideMenuLink" title="Disable" confirm-button><span class="flaticon-lock81"></span></a><br>
 								</div>
 							</div>
 						</td>
@@ -45,7 +45,7 @@
 							<div class="projectFolder">
 								<div class="newProjectFolderContent">
 									<br><br>
-									<button data-ng-click="openAddProjectBox()" style="padding: 0 12px;" class="btn btn-link"><font size="3">ADD A PROJECT</font></button>
+									<button data-ng-click="openAddProjectBox()" style="padding: 0 12px;" class="btn btn-link"><font size="3">{{'button.add_project' | translate}}</font></button>
 								</div>
 							</div>
 						</td>
@@ -55,7 +55,7 @@
 		</fieldset>
 		<fieldset class="arcProjectFieldSet">
 			<legend>	
-				<span class="header">ARCHIVED</span>
+				<span class="header">{{'section_header.archived' | translate}}</span>
 			</legend>
 			<div class="arcProjectBoxScrollDiv">
 				<table>

@@ -9,7 +9,7 @@
 <script type="text/ng-template" id="userProfile">
 <fieldset>
 	<legend>
-		<span class="header">UPDATE PROFILE</span>
+		<span class="header">{{'section_header.update_profile' | translate}}</span>
 	</legend>
 	<table class="formStructure">
 		<tr>
@@ -61,10 +61,10 @@
 					</tr>
 					<tr>
 						<td style="padding: 10px; float: right;">
-							<button class="btn btn-primary btn-xs" data-ng-click="updateProfile(ngDialogData)">Update</button>
+							<button class="btn btn-primary btn-xs" data-ng-click="updateProfile(ngDialogData)">{{'button.update' | translate}}</button>
 						</td>
 						<td style="padding: 10px;">
-							<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">Cancel</button>
+							<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">{{'button.cancel' | translate}}</button>
 						</td>
 						<td>
 						</td>
@@ -79,7 +79,7 @@
 <script type="text/ng-template" id="changePassword">
 <fieldset>
 	<legend>
-		<span class="header">CHANGE PASSWORD</span>
+		<span class="header">{{'section_header.change_password' | translate}}</span>
 	</legend>
 	<table class="formStructure">
 		<tr>
@@ -102,10 +102,10 @@
 		</tr>
 		<tr>
 			<td style="padding: 10px; float: right;">
-				<button class="btn btn-primary btn-xs" data-ng-click="changePassword()">Update</button>
+				<button class="btn btn-primary btn-xs" data-ng-click="changePassword()">{{'button.update' | translate}}</button>
 			</td>
 			<td style="padding: 10px;">
-				<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">Cancel</button>
+				<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">{{'button.cancel' | translate}}</button>
 			</td>		
 		</tr>
 	</table>

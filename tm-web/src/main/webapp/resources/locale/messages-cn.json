@@ -1,0 +1,61 @@
+{
+	"breadcrumb" : {
+		"projects" : "工程",
+		"about" : "左右",
+		"notifications_inbox" : "通知 - 收件箱",
+		"notifications_archived" : "通知 - 存档",
+		"issues" : "问题",
+		"releases" : "发布"
+	},
+	"button" : {
+		"add_release" : "添加发布",
+		"export" : "出口",
+		"refresh" : "刷新",
+		"add_project" : "新增项目",
+		"delete_selected" : "删除所选",
+		"archive_selected" : "归档选择",
+		"un_archive_selected" : "联合国 - 归档选择",
+		"mark_as_read" : "标记为已读",
+		"archived_notifications" : "归档的通知",
+		"add_issue" : "添加问题",
+		"home_error" : "主页",
+		"contact_us_error" : "联系我们",
+		"add" : "加",
+		"cancel" : "撤消",
+		"accept" : "收",
+		"re_assign" : "重新分配",
+		"remove" : "删除",
+		"re_open" : "重新打开",
+		"mark_as_fixed" : "标记为固定",
+		"complete" : "完成",
+		"update" : "更新",
+		"delete_module_permanently" : "删除模块永久",
+		"login" : "登录",
+		"view_profile" : "查看资料",
+		"change_password" : "更改密码",
+		"logout" : "登出"
+	},
+	"column_header" : {
+		"id" : "ID",
+		"name" : "NAME",
+		"status" : "STATUS",
+		"assignee" : "ASSIGNEE",
+		"created_on" : "CREATED-ON",
+		"actions" : "ACTIONS"
+	},
+	"section_header" : {
+		"active" : "活性",
+		"archived" : "存档",
+		"update_profile" : "更新个人资料",
+		"change_password" : "更改密码",
+		"team" : "团队",
+		"project_details" : "项目详细信息",
+		"edit_project" : "编辑项目",
+		"add_project" : "添加项目",
+		"notification_details" : "通知详细信息",
+		"add_module" : "添加模块",
+		"edit_module" : "编辑模块",
+		"add_issue" : "添加问题",
+		"issue_id" : "问题ID"
+	}
+}

@@ -9,7 +9,7 @@
 <script type="text/ng-template" id="notificationInfo">
 <fieldset class="popupFieldset">
 	<legend>
-		<span class="header">NOTIFICATION DETAILS</span>
+		<span class="header">{{'section_header.notification_details' | translate}}</span>
 	</legend>
 	<table style="width:100%; font-size:10px;">
 		<tr>

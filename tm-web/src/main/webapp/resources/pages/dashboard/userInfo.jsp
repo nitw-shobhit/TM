@@ -34,11 +34,11 @@
 							</tr>
 							<tr>
 								<td>
-									<button class="btn btn-default btn-xs" data-ng-click="openProfileBox()">View Profile</button>
+									<button class="btn btn-default btn-xs" data-ng-click="openProfileBox()">{{'button.view_profile' | translate}}</button>
 								</td>
 								<td>
-									<button class="btn btn-primary btn-xs" data-ng-click="openChangePasswordBox()">Change Password</button>
-									<button class="btn btn-danger btn-xs" data-ng-click="logout()">Logout</button>
+									<button class="btn btn-primary btn-xs" data-ng-click="openChangePasswordBox()">{{'button.change_password' | translate}}</button>
+									<button class="btn btn-danger btn-xs" data-ng-click="logout()">{{'button.logout' | translate}}</button>
 								</td>
 							</tr>
 						</table>
@@ -46,16 +46,17 @@
 				</div>
 			</div>
 		</div>
-		<div style="float: left;" data-ng-controller="notificationController" class="ng-cloak">
-			<a data-ng-click="loadNotifications()">
-				<span class="glyphicon glyphicon-envelope" style="font-size:25px; margin-left: 15px;"><span data-ng-show="countUnreadNotifications > 0" class="badge" >{{countUnreadNotifications}}</span></span>
+		<div style="float: left;" data-ng-controller="notificationController" ngCloak">
+			<a data-ng-click="loadNotifications()" style="margin-left: 15px;">
+				<span class="glyphicon glyphicon-envelope" style="font-size:25px;"><span data-ng-show="countUnreadNotifications > 0" class="badge" >{{countUnreadNotifications}}</span></span>
 			</a>
 		</div>
-		<div style="float: left;" data-ng-controller="internalController" class="ng-cloak">
-			<a data-ng-click="showAboutMe()">
-				<span class="glyphicon glyphicon-info-sign" style="font-size:25px; margin-left: 15px; color: #FFF;"></span>
+		<div style="float: left;" data-ng-controller="internalController">
+			<a data-ng-click="showAboutMe()" style="margin-left: 10px;">
+				<span class="glyphicon glyphicon-info-sign" style="font-size:25px;"></span>
 			</a>
 		</div>
+		<%@include file="locale.jsp"%>
 	</div>
 </body>
 </html>

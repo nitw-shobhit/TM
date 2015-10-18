@@ -28,4 +28,15 @@ public class ReleaseServiceImpl extends DtoAssemblerFacadeImpl<TmRelease, Releas
 		}
 		return releaseBeanList;
 	}
+
+	@Override
+	public ReleaseBean addReleaseToModule(ReleaseBean releaseBean) throws DtoConversionException {
+		ReleaseDao releaseDao = (ReleaseDao) DaoFactory.generateService(DaoType.RELEASE);
+		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		TmRelease releaseEntity = toEntity(releaseBean);
+		releaseEntity = releaseDao.persist(releaseEntity, true);
+		releaseBean = toBean(releaseEntity);
+		releaseBean.setUserIdString(userDao.findByPk(releaseBean.getUserId()).getUserId());
+		return releaseBean;
+	}
 }

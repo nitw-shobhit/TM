@@ -8,7 +8,7 @@ angular.module('tm-app').controller("releaseController", function ($scope, $stat
 	
 	$scope.openAddReleaseBox = function() {
 		ngDialog.open({
-			template: 'addIssue',
+			template: 'addRelease',
 			className: 'ngdialog-theme-default addIssue',
 			preCloseCallback: function(value) {
 				return true;

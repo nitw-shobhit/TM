@@ -1,0 +1,61 @@
+{
+	"breadcrumb" : {
+		"projects" : "परियोजनाएं",
+		"about" : "के बारे में",
+		"notifications_inbox" : "सूचनाएं - इनबॉक्स",
+		"notifications_archived" : "सूचनाएं - पुरालेख",
+		"issues" : "मुद्दे",
+		"releases" : "विज्ञप्ति"
+	},
+	"button" : {
+		"add_release" : "रिलीज बनाएं",
+		"export" : "निर्यात",
+		"refresh" : "ताज़ा",
+		"add_project" : "परियोजना बनाएं",
+		"delete_selected" : "चयनित को हटाओ",
+		"archive_selected" : "आर्काइव चयनित",
+		"un_archive_selected" : "अन-आर्काइव चयनित",
+		"mark_as_read" : "Mark as read",
+		"archived_notifications" : "Archived Notifications",
+		"add_issue" : "Add Issue",
+		"home_error" : "HOME",
+		"contact_us_error" : "CONTACT US",
+		"add" : "Add",
+		"cancel" : "Cancel",
+		"accept" : "Accept",
+		"re_assign" : "Reassign",
+		"remove" : "Remove",
+		"re_open" : "Re-Open",
+		"mark_as_fixed" : "Mark as fixed",
+		"complete" : "Complete",
+		"update" : "Update",
+		"delete_module_permanently" : "Delete module permanently",
+		"login" : "Login",
+		"view_profile" : "View profile",
+		"change_password" : "Change password",
+		"logout" : "Logout"
+	},
+	"column_header" : {
+		"id" : "ID",
+		"name" : "NAME",
+		"status" : "STATUS",
+		"assignee" : "ASSIGNEE",
+		"created_on" : "CREATED-ON",
+		"actions" : "ACTIONS"
+	},
+	"section_header" : {
+		"active" : "ACTIVE",
+		"archived" : "ARCHIVED",
+		"update_profile" : "UPDATE PROFILE",
+		"change_password" : "CHANGE PASSWORD",
+		"team" : "TEAM",
+		"project_details" : "PROJECT DETAILS",
+		"edit_project" : "EDIT PROJECT",
+		"add_project" : "ADD PROJECT",
+		"notification_details" : "NOTIFICATION DETAILS",
+		"add_module" : "ADD MODULE",
+		"edit_module" : "EDIT MODULE",
+		"add_issue" : "ADD ISSUE",
+		"issue_id" : "ISSUE ID"
+	}
+}

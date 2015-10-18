@@ -9,9 +9,9 @@
 </head>
 <body>
 	<div>
-		<button class="btn btn-default btn-xs" data-ng-click="openAddIssueBox()"><span class="glyphicon glyphicon-plus"></span> Add Issue</button>
-		<button class="btn btn-default btn-xs" data-ng-click="exportIssues(moduleId)" style="margin-left:5px;"><span class="glyphicon glyphicon-export"></span> Export</button>
-		<button class="btn btn-danger btn-xs" data-ng-click="getIssuesByModule(moduleId)" style="margin-left:5px;"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
+		<button class="btn btn-default btn-xs" data-ng-click="openAddIssueBox()"><span class="glyphicon glyphicon-plus"></span> {{'button.add_issue' | translate}}</button>
+		<button class="btn btn-default btn-xs" data-ng-click="exportIssues(moduleId)" style="margin-left:5px;"><span class="glyphicon glyphicon-export"></span> {{'button.export' | translate}}</button>
+		<button class="btn btn-danger btn-xs" data-ng-click="getIssuesByModule(moduleId)" style="margin-left:5px;"><span class="glyphicon glyphicon-refresh"></span> {{'button.refresh' | translate}}</button>
 	</div>
 	<br>
 	<table class="table table-striped issueTable" at-table at-paginated at-list="issues" at-config="config">
@@ -33,7 +33,9 @@
 				</td>
 				<td at-implicit at-sortable at-attribute="id" at-initial-sorting="asc" at-title="ID" ></td>
 				<td at-implicit at-sortable at-attribute="issName" at-title="NAME" ></td>
-				<td at-implicit at-sortable at-attribute="issStatus" at-title="STATUS"></td>
+				<td at-title="STATUS">
+					<a class="underlinedLink" data-ng-click="viewIssueStatus(item)">{{item.issStatus}}</a>
+				</td>
 				<td at-implicit at-sortable at-attribute="userIdString" at-title="ASSIGNEE" ></td>
 				<td at-implicit at-sortable at-attribute="issOwnerString" at-title="OWNER" ></td>
 				<td at-implicit at-sortable at-attribute="dtCreated" at-title="CREATED-ON" ></td>

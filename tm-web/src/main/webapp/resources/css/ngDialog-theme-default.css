@@ -264,3 +264,8 @@
 	width: 547px;
 	height: 335px;
 }
+
+.ngdialog.ngdialog-theme-default.viewIssueStatus .ngdialog-content {
+	width: 600px;
+	height: 450px;
+}

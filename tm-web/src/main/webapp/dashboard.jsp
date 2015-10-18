@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-	<!DOCTYPE html>
+<jsp:include page="resources/pages/popups/commonPopups.jsp" />
+<!DOCTYPE html>
 <html data-ng-app="tm-app">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -16,12 +17,14 @@
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/angular-busy.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/gh-fork-ribbon.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/angucomplete-alt.css">
+	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/flag-icon.css">
 	<script src="<%= request.getContextPath()%>/resources/js/others/jquery-1.11.1.min.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/bootstrap.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular.min.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-route.min.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-ui-router.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-translate.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/others/angular-translate-loader-static-files.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/ngDialog.js"></script>
 	<!-- DIRECTIVES -->
 	<script src="<%= request.getContextPath()%>/resources/js/directives/confirmButtonDirective.js"></script>

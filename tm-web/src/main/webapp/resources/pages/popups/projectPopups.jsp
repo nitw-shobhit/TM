@@ -9,7 +9,7 @@
 <script type="text/ng-template" id="addProject">
 <fieldset class="popupFieldset">
 	<legend>
-		<span class="header">ADD PROJECT</span>
+		<span class="header">{{'section_header.add_project' | translate}}</span>
 	</legend>
 	<table class="formStructure">
 		<tr>
@@ -32,10 +32,10 @@
 		</tr>
 		<tr>
 			<td style="padding: 10px; float: right;">
-				<button class="btn btn-primary btn-xs" data-ng-click="addProject(ngDialogData)">Add</button>
+				<button class="btn btn-primary btn-xs" data-ng-click="addProject(ngDialogData)">{{'button.add' | translate}}</button>
 			</td>
 			<td style="padding: 10px;">
-				<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">Cancel</button>
+				<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">{{'button.cancel' | translate}}</button>
 			</td>		
 		</tr>
 	</table>
@@ -45,7 +45,7 @@
 <script type="text/ng-template" id="editProject">
 <fieldset class="popupFieldset">
 	<legend>
-		<span class="header">EDIT PROJECT</span>
+		<span class="header">{{'section_header.edit_project' | translate}}</span>
 	</legend>
 	<table class="formStructure">
 		<tr>
@@ -62,10 +62,10 @@
 		</tr>
 		<tr>
 			<td style="padding: 10px; float: right;">
-				<button class="btn btn-primary btn-xs" data-ng-click="editProject(ngDialogData)">Update</button>
+				<button class="btn btn-primary btn-xs" data-ng-click="editProject(ngDialogData)">{{'button.update' | translate}}</button>
 			</td>
 			<td style="padding: 10px;">
-				<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">Cancel</button>
+				<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">{{'button.cancel' | translate}}</button>
 			</td>		
 		</tr>
 	</table>
@@ -75,7 +75,7 @@
 <script type="text/ng-template" id="projectInfo">
 <fieldset class="popupFieldset">
 	<legend>
-		<span class="header">PROJECT DETAILS</span>
+		<span class="header">{{'section_header.project_details' | translate}}</span>
 	</legend>
 	<table class="formStructure">
 		<tr>
@@ -103,7 +103,7 @@
 <script type="text/ng-template" id="projectTeam">
 <fieldset class="popupFieldset">
 	<legend>
-		<span class="header">TEAM</span>
+		<span class="header">{{'section_header.team' | translate}}</span>
 	</legend>
 	<div>
 		<angucomplete-alt id="users" placeholder="Search users" pause="400" selected-object="addUserToList" local-data="ngDialogData.allUsers"

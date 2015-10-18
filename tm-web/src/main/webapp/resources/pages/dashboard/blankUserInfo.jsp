@@ -10,6 +10,9 @@
 	<div class="logoBoxSp">
 		<div class="logo">
 		</div>
+		<div style="float: right;">
+			<%@include file="locale.jsp"%>
+		</div>
 	</div>
 </body>
 </html>

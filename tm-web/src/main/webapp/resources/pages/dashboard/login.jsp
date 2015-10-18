@@ -15,7 +15,7 @@
 		<table class="loginButtons">
 			<tr>
 				<td>
-					<button class="btn btn-primary loginSubmit" data-ng-click="login()">Login</button>
+					<button class="btn btn-primary loginSubmit" data-ng-click="login()">{{'button.login' | translate}}</button>
 				</td>
 			</tr>
 		</table>

@@ -1,11 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TM</title>
-</head>
-<body>
-{{bname}}
 <script type="text/ng-template" id="confirmButton">
 <fieldset class="popupFieldset">
 	<legend>
@@ -18,5 +17,5 @@
 	<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">Cancel</button>
 </fieldset>
 </script>
-</body>
+</head>
 </html>

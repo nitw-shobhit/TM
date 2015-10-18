@@ -9,15 +9,15 @@
 </head>
 <body>
 	<ol class="breadcrumb">
-		<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController">Projects</a></li>
-		<li class="active">Notifications-Inbox</li>
+		<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController">{{'breadcrumb.projects' | translate}}</a></li>
+		<li class="active">{{'breadcrumb.notifications_inbox' | translate}}</li>
 	</ol>
 	<br>
 	<div>
-		<button class="btn btn-default btn-xs" data-ng-click="getUserNotifications()"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
-		<button class="btn btn-default btn-xs" data-ng-click="archiveSelectedNotifications()" style="margin-left:5px;"><span class="glyphicon glyphicon-list-alt"></span> Archive selected</button>
-		<button class="btn btn-default btn-xs" data-ng-click="markAsReadSelectedNotifications('inbox')" style="margin-left:5px;"><span class="glyphicon glyphicon-check"></span> Mark as read</button>
-		<button class="btn btn-primary btn-xs" data-ng-click="showArchivedNotifications()" style="float: right;"><span class="glyphicon glyphicon-new-window"></span> Archived Notifications</button>
+		<button class="btn btn-default btn-xs" data-ng-click="getUserNotifications()"><span class="glyphicon glyphicon-refresh"></span>{{'button.refresh' | translate}}</button>
+		<button class="btn btn-default btn-xs" data-ng-click="archiveSelectedNotifications()" style="margin-left:5px;"><span class="glyphicon glyphicon-list-alt"></span> {{'button.archive_selected' | translate}}</button>
+		<button class="btn btn-default btn-xs" data-ng-click="markAsReadSelectedNotifications('inbox')" style="margin-left:5px;"><span class="glyphicon glyphicon-check"></span> {{'button.mark_as_read' | translate}}</button>
+		<button class="btn btn-primary btn-xs" data-ng-click="showArchivedNotifications()" style="float: right;"><span class="glyphicon glyphicon-new-window"></span> {{'button.archived_notifications' | translate}}</button>
 	</div>
 	<br>
 	<table class="table notificationTable" at-table at-paginated at-list="notifications" at-config="config">

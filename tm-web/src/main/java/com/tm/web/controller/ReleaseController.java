@@ -33,6 +33,18 @@ public class ReleaseController {
 		return JsonUtils.toJson(releaseBeanList);
 	}
 	
+	@RequestMapping(method = RequestMethod.POST, value="/addReleaseToModule")
+	public @ResponseBody String addIssueToModule(@RequestParam("releaseBean") String jsonObj) throws InternalApplicationException {
+		ReleaseBean releaseBean = null;
+		try {
+			releaseBean = (ReleaseBean) JsonUtils.toPojo(jsonObj, ReleaseBean.class);
+			releaseBean = releaseService.addReleaseToModule(releaseBean);
+		} catch(Exception e) {
+			throw new InternalApplicationException("Something went wrong with the application", e);
+		}
+		return JsonUtils.toJson(releaseBean);
+	} 
+	
 	public ReleaseService getReleaseService() {
 		return releaseService;
 	}
