@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tm.core.bean.ProjectBean;
+import com.tm.model.bean.ui.ProjectBean;
 import com.tm.model.service.ProjectService;
 import com.tm.util.exceptions.DtoConversionException;
 import com.tm.util.exceptions.InternalApplicationException;

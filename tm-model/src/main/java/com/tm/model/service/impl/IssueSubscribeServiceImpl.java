@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.tm.core.bean.IssueSubscribeBean;
 import com.tm.core.entity.TmIssueSubscribe;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.IssueSubscribeDao;
 import com.tm.dao.db.UserDao;
+import com.tm.model.bean.ui.IssueSubscribeBean;
 import com.tm.model.service.IssueSubscribeService;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
 import com.tm.util.exceptions.DtoConversionException;

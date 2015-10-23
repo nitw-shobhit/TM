@@ -5,12 +5,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import com.tm.core.bean.IssueAttachmentBean;
-import com.tm.core.bean.IssueBean;
-import com.tm.core.bean.IssueCommentBean;
-import com.tm.core.bean.IssueHistoryBean;
-import com.tm.core.bean.IssueStatus;
-import com.tm.core.bean.IssueSubscribeBean;
 import com.tm.core.entity.TmIssue;
 import com.tm.core.entity.TmIssueAttachment;
 import com.tm.core.entity.TmIssueComment;
@@ -21,6 +15,12 @@ import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.IssueDao;
 import com.tm.dao.db.UserDao;
+import com.tm.model.bean.ui.IssueAttachmentBean;
+import com.tm.model.bean.ui.IssueBean;
+import com.tm.model.bean.ui.IssueCommentBean;
+import com.tm.model.bean.ui.IssueHistoryBean;
+import com.tm.model.bean.ui.IssueStatus;
+import com.tm.model.bean.ui.IssueSubscribeBean;
 import com.tm.model.service.IssueAttachmentService;
 import com.tm.model.service.IssueCommentService;
 import com.tm.model.service.IssueHistoryService;

@@ -1,4 +1,4 @@
-package com.tm.core.bean;
+package com.tm.model.bean.ui;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

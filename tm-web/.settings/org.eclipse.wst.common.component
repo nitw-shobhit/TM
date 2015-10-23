@@ -4,6 +4,9 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="tm-report-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/tm-report/tm-report">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="tm-model-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/tm-model/tm-model">
             <dependency-type>uses</dependency-type>
         </dependent-module>

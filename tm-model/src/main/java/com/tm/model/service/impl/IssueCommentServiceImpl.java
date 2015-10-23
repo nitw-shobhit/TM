@@ -3,12 +3,12 @@ package com.tm.model.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tm.core.bean.IssueCommentBean;
 import com.tm.core.entity.TmIssueComment;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.IssueCommentDao;
 import com.tm.dao.db.UserDao;
+import com.tm.model.bean.ui.IssueCommentBean;
 import com.tm.model.service.IssueCommentService;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
 import com.tm.util.exceptions.DtoConversionException;

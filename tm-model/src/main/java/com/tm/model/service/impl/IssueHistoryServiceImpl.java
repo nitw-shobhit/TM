@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.tm.core.bean.IssueHistoryBean;
 import com.tm.core.entity.TmIssueHistory;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.IssueHistoryDao;
+import com.tm.model.bean.ui.IssueHistoryBean;
 import com.tm.model.service.IssueHistoryService;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
 import com.tm.util.exceptions.DtoConversionException;

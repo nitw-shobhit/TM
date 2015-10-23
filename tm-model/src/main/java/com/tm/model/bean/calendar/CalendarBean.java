@@ -1,4 +1,4 @@
-package com.tm.core.bean;
+package com.tm.model.bean.calendar;
 
 import java.util.List;
 

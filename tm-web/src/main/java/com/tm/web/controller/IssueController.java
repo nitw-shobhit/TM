@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tm.core.bean.IssueBean;
-import com.tm.core.bean.IssueHistoryBean;
+import com.tm.model.bean.ui.IssueBean;
+import com.tm.model.bean.ui.IssueHistoryBean;
 import com.tm.model.service.IssueService;
 import com.tm.util.exceptions.InternalApplicationException;
 import com.tm.util.spring.JsonUtils;

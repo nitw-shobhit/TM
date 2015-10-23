@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tm.core.bean.ModuleBean;
+import com.tm.model.bean.ui.ModuleBean;
 import com.tm.model.service.ModuleService;
 import com.tm.util.exceptions.InternalApplicationException;
 import com.tm.util.spring.JsonUtils;

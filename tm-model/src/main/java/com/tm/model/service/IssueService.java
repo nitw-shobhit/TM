@@ -2,9 +2,9 @@ package com.tm.model.service;
 
 import java.util.List;
 
-import com.tm.core.bean.IssueBean;
-import com.tm.core.bean.IssueHistoryBean;
 import com.tm.core.entity.TmIssue;
+import com.tm.model.bean.ui.IssueBean;
+import com.tm.model.bean.ui.IssueHistoryBean;
 import com.tm.util.assembler.DtoAssemblerFacade;
 import com.tm.util.exceptions.DaoException;
 import com.tm.util.exceptions.DtoConversionException;

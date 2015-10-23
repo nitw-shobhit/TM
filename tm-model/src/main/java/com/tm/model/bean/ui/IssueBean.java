@@ -1,4 +1,4 @@
-package com.tm.core.bean;
+package com.tm.model.bean.ui;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.inspiresoftware.lib.dto.geda.annotations.Dto;
 import com.inspiresoftware.lib.dto.geda.annotations.DtoField;
+import com.tm.model.bean.BaseBean;
 
 @Dto
 public class IssueBean extends BaseBean implements Serializable {

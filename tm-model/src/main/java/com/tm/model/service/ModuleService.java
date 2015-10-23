@@ -2,8 +2,8 @@ package com.tm.model.service;
 
 import java.util.List;
 
-import com.tm.core.bean.ModuleBean;
 import com.tm.core.entity.TmModule;
+import com.tm.model.bean.ui.ModuleBean;
 import com.tm.util.assembler.DtoAssemblerFacade;
 import com.tm.util.exceptions.DtoConversionException;
 

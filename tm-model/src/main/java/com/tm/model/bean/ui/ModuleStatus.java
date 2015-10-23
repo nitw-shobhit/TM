@@ -1,4 +1,4 @@
-package com.tm.core.bean;
+package com.tm.model.bean.ui;
 
 public enum ModuleStatus {
 	

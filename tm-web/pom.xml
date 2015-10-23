@@ -26,6 +26,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.tm</groupId>
+			<artifactId>tm-report</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tm</groupId>
 			<artifactId>tm-model</artifactId>
 			<version>0.1</version>
 		</dependency>

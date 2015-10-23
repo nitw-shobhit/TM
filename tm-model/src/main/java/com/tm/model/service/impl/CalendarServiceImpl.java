@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import com.tm.core.bean.CalendarBean;
-import com.tm.core.bean.DateBean;
-import com.tm.core.bean.DayBean;
+import com.tm.model.bean.calendar.CalendarBean;
+import com.tm.model.bean.calendar.DateBean;
+import com.tm.model.bean.calendar.DayBean;
 import com.tm.model.service.CalendarService;
 
 public class CalendarServiceImpl implements CalendarService {

@@ -5,11 +5,11 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import com.tm.core.bean.ProjectBean;
 import com.tm.core.entity.TmProject;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.ProjectDao;
+import com.tm.model.bean.ui.ProjectBean;
 import com.tm.model.service.ModuleService;
 import com.tm.model.service.ProjectService;
 import com.tm.model.service.helper.ModuleHelper;

@@ -3,12 +3,12 @@ package com.tm.model.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tm.core.bean.ModuleBean;
-import com.tm.core.bean.ModuleStatus;
 import com.tm.core.entity.TmModule;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.ModuleDao;
+import com.tm.model.bean.ui.ModuleBean;
+import com.tm.model.bean.ui.ModuleStatus;
 import com.tm.model.service.ModuleService;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
 import com.tm.util.exceptions.DtoConversionException;

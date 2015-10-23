@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import com.tm.core.bean.NotificationBean;
 import com.tm.core.entity.TmNotificationVariable;
+import com.tm.model.bean.ui.NotificationBean;
 import com.tm.util.exceptions.DtoConversionException;
 import com.tm.util.exceptions.FileLoadException;
 import com.tm.util.file.PropertyUtils;

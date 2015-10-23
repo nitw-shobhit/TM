@@ -1,10 +1,11 @@
-package com.tm.core.bean;
+package com.tm.model.bean.ui;
 
 import java.io.Serializable;
 import java.sql.Blob;
 
 import com.inspiresoftware.lib.dto.geda.annotations.Dto;
 import com.inspiresoftware.lib.dto.geda.annotations.DtoField;
+import com.tm.model.bean.BaseBean;
 
 @Dto
 public class IssueAttachmentBean extends BaseBean implements Serializable {

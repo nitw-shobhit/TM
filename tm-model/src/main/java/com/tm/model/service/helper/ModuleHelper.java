@@ -3,8 +3,8 @@ package com.tm.model.service.helper;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tm.core.bean.ModuleStatus;
 import com.tm.core.entity.TmModule;
+import com.tm.model.bean.ui.ModuleStatus;
 
 public class ModuleHelper {
 

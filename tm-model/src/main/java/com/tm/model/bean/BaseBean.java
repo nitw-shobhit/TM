@@ -1,4 +1,4 @@
-package com.tm.core.bean;
+package com.tm.model.bean;
 
 import java.sql.Timestamp;
 

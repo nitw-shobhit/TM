@@ -38,12 +38,18 @@
   		</tr>
   		<tr>
   			<td style="padding: 30px;">
+  				<div data-ng-click="openApplication('Settings')" class="appBox">
+  					<span class="glyphicon glyphicon-signal" style="font-size: 90px; margin-top:10px;"></span>
+  					<br><br>
+  					<span>Business Intelligence</span>
+  				</div>
+  			</td>
+  			<td style="padding: 30px;">
   				<div class="appBox">
   					<br><br><br>
   					<span>This app is under construction!!</span>
   				</div>
   			</td>
-  			<td></td>
   			<td></td>
   		</tr>
   	</table>

@@ -13,5 +13,6 @@
 		<module>tm-dao</module>
 		<module>tm-model</module>
 		<module>tm-web</module>
+		<module>tm-report</module>
 	</modules>
 </project>

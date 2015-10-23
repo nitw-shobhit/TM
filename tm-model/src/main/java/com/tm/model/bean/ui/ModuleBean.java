@@ -1,9 +1,10 @@
-package com.tm.core.bean;
+package com.tm.model.bean.ui;
 
 import java.io.Serializable;
 
 import com.inspiresoftware.lib.dto.geda.annotations.Dto;
 import com.inspiresoftware.lib.dto.geda.annotations.DtoField;
+import com.tm.model.bean.BaseBean;
 
 @Dto
 public class ModuleBean extends BaseBean implements Serializable {

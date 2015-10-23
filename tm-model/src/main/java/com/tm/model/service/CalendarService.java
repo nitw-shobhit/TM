@@ -1,6 +1,6 @@
 package com.tm.model.service;
 
-import com.tm.core.bean.CalendarBean;
+import com.tm.model.bean.calendar.CalendarBean;
 
 public interface CalendarService {
 
