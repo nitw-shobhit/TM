@@ -9,6 +9,7 @@
 </head>
 <body>
 	<ol class="breadcrumb">
+		<li><a data-ng-click="redirectToMyApps()" data-ng-controller="rootController">{{'breadcrumb.applications' | translate}}</a></li>
 		<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController">{{'breadcrumb.projects' | translate}}</a></li>
 		<li class="active">{{'breadcrumb.notifications_inbox' | translate}}</li>
 	</ol>

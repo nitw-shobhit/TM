@@ -1,6 +1,13 @@
 angular.module('tm-app').controller("issueController", function ($state, $scope, $rootScope, $timeout, ngDialog) {
 	$scope.moduleId = $rootScope.selectedModule;
-	var statusArray = ["ACCEPTED", "REJECTED", "CANCELLED", "REOPENED", "FIXED", "COMPLETED"];
+	var statusArray = [
+			{id : "ACCEPTED", coordinates : {height : 33, width : 65, top : 148, left : 224}},
+			{id : "REJECTED", coordinates : {height : 33, width : 72, top : 292, left : 395}},
+			{id : "CANCELLED", coordinates : {height : 0, width : 0, top : 0, left : 0}},
+			{id : "REOPENED", coordinates : {height : 33, width : 80, top : 220, left : 597}},
+			{id : "FIXED", coordinates : {height : 33, width : 72, top : 148, left : 395}},
+			{id : "COMPLETED", coordinates : {height : 33, width : 79, top : 148, left : 644}}
+	];
 	
 	getIssuesByModuleId($scope.moduleId);
 	
@@ -98,9 +105,22 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 	};
 	
 	$scope.viewIssueStatus = function(issueBean) {
+		issueBean.config = {
+		    itemsPerPage: 9,
+		    fillLastPage: false
+	    };
+		issueBean.statusList=[];
+		var tempStatus = {};
+		for(var index = 0; index < issueBean.issHistory.length; index ++ ) {
+			tempStatus = {
+				status : issueBean.issHistory[index].hisContent,
+				date : issueBean.issHistory[index].hisCreated
+			};
+			issueBean.statusList.push(tempStatus);
+		}
 		ngDialog.open({
 			template: 'viewIssueStatus',
-			className: 'ngdialog-theme-default viewIssue',
+			className: 'ngdialog-theme-default viewIssueStatus',
 			data: issueBean,
 			scope: $scope,
 			preCloseCallback: function(value) {
@@ -141,7 +161,8 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus=statusArray[0];
+		    	issueBean.issStatus=statusArray[0].id;
+		    	issueBean.issStatusCoordinates = statusArray[0].coordinates;
 		    	issueBean.issHistory.push(data);
 		    }
 		}).fail(function() {
@@ -160,7 +181,8 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus=statusArray[1];
+		    	issueBean.issStatus=statusArray[1].id;
+		    	issueBean.issStatusCoordinates = statusArray[1].coordinates;
 		    	issueBean.issHistory.push(data);
 		    }
 		}).fail(function() {
@@ -182,7 +204,8 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    type: 'POST',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus=statusArray[2];
+		    	issueBean.issStatus=statusArray[2].id;
+		    	issueBean.issStatusCoordinates = statusArray[2].coordinates;
 		    	issueBean.issHistory.push(data);
 		    }
 		}).fail(function() {
@@ -200,7 +223,8 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    type: 'POST',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus=statusArray[3];
+		    	issueBean.issStatus=statusArray[3].id;
+		    	issueBean.issStatusCoordinates = statusArray[3].coordinates;
 		    }
 		}).fail(function() {
 			ngDialog.close();
@@ -217,7 +241,8 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    type: 'POST',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus=statusArray[4];
+		    	issueBean.issStatus=statusArray[4].id;
+		    	issueBean.issStatusCoordinates = statusArray[4].coordinates;
 		    }
 		}).fail(function() {
 			ngDialog.close();
@@ -234,7 +259,8 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    type: 'POST',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus=statusArray[5];
+		    	issueBean.issStatus=statusArray[5].id;
+		    	issueBean.issStatusCoordinates = statusArray[5].coordinates;
 		    }
 		}).fail(function() {
 			ngDialog.close();

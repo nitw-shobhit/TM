@@ -38,6 +38,8 @@
 	</bean>
 	<bean id="releaseService" class="com.tm.model.service.impl.ReleaseServiceImpl">
 	</bean>
+	<bean id="calendarService" class="com.tm.model.service.impl.CalendarServiceImpl">
+	</bean>
 
 	<!-- LISTENER -->
 	<bean name="starter" init-method="init" class="com.tm.model.init.service.StartupService" >
@@ -74,6 +76,9 @@
 	</bean>
 	<bean name="/tmRelease/*" class="com.tm.web.controller.ReleaseController">
 		<property name="releaseService" ref="releaseService" />
+	</bean>
+	<bean name="/tmCalendar/*" class="com.tm.web.controller.CalendarController">
+		<property name="calendarService" ref="calendarService" />
 	</bean>
 	
 	<!-- I18N  -->

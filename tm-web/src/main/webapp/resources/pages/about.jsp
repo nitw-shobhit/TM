@@ -8,6 +8,7 @@
 </head>
 <body>
 	<ol class="breadcrumb">
+		<li><a data-ng-click="redirectToMyApps()" data-ng-controller="rootController">{{'breadcrumb.applications' | translate}}</a></li>
 		<li><a data-ng-click="redirectToProjects()"
 			data-ng-controller="rootController">{{'breadcrumb.projects' | translate}}</a></li>
 		<li class="active">{{'breadcrumb.about' | translate}}</li>
@@ -22,8 +23,8 @@
 	</div>
 	<br>
 	<div>
-		<b>WHAT?</b>
-		<div style="font-size: 12px;">
+		<div style="font-size: 12px; background-color: #FFF;">
+			<b>WHAT?</b>
 			<p>Functional testing can be a real pain in the ***. Recording
 				bugs is essential for any software development. What if a bug
 				reappears and you cant seem to recall what went wrong the last time.
@@ -45,16 +46,18 @@
 				Fix, Complete the issue. <br>- Archive to keep it safe.
 			</p>
 		</div>
-		<br> <b>WHO?</b>
-		<div style="font-size: 12px;">
+		<br>
+		<div style="font-size: 12px; background-color: #FFF;">
+			<b>WHO?</b>
 			<p>The developer, Shobhit Tyagi, is a Java backend engineer, who
 				has been about 5 years in this industry. He is 27 years old, born
 				and raised in New Delhi, India. He currently works with Avantica
 				Technologies in Peru. He is passionate about programming and music.
 				And he loves to travel.</p>
 		</div>
-		<br> <b>WHY?</b>
-		<div style="font-size: 12px;">
+		<br>
+		<div style="font-size: 12px; background-color: #FFF;">
+			<b>WHY?</b>
 			<p>
 				Shobhit is crazy to learn new technologies. And this application is
 				an attempt to get familiar with some of the booming tools and
@@ -64,8 +67,9 @@
 				WildFly <br>- Maven, SONAR, Jenkins, Github
 			</p>
 		</div>
-		<br> <b>HOW?</b>
-		<div style="font-size: 12px;">
+		<br>
+		<div style="font-size: 12px; background-color: #FFF;">
+			<b>HOW?</b>
 			<p>
 				Why dont you <a class="underlinedLink">Take a Tour</a>.
 			</p>

@@ -1,5 +1,6 @@
 {
 	"breadcrumb" : {
+		"applications" : "My Apps",
 		"projects" : "Projects",
 		"about" : "About",
 		"notifications_inbox" : "Notifications - Inbox",
@@ -57,6 +58,8 @@
 		"edit_module" : "EDIT MODULE",
 		"add_issue" : "ADD ISSUE",
 		"issue_id" : "ISSUE ID",
-		"view_issue_status" : "STATUS"
+		"view_issue_status" : "STATUS",
+		"months" : "MONTHS",
+		"years" : "YEARS"
 	}
 }

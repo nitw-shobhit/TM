@@ -3,6 +3,7 @@ package com.tm.core.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.inspiresoftware.lib.dto.geda.annotations.Dto;
 import com.inspiresoftware.lib.dto.geda.annotations.DtoField;
@@ -47,6 +48,8 @@ public class IssueBean extends BaseBean implements Serializable {
 	private List<IssueHistoryBean> issHistory;
 	
 	private List<IssueSubscribeBean> issSubscribe;
+	
+	private Map<String, Integer> issStatusCoordinates;
 	
 	public long getId() {
 		return id;
@@ -172,5 +175,13 @@ public class IssueBean extends BaseBean implements Serializable {
 
 	public void setIssSubscribe(List<IssueSubscribeBean> issSubscribe) {
 		this.issSubscribe = issSubscribe;
+	}
+
+	public Map<String, Integer> getIssStatusCoordinates() {
+		return issStatusCoordinates;
+	}
+
+	public void setIssStatusCoordinates(Map<String, Integer> issStatusCoordinates) {
+		this.issStatusCoordinates = issStatusCoordinates;
 	}
 }

@@ -266,6 +266,16 @@
 }
 
 .ngdialog.ngdialog-theme-default.viewIssueStatus .ngdialog-content {
-	width: 600px;
-	height: 450px;
+	width: 1100px;
+	height: 480px;
+}
+
+.ngdialog.ngdialog-theme-default.months .ngdialog-content {
+	width: 400px;
+	height: 230px;
+}
+
+.ngdialog.ngdialog-theme-default.years .ngdialog-content {
+	width: 300px;
+	height: 230px;
 }

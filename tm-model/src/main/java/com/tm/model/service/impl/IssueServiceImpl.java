@@ -64,6 +64,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 			issueBean.setIssSubscribe(issueSubscribeService.getIssueSubscribers(issueBean.getId()));
 			issueBean.setUserIdString(userDao.findByPk(issueBean.getUserId()).getUserId());
 			issueBean.setIssOwnerString(userDao.findByPk(issueBean.getIssOwner()).getUserId());
+			issueBean.setIssStatusCoordinates(IssueStatus.valueOf(issueBean.getIssStatus()).getCoordinates());
 			issueList.add(issueBean);
 		}
 		return issueList;
@@ -108,6 +109,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 				issueAttachmentEntityList, issueHistoryEntity, issueSubscribeEntityList));
 		returnIssueBean.setUserIdString(issueBean.getUserIdString());
 		returnIssueBean.setIssOwnerString(issueOwner);
+		returnIssueBean.setIssStatusCoordinates(IssueStatus.valueOf(returnIssueBean.getIssStatus()).getCoordinates());
 		
 		// ISSUE COMMENT BEAN
 		List<IssueCommentBean> issueCommentBeanList = new ArrayList<IssueCommentBean>();

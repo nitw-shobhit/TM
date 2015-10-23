@@ -4,12 +4,7 @@
 }
 fieldset {
 	border: 1px solid #575757;
-	border-radius: 5px;
-	background: url(../images/background.jpg);
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	background-color: #f5f5f5;
 }
 legend {
 	background-color: #FFF;
@@ -24,7 +19,7 @@ legend {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	height: 750px;
+	height: 745px;
 	width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
@@ -60,9 +55,8 @@ legend {
 	border: 1px solid;
 }
 .contentBox {
-	background: url(../images/background.jpg);
 	background-size: 996px 700px;
-	height: 690px;
+	height: 695px;
 	width: 996px;
 	margin: 2px;
 }
@@ -250,7 +244,6 @@ legend {
 	width: 140px;
 }
 .arcProjectFieldSet {
-	background: none;
 	width: 150px;
 	float: left;
 	margin-left:8px;
@@ -272,7 +265,9 @@ legend {
 	font-size: 10px;
 	background-color: #FFF;
 }
-
+.statusTable {
+	font-size: 10px;
+}
 .notificationTable th {
 	text-align: left;
 }
@@ -442,13 +437,13 @@ legend {
 	border-left: 1px solid;
 	border-right: 1px solid;
 	padding:5px;
-	background-color: #FFF;
+	background-color: #B0CFF4;
 	text-align: left;
 }
 .moduleTabInActive {
-	border-bottom: 1px solid;
+	border-bottom: 1px solid #FFF;
 	padding:5px;
-	background-color: #B0CFF4;
+	background-color: #FFF;
     border-left: 1px solid #EEE;
     text-align: left;
 }
@@ -478,4 +473,68 @@ legend {
 }
 .notificationUnread {
 	color: red;
+}
+.appBox {
+	height: 150px;
+	width: 150px;
+	text-align: center;
+	background-color: #FFF;
+	cursor: pointer;
+	box-shadow: 4px 4px 4px #DDD, -4px 4px 4px #DDD, 4px -4px 4px #DDD, -4px -4px 4px #DDD;
+}
+.calHeader {
+	color: #AAA;
+	font-weight: bolder;
+	width: 130px;
+	border: 1px solid #CCC;
+	height: 70px;
+	box-shadow: -15px 0 0 #DDD;
+}
+.enabledCalDates {
+	border: 1px solid #CCC;
+	width: 130px;
+	height: 70px;
+	cursor: pointer;
+	box-shadow: 1px 0 0px #DDD, -1px -1px 5px #DDD;
+}
+.enabledCalDates:active {
+	border: 1px solid #CCC;
+	width: 130px;
+	height: 70px;
+	cursor: pointer;
+	box-shadow: 0 0 0 #DDD, 0 0 0 #DDD;
+}
+.disabledCalDates {
+	width: 130px;
+	height: 70px;
+	border: 1px solid #CCC;
+	background-color: #EEE;
+	color: #EEE;
+}
+.monthsBox {
+	padding: 10px;
+	border: 1px solid #CCC;
+	cursor: pointer;
+	box-shadow: 1px 0 0px #DDD, -1px -1px 3px #DDD;
+}
+.monthsBox:active {
+	padding: 10px;
+	border: 1px solid #CCC;
+	cursor: pointer;
+	box-shadow: 0 0 0 #DDD, 0 0 0 #DDD;
+}
+.yearsBox {
+	padding: 10px;
+	border: 1px solid #CCC;
+	cursor: pointer;
+	box-shadow: 1px 0 0px #DDD, -1px -1px 3px #DDD;
+}
+.yearsBox:active {
+	padding: 10px;
+	border: 1px solid #CCC;
+	cursor: pointer;
+	box-shadow: 0 0 0 #DDD, 0 0 0 #DDD;
+}
+.boldText {
+	font-weight: bolder;
 }

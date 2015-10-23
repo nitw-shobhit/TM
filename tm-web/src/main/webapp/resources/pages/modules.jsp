@@ -9,6 +9,7 @@
 </head>
 <body>
 	<ol class="breadcrumb">
+		<li><a data-ng-click="redirectToMyApps()" data-ng-controller="rootController">{{'breadcrumb.applications' | translate}}</a></li>
 		<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController">{{'breadcrumb.projects' | translate}}</a></li>
 		<li data-ng-show="selectedSubModule == 'issue'" class="active">{{'breadcrumb.issues' | translate}}</li>
 		<li data-ng-show="selectedSubModule == 'release'" class="active">{{'breadcrumb.releases' | translate}}</li>
@@ -16,7 +17,7 @@
 	<table>
 		<tr>
 			<td>
-				<span style="font-size: 11px;">Need a new module? Click <a data-ng-click="openAddModuleBox()" class="btn-link">here</a> to get started.</span>
+				<span style="font-size: 11px; color: #FFF;">Need a new module? Click <a data-ng-click="openAddModuleBox()" class="btn-link">here</a> to get started.</span>
 			</td>
 		</tr>
 	</table>

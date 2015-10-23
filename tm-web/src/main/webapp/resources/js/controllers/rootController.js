@@ -9,4 +9,9 @@ angular.module('tm-app').controller("rootController", function($scope, $rootScop
 	$scope.redirectToProjects = function () {
 		$state.go('app.dboard.project');
 	};
+	
+	$scope.redirectToMyApps = function () {
+		$state.go('app.dboard');
+	};
+	
 });

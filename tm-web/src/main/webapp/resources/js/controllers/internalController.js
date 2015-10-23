@@ -1,5 +1,5 @@
 angular.module('tm-app').controller("internalController", function ($state, $scope, $translate) {
-
+	
 	$scope.locale = "en";
 	
 	$scope.setLocale = function (locale) {

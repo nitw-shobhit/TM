@@ -9,6 +9,7 @@
 </head>
 <body>
 	<ol class="breadcrumb">
+		<li><a data-ng-click="redirectToMyApps()" data-ng-controller="rootController">{{'breadcrumb.applications' | translate}}</a></li>
 		<li class="active">{{'breadcrumb.projects' | translate}}</li>
 	</ol>
 	<div class="projectMainDiv">
@@ -77,9 +78,6 @@
 				</table>
 			</div>
 		</fieldset>
-	</div>
-	<br>
-	<div data-ui-view="projectData">
 	</div>
 </body>
 </html>

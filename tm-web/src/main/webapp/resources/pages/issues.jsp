@@ -34,7 +34,7 @@
 				<td at-implicit at-sortable at-attribute="id" at-initial-sorting="asc" at-title="ID" ></td>
 				<td at-implicit at-sortable at-attribute="issName" at-title="NAME" ></td>
 				<td at-title="STATUS">
-					<a class="underlinedLink" data-ng-click="viewIssueStatus(item)">{{item.issStatus}}</a>
+					<a class="underlinedLink" data-ng-click="viewIssueStatus(item)">View</a>
 				</td>
 				<td at-implicit at-sortable at-attribute="userIdString" at-title="ASSIGNEE" ></td>
 				<td at-implicit at-sortable at-attribute="issOwnerString" at-title="OWNER" ></td>

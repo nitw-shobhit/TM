@@ -268,49 +268,44 @@
 	</div>
 </fieldset>
 </script>
+<!-- ##########################################ISSUE STATUS############################################# -->
 <script type="text/ng-template" id="viewIssueStatus">
 <fieldset class="popupFieldset">
 	<legend>
-		<span class="header">{{'section_header.view_issue_status' | translate}}</span>
+		<span class="header ng-binding" tabindex="-1" style="outline: 0px none;">STATUS</span>
 	</legend>
-	<table style="margin-left: auto; margin-right: auto;">
-		<tr>
-			<td style="padding: 10px;">
-				<div data-ng-hide="ngDialogData.issStatus != 'CANCELLED'" style="height: 16px; width: 16px; border: 1px solid; margin-left: auto; margin-right: auto;"></div>
-				<div data-ng-show="ngDialogData.issStatus != 'CANCELLED'" style="height: 16px; width: 16px; border: 1px solid; margin-left: auto; margin-right: auto; background-color: green;"></div>
-				<span style="font-size: 12px; white-space: nowrap;">Opened / Re-Opened</span>
-			</td>
-
-			<td>
-				<div style="margin-left: auto; margin-right: auto; height: 0px; width: 100px; border: 1px solid;"></div>
-			</td>
-
-			<td style="padding: 10px;">
-				<div data-ng-hide="ngDialogData.issStatus != 'OPEN' && ngDialogData.issStatus != 'REOPEN' && ngDialogData.issStatus != 'CANCELLED'" style="height: 16px; width: 16px; border: 1px solid; margin-left: auto; margin-right: auto;"></div>
-				<div data-ng-show="ngDialogData.issStatus != 'OPEN' && ngDialogData.issStatus != 'REOPEN' && ngDialogData.issStatus != 'CANCELLED'" style="height: 16px; width: 16px; border: 1px solid; margin-left: auto; margin-right: auto; background-color: green;"></div>
-				<span style="font-size: 12px; white-space: nowrap;">Accepted / Rejected</span>
-			</td>
-
-			<td>
-				<div style="margin-left: auto; margin-right: auto; height: 0px; width: 100px; border: 1px solid;"></div>
-			</td>
-
-			<td style="padding: 10px;">
-				<div style="height: 16px; width: 16px; border: 1px solid; margin-left: auto; margin-right: auto;"></div>
-				<span style="font-size: 12px;">Fixed</span>
-			</td>
-
-			<td>
-				<div style="margin-left: auto; margin-right: auto; height: 0px; width: 100px; border: 1px solid;"></div>
-			</td>
-
-			<td style="padding: 10px;">
-				<div style="height: 16px; width: 16px; border: 1px solid; margin-left: auto; margin-right: auto;"></div>
-				<span style="font-size: 12px;">Completed</span>
-			</td>
-		</tr>
-	</table>
-	<hr style="border-top: 1px solid;">
+	<div>
+		<div style="float: left;">
+			<div style="height: 400px; width: 750px; border: 1px solid;">
+				<div style="position:relative;top:-1;left:-1;">
+				</div>		
+				<img style="height: 398px; width: 748px;position:absolute;" src="resources/images/issue-status.png">
+			</div>
+			<div style="top:{{ngDialogData.issStatusCoordinates.top}}px;
+				left:{{ngDialogData.issStatusCoordinates.left}}px;
+				height:{{ngDialogData.issStatusCoordinates.height}}px;
+				width:{{ngDialogData.issStatusCoordinates.width}}px;
+				border:4px solid green; z-index:1000;
+				border-radius: 10px;position:absolute;"></div>
+		</div>
+		<div style="float: left; border: 1px solid; margin-left: 5px; height: 400px; width: 292px;">
+			<div style="background-color: #FFF; width: 282px; height: 23px; margin: 5px; border:1px solid #DDD; text-align: center;">
+				STATUS TRACE
+			</div>
+			<div>
+				<table class="table table-striped statusTable" at-table at-paginated at-list="ngDialogData.statusList" at-config="config">
+					<thead />
+					<tbody>
+						<tr>
+							<td at-implicit at-sortable at-attribute="status" at-title="STATUS" ></td>
+							<td at-implicit at-sortable at-attribute="date" at-initial-sorting="asc" at-title="DATE" ></td>
+						</tr>
+					</tbody>
+				</table>
+				<at-pagination at-list="statusTable" at-config="ngDialogData.config"></at-pagination>
+			</div>
+		</div>
+	</div> 
 </fieldset>
 </script>
 </head>

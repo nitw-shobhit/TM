@@ -40,15 +40,19 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 			url: "/",
 			views: {
 				'content' : {
-					templateUrl : 'resources/pages/dashboard/login.jsp',
+					templateUrl : 'resources/pages/login.jsp',
 					controller : 'loginController'
 				},
 				'userInfo' : {
-					templateUrl : 'resources/pages/dashboard/blankUserInfo.jsp',
+					templateUrl : 'resources/pages/blankUserInfo.jsp',
 					controller : 'userInfoController'
 				},
 				'messageBox' : {
-					templateUrl : 'resources/pages/dashboard/messageBox.jsp',
+					templateUrl : 'resources/pages/messageBox.jsp',
+					controller : 'rootController'
+				},
+				'footer' : {
+					templateUrl : 'resources/pages/footer.jsp',
 					controller : 'rootController'
 				}
 			}
@@ -59,16 +63,38 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 			url: "",
 			views: {
 				'userInfo@' : {
-					templateUrl : 'resources/pages/dashboard/userInfo.jsp',
+					templateUrl : 'resources/pages/userInfo.jsp',
 					controller : 'userInfoController'
 				},
+				'content@' : {
+					templateUrl : 'resources/pages/dashboard.jsp',
+					controller : 'dashboardController'
+				}
+			}
+		}
+	)
+	.state('app.dboard.calendar',
+		{
+			url: "",
+			views: {
+				'content@' : {
+					templateUrl : 'resources/pages/calendar.jsp',
+					controller : 'calendarController'
+				}
+			}
+		}
+	)
+	.state('app.dboard.project',
+		{
+			url: "",
+			views: {
 				'content@' : {
 					templateUrl : 'resources/pages/projects.jsp',
 					controller : 'projectController'
 				}
 			}
 		}
-	)
+  	)
 	.state('app.dboard.about',
 		{
 			url: "",
@@ -102,17 +128,6 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 			}
 		}
 	)
-  	.state('app.dboard.project',
-		{
-			url: "",
-			views: {
-				'content@' : {
-					templateUrl : 'resources/pages/projects.jsp',
-					controller : 'projectController'
-				}
-			}
-		}
-  	)
   	.state('app.dboard.module',
 		{
 			url: "",
