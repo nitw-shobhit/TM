@@ -15,14 +15,14 @@ public class UserProjectServiceImpl extends DtoAssemblerFacadeImpl<TmUserProject
 
 	@Override
 	public List<UserBean> getProjectTeam(long projectId) throws DtoConversionException {
-		UserProjectDao userProjectDao = (UserProjectDao) DaoFactory.generateService(DaoType.USER_PROJECT);
+		UserProjectDao userProjectDao = (UserProjectDao) DaoFactory.generateDao(DaoType.USER_PROJECT);
 		List<TmUserProject> userProjList = userProjectDao.byProjectId(projectId);
 		return new UserServiceImpl().getUsersFromUserProjectList(userProjList);
 	}
 
 	@Override
 	public void addUserToProject(long userId, long projectId) {
-		UserProjectDao userProjectDao = (UserProjectDao) DaoFactory.generateService(DaoType.USER_PROJECT);
+		UserProjectDao userProjectDao = (UserProjectDao) DaoFactory.generateDao(DaoType.USER_PROJECT);
 		TmUserProject userProject = new TmUserProject();
 		userProject.setProjId(projectId);
 		userProject.setUserId(userId);

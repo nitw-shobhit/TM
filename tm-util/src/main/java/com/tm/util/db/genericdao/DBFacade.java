@@ -1,7 +1,10 @@
-package com.tm.util.db;
+package com.tm.util.db.genericdao;
 
 import java.util.List;
 import java.util.Set;
+
+import com.tm.util.db.MultipleQueryBean;
+import com.tm.util.db.Param;
 
 public interface DBFacade<T, PK> {
 

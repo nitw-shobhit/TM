@@ -9,10 +9,10 @@
 </head>
 <body>
 	<ol class="breadcrumb">
-		<li><a data-ng-click="redirectToMyApps()" data-ng-controller="rootController">{{'breadcrumb.applications' | translate}}</a></li>
-		<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController">{{'breadcrumb.projects' | translate}}</a></li>
-		<li data-ng-show="selectedSubModule == 'issue'" class="active">{{'breadcrumb.issues' | translate}}</li>
-		<li data-ng-show="selectedSubModule == 'release'" class="active">{{'breadcrumb.releases' | translate}}</li>
+		<li><a data-ng-click="redirectToMyApps()" data-ng-controller="rootController"><span class="glyphicon glyphicon-th"></span> {{'breadcrumb.applications' | translate}}</a></li>
+		<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController"><span class="glyphicon glyphicon-folder-open"></span> {{'breadcrumb.projects' | translate}}</a></li>
+		<li data-ng-show="selectedSubModule == 'issue'" class="active"><span class="glyphicon glyphicon-align-justify"></span> {{'breadcrumb.issues' | translate}}</li>
+		<li data-ng-show="selectedSubModule == 'release'" class="active"><span class="glyphicon glyphicon-download-alt"></span> {{'breadcrumb.releases' | translate}}</li>
 	</ol>
 	<table>
 		<tr>

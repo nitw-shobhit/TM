@@ -1,4 +1,4 @@
-package com.tm.core.entity.manager;
+package com.tm.core.genericdao.impl_sql;
 
 import java.lang.reflect.ParameterizedType;
 import java.sql.Timestamp;
@@ -11,12 +11,13 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import com.tm.core.entity.TmBase;
+import com.tm.core.entity.manager_sql.EntityManagerFactory;
 import com.tm.core.query.QueryConstants;
-import com.tm.util.db.DBFacade;
 import com.tm.util.db.MultipleQueryBean;
 import com.tm.util.db.Param;
+import com.tm.util.db.genericdao.DBFacade;
 
-public class DBFacadeImpl<T, PK> extends QueryConstants implements DBFacade<T, PK> {
+public class DBFacadeImpl_Sql<T, PK> extends QueryConstants implements DBFacade<T, PK> {
 
 	@Override
 	public T persist(T obj, boolean baseFlag) {

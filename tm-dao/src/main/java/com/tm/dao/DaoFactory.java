@@ -12,19 +12,19 @@ import com.tm.dao.db.ProjectDao;
 import com.tm.dao.db.ReleaseDao;
 import com.tm.dao.db.UserDao;
 import com.tm.dao.db.UserProjectDao;
-import com.tm.dao.db.impl.IssueAttachmentDaoImpl;
-import com.tm.dao.db.impl.IssueCommentDaoImpl;
-import com.tm.dao.db.impl.IssueDaoImpl;
-import com.tm.dao.db.impl.IssueHistoryDaoImpl;
-import com.tm.dao.db.impl.IssueSubscribeDaoImpl;
-import com.tm.dao.db.impl.ModuleDaoImpl;
-import com.tm.dao.db.impl.NotificationDaoImpl;
-import com.tm.dao.db.impl.NotificationVariableDaoImpl;
-import com.tm.dao.db.impl.ProjectDaoImpl;
-import com.tm.dao.db.impl.ReleaseDaoImpl;
-import com.tm.dao.db.impl.UserDaoImpl;
-import com.tm.dao.db.impl.UserProjectDaoImpl;
-import com.tm.util.db.DBFacade;
+import com.tm.dao.db.impl_sql.IssueAttachmentDaoImpl;
+import com.tm.dao.db.impl_sql.IssueCommentDaoImpl;
+import com.tm.dao.db.impl_sql.IssueDaoImpl;
+import com.tm.dao.db.impl_sql.IssueHistoryDaoImpl;
+import com.tm.dao.db.impl_sql.IssueSubscribeDaoImpl;
+import com.tm.dao.db.impl_sql.ModuleDaoImpl;
+import com.tm.dao.db.impl_sql.NotificationDaoImpl;
+import com.tm.dao.db.impl_sql.NotificationVariableDaoImpl;
+import com.tm.dao.db.impl_sql.ProjectDaoImpl;
+import com.tm.dao.db.impl_sql.ReleaseDaoImpl;
+import com.tm.dao.db.impl_sql.UserDaoImpl;
+import com.tm.dao.db.impl_sql.UserProjectDaoImpl;
+import com.tm.util.db.genericdao.DBFacade;
 
 public class DaoFactory {
 	
@@ -47,7 +47,7 @@ public class DaoFactory {
 		private static final ReleaseDao releaseDaoImpl = new ReleaseDaoImpl();
 	}
 	
-	public static DBFacade<?, ?> generateService(DaoType dType) {
+	public static DBFacade<?, ?> generateDao(DaoType dType) {
 		if(dType.equals(DaoType.USER)) {
 			return DaoFactoryHelper.userDaoImpl;
 		} else if(dType.equals(DaoType.PROJECT)) {

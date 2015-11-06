@@ -1,13 +1,13 @@
-package com.tm.dao.db.impl;
+package com.tm.dao.db.impl_sql;
 
 import java.util.List;
 
 import com.tm.core.entity.TmIssueComment;
-import com.tm.core.entity.manager.DBFacadeImpl;
+import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
 import com.tm.dao.db.IssueCommentDao;
 import com.tm.util.db.Param;
 
-public class IssueCommentDaoImpl extends DBFacadeImpl<TmIssueComment, Long> implements IssueCommentDao {
+public class IssueCommentDaoImpl extends DBFacadeImpl_Sql<TmIssueComment, Long> implements IssueCommentDao {
 
 	@Override
 	public List<TmIssueComment> byIssueId(long issueId) {

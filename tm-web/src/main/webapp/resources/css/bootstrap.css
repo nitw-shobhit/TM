@@ -4955,9 +4955,7 @@ a.label:focus {
   vertical-align: top;
   background-color: firebrick;
   border-radius: 10px;
-  padding-bottom: 3px;
-  padding-left: 3px;
-  padding-right: 2px;
+  padding: 2px;
 }
 .badge:empty {
   display: none;

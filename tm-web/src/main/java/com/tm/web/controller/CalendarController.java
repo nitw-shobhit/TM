@@ -31,6 +31,19 @@ public class CalendarController {
 		return JsonUtils.toJson(calendarBean);
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, value="/test")
+	public @ResponseBody String test() throws InternalApplicationException {
+//		CalendarBean calendarBean = null;
+//		try {
+//			calendarBean = calendarService.getCalendar(month, year);
+//		} catch(Exception e) {
+//			throw new InternalApplicationException("Something went wrong with the application", e);
+//		}
+//		return JsonUtils.toJson(calendarBean);
+		
+		return "Success";
+	}
+	
 	public CalendarService getCalendarService() {
 		return calendarService;
 	}

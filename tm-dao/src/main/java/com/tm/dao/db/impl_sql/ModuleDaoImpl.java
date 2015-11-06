@@ -1,13 +1,13 @@
-package com.tm.dao.db.impl;
+package com.tm.dao.db.impl_sql;
 
 import java.util.List;
 
 import com.tm.core.entity.TmModule;
-import com.tm.core.entity.manager.DBFacadeImpl;
+import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
 import com.tm.dao.db.ModuleDao;
 import com.tm.util.db.Param;
 
-public class ModuleDaoImpl extends DBFacadeImpl<TmModule, Long> implements ModuleDao {
+public class ModuleDaoImpl extends DBFacadeImpl_Sql<TmModule, Long> implements ModuleDao {
 
 	@Override
 	public List<TmModule> byProjectId(long projectId) {

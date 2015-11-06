@@ -1,13 +1,13 @@
-package com.tm.dao.db.impl;
+package com.tm.dao.db.impl_sql;
 
 import java.util.List;
 
 import com.tm.core.entity.TmNotificationVariable;
-import com.tm.core.entity.manager.DBFacadeImpl;
+import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
 import com.tm.dao.db.NotificationVariableDao;
 import com.tm.util.db.Param;
 
-public class NotificationVariableDaoImpl extends DBFacadeImpl<TmNotificationVariable, Long> implements NotificationVariableDao {
+public class NotificationVariableDaoImpl extends DBFacadeImpl_Sql<TmNotificationVariable, Long> implements NotificationVariableDao {
 
 	@Override
 	public List<TmNotificationVariable> byNotificationId(long notId) {

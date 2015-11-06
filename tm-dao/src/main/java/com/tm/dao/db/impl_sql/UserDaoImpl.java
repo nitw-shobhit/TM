@@ -1,13 +1,13 @@
-package com.tm.dao.db.impl;
+package com.tm.dao.db.impl_sql;
 
 import java.util.List;
 
 import com.tm.core.entity.TmUserInfo;
-import com.tm.core.entity.manager.DBFacadeImpl;
+import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
 import com.tm.dao.db.UserDao;
 import com.tm.util.db.Param;
 
-public class UserDaoImpl extends DBFacadeImpl<TmUserInfo, Long> implements UserDao {
+public class UserDaoImpl extends DBFacadeImpl_Sql<TmUserInfo, Long> implements UserDao {
 
 	@Override
 	public TmUserInfo byUserId(String userId) {

@@ -29,7 +29,7 @@ public class IssueHistoryServiceImpl extends DtoAssemblerFacadeImpl<TmIssueHisto
 	
 	@Override
 	public List<IssueHistoryBean> getIssueHistory(long issueId) throws DtoConversionException {
-		IssueHistoryDao issueHistoryDao = (IssueHistoryDao) DaoFactory.generateService(DaoType.ISSUE_HISTORY);
+		IssueHistoryDao issueHistoryDao = (IssueHistoryDao) DaoFactory.generateDao(DaoType.ISSUE_HISTORY);
 		List<TmIssueHistory> issueHistoryEntityList = issueHistoryDao.byIssueId(issueId);
 		List<IssueHistoryBean> issueHistoryBeanList = new ArrayList<IssueHistoryBean>();
 		for(TmIssueHistory issueHistoryEntity : issueHistoryEntityList) {

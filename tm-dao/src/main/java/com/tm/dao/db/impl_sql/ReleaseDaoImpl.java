@@ -1,13 +1,13 @@
-package com.tm.dao.db.impl;
+package com.tm.dao.db.impl_sql;
 
 import java.util.List;
 
 import com.tm.core.entity.TmRelease;
-import com.tm.core.entity.manager.DBFacadeImpl;
+import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
 import com.tm.dao.db.ReleaseDao;
 import com.tm.util.db.Param;
 
-public class ReleaseDaoImpl extends DBFacadeImpl<TmRelease, Long> implements ReleaseDao {
+public class ReleaseDaoImpl extends DBFacadeImpl_Sql<TmRelease, Long> implements ReleaseDao {
 
 	@Override
 	public List<TmRelease> byModuleId(long moduleId) {

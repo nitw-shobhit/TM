@@ -84,6 +84,17 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 			}
 		}
 	)
+	.state('app.dboard.report',
+		{
+			url: "",
+			views: {
+				'content@' : {
+					templateUrl : 'resources/pages/reports.jsp',
+					controller : 'reportController'
+				}
+			}
+		}
+	)
 	.state('app.dboard.project',
 		{
 			url: "",

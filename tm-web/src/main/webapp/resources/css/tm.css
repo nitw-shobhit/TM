@@ -538,3 +538,9 @@ legend {
 .boldText {
 	font-weight: bolder;
 }
+.reportIcon {
+	box-shadow: 1px 1px 1px #888, -1px 1px 1px #888, 1px -1px 1px #888, -1px -1px 1px #888;
+}
+.reportIcon:active {
+	box-shadow: 0 0 0 #888, 0 0 0 #888, 0 0 0 #888, 0 0 0 #888;
+}

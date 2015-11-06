@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.tm.core.entity.TmModule;
 import com.tm.core.entity.TmProject;
-import com.tm.util.db.DBFacade;
+import com.tm.util.db.genericdao.DBFacade;
 import com.tm.util.exceptions.DaoException;
 
 public interface ProjectDao extends DBFacade<TmProject, Long>{

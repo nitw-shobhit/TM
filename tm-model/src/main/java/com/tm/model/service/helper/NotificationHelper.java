@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import com.tm.core.entity.TmNotification;
 import com.tm.core.entity.TmNotificationVariable;
 import com.tm.model.bean.ui.NotificationBean;
 import com.tm.util.exceptions.DtoConversionException;
@@ -26,7 +27,7 @@ static Properties notificationProp;
 		}
 	}
 	
-	public static NotificationBean formatNotificationEntity(NotificationBean notificationBean,
+	public static NotificationBean formatNotification(NotificationBean notificationBean,
 			List<TmNotificationVariable> notificationVariableEntityList) throws DtoConversionException {
 		String notificationMessage = notificationProp.getProperty(notificationBean.getNotContent());
 		
@@ -47,5 +48,29 @@ static Properties notificationProp;
 			notificationBean.setNotFooter(DEFAULT_MESSG);
 		}
 		return notificationBean;
+	}
+	
+	public static TmNotification getNotificationEntity(long userId, NotificationType notificationType) {
+		TmNotification notificationEntity = new TmNotification();
+		notificationEntity.setNotContent(notificationType.getValue());
+		notificationEntity.setNotIsUnread(true);
+		notificationEntity.setUserId(userId);
+		
+		return notificationEntity;
+	}
+	
+	public enum NotificationType {
+
+		NOTIFICATION_ISSUE_CREATE("notification.001");
+		
+		private String value;
+		
+		private NotificationType(String value) {
+			this.value = value;
+		}
+
+		public String getValue() {
+			return value;
+		}
 	}
 }

@@ -17,8 +17,8 @@ public class ReleaseServiceImpl extends DtoAssemblerFacadeImpl<TmRelease, Releas
 
 	@Override
 	public List<ReleaseBean> getReleasesByModule(long moduleId) throws DtoConversionException {
-		ReleaseDao releaseDao = (ReleaseDao) DaoFactory.generateService(DaoType.RELEASE);
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		ReleaseDao releaseDao = (ReleaseDao) DaoFactory.generateDao(DaoType.RELEASE);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		List<TmRelease> releaseEntityList = releaseDao.byModuleId(moduleId);
 		List<ReleaseBean> releaseBeanList = new ArrayList<ReleaseBean>();
 		for(TmRelease releaseEntity : releaseEntityList) {
@@ -31,8 +31,8 @@ public class ReleaseServiceImpl extends DtoAssemblerFacadeImpl<TmRelease, Releas
 
 	@Override
 	public ReleaseBean addReleaseToModule(ReleaseBean releaseBean) throws DtoConversionException {
-		ReleaseDao releaseDao = (ReleaseDao) DaoFactory.generateService(DaoType.RELEASE);
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		ReleaseDao releaseDao = (ReleaseDao) DaoFactory.generateDao(DaoType.RELEASE);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		TmRelease releaseEntity = toEntity(releaseBean);
 		releaseEntity = releaseDao.persist(releaseEntity, true);
 		releaseBean = toBean(releaseEntity);

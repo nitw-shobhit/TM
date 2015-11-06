@@ -17,7 +17,7 @@ public class ModuleServiceImpl extends DtoAssemblerFacadeImpl<TmModule, ModuleBe
 
 	@Override
 	public List<ModuleBean> getProjectModules(long projectId) throws DtoConversionException {
-		ModuleDao moduleDao = (ModuleDao) DaoFactory.generateService(DaoType.MODULE);
+		ModuleDao moduleDao = (ModuleDao) DaoFactory.generateDao(DaoType.MODULE);
 		List<TmModule> moduleEntityList = moduleDao.byProjectId(projectId);
 		List<ModuleBean> moduleBeanList = new ArrayList<ModuleBean>();
 		for(TmModule moduleEntity : moduleEntityList) {
@@ -28,7 +28,7 @@ public class ModuleServiceImpl extends DtoAssemblerFacadeImpl<TmModule, ModuleBe
 
 	@Override
 	public ModuleBean addModuleToProject(ModuleBean moduleBean) throws DtoConversionException {
-		ModuleDao moduleDao = (ModuleDao) DaoFactory.generateService(DaoType.MODULE);
+		ModuleDao moduleDao = (ModuleDao) DaoFactory.generateDao(DaoType.MODULE);
 		TmModule moduleEntity = toEntity(moduleBean);
 		moduleEntity.setModStatus(ModuleStatus.STARTED.toString());
 		return toBean(moduleDao.persist(moduleEntity, true));
@@ -36,7 +36,7 @@ public class ModuleServiceImpl extends DtoAssemblerFacadeImpl<TmModule, ModuleBe
 
 	@Override
 	public void deleteModule(long id) {
-		ModuleDao moduleDao = (ModuleDao) DaoFactory.generateService(DaoType.MODULE);
+		ModuleDao moduleDao = (ModuleDao) DaoFactory.generateDao(DaoType.MODULE);
 		TmModule moduleEntity = moduleDao.findByPk(id);
 		moduleDao.remove(moduleEntity);
 	}

@@ -13,7 +13,7 @@ public class IssueStatusServiceBirtAdapter {
 	Iterator<IssueStatusBean> iterator;
 	
 	public void open(Object appContext, Map<String, Object> dataSetParamValues) {
-		List<IssueStatusBean> issueStatusBeanList = new IssueStatusService().getIssueStatusData();
+		List<IssueStatusBean> issueStatusBeanList = new IssueStatusService().getIssueStatusData((Integer)(dataSetParamValues.get("project_id")));
 		iterator = issueStatusBeanList.iterator();
 	}
 	

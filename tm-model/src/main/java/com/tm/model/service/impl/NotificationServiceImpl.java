@@ -19,14 +19,14 @@ public class NotificationServiceImpl extends DtoAssemblerFacadeImpl<TmNotificati
 
 	@Override
 	public List<NotificationBean> getUserNotifications(long userId) throws DtoConversionException {
-		NotificationDao notificationDao = (NotificationDao) DaoFactory.generateService(DaoType.NOTIFICATION);
-		NotificationVariableDao notificationVariableDao = (NotificationVariableDao) DaoFactory.generateService(DaoType.NOTIFICATION_VARIABLE);
+		NotificationDao notificationDao = (NotificationDao) DaoFactory.generateDao(DaoType.NOTIFICATION);
+		NotificationVariableDao notificationVariableDao = (NotificationVariableDao) DaoFactory.generateDao(DaoType.NOTIFICATION_VARIABLE);
 		List<TmNotification> notificationEntityList = notificationDao.byUserId(userId);
 		List<NotificationBean> notificationBeanList = new ArrayList<NotificationBean>();
 		for(TmNotification notificationEntity : notificationEntityList) {
 			NotificationBean notificationBean = toBean(notificationEntity);
 			List<TmNotificationVariable> notificationVariableEntityList = notificationVariableDao.byNotificationId(notificationBean.getId());
-			notificationBean = NotificationHelper.formatNotificationEntity(notificationBean, notificationVariableEntityList);
+			notificationBean = NotificationHelper.formatNotification(notificationBean, notificationVariableEntityList);
 			notificationBeanList.add(notificationBean);
 		}
 		return notificationBeanList;
@@ -34,7 +34,7 @@ public class NotificationServiceImpl extends DtoAssemblerFacadeImpl<TmNotificati
 	
 	@Override
 	public void deleteUserNotifications(List<Integer> notificationIdList) {
-		NotificationDao notificationDao = (NotificationDao) DaoFactory.generateService(DaoType.NOTIFICATION);
+		NotificationDao notificationDao = (NotificationDao) DaoFactory.generateDao(DaoType.NOTIFICATION);
 		for(int notificationId : notificationIdList) {
 			notificationDao.remove(notificationDao.findByPk((long)notificationId));
 		}
@@ -43,7 +43,7 @@ public class NotificationServiceImpl extends DtoAssemblerFacadeImpl<TmNotificati
 	@Override
 	public String markNotificationsAsRead(List<Integer> notificationIdList) {
 		String result = "Fail";
-		NotificationDao notificationDao = (NotificationDao) DaoFactory.generateService(DaoType.NOTIFICATION);
+		NotificationDao notificationDao = (NotificationDao) DaoFactory.generateDao(DaoType.NOTIFICATION);
 		for(int notificationId : notificationIdList) {
 			TmNotification notificationEntity = notificationDao.findByPk((long) notificationId);
 			if(notificationEntity.getNotIsUnread()) {
@@ -60,7 +60,7 @@ public class NotificationServiceImpl extends DtoAssemblerFacadeImpl<TmNotificati
 
 	@Override
 	public void archiveUserNotifications(List<Integer> notificationIdList) {
-		NotificationDao notificationDao = (NotificationDao) DaoFactory.generateService(DaoType.NOTIFICATION);
+		NotificationDao notificationDao = (NotificationDao) DaoFactory.generateDao(DaoType.NOTIFICATION);
 		for(int notificationId : notificationIdList) {
 			TmNotification notificationEntity = notificationDao.findByPk((long) notificationId);
 			notificationEntity.setVisible(false);
@@ -70,7 +70,7 @@ public class NotificationServiceImpl extends DtoAssemblerFacadeImpl<TmNotificati
 	
 	@Override
 	public void unArchiveUserNotifications(List<Integer> notificationIdList) {
-		NotificationDao notificationDao = (NotificationDao) DaoFactory.generateService(DaoType.NOTIFICATION);
+		NotificationDao notificationDao = (NotificationDao) DaoFactory.generateDao(DaoType.NOTIFICATION);
 		for(int notificationId : notificationIdList) {
 			TmNotification notificationEntity = notificationDao.findByPk((long) notificationId);
 			notificationEntity.setVisible(true);

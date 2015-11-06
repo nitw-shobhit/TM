@@ -12,6 +12,17 @@
     	<servlet-name>tm</servlet-name>
    		<url-pattern>*.do</url-pattern>
   	</servlet-mapping>
+  	
+  	<servlet>
+	    <servlet-name>EngineServlet</servlet-name>
+	    <servlet-class>org.eclipse.birt.report.servlet.BirtEngineServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>EngineServlet</servlet-name>
+	    <url-pattern>/output</url-pattern>
+	</servlet-mapping>
+  	
   	<listener>
     	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   	</listener>
@@ -23,6 +34,7 @@
 <!--   		<filter-name>authFilter</filter-name> -->
 <!--   		<url-pattern>/*</url-pattern> -->
 <!--   	</filter-mapping> -->
+
   	<welcome-file-list>
    		<welcome-file>index.jsp</welcome-file>
   	</welcome-file-list>

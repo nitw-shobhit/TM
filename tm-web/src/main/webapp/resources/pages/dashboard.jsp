@@ -38,7 +38,16 @@
   		</tr>
   		<tr>
   			<td style="padding: 30px;">
-  				<div data-ng-click="openApplication('Settings')" class="appBox">
+  				<div data-ng-click="openApplication('Notifications')" class="appBox">
+  					<span data-ng-controller="notificationController" class="glyphicon glyphicon-envelope" style="font-size: 90px; margin-top:10px; margin-left: 15px;">
+  					</span>
+  					<span data-ng-show="countUnreadNotifications > 0" class="badge" ngCloak style="margin-top:10px; height: 16px; width: 15px;">{{countUnreadNotifications}}</span>
+  					<br><br>
+  					<span>My Notifications</span>
+  				</div>
+  			</td>
+  			<td style="padding: 30px;">
+  				<div data-ng-click="openApplication('Reports')" class="appBox">
   					<span class="glyphicon glyphicon-signal" style="font-size: 90px; margin-top:10px;"></span>
   					<br><br>
   					<span>Business Intelligence</span>
@@ -50,7 +59,6 @@
   					<span>This app is under construction!!</span>
   				</div>
   			</td>
-  			<td></td>
   		</tr>
   	</table>
 </body>

@@ -19,8 +19,8 @@ public class IssueSubscribeServiceImpl extends DtoAssemblerFacadeImpl<TmIssueSub
 
 	@Override
 	public List<IssueSubscribeBean> getIssueSubscribers(long issueId) throws DtoConversionException {
-		IssueSubscribeDao issueSubscribeDao = (IssueSubscribeDao) DaoFactory.generateService(DaoType.ISSUE_SUBSCRIBE);
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		IssueSubscribeDao issueSubscribeDao = (IssueSubscribeDao) DaoFactory.generateDao(DaoType.ISSUE_SUBSCRIBE);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		List<TmIssueSubscribe> issueSubscribeEntityList = issueSubscribeDao.byIssueId(issueId);
 		List<IssueSubscribeBean> issueSubscribeBeanList = new ArrayList<IssueSubscribeBean>();
 		for(TmIssueSubscribe issueSubscribeEntity : issueSubscribeEntityList) {
@@ -33,8 +33,8 @@ public class IssueSubscribeServiceImpl extends DtoAssemblerFacadeImpl<TmIssueSub
 
 	@Override
 	public IssueSubscribeBean addSubscription(long userId, long issueId) throws DtoConversionException {
-		IssueSubscribeDao issueSubscribeDao = (IssueSubscribeDao) DaoFactory.generateService(DaoType.ISSUE_SUBSCRIBE);
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		IssueSubscribeDao issueSubscribeDao = (IssueSubscribeDao) DaoFactory.generateDao(DaoType.ISSUE_SUBSCRIBE);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		TmIssueSubscribe issueSubscribeEntity = new TmIssueSubscribe();
 		issueSubscribeEntity.setIssId(issueId);
 		issueSubscribeEntity.setUserId(userId);
@@ -47,7 +47,7 @@ public class IssueSubscribeServiceImpl extends DtoAssemblerFacadeImpl<TmIssueSub
 
 	@Override
 	public void removeSubscription(long id) {
-		IssueSubscribeDao issueSubscribeDao = (IssueSubscribeDao) DaoFactory.generateService(DaoType.ISSUE_SUBSCRIBE);
+		IssueSubscribeDao issueSubscribeDao = (IssueSubscribeDao) DaoFactory.generateDao(DaoType.ISSUE_SUBSCRIBE);
 		TmIssueSubscribe issueSubscribeEntity = issueSubscribeDao.findByPk(id);
 		issueSubscribeDao.remove(issueSubscribeEntity);
 	}

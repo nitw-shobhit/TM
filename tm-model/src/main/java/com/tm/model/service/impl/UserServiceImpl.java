@@ -42,7 +42,7 @@ public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean
 
 	@Override
 	public UserBean updateUserProfile(UserBean userBean) throws DtoConversionException {
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		TmUserInfo userEntity = userDao.findByPk(userBean.getId());
 		updateUserEntity(userEntity, userBean);
 		return toBean(userDao.merge(userEntity, true));
@@ -56,7 +56,7 @@ public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean
 
 	@Override
 	public String changePassword(long id, String password) throws FileLoadException, CipherException {
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		TmUserInfo userEntity = userDao.findByPk(id);
 		String encryptedPassword = CipherUtils.encrypt(password);
 		userEntity.setUserPass(encryptedPassword);
@@ -71,7 +71,7 @@ public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean
 
 	@Override
 	public Map<String, String> getUserGroups() {
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		List<TmUserInfo> userEntityList = userDao.findAll();
 		Map<String, String> userGroups = new HashMap<String, String>();
 		for(TmUserInfo userEntity : userEntityList) {
@@ -82,7 +82,7 @@ public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean
 
 	@Override
 	public List<UserBean> getAllUsers() throws DtoConversionException {
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		List<TmUserInfo> userEntityList = userDao.findAll();
 		List<UserBean> userBeanList = new ArrayList<UserBean>();
 		for(TmUserInfo userEntity : userEntityList) {
@@ -92,7 +92,7 @@ public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean
 	}
 	
 	public List<UserBean> getUsersFromUserProjectList(List<TmUserProject> userProjList) throws DtoConversionException {
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		List<UserBean> userList = new ArrayList<UserBean>();
 		for(TmUserProject userProj : userProjList) {
 			userList.add(toBean(userDao.findByPk(userProj.getUserId())));
@@ -103,7 +103,7 @@ public class UserServiceImpl extends DtoAssemblerFacadeImpl<TmUserInfo, UserBean
 	@Override
 	public UserBean getUserByUserId(String userId)
 			throws DtoConversionException {
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		return toBean(userDao.byUserId(userId));
 	}
 }

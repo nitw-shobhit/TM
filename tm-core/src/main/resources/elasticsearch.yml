@@ -1,0 +1,3 @@
+cluster.name: tmCluster
+transport.tcp.port: 9300
+network.host: 127.0.0.1

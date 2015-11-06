@@ -1,4 +1,4 @@
-package com.tm.core.entity.manager;
+package com.tm.core.entity.manager_sql;
 
 import java.sql.Connection;
 import java.util.Arrays;

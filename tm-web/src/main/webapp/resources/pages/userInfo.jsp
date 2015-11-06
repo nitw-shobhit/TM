@@ -46,11 +46,6 @@
 				</div>
 			</div>
 		</div>
-		<div style="float: left;" data-ng-controller="notificationController">
-			<a data-ng-click="loadNotifications()" style="margin-left: 15px;">
-				<span class="glyphicon glyphicon-envelope" style="font-size:25px;"><span data-ng-show="countUnreadNotifications > 0" class="badge" ngCloak>{{countUnreadNotifications}}</span></span>
-			</a>
-		</div>
 		<div style="float: left;" data-ng-controller="internalController">
 			<a data-ng-click="showAboutMe()" style="margin-left: 10px;">
 				<span class="glyphicon glyphicon-info-sign" style="font-size:25px; color: #FFF;"></span>

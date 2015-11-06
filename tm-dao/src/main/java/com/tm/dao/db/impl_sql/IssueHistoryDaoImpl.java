@@ -1,13 +1,13 @@
-package com.tm.dao.db.impl;
+package com.tm.dao.db.impl_sql;
 
 import java.util.List;
 
 import com.tm.core.entity.TmIssueHistory;
-import com.tm.core.entity.manager.DBFacadeImpl;
+import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
 import com.tm.dao.db.IssueHistoryDao;
 import com.tm.util.db.Param;
 
-public class IssueHistoryDaoImpl extends DBFacadeImpl<TmIssueHistory, Long> implements IssueHistoryDao {
+public class IssueHistoryDaoImpl extends DBFacadeImpl_Sql<TmIssueHistory, Long> implements IssueHistoryDao {
 
 	@Override
 	public List<TmIssueHistory> byIssueId(long issueId) {

@@ -1,7 +1,9 @@
 package com.tm.model.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,10 +12,13 @@ import com.tm.core.entity.TmIssueAttachment;
 import com.tm.core.entity.TmIssueComment;
 import com.tm.core.entity.TmIssueHistory;
 import com.tm.core.entity.TmIssueSubscribe;
+import com.tm.core.entity.TmNotification;
+import com.tm.core.entity.TmNotificationVariable;
 import com.tm.core.entity.TmUserInfo;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.IssueDao;
+import com.tm.dao.db.NotificationDao;
 import com.tm.dao.db.UserDao;
 import com.tm.model.bean.ui.IssueAttachmentBean;
 import com.tm.model.bean.ui.IssueBean;
@@ -29,6 +34,8 @@ import com.tm.model.service.IssueSubscribeService;
 import com.tm.model.service.UserService;
 import com.tm.model.service.helper.IssueHistoryHelper;
 import com.tm.model.service.helper.IssueSubscribeHelper;
+import com.tm.model.service.helper.NotificationHelper;
+import com.tm.model.service.helper.NotificationVariableHelper;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
 import com.tm.util.exceptions.DaoException;
 import com.tm.util.exceptions.DtoConversionException;
@@ -52,8 +59,8 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 	
 	@Override
 	public List<IssueBean> getIssuesByModule(long moduleId) throws DaoException, DtoConversionException {
-		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		List<TmIssue> issueEntityList = issueDao.byModuleId(moduleId);
 		List<IssueBean> issueList = new ArrayList<IssueBean>();
 		for(TmIssue issueEntity : issueEntityList) {
@@ -72,9 +79,12 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 
 	@Override
 	public IssueBean addIssueToModule(IssueBean issueBean) throws DtoConversionException, DaoException {
-		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
-		issueBean.setUserId(userService.getUserByUserId(issueBean.getUserIdString()).getId());
+		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
+		NotificationDao notificationDao = (NotificationDao) DaoFactory.generateDao(DaoType.NOTIFICATION);
+		
+		long userAssigneeId = userService.getUserByUserId(issueBean.getUserIdString()).getId();
+		issueBean.setUserId(userAssigneeId);
 		issueBean.setIssStatus(IssueStatus.OPEN.toString());
 		
 		// ISSUE ENTITY
@@ -139,15 +149,27 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 		returnIssueBean.setIssAttachments(issueBean.getIssAttachments());
 		returnIssueBean.setIssHistory(issueHistoryBeanList);
 		returnIssueBean.setIssSubscribe(issueSubscribeBeanList);
+		
+		//SEND NOTIFICATION
+		TmNotification notificationEntity = NotificationHelper.getNotificationEntity(userAssigneeId, NotificationHelper.NotificationType.NOTIFICATION_ISSUE_CREATE);
+		
+		Map<String, Object> variableMap = new HashMap<String, Object>();
+		variableMap.put("issueId", returnIssueBean.getId());
+		variableMap.put("issueOwner", returnIssueBean.getIssOwnerString());
+		
+		List<TmNotificationVariable> notificationVariableEntityList = NotificationVariableHelper.getNotificationVariables(variableMap);
+		
+		notificationDao.addNotification(notificationEntity, notificationVariableEntityList);
+		
 		return returnIssueBean;
 	}
 
 	@Override
 	public IssueHistoryBean acceptIssue(long issueId) throws DaoException, DtoConversionException {
-		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
+		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.ACCEPTED.toString());
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		TmUserInfo issueOwnerEntity = userDao.findByPk(issueEntity.getIssOwner());
 		TmIssueHistory issueHistoryEntity = IssueHistoryHelper.getHistoryEntity(issueOwnerEntity, IssueHistoryHelper.IssueHistoryType.ISSUE_HISTORY_ACCEPT);
 		issueHistoryEntity.setIssId(issueId);
@@ -160,10 +182,10 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 	
 	@Override
 	public IssueHistoryBean rejectIssue(long issueId) throws DaoException, DtoConversionException {
-		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
+		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.REJECTED.toString());
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		TmUserInfo issueOwnerEntity = userDao.findByPk(issueEntity.getIssOwner());
 		TmIssueHistory issueHistoryEntity = IssueHistoryHelper.getHistoryEntity(issueOwnerEntity, IssueHistoryHelper.IssueHistoryType.ISSUE_HISTORY_REJECT);
 		issueHistoryEntity.setIssId(issueId);
@@ -176,7 +198,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 	
 	@Override
 	public void reAssignIssue(long issueId, String newUserId) throws DtoConversionException {
-		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
+		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.OPEN.toString());
 		issueEntity.setUserId(userService.getUserByUserId(newUserId).getId());
@@ -185,7 +207,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 	
 	@Override
 	public void reopenIssue(long issueId) {
-		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
+		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.REOPENED.toString());
 		issueDao.merge(issueEntity, true);
@@ -193,7 +215,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 	
 	@Override
 	public void markAsFixedIssue(long issueId) {
-		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
+		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.FIXED.toString());
 		issueDao.merge(issueEntity, true);
@@ -201,7 +223,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 	
 	@Override
 	public void completeIssue(long issueId) {
-		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
+		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.COMPLETED.toString());
 		issueDao.merge(issueEntity, true);
@@ -209,7 +231,7 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 	
 	@Override
 	public void removeIssue(long issueId) {
-		IssueDao issueDao = (IssueDao) DaoFactory.generateService(DaoType.ISSUE);
+		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.CANCELLED.toString());
 		issueEntity.setVisible(false);

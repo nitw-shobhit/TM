@@ -22,4 +22,11 @@
 			</plugin>
 		</plugins>
 	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.tm</groupId>
+			<artifactId>tm-model</artifactId>
+			<version>0.1</version>
+		</dependency>
+	</dependencies>
 </project>

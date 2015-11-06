@@ -24,7 +24,7 @@ public class ProjectServiceImpl extends DtoAssemblerFacadeImpl<TmProject, Projec
 	
 	@Override
 	public List<ProjectBean> getAllProjects(Long userId) throws DtoConversionException {
-		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
+		ProjectDao projectDao = (ProjectDao) DaoFactory.generateDao(DaoType.PROJECT);
 		List<TmProject> projectEntities = projectDao.byUserId(userId);
 		List<ProjectBean> projectBeanList = new ArrayList<ProjectBean>();
 		for(TmProject projectEntity : projectEntities) {
@@ -36,7 +36,7 @@ public class ProjectServiceImpl extends DtoAssemblerFacadeImpl<TmProject, Projec
 
 	@Override
 	public ProjectBean addProject(ProjectBean projectBean, boolean addDefaultModules) throws DtoConversionException, DaoException {
-		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
+		ProjectDao projectDao = (ProjectDao) DaoFactory.generateDao(DaoType.PROJECT);
 		TmProject projectEntity = toEntity(projectBean);
 		if(addDefaultModules) {
 			projectEntity = projectDao.addProjectEntity(projectEntity, ModuleHelper.createDefaultModuleEntities(projectEntity.getId()));
@@ -48,7 +48,7 @@ public class ProjectServiceImpl extends DtoAssemblerFacadeImpl<TmProject, Projec
 	
 	@Override
 	public ProjectBean editProject(ProjectBean projectBean) throws DtoConversionException {
-		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
+		ProjectDao projectDao = (ProjectDao) DaoFactory.generateDao(DaoType.PROJECT);
 		TmProject projectEntity = projectDao.findByPk(projectBean.getId());
 		projectEntity.setProjName(projectBean.getProjName());
 		projectEntity.setProjDesc(projectBean.getProjDesc());
@@ -58,7 +58,7 @@ public class ProjectServiceImpl extends DtoAssemblerFacadeImpl<TmProject, Projec
 	
 	@Override
 	public void disableProject(long id) {
-		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
+		ProjectDao projectDao = (ProjectDao) DaoFactory.generateDao(DaoType.PROJECT);
 		TmProject projectEntity = projectDao.findByPk(id);
 		projectEntity.setVisible(false);
 		projectDao.merge(projectEntity, true);
@@ -66,7 +66,7 @@ public class ProjectServiceImpl extends DtoAssemblerFacadeImpl<TmProject, Projec
 	
 	@Override
 	public void enableProject(long id) {
-		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
+		ProjectDao projectDao = (ProjectDao) DaoFactory.generateDao(DaoType.PROJECT);
 		TmProject projectEntity = projectDao.findByPk(id);
 		projectEntity.setVisible(true);
 		projectDao.merge(projectEntity, true);
@@ -74,7 +74,7 @@ public class ProjectServiceImpl extends DtoAssemblerFacadeImpl<TmProject, Projec
 
 	@Override
 	public void deleteProject(long id) {
-		ProjectDao projectDao = (ProjectDao) DaoFactory.generateService(DaoType.PROJECT);
+		ProjectDao projectDao = (ProjectDao) DaoFactory.generateDao(DaoType.PROJECT);
 		TmProject projectEntity = projectDao.findByPk(id);
 		projectDao.remove(projectEntity);
 	}

@@ -17,8 +17,8 @@ public class IssueAttachmentServiceImpl extends DtoAssemblerFacadeImpl<TmIssueAt
 
 	@Override
 	public List<IssueAttachmentBean> getIssueAttachments(long issueId) throws DtoConversionException {
-		IssueAttachmentDao issueAttachmentDao = (IssueAttachmentDao) DaoFactory.generateService(DaoType.ISSUE_ATTACHMENT);
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		IssueAttachmentDao issueAttachmentDao = (IssueAttachmentDao) DaoFactory.generateDao(DaoType.ISSUE_ATTACHMENT);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		List<TmIssueAttachment> issueAttachmentEntityList = issueAttachmentDao.byIssueId(issueId);
 		List<IssueAttachmentBean> issueAttachmentBeanList = new ArrayList<IssueAttachmentBean>();
 		for(TmIssueAttachment issueAttachmentEntity : issueAttachmentEntityList) {

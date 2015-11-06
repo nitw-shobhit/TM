@@ -25,6 +25,7 @@
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-translate.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-translate-loader-static-files.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/ngDialog.js"></script>
+	<!-- SERVICES -->
 	<!-- DIRECTIVES -->
 	<script src="<%= request.getContextPath()%>/resources/js/directives/confirmButtonDirective.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/directives/toggleTooltipDirective.js"></script>
@@ -37,11 +38,13 @@
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/dashboardController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/releaseController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/calendarController.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/controllers/reportController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/projectController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/moduleController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/issueController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/notificationController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/internalController.js"></script>
+	
 	<script src="<%= request.getContextPath()%>/resources/js/others/jquery-ui.custom.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/jquery.fancytree.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/tm.js"></script>

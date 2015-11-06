@@ -9,8 +9,8 @@
 </head>
 <body>
 	<ol class="breadcrumb">
-		<li><a data-ng-click="redirectToMyApps()" data-ng-controller="rootController">{{'breadcrumb.applications' | translate}}</a></li>
-		<li class="active">{{'breadcrumb.projects' | translate}}</li>
+		<li><a data-ng-click="redirectToMyApps()" data-ng-controller="rootController"><span class="glyphicon glyphicon-th"></span> {{'breadcrumb.applications' | translate}}</a></li>
+		<li class="active"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;{{'breadcrumb.projects' | translate}}</li>
 	</ol>
 	<div class="projectMainDiv">
 		<fieldset class="projectFieldSet">

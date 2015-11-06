@@ -1,4 +1,4 @@
-package com.tm.dao.db.impl;
+package com.tm.dao.db.impl_sql;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import javax.persistence.EntityTransaction;
 
 import com.tm.core.entity.TmModule;
 import com.tm.core.entity.TmProject;
-import com.tm.core.entity.manager.DBFacadeImpl;
+import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.ModuleDao;
@@ -14,7 +14,7 @@ import com.tm.dao.db.ProjectDao;
 import com.tm.util.db.Param;
 import com.tm.util.exceptions.DaoException;
 
-public class ProjectDaoImpl extends DBFacadeImpl<TmProject, Long> implements ProjectDao {
+public class ProjectDaoImpl extends DBFacadeImpl_Sql<TmProject, Long> implements ProjectDao {
 
 	@Override
 	public List<TmProject> byUserId(Long id) {
@@ -30,7 +30,7 @@ public class ProjectDaoImpl extends DBFacadeImpl<TmProject, Long> implements Pro
 		try {
 			tx.begin();
 			persistNoTx(projectEntity, true);
-			ModuleDao moduleDao = (ModuleDao) DaoFactory.generateService(DaoType.MODULE);
+			ModuleDao moduleDao = (ModuleDao) DaoFactory.generateDao(DaoType.MODULE);
 			for(TmModule moduleEntity : moduleEntities) {
 				moduleEntity.setProjId(projectEntity.getId());
 				moduleDao.persistNoTx(moduleEntity, true);

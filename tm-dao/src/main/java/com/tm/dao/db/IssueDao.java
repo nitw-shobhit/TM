@@ -7,7 +7,7 @@ import com.tm.core.entity.TmIssueAttachment;
 import com.tm.core.entity.TmIssueComment;
 import com.tm.core.entity.TmIssueHistory;
 import com.tm.core.entity.TmIssueSubscribe;
-import com.tm.util.db.DBFacade;
+import com.tm.util.db.genericdao.DBFacade;
 import com.tm.util.exceptions.DaoException;
 
 public interface IssueDao extends DBFacade<TmIssue, Long>{

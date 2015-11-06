@@ -1,4 +1,4 @@
-package com.tm.core.entity.manager;
+package com.tm.core.entity.manager_sql;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;

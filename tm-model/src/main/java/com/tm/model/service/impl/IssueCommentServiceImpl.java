@@ -17,8 +17,8 @@ public class IssueCommentServiceImpl extends DtoAssemblerFacadeImpl<TmIssueComme
 	
 	@Override
 	public List<IssueCommentBean> getIssueComments(long issueId) throws DtoConversionException {
-		IssueCommentDao issueCommentDao = (IssueCommentDao) DaoFactory.generateService(DaoType.ISSUE_COMMENT);
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		IssueCommentDao issueCommentDao = (IssueCommentDao) DaoFactory.generateDao(DaoType.ISSUE_COMMENT);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		List<TmIssueComment> issueCommentEntityList = issueCommentDao.byIssueId(issueId);
 		List<IssueCommentBean> issueCommentBeanList = new ArrayList<IssueCommentBean>();
 		for(TmIssueComment issueCommentEntity : issueCommentEntityList) {
@@ -31,8 +31,8 @@ public class IssueCommentServiceImpl extends DtoAssemblerFacadeImpl<TmIssueComme
 
 	@Override
 	public IssueCommentBean addCommentToIssue(IssueCommentBean issueCommentBean) throws DtoConversionException {
-		IssueCommentDao issueCommentDao = (IssueCommentDao) DaoFactory.generateService(DaoType.ISSUE_COMMENT);
-		UserDao userDao = (UserDao) DaoFactory.generateService(DaoType.USER);
+		IssueCommentDao issueCommentDao = (IssueCommentDao) DaoFactory.generateDao(DaoType.ISSUE_COMMENT);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
 		TmIssueComment issueCommentEntity = toEntity(issueCommentBean);
 		issueCommentDao.persist(issueCommentEntity, true);
 		issueCommentBean = toBean(issueCommentEntity);
