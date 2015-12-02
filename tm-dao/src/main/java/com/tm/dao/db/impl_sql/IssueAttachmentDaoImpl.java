@@ -2,9 +2,9 @@ package com.tm.dao.db.impl_sql;
 
 import java.util.List;
 
-import com.tm.core.entity.TmIssueAttachment;
+import com.tm.core.entity_sql.TmIssueAttachment;
 import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
-import com.tm.dao.db.IssueAttachmentDao;
+import com.tm.dao.db_sql.IssueAttachmentDao;
 import com.tm.util.db.Param;
 
 public class IssueAttachmentDaoImpl extends DBFacadeImpl_Sql<TmIssueAttachment, Long> implements IssueAttachmentDao {

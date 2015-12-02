@@ -25,9 +25,8 @@
 	<table style="width: 910px; height: 490px; text-align: center; margin-left: auto; margin-right: auto; border: 1px solid #CCC; background-color: #FFF;">
 		<tr data-ng-repeat="row in calendar.days">
 			<td class="calHeader">{{row.day}}</td>
-			<td data-ng-click="test()" data-ng-repeat="date in row.dates" data-ng-class="date.value == 0 ? 'disabledCalDates' : 'enabledCalDates'">
-				<span data-ng-show="date.value == today" style="background-color: Orange; border-radius: 15px; padding:5px;" ngCloak>{{date.value}}</span>
-				<span data-ng-hide="date.value == today">{{date.value}}</span>
+			<td data-ng-click="openDateBox(date.value, calendar.month, calendar.year)" data-ng-repeat="date in row.dates" data-ng-class="date.value == 0 ? 'disabledCalDates' : 'enabledCalDates'">
+				<span>{{date.value}}</span>
 			</td>
 		</tr>
 	</table>

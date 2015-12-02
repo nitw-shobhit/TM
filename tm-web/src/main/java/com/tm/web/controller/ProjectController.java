@@ -25,13 +25,13 @@ public class ProjectController {
 	
 	@RequestMapping(method = RequestMethod.GET, value="/getAllUserProjects")
 	public @ResponseBody String getAllUserProjects(@RequestParam("id") long userId) throws InternalApplicationException {
-		List<ProjectBean> projectList = null;
+		List<ProjectBean> projectBeanList = null;
 		try {
-			projectList = projectService.getAllProjects(userId);
+			projectBeanList = projectService.getAllProjects(userId);
 		} catch (DtoConversionException e) {
 			throw new InternalApplicationException("Something went wrong with the application", e);
 		}
-		return JsonUtils.toJson(projectList);
+		return JsonUtils.toJson(projectBeanList);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/addProject")

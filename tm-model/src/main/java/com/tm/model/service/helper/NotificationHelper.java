@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import com.tm.core.entity.TmNotification;
-import com.tm.core.entity.TmNotificationVariable;
+import com.tm.core.entity_sql.TmNotification;
+import com.tm.core.entity_sql.TmNotificationVariable;
 import com.tm.model.bean.ui.NotificationBean;
 import com.tm.util.exceptions.DtoConversionException;
 import com.tm.util.exceptions.FileLoadException;

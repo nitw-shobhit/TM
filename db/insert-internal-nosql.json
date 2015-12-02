@@ -1,0 +1,29 @@
+{
+	"id" : 100021032,
+	"log_level" : "ERROR",
+	"log_logger" : "com.tm.model.service.impl.UserServiceImpl",
+	"log_message" : "Could not validate the user at this moment",
+	"log_signed_user" : "A10001",
+	"log_ip_address" : "127.0.0.1",
+	"dt_created" : "26/11/2015 15:42:46"
+}
+
+{
+	"id" : 100021033,
+	"log_level" : "SEVERE",
+	"log_logger" : "com.tm.model.service.impl.IssueServiceImpl",
+	"log_message" : "Null pointer exception",
+	"log_signed_user" : "A10003",
+	"log_ip_address" : "127.0.0.1",
+	"dt_created" : "26/11/2015 15:55:17"
+}
+
+{
+	"id" : 100021034,
+	"log_level" : "INFO",
+	"log_logger" : "com.tm.model.service.impl.UserServiceImpl",
+	"log_message" : "Login Request sent",
+	"log_signed_user" : "A10001",
+	"log_ip_address" : "127.0.0.1",
+	"dt_created" : "26/11/2015 16:12:32"
+}

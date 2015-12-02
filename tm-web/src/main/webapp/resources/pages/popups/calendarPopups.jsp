@@ -59,5 +59,14 @@
 	</table>
 </fieldset>
 </script>
+
+<!-- ##########################################DATE DETAILS############################################# -->
+<script type="text/ng-template" id="dateBox">
+<fieldset class="popupFieldset">
+	<legend>
+		<span class="header">{{ngDialogData.selectedDate}}/{{ngDialogData.selectedMonth}}/{{ngDialogData.selectedYear}}</span>
+	</legend>
+</fieldset>
+</script>
 </head>
 </html>

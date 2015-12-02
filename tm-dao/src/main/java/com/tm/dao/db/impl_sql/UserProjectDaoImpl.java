@@ -2,9 +2,9 @@ package com.tm.dao.db.impl_sql;
 
 import java.util.List;
 
-import com.tm.core.entity.TmUserProject;
+import com.tm.core.entity_sql.TmUserProject;
 import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
-import com.tm.dao.db.UserProjectDao;
+import com.tm.dao.db_sql.UserProjectDao;
 import com.tm.util.db.Param;
 
 public class UserProjectDaoImpl extends DBFacadeImpl_Sql<TmUserProject, Long> implements UserProjectDao {

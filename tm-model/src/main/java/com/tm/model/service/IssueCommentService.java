@@ -2,7 +2,7 @@ package com.tm.model.service;
 
 import java.util.List;
 
-import com.tm.core.entity.TmIssueComment;
+import com.tm.core.entity_sql.TmIssueComment;
 import com.tm.model.bean.ui.IssueCommentBean;
 import com.tm.util.assembler.DtoAssemblerFacade;
 import com.tm.util.exceptions.DtoConversionException;

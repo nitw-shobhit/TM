@@ -11,7 +11,6 @@
 	<div style="background-color: #FFF; height: 22px; margin-left: auto; margin-right: auto; text-align: center; font-weight: bold;">
   		Welcome {{userBean.userName}}. Choose one of your listed apps to get going!
   	</div>
-  	<br><br>
   	<table style="margin-left:auto; margin-right: auto;">
   		<tr>
   			<td style="padding: 30px;">
@@ -54,9 +53,18 @@
   				</div>
   			</td>
   			<td style="padding: 30px;">
+  				<div data-ng-click="openApplication('Logs')" class="appBox">
+  					<span class="glyphicon glyphicon-duplicate" style="font-size: 90px; margin-top:10px;"></span>
+  					<br><br>
+  					<span>Application Logs</span>
+  				</div>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td style="padding: 30px;">
   				<div class="appBox">
   					<br><br><br>
-  					<span>This app is under construction!!</span>
+  					<span>This app is under construction!</span>
   				</div>
   			</td>
   		</tr>

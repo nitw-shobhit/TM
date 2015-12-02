@@ -2,9 +2,9 @@ package com.tm.dao.db.impl_sql;
 
 import java.util.List;
 
-import com.tm.core.entity.TmIssueHistory;
+import com.tm.core.entity_sql.TmIssueHistory;
 import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
-import com.tm.dao.db.IssueHistoryDao;
+import com.tm.dao.db_sql.IssueHistoryDao;
 import com.tm.util.db.Param;
 
 public class IssueHistoryDaoImpl extends DBFacadeImpl_Sql<TmIssueHistory, Long> implements IssueHistoryDao {

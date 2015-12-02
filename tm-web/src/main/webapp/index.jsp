@@ -20,6 +20,7 @@
 	<script src="<%= request.getContextPath()%>/resources/js/others/jquery-1.11.1.min.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/bootstrap.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular.min.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/others/angular-table.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-route.min.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-ui-router.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-translate.js"></script>
@@ -44,12 +45,12 @@
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/issueController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/notificationController.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/controllers/internalController.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/controllers/loggerController.js"></script>
 	
 	<script src="<%= request.getContextPath()%>/resources/js/others/jquery-ui.custom.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/jquery.fancytree.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/tm.js"></script>
     <script src="<%= request.getContextPath()%>/resources/js/others/ui-bootstrap-tpls-0.13.0.js"></script>	
-    <script src="<%= request.getContextPath()%>/resources/js/others/angular-table.js"></script>
     <script src="<%= request.getContextPath()%>/resources/js/others/angular.treeview.js"></script>
     <script src="<%= request.getContextPath()%>/resources/js/others/angular-animate.js"></script>
     <script src="<%= request.getContextPath()%>/resources/js/others/angular-busy.js"></script>
@@ -59,7 +60,7 @@
     <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/tm.css">
 	<link rel="icon" type="image/x-icon" href="<%= request.getContextPath()%>/resources/images/favicon.ico" />
 </head>
-<body>
+<body onload="">
 	<div class="baseBody">
 		<div data-ui-view="userInfo"></div>
 		<div data-ui-view="messageBox"></div>

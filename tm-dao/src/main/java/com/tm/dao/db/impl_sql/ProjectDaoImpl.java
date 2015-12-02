@@ -4,13 +4,13 @@ import java.util.List;
 
 import javax.persistence.EntityTransaction;
 
-import com.tm.core.entity.TmModule;
-import com.tm.core.entity.TmProject;
+import com.tm.core.entity_sql.TmModule;
+import com.tm.core.entity_sql.TmProject;
 import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
-import com.tm.dao.db.ModuleDao;
-import com.tm.dao.db.ProjectDao;
+import com.tm.dao.db_sql.ModuleDao;
+import com.tm.dao.db_sql.ProjectDao;
 import com.tm.util.db.Param;
 import com.tm.util.exceptions.DaoException;
 

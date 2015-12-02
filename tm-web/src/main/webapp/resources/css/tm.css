@@ -268,6 +268,9 @@ legend {
 .statusTable {
 	font-size: 10px;
 }
+.logTable {
+	font-size: 10px;
+}
 .notificationTable th {
 	text-align: left;
 }
@@ -433,24 +436,32 @@ legend {
 	white-space: nowrap;
 }
 .moduleTabActive {
-	border-top: 1px solid;
-	border-left: 1px solid;
-	border-right: 1px solid;
+	border-left: 1px solid #EEE;
+	border-right: 1px solid #EEE;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
 	padding:5px;
 	background-color: #B0CFF4;
 	text-align: left;
+	font-weight: bold;
 }
 .moduleTabInActive {
+	border-left: 1px solid #EEE;
+	border-right: 1px solid #EEE;
+	border-top: 1px solid #FFF;
 	border-bottom: 1px solid #FFF;
 	padding:5px;
 	background-color: #FFF;
-    border-left: 1px solid #EEE;
     text-align: left;
 }
 .moduleTabInActive:hover {
-	border-bottom: 1px solid;
+	border-bottom: 1px solid #FFF;
+	border-left: 1px solid #EEE;
+    border-right: 1px solid #EEE;
+    border-top: 1px solid #FFF;
 	padding:5px;
-	background-color: #FFF;
+	background-color: #CBDFF8;
+	text-align: left;
 }
 .editModule {
 	font-size: 10px; 

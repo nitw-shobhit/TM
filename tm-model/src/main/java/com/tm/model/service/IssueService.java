@@ -2,7 +2,7 @@ package com.tm.model.service;
 
 import java.util.List;
 
-import com.tm.core.entity.TmIssue;
+import com.tm.core.entity_sql.TmIssue;
 import com.tm.model.bean.ui.IssueBean;
 import com.tm.model.bean.ui.IssueHistoryBean;
 import com.tm.util.assembler.DtoAssemblerFacade;

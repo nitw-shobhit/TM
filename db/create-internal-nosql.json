@@ -1,0 +1,27 @@
+{
+	"mappings" : {
+		"tm_log" : {
+			"properties" : {
+				"id" : {"type" : "long", "index" : "not_analyzed"},
+				"log_level" : {"type" : "string", "index" : "not_analyzed"},
+				"log_logger" : {"type" : "string", "index" : "not_analyzed"},
+				"log_message" : {"type" : "string", "index" : "not_analyzed"},
+				"log_signed_user" : {"type" : "string", "index" : "not_analyzed"},
+				"log_ip_address" : {"type" : "string", "index" : "not_analyzed"},
+				"dt_created" : {"type" : "string", "index" : "not_analyzed"}
+			}
+		},
+		"tm_audit_trail" : {
+			"properties" : {
+				"id" : {"type" : "long", "index" : "not_analyzed"},
+				"trl_action" : {"type" : "string", "index" : "not_analyzed"},
+				"trl_entity" : {"type" : "string", "index" : "not_analyzed"},
+				"trl_old" : {"type" : "string", "index" : "not_analyzed"},
+				"trl_new" : {"type" : "string", "index" : "not_analyzed"},
+				"trl_signed_user" : {"type" : "string", "index" : "not_analyzed"},
+				"trl_ip_addr" : {"type" : "string", "index" : "not_analyzed"},
+				"dt_created" : {"type" : "string", "index" : "not_analyzed"}
+			}
+		}
+	}
+}

@@ -22,23 +22,28 @@
 		</tr>
 	</table>
 	<br>
+	<table style="margin-left:auto; margin-right:auto">
+		<tr>
+			<td>
+				<span class="underline" style="font-size: 14px; color: #FFF; font-weight: bold; margin-left: auto; margin-right: auto;">{{projectName}}</span>
+			</td>
+		</tr>
+	</table>
+	<br>
 	<table style="vertical-align: middle;">
 		<tr>
-			<td style="width:.5%; border-bottom: 1px solid;"></td>
 			<td data-ng-repeat="module in projectModules" data-ng-class="module.open ? 'moduleTabActive' : 'moduleTabInActive'">
 				
 					<div class="moduleTabs">
 						<div>
-							<a class="underlinedLink" data-ng-click="getModuleComponents(module.module.id)" style="margin-right:5px;">
-								{{module.module.modName}}
-							</a>
+							<a class="underlinedLink" data-ng-click="getModuleComponents(module.module.id)" style="margin-right:5px;">{{module.module.modName}}</a>
 							<a data-ng-click="openEditModuleBox(module)" style="margin-left: 5px;">
 								<span class="glyphicon glyphicon-pencil editModule"></span>
 							</a>
 						</div>
 					</div>
 			</td>
-			<td style="width:100%; border-bottom: 1px solid;"></td>
+			<td style="width:100%; border-bottom: 1px solid #FFF;"></td>
 		</tr>
 	</table>
 	{{emptyListMessage}}

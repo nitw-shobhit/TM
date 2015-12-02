@@ -1,17 +1,7 @@
 package com.tm.dao;
 
-import com.tm.dao.db.IssueAttachmentDao;
-import com.tm.dao.db.IssueCommentDao;
-import com.tm.dao.db.IssueDao;
-import com.tm.dao.db.IssueHistoryDao;
-import com.tm.dao.db.IssueSubscribeDao;
-import com.tm.dao.db.ModuleDao;
-import com.tm.dao.db.NotificationDao;
-import com.tm.dao.db.NotificationVariableDao;
-import com.tm.dao.db.ProjectDao;
-import com.tm.dao.db.ReleaseDao;
-import com.tm.dao.db.UserDao;
-import com.tm.dao.db.UserProjectDao;
+import com.tm.dao.db.impl_nosql.AuditDaoImpl;
+import com.tm.dao.db.impl_nosql.LoggerDaoImpl;
 import com.tm.dao.db.impl_sql.IssueAttachmentDaoImpl;
 import com.tm.dao.db.impl_sql.IssueCommentDaoImpl;
 import com.tm.dao.db.impl_sql.IssueDaoImpl;
@@ -24,7 +14,19 @@ import com.tm.dao.db.impl_sql.ProjectDaoImpl;
 import com.tm.dao.db.impl_sql.ReleaseDaoImpl;
 import com.tm.dao.db.impl_sql.UserDaoImpl;
 import com.tm.dao.db.impl_sql.UserProjectDaoImpl;
-import com.tm.util.db.genericdao.DBFacade;
+import com.tm.dao.db_nosql.LoggerDao;
+import com.tm.dao.db_sql.IssueAttachmentDao;
+import com.tm.dao.db_sql.IssueCommentDao;
+import com.tm.dao.db_sql.IssueDao;
+import com.tm.dao.db_sql.IssueHistoryDao;
+import com.tm.dao.db_sql.IssueSubscribeDao;
+import com.tm.dao.db_sql.ModuleDao;
+import com.tm.dao.db_sql.NotificationDao;
+import com.tm.dao.db_sql.NotificationVariableDao;
+import com.tm.dao.db_sql.ProjectDao;
+import com.tm.dao.db_sql.ReleaseDao;
+import com.tm.dao.db_sql.UserDao;
+import com.tm.dao.db_sql.UserProjectDao;
 
 public class DaoFactory {
 	
@@ -45,9 +47,12 @@ public class DaoFactory {
 		private static final NotificationDao notificationDaoImpl = new NotificationDaoImpl();
 		private static final NotificationVariableDao notificationVariableDaoImpl = new NotificationVariableDaoImpl();
 		private static final ReleaseDao releaseDaoImpl = new ReleaseDaoImpl();
+		
+		private static final LoggerDao loggerDaoImpl = new LoggerDaoImpl();
+		private static final AuditDaoImpl auditDaoImpl = new AuditDaoImpl();
 	}
 	
-	public static DBFacade<?, ?> generateDao(DaoType dType) {
+	public static Object generateDao(DaoType dType) {
 		if(dType.equals(DaoType.USER)) {
 			return DaoFactoryHelper.userDaoImpl;
 		} else if(dType.equals(DaoType.PROJECT)) {
@@ -72,6 +77,10 @@ public class DaoFactory {
 			return DaoFactoryHelper.notificationVariableDaoImpl;
 		} else if(dType.equals(DaoType.RELEASE)) {
 			return DaoFactoryHelper.releaseDaoImpl;
+		} else if(dType.equals(DaoType.LOGGER)) {
+			return DaoFactoryHelper.loggerDaoImpl;
+		} else if(dType.equals(DaoType.AUDIT)) {
+			return DaoFactoryHelper.auditDaoImpl;
 		} else {
 			return null;
 		}

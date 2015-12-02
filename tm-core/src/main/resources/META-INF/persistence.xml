@@ -4,19 +4,19 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<non-jta-data-source>java:/jdbc/tmDS</non-jta-data-source>
 		<mapping-file>META-INF/orm.xml</mapping-file>
-		<class>com.tm.core.entity.TmBase</class>
-		<class>com.tm.core.entity.TmUserInfo</class>
-		<class>com.tm.core.entity.TmProject</class>
-		<class>com.tm.core.entity.TmUserProject</class>
-		<class>com.tm.core.entity.TmModule</class>
-		<class>com.tm.core.entity.TmIssue</class>
-		<class>com.tm.core.entity.TmIssueComment</class>
-		<class>com.tm.core.entity.TmIssueAttachment</class>
-		<class>com.tm.core.entity.TmIssueHistory</class>
-		<class>com.tm.core.entity.TmIssueSubscribe</class>
-		<class>com.tm.core.entity.TmNotification</class>
-		<class>com.tm.core.entity.TmNotificationVariable</class>
-		<class>com.tm.core.entity.TmRelease</class>
+		<class>com.tm.core.entity_sql.TmBase</class>
+		<class>com.tm.core.entity_sql.TmUserInfo</class>
+		<class>com.tm.core.entity_sql.TmProject</class>
+		<class>com.tm.core.entity_sql.TmUserProject</class>
+		<class>com.tm.core.entity_sql.TmModule</class>
+		<class>com.tm.core.entity_sql.TmIssue</class>
+		<class>com.tm.core.entity_sql.TmIssueComment</class>
+		<class>com.tm.core.entity_sql.TmIssueAttachment</class>
+		<class>com.tm.core.entity_sql.TmIssueHistory</class>
+		<class>com.tm.core.entity_sql.TmIssueSubscribe</class>
+		<class>com.tm.core.entity_sql.TmNotification</class>
+		<class>com.tm.core.entity_sql.TmNotificationVariable</class>
+		<class>com.tm.core.entity_sql.TmRelease</class>
 		<properties/>
 	</persistence-unit>
 </persistence>

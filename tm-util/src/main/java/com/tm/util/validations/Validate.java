@@ -1,12 +1,19 @@
 package com.tm.util.validations;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.util.Map.Entry;
+import java.util.Properties;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface Validate {
-	String [] types();
+import com.tm.util.validations.beans.Errors;
+
+
+public class Validate {
+
+	public static Errors validate(Properties properties, Object beanToValidate) {
+		Errors errors = new Errors();
+		for(Entry<Object, Object> entry : properties.entrySet()) {
+			
+		}
+		
+		return errors;
+	}
 }

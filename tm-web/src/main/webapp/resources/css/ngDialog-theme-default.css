@@ -281,6 +281,11 @@
 }
 
 .ngdialog.ngdialog-theme-default.selectProject .ngdialog-content {
-	width: 300px;
-	height: 115px;
+	width: 282px;
+	height: 105px;
+}
+
+.ngdialog.ngdialog-theme-default.dateBox .ngdialog-content {
+	width: 500px;
+	height: 300px;
 }

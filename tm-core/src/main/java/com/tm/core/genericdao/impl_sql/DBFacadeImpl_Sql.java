@@ -10,14 +10,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import com.tm.core.entity.TmBase;
 import com.tm.core.entity.manager_sql.EntityManagerFactory;
+import com.tm.core.entity_sql.TmBase;
 import com.tm.core.query.QueryConstants;
 import com.tm.util.db.MultipleQueryBean;
 import com.tm.util.db.Param;
-import com.tm.util.db.genericdao.DBFacade;
+import com.tm.util.db.genericdao.DBFacade_Sql;
 
-public class DBFacadeImpl_Sql<T, PK> extends QueryConstants implements DBFacade<T, PK> {
+public class DBFacadeImpl_Sql<T, PK> extends QueryConstants implements DBFacade_Sql<T, PK> {
 
 	@Override
 	public T persist(T obj, boolean baseFlag) {

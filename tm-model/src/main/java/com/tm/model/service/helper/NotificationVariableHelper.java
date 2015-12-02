@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.tm.core.entity.TmNotificationVariable;
+import com.tm.core.entity_sql.TmNotificationVariable;
 
 public class NotificationVariableHelper {
 

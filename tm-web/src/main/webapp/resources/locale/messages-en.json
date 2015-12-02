@@ -47,6 +47,7 @@
 	"section_header" : {
 		"active" : "ACTIVE",
 		"archived" : "ARCHIVED",
+		"details" : "DETAILS",
 		"update_profile" : "UPDATE PROFILE",
 		"change_password" : "CHANGE PASSWORD",
 		"team" : "TEAM",

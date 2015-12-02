@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.tm.core.entity.TmIssueSubscribe;
+import com.tm.core.entity_sql.TmIssueSubscribe;
 
 public class IssueSubscribeHelper {
 

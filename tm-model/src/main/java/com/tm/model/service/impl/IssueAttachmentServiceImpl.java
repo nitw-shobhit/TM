@@ -3,11 +3,11 @@ package com.tm.model.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tm.core.entity.TmIssueAttachment;
+import com.tm.core.entity_sql.TmIssueAttachment;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
-import com.tm.dao.db.IssueAttachmentDao;
-import com.tm.dao.db.UserDao;
+import com.tm.dao.db_sql.IssueAttachmentDao;
+import com.tm.dao.db_sql.UserDao;
 import com.tm.model.bean.ui.IssueAttachmentBean;
 import com.tm.model.service.IssueAttachmentService;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;

@@ -27,6 +27,14 @@
 					</a>
 				</td>
 				<td>
+					<a data-ng-show="!item.issSubscribed" data-ng-click="addIssueCalendar(item)">
+						<span class="glyphicon glyphicon-tag" style="color: #AAA; font-size: 15px;"></span>
+					</a>
+					<a data-ng-show="item.issSubscribed" data-ng-click="removeIssueCalendar(item)">
+						<span class="glyphicon glyphicon-tag" style="color: #DCEB14; font-size: 15px;"></span>
+					</a>
+				</td>
+				<td>
 					<img data-ng-show="item.issPriority == 'High'" src="<%= request.getContextPath()%>/resources/images/flag_red.ico" height="20" width="20" />
 					<img data-ng-show="item.issPriority == 'Medium'" src="<%= request.getContextPath()%>/resources/images/flag_blue.ico" height="20" width="20" />
 					<img data-ng-show="item.issPriority == 'Low'" src="<%= request.getContextPath()%>/resources/images/flag_green.ico" height="20" width="20" />

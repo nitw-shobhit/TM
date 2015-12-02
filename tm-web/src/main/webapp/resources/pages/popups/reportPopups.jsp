@@ -19,7 +19,10 @@
               			search-fields="projName,projDesc" title-field="projName" minlength="1" input-class="form-control form-control-small"/>
 				</td>
 				<td>
-					<button class="btn btn-primary">GO</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a data-ng-click="closeSelectProjectBox()" class="btn btn-primary" 
+						href="/tm-web/output?__report=resources/reports/issue-status.rptdesign&__format=pdf&project_id={{selectedProject.originalObject.id}}"
+						target="_blank">GO</a>
 				</td>
 			</tr>
 		</table>

@@ -4,19 +4,19 @@ import java.util.List;
 
 import javax.persistence.EntityTransaction;
 
-import com.tm.core.entity.TmIssue;
-import com.tm.core.entity.TmIssueAttachment;
-import com.tm.core.entity.TmIssueComment;
-import com.tm.core.entity.TmIssueHistory;
-import com.tm.core.entity.TmIssueSubscribe;
+import com.tm.core.entity_sql.TmIssue;
+import com.tm.core.entity_sql.TmIssueAttachment;
+import com.tm.core.entity_sql.TmIssueComment;
+import com.tm.core.entity_sql.TmIssueHistory;
+import com.tm.core.entity_sql.TmIssueSubscribe;
 import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
-import com.tm.dao.db.IssueAttachmentDao;
-import com.tm.dao.db.IssueCommentDao;
-import com.tm.dao.db.IssueDao;
-import com.tm.dao.db.IssueHistoryDao;
-import com.tm.dao.db.IssueSubscribeDao;
+import com.tm.dao.db_sql.IssueAttachmentDao;
+import com.tm.dao.db_sql.IssueCommentDao;
+import com.tm.dao.db_sql.IssueDao;
+import com.tm.dao.db_sql.IssueHistoryDao;
+import com.tm.dao.db_sql.IssueSubscribeDao;
 import com.tm.util.db.Param;
 import com.tm.util.exceptions.DaoException;
 

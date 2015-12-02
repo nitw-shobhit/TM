@@ -5,10 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.tm.core.entity.TmIssue;
+import com.tm.core.entity_sql.TmIssue;
+import com.tm.core.entity_sql.TmModule;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
-import com.tm.dao.db.IssueDao;
+import com.tm.dao.db_sql.IssueDao;
+import com.tm.dao.db_sql.ModuleDao;
 import com.tm.model.bean.ui.IssueStatus;
 import com.tm.report.bean.IssueStatusBean;
 
@@ -17,6 +19,13 @@ public class IssueStatusService {
 	public List<IssueStatusBean> getIssueStatusData(int projectId) {
 		
 		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
+		ModuleDao moduleDao = (ModuleDao) DaoFactory.generateDao(DaoType.MODULE);
+		
+		List<TmModule> moduleEntities = moduleDao.byProjectId(projectId);
+		List<Integer> moduleIdList = new ArrayList<Integer>();
+		for(TmModule moduleEntity : moduleEntities) {
+			moduleIdList.add((int) moduleEntity.getId());
+		}
 		
 		List<TmIssue> issueEntities = issueDao.findAll();
 
@@ -27,7 +36,9 @@ public class IssueStatusService {
 		}
 		
 		for(TmIssue issueEntity : issueEntities) {
-			issueCountMap.put(issueEntity.getIssStatus(), issueCountMap.get(issueEntity.getIssStatus()) + 1);
+			if(moduleIdList.contains((int)issueEntity.getModId())) {
+				issueCountMap.put(issueEntity.getIssStatus(), issueCountMap.get(issueEntity.getIssStatus()) + 1);
+			}
 		}
 		
 		List<IssueStatusBean> issueStatusBeanList = new ArrayList<IssueStatusBean>();

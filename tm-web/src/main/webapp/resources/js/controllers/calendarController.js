@@ -94,4 +94,21 @@ angular.module('tm-app').controller("calendarController", function($scope, $root
 			}
 		});
 	};
+	
+	$scope.openDateBox = function(selectedDate, selectedMonth, selectedYear) {
+		var selectedData = {
+			"selectedDate" : selectedDate,
+			"selectedMonth" : selectedMonth,
+			"selectedYear" : selectedYear
+		};
+		ngDialog.open({
+			template: 'dateBox',
+			className: 'ngdialog-theme-default dateBox',
+			scope: $scope,
+			data: selectedData,
+			preCloseCallback: function(value) {
+				return true;
+			}
+		});
+	};
 });

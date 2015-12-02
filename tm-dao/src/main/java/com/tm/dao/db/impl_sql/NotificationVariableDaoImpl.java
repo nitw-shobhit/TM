@@ -2,9 +2,9 @@ package com.tm.dao.db.impl_sql;
 
 import java.util.List;
 
-import com.tm.core.entity.TmNotificationVariable;
+import com.tm.core.entity_sql.TmNotificationVariable;
 import com.tm.core.genericdao.impl_sql.DBFacadeImpl_Sql;
-import com.tm.dao.db.NotificationVariableDao;
+import com.tm.dao.db_sql.NotificationVariableDao;
 import com.tm.util.db.Param;
 
 public class NotificationVariableDaoImpl extends DBFacadeImpl_Sql<TmNotificationVariable, Long> implements NotificationVariableDao {

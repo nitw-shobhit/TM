@@ -1,4 +1,5 @@
 angular.module('tm-app').controller("projectController", function ($scope, $state, $rootScope, $timeout, ngDialog) {
+	
 	$.ajax({
 	    url: '/tm-web/tmProject/getAllUserProjects.do?id='+ $rootScope.userBean.id,
 	    type: 'GET',
@@ -247,8 +248,9 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 	    });
 	};
 	
-	$scope.getProjectModules = function(projectId, subModule) {
+	$scope.getProjectModules = function(projectId, projectName, subModule) {
 		$rootScope.projectId = projectId;
+		$rootScope.projectName = projectName;
 		$rootScope.selectedSubModule = subModule;
 		$state.go('app.dboard.module');
 	};

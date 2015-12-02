@@ -3,7 +3,7 @@ var module = angular.module('tm-app', ['ui.router', 'ngDialog', 'pascalprecht.tr
                                        'angucomplete-alt', 'tm-confirm-button', 'LocalStorageModule', 
                                        'tm-tooltip']);
 
-//i18n & l10n
+//I18N & L10N
 module.config(function ($translateProvider) {
 	
 	$translateProvider.useStaticFilesLoader({
@@ -124,6 +124,17 @@ module.config(function ($stateProvider, $urlRouterProvider, $provide) {
 				'content@' : {
 					templateUrl : 'resources/pages/notifications.jsp',
 					controller : 'notificationController'
+				}
+			}
+		}
+	)
+	.state('app.dboard.log',
+		{
+			url: "",
+			views: {
+				'content@' : {
+					templateUrl : 'resources/pages/logs.jsp',
+					controller : 'loggerController'
 				}
 			}
 		}

@@ -19,10 +19,15 @@ angular.module('tm-app').controller("reportController", function($scope, $rootSc
         		});
 	        }
 	    }).fail(function() {
+	    	ngDialog.close();
 	    	$rootScope.panelMessage = "Could not retrieve the project list at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 	    });
 		
+	};
+	
+	$scope.closeSelectProjectBox = function() {
+		ngDialog.close();
 	};
 });

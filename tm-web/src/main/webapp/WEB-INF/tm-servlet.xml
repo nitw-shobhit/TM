@@ -12,8 +12,8 @@
 	<!-- ASPECTJ -->
 	<aop:aspectj-autoproxy />
 
-	<context:component-scan base-package="com.tm.web.validator">
-		<context:include-filter type="aspectj" expression="com.tm.web.validator.*" />
+	<context:component-scan base-package="com.tm.web.logger">
+		<context:include-filter type="aspectj" expression="com.tm.web.logger.*" />
 	</context:component-scan>
 
 	<!-- SERVICE BEANS -->
@@ -36,10 +36,9 @@
 		<property name="issueHistoryService" ref="issueHistoryService"></property>
 		<property name="issueSubscribeService" ref="issueSubscribeService"></property>
 	</bean>
-	<bean id="releaseService" class="com.tm.model.service.impl.ReleaseServiceImpl">
-	</bean>
-	<bean id="calendarService" class="com.tm.model.service.impl.CalendarServiceImpl">
-	</bean>
+	<bean id="releaseService" class="com.tm.model.service.impl.ReleaseServiceImpl"/>
+	<bean id="calendarService" class="com.tm.model.service.impl.CalendarServiceImpl"/>
+	<bean id="loggerService" class="com.tm.model.service.impl.LoggerServiceImpl"/>
 
 	<!-- LISTENER -->
 	<bean name="starter" init-method="init" class="com.tm.model.init.service.StartupService" >
@@ -79,6 +78,9 @@
 	</bean>
 	<bean name="/tmCalendar/*" class="com.tm.web.controller.CalendarController">
 		<property name="calendarService" ref="calendarService" />
+	</bean>
+	<bean name="/tmLogger/*" class="com.tm.web.controller.LoggerController">
+		<property name="loggerService" ref="loggerService" />
 	</bean>
 	
 	<!-- I18N  -->

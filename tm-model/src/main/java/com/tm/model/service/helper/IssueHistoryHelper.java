@@ -3,8 +3,8 @@ package com.tm.model.service.helper;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import com.tm.core.entity.TmIssueHistory;
-import com.tm.core.entity.TmUserInfo;
+import com.tm.core.entity_sql.TmIssueHistory;
+import com.tm.core.entity_sql.TmUserInfo;
 
 public class IssueHistoryHelper {
 

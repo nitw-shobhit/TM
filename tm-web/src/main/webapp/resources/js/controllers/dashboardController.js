@@ -9,6 +9,8 @@ angular.module('tm-app').controller("dashboardController", function($scope, $roo
 			$state.go('app.dboard.report');
 		} else if(appType == 'Notifications') {
 			$state.go('app.dboard.notification');
+		} else if(appType == 'Logs') {
+			$state.go('app.dboard.log');
 		} else {
 			$rootScope.panelMessage = "This feature is currently not supported";
 	    	$rootScope.errorBoxFlag = true;
