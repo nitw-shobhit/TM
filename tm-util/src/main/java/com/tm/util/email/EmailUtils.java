@@ -16,7 +16,7 @@ import com.tm.util.file.PropertyUtils;
 
 public class EmailUtils {
 
-	public static void sendEmail(String to, String subject) throws EmailServiceFailureException, FileLoadException, URISyntaxException {
+	public static int sendEmail(String to, String subject) throws EmailServiceFailureException, FileLoadException, URISyntaxException {
 		
 		Properties mgProp = PropertyUtils.loadProperties("mail_gun.properties");
 		
@@ -35,5 +35,7 @@ public class EmailUtils {
         if (cr.getStatus() != 200) {
         	throw new EmailServiceFailureException("Mailgun Failure : Could not send email notification");
         }
+        
+        return cr.getStatus();
     }
 }
