@@ -55,7 +55,7 @@ public class DBFacadeImpl_NoSql<T> implements DBFacade_NoSql<T> {
 	public List<T> findAll() {
 		Client client = getTransportClient();
 		MatchAllQueryBuilder query = QueryBuilders.matchAllQuery();
-		SearchResponse response = client.prepareSearch().setQuery(query)
+		SearchResponse response = client.prepareSearch().setQuery(query).setSize(100)
 		        .execute()
 		        .actionGet();
 		SearchHit[] results = response.getHits().getHits();

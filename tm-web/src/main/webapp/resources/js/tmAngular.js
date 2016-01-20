@@ -1,7 +1,7 @@
 var module = angular.module('tm-app', ['ui.router', 'ngDialog', 'pascalprecht.translate', 'ui.bootstrap',
                                        'angular-table', 'angularTreeview', 'ngAnimate', 'cgBusy', 'ngTouch',
                                        'angucomplete-alt', 'tm-confirm-button', 'LocalStorageModule', 
-                                       'tm-tooltip']);
+                                       'tm-tooltip', 'ngTable']);
 
 //I18N & L10N
 module.config(function ($translateProvider) {

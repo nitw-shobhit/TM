@@ -1,8 +1,9 @@
 angular.module('tm-app').controller("loginController", function ($scope, $state, $rootScope, $timeout, localStorageService) {
 	$scope.userId = "A10000";
 	$scope.userPass = "1";
-
-	if(localStorageService.get("tmCookie") != null) {
+	
+	console.log(localStorageService.get("tmCookie"));
+	if(localStorageService.get("tmCookie")) {
 		$rootScope.userBean = localStorageService.get("tmCookie").user;
 		$state.go('app.dboard');
 	}

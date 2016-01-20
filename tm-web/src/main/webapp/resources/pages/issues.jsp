@@ -31,7 +31,7 @@
 						<span class="glyphicon glyphicon-tag" style="color: #AAA; font-size: 15px;"></span>
 					</a>
 					<a data-ng-show="item.issSubscribed" data-ng-click="removeIssueCalendar(item)">
-						<span class="glyphicon glyphicon-tag" style="color: #DCEB14; font-size: 15px;"></span>
+						<span class="glyphicon glyphicon-tag" style="color: red; font-size: 15px;"></span>
 					</a>
 				</td>
 				<td>

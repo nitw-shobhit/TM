@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/angular-busy.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/gh-fork-ribbon.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/angucomplete-alt.css">
+	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/ng-table.min.css">
 	<script src="<%= request.getContextPath()%>/resources/js/others/jquery-1.11.1.min.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/bootstrap.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular.min.js"></script>
@@ -26,6 +27,7 @@
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-translate.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-translate-loader-static-files.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/ngDialog.js"></script>
+   	<script src="<%= request.getContextPath()%>/resources/js/others/ng-table.min.js"></script>
 	<!-- SERVICES -->
 	<!-- DIRECTIVES -->
 	<script src="<%= request.getContextPath()%>/resources/js/directives/confirmButtonDirective.js"></script>

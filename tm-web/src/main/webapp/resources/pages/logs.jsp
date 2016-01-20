@@ -12,20 +12,24 @@
 		<li><a data-ng-click="redirectToMyApps()" data-ng-controller="rootController"><span class="glyphicon glyphicon-th"></span> {{'breadcrumb.applications' | translate}}</a></li>
 		<li class="active"><span class="glyphicon glyphicon-duplicate"></span> Logs</li>
 	</ol>
-	<table class="table table-striped logTable" at-table at-paginated at-list="logs" at-config="config">
-		<thead></thead>
-		<tbody>
-			<tr>
-				<td at-implicit at-sortable at-attribute="id" at-title="ID" ></td>
-				<td at-implicit at-sortable at-attribute="log_level" at-initial-sorting="asc" at-title="LEVEL" ></td>
-				<td at-implicit at-sortable at-attribute="log_logger" at-title="LOGGER" ></td>
-				<td at-implicit at-sortable at-attribute="log_message" at-title="MESSAGE" ></td>
-				<td at-implicit at-sortable at-attribute="log_signed_user" at-title="USER" ></td>
-				<td at-implicit at-sortable at-attribute="log_ip_address" at-title="IP ADDRESS" ></td>
-				<td at-implicit at-sortable at-attribute="dt_created" at-title="CREATED-ON" ></td>
-			</tr>
-		</tbody>
+	
+	<table ng-table="tableParams" class="table table-striped logTable" show-filter="true">
+	    <tr ng-repeat="log in $data">
+	        <td data-title="'ID'" filter="{ id: 'text'}" sortable="'id'" style="text-align: left;">
+	            {{log.id}}</td>
+            <td data-title="'LEVEL'" filter="{ log_level: 'text'}" sortable="'log_level'" style="text-align: left;">
+            	{{log.log_level}}</td>
+            <td data-title="'LOGGER'" filter="{ log_logger: 'text'}" sortable="'log_logger'" style="text-align: left;">
+            	{{log.log_logger}}</td>
+            <td data-title="'MESSAGE'" filter="{ log_message: 'text'}" sortable="'log_message'" style="text-align: left;">
+           		{{log.log_message}}</td>
+            <td data-title="'USER'" filter="{ log_signed_user: 'text'}" sortable="'log_signed_user'" style="text-align: left;">
+            	{{log.log_signed_user}}</td>
+            <td data-title="'ADDRESS'" filter="{ log_ip_address: 'text'}" sortable="'log_ip_address'" style="text-align: left;">
+            	{{log.log_ip_address}}</td>
+            <td data-title="'CREATED-DATE'" filter="{ dt_created: 'text'}" sortable="'dt_created'" style="text-align: left;">
+            	{{log.dt_created}}</td>
+	    </tr>
 	</table>
-	<at-pagination at-list="logs" at-config="config"></at-pagination>
 </body>
 </html>
