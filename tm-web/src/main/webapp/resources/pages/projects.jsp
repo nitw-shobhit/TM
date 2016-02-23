@@ -8,8 +8,9 @@
 <title>TM</title>
 </head>
 <body>
+	<br>
 	<ol class="breadcrumb">
-		<li><a data-ng-click="redirectToMyApps()" data-ng-controller="rootController"><span class="glyphicon glyphicon-th"></span> {{'breadcrumb.applications' | translate}}</a></li>
+		<li><a style="color: #aaa;" data-ng-click="redirectToMyApps()" data-ng-controller="rootController"><span class="glyphicon glyphicon-th"></span> {{'breadcrumb.applications' | translate}}</a></li>
 		<li class="active"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;{{'breadcrumb.projects' | translate}}</li>
 	</ol>
 	<div class="projectMainDiv">
@@ -37,8 +38,8 @@
 										class="projectSideMenuLink" title="Project Issues"><span class="flaticon-menu48"></span></a><br>
 									<a data-ng-click="getProjectModules(project.id, project.projName, 'release')"
 										class="projectSideMenuLink" title="Project Releases"><span class="glyphicon glyphicon-download-alt"></span></a><br>
-									<a data-ng-click="disableProject(project.id)"
-										class="projectSideMenuLink" title="Disable" confirm-button><span class="flaticon-lock81"></span></a><br>
+									<a confirm-button confirm-action="disableProject(project.id)"
+										class="projectSideMenuLink" title="Disable"><span class="flaticon-lock81"></span></a><br>
 								</div>
 							</div>
 						</td>

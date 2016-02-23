@@ -14,4 +14,5 @@ public class QueryConstants extends ParamConstants {
 	public static final String GET_NOTIFICATIONS_BY_USER_ID = "getNotificationsByUserId";
 	public static final String GET_VARIABLES_BY_NOTIFICATION_ID = "getVariablesByNotificationId";
 	public static final String GET_RELEASES_BY_MODULE_ID = "getReleasesByModuleId";
+	public static final String GET_CALENDAR_BY_USER_ID = "getCalendarByUserId";
 }

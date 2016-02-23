@@ -1,6 +1,6 @@
-package com.tm.model.bean.calendar;
+package com.tm.util.date.calendar.beans;
 
-public class DateBean {
+public class Date {
 	
 	private int value;
 

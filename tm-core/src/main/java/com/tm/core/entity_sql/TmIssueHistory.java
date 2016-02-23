@@ -1,8 +1,16 @@
 package com.tm.core.entity_sql;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
 
 
 /**
@@ -11,7 +19,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name="tm_issue_history")
-public class TmIssueHistory implements Serializable {
+public @Data class TmIssueHistory implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,48 +37,4 @@ public class TmIssueHistory implements Serializable {
 
 	@Column(name="ISS_ID")
 	private long issId;
-
-	public TmIssueHistory() {
-	}
-
-	public long getId() {
-		return this.id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getHisContent() {
-		return this.hisContent;
-	}
-
-	public void setHisContent(String hisContent) {
-		this.hisContent = hisContent;
-	}
-
-	public Timestamp getHisCreated() {
-		return this.hisCreated;
-	}
-
-	public void setHisCreated(Timestamp hisCreated) {
-		this.hisCreated = hisCreated;
-	}
-
-	public String getHisUser() {
-		return this.hisUser;
-	}
-
-	public void setHisUser(String hisUser) {
-		this.hisUser = hisUser;
-	}
-
-	public long getIssId() {
-		return this.issId;
-	}
-
-	public void setIssId(long issId) {
-		this.issId = issId;
-	}
-
 }

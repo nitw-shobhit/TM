@@ -24,6 +24,7 @@
 		"add" : "Add",
 		"cancel" : "Cancel",
 		"accept" : "Accept",
+		"reject" : "Reject",
 		"re_assign" : "Reassign",
 		"remove" : "Remove",
 		"re_open" : "Re-Open",

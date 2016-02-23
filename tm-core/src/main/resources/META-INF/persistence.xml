@@ -17,6 +17,7 @@
 		<class>com.tm.core.entity_sql.TmNotification</class>
 		<class>com.tm.core.entity_sql.TmNotificationVariable</class>
 		<class>com.tm.core.entity_sql.TmRelease</class>
+		<class>com.tm.core.entity_sql.TmCalendar</class>
 		<properties/>
 	</persistence-unit>
 </persistence>

@@ -8,16 +8,17 @@
 <title>TM</title>
 </head>
 <body>
+	<br>
 	<ol class="breadcrumb">
-		<li><a data-ng-click="redirectToMyApps()" data-ng-controller="rootController"><span class="glyphicon glyphicon-th"></span> {{'breadcrumb.applications' | translate}}</a></li>
-		<li><a data-ng-click="redirectToProjects()" data-ng-controller="rootController"><span class="glyphicon glyphicon-folder-open"></span> {{'breadcrumb.projects' | translate}}</a></li>
+		<li><a style="color: #aaa;" data-ng-click="redirectToMyApps()" data-ng-controller="rootController"><span class="glyphicon glyphicon-th"></span> {{'breadcrumb.applications' | translate}}</a></li>
+		<li><a style="color: #aaa;" data-ng-click="redirectToProjects()" data-ng-controller="rootController"><span class="glyphicon glyphicon-folder-open"></span> {{'breadcrumb.projects' | translate}}</a></li>
 		<li data-ng-show="selectedSubModule == 'issue'" class="active"><span class="glyphicon glyphicon-align-justify"></span> {{'breadcrumb.issues' | translate}}</li>
 		<li data-ng-show="selectedSubModule == 'release'" class="active"><span class="glyphicon glyphicon-download-alt"></span> {{'breadcrumb.releases' | translate}}</li>
 	</ol>
 	<table>
 		<tr>
 			<td>
-				<span style="font-size: 11px; color: #FFF;">Need a new module? Click <a data-ng-click="openAddModuleBox()" class="btn-link">here</a> to get started.</span>
+				<span style="font-size: 11px;">Need a new module? Click <a data-ng-click="openAddModuleBox()" class="btn-link">here</a> to get started.</span>
 			</td>
 		</tr>
 	</table>
@@ -25,7 +26,7 @@
 	<table style="margin-left:auto; margin-right:auto">
 		<tr>
 			<td>
-				<span class="underline" style="font-size: 14px; color: #FFF; font-weight: bold; margin-left: auto; margin-right: auto;">{{projectName}}</span>
+				<span class="underline" style="font-size: 14px; font-weight: bold; margin-left: auto; margin-right: auto;">{{projectName}}</span>
 			</td>
 		</tr>
 	</table>

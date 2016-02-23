@@ -7,7 +7,7 @@
 <title>TM</title>
 <!-- ##########################################MONTHS############################################# -->
 <script type="text/ng-template" id="months">
-<fieldset>
+<fieldset class="popupFieldset">
 	<legend>
 		<span class="header">{{'section_header.months' | translate}}</span>
 	</legend>
@@ -36,7 +36,7 @@
 
 <!-- ##########################################YEARS############################################# -->
 <script type="text/ng-template" id="years">
-<fieldset>
+<fieldset class="popupFieldset">
 	<legend>
 		<span class="header">{{'section_header.years' | translate}}</span>
 	</legend>

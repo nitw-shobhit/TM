@@ -1,12 +1,12 @@
-package com.tm.model.bean.calendar;
+package com.tm.util.date.calendar.beans;
 
 import java.util.List;
 
-public class CalendarBean {
+public class Calendar {
 
 	private String month;
 	private int year;
-	private List<DayBean> days;
+	private List<Day> days;
 	private int today;
 	
 	public String getMonth() {
@@ -25,11 +25,11 @@ public class CalendarBean {
 		this.year = year;
 	}
 	
-	public List<DayBean> getDays() {
+	public List<Day> getDays() {
 		return days;
 	}
 	
-	public void setDays(List<DayBean> days) {
+	public void setDays(List<Day> days) {
 		this.days = days;
 	}
 

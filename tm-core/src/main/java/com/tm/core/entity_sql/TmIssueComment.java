@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 
 /**
  * The persistent class for the tm_issue_comment database table.
@@ -16,7 +19,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="tm_issue_comment")
-public class TmIssueComment extends TmBase implements Serializable {
+@EqualsAndHashCode(callSuper=false)
+public @Data class TmIssueComment extends TmBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -31,39 +35,4 @@ public class TmIssueComment extends TmBase implements Serializable {
 
 	@Column(name="USER_ID")
 	private long userId;
-	
-	public TmIssueComment() {
-	}
-	
-	public long getIssId() {
-		return issId;
-	}
-
-	public void setIssId(long issId) {
-		this.issId = issId;
-	}
-
-	public long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
-
-	public long getId() {
-		return this.id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getComContent() {
-		return this.comContent;
-	}
-
-	public void setComContent(String comContent) {
-		this.comContent = comContent;
-	}
 }

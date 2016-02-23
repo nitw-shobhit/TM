@@ -6,6 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>TM</title>
+	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/tm.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/bootstrap.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/bootstrap-social.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/font-awesome.min.css">
@@ -17,17 +18,15 @@
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/angular-busy.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/gh-fork-ribbon.css">
 	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/angucomplete-alt.css">
-	<link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/ng-table.min.css">
 	<script src="<%= request.getContextPath()%>/resources/js/others/jquery-1.11.1.min.js"></script>
-	<script src="<%= request.getContextPath()%>/resources/js/others/bootstrap.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular.min.js"></script>
+	<script src="<%= request.getContextPath()%>/resources/js/others/bootstrap.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-table.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-route.min.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-ui-router.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-translate.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/angular-translate-loader-static-files.js"></script>
 	<script src="<%= request.getContextPath()%>/resources/js/others/ngDialog.js"></script>
-   	<script src="<%= request.getContextPath()%>/resources/js/others/ng-table.min.js"></script>
 	<!-- SERVICES -->
 	<!-- DIRECTIVES -->
 	<script src="<%= request.getContextPath()%>/resources/js/directives/confirmButtonDirective.js"></script>
@@ -59,10 +58,9 @@
     <script src="<%= request.getContextPath()%>/resources/js/others/angular-touch.min.js"></script>
     <script src="<%= request.getContextPath()%>/resources/js/others/angucomplete-alt.js"></script>
     <script src="<%= request.getContextPath()%>/resources/js/others/local-storage.js"></script>
-    <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/tm.css">
 	<link rel="icon" type="image/x-icon" href="<%= request.getContextPath()%>/resources/images/favicon.ico" />
 </head>
-<body onload="">
+<body>
 	<div class="baseBody">
 		<div data-ui-view="userInfo"></div>
 		<div data-ui-view="messageBox"></div>

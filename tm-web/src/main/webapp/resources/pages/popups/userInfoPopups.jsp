@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TM</title>
 <!-- ##########################################UPDATE PROFILE############################################# -->
 <script type="text/ng-template" id="userProfile">
-<fieldset>
+<fieldset class="popupFieldset">
 	<legend>
 		<span class="header">{{'section_header.update_profile' | translate}}</span>
 	</legend>
@@ -77,7 +77,7 @@
 </script>
 <!-- ##########################################CHANGE PASSWORD############################################# -->
 <script type="text/ng-template" id="changePassword">
-<fieldset>
+<fieldset class="popupFieldset">
 	<legend>
 		<span class="header">{{'section_header.change_password' | translate}}</span>
 	</legend>

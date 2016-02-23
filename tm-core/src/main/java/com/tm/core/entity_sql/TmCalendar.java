@@ -1,6 +1,7 @@
 package com.tm.core.entity_sql;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,25 +15,25 @@ import lombok.EqualsAndHashCode;
 
 
 /**
- * The persistent class for the tm_notification database table.
+ * The persistent class for the tm_calendar database table.
  * 
  */
 @Entity
-@Table(name="tm_notification")
+@Table(name="tm_calendar")
 @EqualsAndHashCode(callSuper=false)
-public @Data class TmNotification extends TmBase implements Serializable {
+public @Data class TmCalendar extends TmBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 
-	@Column(name="NOT_CONTENT")
-	private String notContent;
-
-	@Column(name="NOT_IS_UNREAD")
-	private boolean notIsUnread;
+	@Column(name="ISS_ID")
+	private long issId;
 
 	@Column(name="USER_ID")
 	private long userId;
+	
+	@Column(name="EVENT_DATE")
+	private Timestamp eventDate;
 }

@@ -4,7 +4,6 @@ angular.module('tm-app').controller("internalController", function ($state, $sco
 	
 	$scope.setLocale = function (locale) {
 		$scope.locale = locale;
-		console.log(locale);
 		$translate.use(locale);
 	};
 	

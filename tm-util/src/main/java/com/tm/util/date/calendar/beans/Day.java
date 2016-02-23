@@ -1,11 +1,11 @@
-package com.tm.model.bean.calendar;
+package com.tm.util.date.calendar.beans;
 
 import java.util.List;
 
-public class DayBean {
+public class Day {
 	
 	private String day;
-	private List<DateBean> dates;
+	private List<Date> dates;
 	
 	public String getDay() {
 		return day;
@@ -15,11 +15,11 @@ public class DayBean {
 		this.day = day;
 	}
 	
-	public List<DateBean> getDates() {
+	public List<Date> getDates() {
 		return dates;
 	}
 	
-	public void setDates(List<DateBean> dates) {
+	public void setDates(List<Date> dates) {
 		this.dates = dates;
 	}
 }

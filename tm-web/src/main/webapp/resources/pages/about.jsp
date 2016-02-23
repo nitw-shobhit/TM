@@ -7,8 +7,9 @@
 <title>TM</title>
 </head>
 <body>
+	<br>
 	<ol class="breadcrumb">
-		<li><a data-ng-click="redirectToMyApps()" data-ng-controller="rootController"><span class="glyphicon glyphicon-th"></span> {{'breadcrumb.applications' | translate}}</a></li>
+		<li><a style="color: #aaa;" data-ng-click="redirectToMyApps()" data-ng-controller="rootController"><span class="glyphicon glyphicon-th"></span> {{'breadcrumb.applications' | translate}}</a></li>
 		<li class="active"><span class="glyphicon glyphicon-info-sign"></span> {{'breadcrumb.about' | translate}}</li>
 	</ol>
 	<br>

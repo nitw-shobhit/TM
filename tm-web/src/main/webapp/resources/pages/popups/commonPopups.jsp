@@ -10,11 +10,10 @@
 	<legend>
 		<span class="header">Confirm</span>
 	</legend>
-	<br><br>
 	Are you sure you wanna continue?
 	<br><br>
-	<button class="btn btn-primary btn-xs" onclick="return true;">Confirm</button>
-	<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')" style="float: left;">Cancel</button>
+	<button class="btn btn-primary btn-xs" data-ng-click="confirm(confirmValue)">Confirm</button> 
+	<button class="btn btn-default btn-xs" data-ng-click="closeThisDialog('button')">Cancel</button>
 </fieldset>
 </script>
 </head>

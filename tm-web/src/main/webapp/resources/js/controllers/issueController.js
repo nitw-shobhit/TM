@@ -93,10 +93,15 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 	};
 	
 	$scope.viewIssue = function(issueBean) {
+		var btns = checkButtonAccess(issueBean);
+		var data = {
+			"issueBean" : issueBean,
+			"btns" : btns
+		}
 		ngDialog.open({
 			template: 'viewIssue',
 			className: 'ngdialog-theme-default viewIssue',
-			data: issueBean,
+			data: data,
 			scope: $scope,
 			preCloseCallback: function(value) {
 				return true;
@@ -106,7 +111,7 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 	
 	$scope.viewIssueStatus = function(issueBean) {
 		issueBean.config = {
-		    itemsPerPage: 9,
+		    itemsPerPage: 6,
 		    fillLastPage: false
 	    };
 		issueBean.statusList=[];
@@ -153,17 +158,17 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		});
 	};
 	
-	$scope.acceptIssue = function(issueBean) {
-		
+	$scope.acceptIssue = function(ngDialogData) {
 		$.ajax({
-		    url: '/tm-web/tmIssue/acceptIssue.do?id='+issueBean.id,
+		    url: '/tm-web/tmIssue/acceptIssue.do?id='+ngDialogData.issueBean.id,
 		    type: 'POST',
 		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus=statusArray[0].id;
-		    	issueBean.issStatusCoordinates = statusArray[0].coordinates;
-		    	issueBean.issHistory.push(data);
+		    	ngDialogData.issueBean.issStatus=statusArray[0].id;
+		    	ngDialogData.issueBean.issStatusCoordinates = statusArray[0].coordinates;
+		    	ngDialogData.issueBean.issHistory.push(data);
+		    	ngDialogData.btns = checkButtonAccess(ngDialogData.issueBean);
 		    }
 		}).fail(function() {
 			ngDialog.close();
@@ -173,17 +178,17 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		});
 	};
 	
-	$scope.rejectIssue = function(issueBean) {
-		
+	$scope.rejectIssue = function(ngDialogData) {
 		$.ajax({
-		    url: '/tm-web/tmIssue/rejectIssue.do?id='+issueBean.id,
+		    url: '/tm-web/tmIssue/rejectIssue.do?id='+ngDialogData.issueBean.id,
 		    type: 'POST',
 		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus=statusArray[1].id;
-		    	issueBean.issStatusCoordinates = statusArray[1].coordinates;
-		    	issueBean.issHistory.push(data);
+		    	ngDialogData.issueBean.issStatus=statusArray[1].id;
+		    	ngDialogData.issueBean.issStatusCoordinates = statusArray[1].coordinates;
+		    	ngDialogData.issueBean.issHistory.push(data);
+		    	ngDialogData.btns = checkButtonAccess(ngDialogData.issueBean);
 		    }
 		}).fail(function() {
 			ngDialog.close();
@@ -193,20 +198,21 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		});
 	};
 	
-	$scope.openReassignIssueBox = function(issueId) {
+	$scope.openReassignIssueBox = function(ngDialogData) {
 		
 	};
 	
-	$scope.removeIssue = function(issueBean) {
-		
+	$scope.removeIssue = function(ngDialogData) {
 		$.ajax({
-		    url: '/tm-web/tmIssue/removeIssue.do?id='+issueBean.id,
+		    url: '/tm-web/tmIssue/removeIssue.do?id='+ngDialogData.issueBean.id,
 		    type: 'POST',
+		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus=statusArray[2].id;
-		    	issueBean.issStatusCoordinates = statusArray[2].coordinates;
-		    	issueBean.issHistory.push(data);
+		    	ngDialogData.issueBean.issStatus=statusArray[2].id;
+		    	ngDialogData.issueBean.issStatusCoordinates = statusArray[2].coordinates;
+		    	ngDialogData.issueBean.issHistory.push(data);
+		    	ngDialogData.btns = checkButtonAccess(ngDialogData.issueBean);
 		    }
 		}).fail(function() {
 			ngDialog.close();
@@ -216,15 +222,17 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		});
 	};
 	
-	$scope.reOpenIssue = function(issueBean) {
-		
+	$scope.reOpenIssue = function(ngDialogData) {
 		$.ajax({
-		    url: '/tm-web/tmIssue/reOpenIssue.do?id='+issueBean.id,
+		    url: '/tm-web/tmIssue/reOpenIssue.do?id='+ngDialogData.issueBean.id,
 		    type: 'POST',
+		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus=statusArray[3].id;
-		    	issueBean.issStatusCoordinates = statusArray[3].coordinates;
+		    	ngDialogData.issueBean.issStatus=statusArray[3].id;
+		    	ngDialogData.issueBean.issStatusCoordinates = statusArray[3].coordinates;
+		    	ngDialogData.issueBean.issHistory.push(data);
+		    	ngDialogData.btns = checkButtonAccess(ngDialogData.issueBean);
 		    }
 		}).fail(function() {
 			ngDialog.close();
@@ -234,37 +242,41 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		});
 	};
 	
-	$scope.markIssueAsFixed = function(issueBean) {
-		
+	$scope.markIssueAsFixed = function(ngDialogData) {
 		$.ajax({
-		    url: '/tm-web/tmIssue/rejectIssue.do?id='+issueBean.id,
+		    url: '/tm-web/tmIssue/fixIssue.do?id='+ngDialogData.issueBean.id,
 		    type: 'POST',
+		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus=statusArray[4].id;
-		    	issueBean.issStatusCoordinates = statusArray[4].coordinates;
+		    	ngDialogData.issueBean.issStatus=statusArray[4].id;
+		    	ngDialogData.issueBean.issStatusCoordinates = statusArray[4].coordinates;
+		    	ngDialogData.issueBean.issHistory.push(data);
+		    	ngDialogData.btns = checkButtonAccess(ngDialogData.issueBean);
 		    }
 		}).fail(function() {
 			ngDialog.close();
-	    	$rootScope.panelMessage = "Could not reject the issue at this moment.";
+	    	$rootScope.panelMessage = "Could not mark the issue as fixed, at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 		});
 	};
 	
-	$scope.completeIssue = function(issueBean) {
-		
+	$scope.completeIssue = function(ngDialogData) {
 		$.ajax({
-		    url: '/tm-web/tmIssue/completeIssue.do?id='+issueBean.id,
+		    url: '/tm-web/tmIssue/completeIssue.do?id='+ngDialogData.issueBean.id,
 		    type: 'POST',
+		    dataType: 'json',
 		    async: false,
 		    success: function(data) {
-		    	issueBean.issStatus=statusArray[5].id;
-		    	issueBean.issStatusCoordinates = statusArray[5].coordinates;
+		    	ngDialogData.issueBean.issStatus=statusArray[5].id;
+		    	ngDialogData.issueBean.issStatusCoordinates = statusArray[5].coordinates;
+		    	ngDialogData.issueBean.issHistory.push(data);
+		    	ngDialogData.btns = checkButtonAccess(ngDialogData.issueBean);
 		    }
 		}).fail(function() {
 			ngDialog.close();
-	    	$rootScope.panelMessage = "Could not reject the issue at this moment.";
+	    	$rootScope.panelMessage = "Could not complete the issue at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 		});
@@ -291,11 +303,65 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    }
 		}).fail(function() {
 			ngDialog.close();
-	    	$rootScope.panelMessage = "Could not reject the issue at this moment.";
+	    	$rootScope.panelMessage = "Could not unsubscribe from the issue at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 		});
 	};
+	
+	function checkButtonAccess(issueBean) {
+		var status = issueBean.issStatus;
+		var btns = {
+			"btnAccept" : false,
+			"btnReject" : false,
+			"btnReassign" : false,
+			"btnRemove" : false,
+			"btnReopen" : false,
+			"btnFixed" : false,
+			"btnComplete" : false,
+		};
+		if(status === "OPEN") {
+			btns.btnReopen = true;
+		}
+		else if(status === "ACCEPTED") {
+			btns.btnAccept = true;
+			btns.btnReopen = true;
+		}
+		else if(status === "REJECTED") {
+			btns.btnReject = true;
+		}
+		else if(status === "CANCELLED") {
+			btns.btnRemove = true;
+			btns.btnAccept = true;
+			btns.btnReject = true;
+			btns.btnReassign = true;
+			btns.btnFixed = true;
+			btns.btnReopen = true;
+			btns.btnComplete = true;
+		}
+		else if(status === "FIXED") {
+			btns.btnFixed = true;
+			btns.btnAccept = true;
+			btns.btnReject = true;
+			btns.btnReassign = true;
+			btns.btnReopen = true;
+			btns.btnRemove = true;
+		}
+		else if(status === "REOPENED") {
+			btns.btnReopen = true;
+		}
+		else if(status === "COMPLETED") {
+			btns.btnRemove = true;
+			btns.btnAccept = true;
+			btns.btnReject = true;
+			btns.btnReassign = true;
+			btns.btnFixed = true;
+			btns.btnReopen = true;
+			btns.btnComplete = true;
+		}
+		
+		return btns;
+	}
 	
 	$scope.addIssueSubscription = function(issueBean) {
 		$.ajax({
@@ -309,7 +375,7 @@ angular.module('tm-app').controller("issueController", function ($state, $scope,
 		    }
 		}).fail(function() {
 			ngDialog.close();
-	    	$rootScope.panelMessage = "Could not reject the issue at this moment.";
+	    	$rootScope.panelMessage = "Could not subscribe to the issue at this moment.";
 	    	$rootScope.errorBoxFlag = true;
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 		});

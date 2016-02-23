@@ -12,16 +12,16 @@
 		<div class="logo">
 		</div>
 		<div style="float: left;">
-			<img data-ng-show="{{userBean.userImage == null}}" class="userInfoProfilePic" src="<%= request.getContextPath()%>/resources/images/default_p_img.png" />
+			<img data-ng-if="userBean.userImage == null" class="userInfoProfilePic" src="<%= request.getContextPath()%>/resources/images/default_p_img.png" />
 			<div class="btn-group" role="group" aria-label="...">
 				<div class="btn-group" role="group">
-				    <span class="userInfoNameSpan">{{userBean.userId}}</span>
+				    <span class="userInfoNameSpan" data-ng-bind="userBean.userId"></span>
 				    <a class="dropdown-toggle userInfoLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><img src="<%= request.getContextPath()%>/resources/images/open-link.ico" class="userInfoLinkImg" /></a>
 				    <div class="dropdown-menu userInfoDropdown">
 						<table class="userInfoTable">
 							<tr>
 								<td>
-									<img data-ng-show="{{userBean.userImage == null}}" height="64" width="64" src="<%= request.getContextPath()%>/resources/images/default_p_img.png" />
+									<img data-ng-if="userBean.userImage == null" height="64" width="64" src="<%= request.getContextPath()%>/resources/images/default_p_img.png" />
 								</td>
 								<td>
 									<div class="userInfoContent">

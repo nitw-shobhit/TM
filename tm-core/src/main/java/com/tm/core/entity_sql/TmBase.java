@@ -5,8 +5,10 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
+import lombok.Data;
+
 @MappedSuperclass
-public class TmBase {
+public @Data class TmBase {
 
 	@Column(name="VISIBLE")
 	private boolean visible;
@@ -16,28 +18,4 @@ public class TmBase {
 
 	@Column(name="DT_MODIFIED")
 	private Timestamp dtModified;
-	
-	public Timestamp getDtCreated() {
-		return this.dtCreated;
-	}
-	
-	public void setDtCreated(Timestamp dtCreated) {
-		this.dtCreated = dtCreated;
-	}
-	
-	public Timestamp getDtModified() {
-		return this.dtModified;
-	}
-
-	public void setDtModified(Timestamp dtModified) {
-		this.dtModified = dtModified;
-	}
-	
-	public boolean getVisible() {
-		return this.visible;
-	}
-	
-	public void setVisible(boolean visible) {
-		this.visible = visible;
-	}
 }

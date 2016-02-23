@@ -1,4 +1,4 @@
-angular.module('tm-app').controller("releaseController", function ($scope, $state, $rootScope, $timeout) {
+angular.module('tm-app').controller("releaseController", function ($scope, $state, $rootScope, $timeout, ngDialog) {
 	$scope.moduleId = $rootScope.selectedModule;
 	getReleasesByModuleId($scope.moduleId);
 	

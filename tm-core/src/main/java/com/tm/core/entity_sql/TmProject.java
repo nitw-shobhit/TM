@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 
 /**
  * The persistent class for the tm_project database table.
@@ -16,7 +19,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="tm_project")
-public class TmProject extends TmBase implements Serializable {
+@EqualsAndHashCode(callSuper=false)
+public @Data class TmProject extends TmBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -31,39 +35,4 @@ public class TmProject extends TmBase implements Serializable {
 
 	@Column(name="PROJ_OWNER")
 	private long projOwner;
-
-	public TmProject() {
-	}
-
-	public long getId() {
-		return this.id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getProjDesc() {
-		return this.projDesc;
-	}
-
-	public void setProjDesc(String projDesc) {
-		this.projDesc = projDesc;
-	}
-
-	public String getProjName() {
-		return this.projName;
-	}
-
-	public void setProjName(String projName) {
-		this.projName = projName;
-	}
-
-	public long getProjOwner() {
-		return this.projOwner;
-	}
-
-	public void setProjOwner(long projOwner) {
-		this.projOwner = projOwner;
-	}
 }

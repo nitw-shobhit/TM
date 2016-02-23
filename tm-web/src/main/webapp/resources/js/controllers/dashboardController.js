@@ -17,4 +17,8 @@ angular.module('tm-app').controller("dashboardController", function($scope, $roo
 	    	$timeout( function(){ $rootScope.autoHide(); }, 2000);
 		}
 	};
+	
+	$scope.test = function() {
+		console.log("ACTION CALLED!!");
+	}
 });

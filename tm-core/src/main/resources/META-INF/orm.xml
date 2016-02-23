@@ -49,4 +49,8 @@
 		<query>Select a from TmRelease a where a.modId = :paramModId</query>
 	</named-query>
 	
+	<named-query name="getCalendarByUserId">
+		<query>Select a from TmCalendar a where a.userId = :paramUserId</query>
+	</named-query>
+	
 </entity-mappings>

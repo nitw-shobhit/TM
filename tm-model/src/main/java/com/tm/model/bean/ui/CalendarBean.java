@@ -1,6 +1,7 @@
 package com.tm.model.bean.ui;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,18 +12,15 @@ import com.tm.model.bean.BaseBean;
 
 @Dto
 @EqualsAndHashCode(callSuper=false)
-public @Data class ProjectBean extends BaseBean implements Serializable {
+public @Data class CalendarBean extends BaseBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@DtoField
 	private long id;
-
 	@DtoField
-	private String projDesc;
-
+	private long issId;
 	@DtoField
-	private String projName;
-
+	private long userId;
 	@DtoField
-	private long projOwner;
+	private Timestamp eventDate;
 }

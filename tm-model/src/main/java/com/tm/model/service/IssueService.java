@@ -21,11 +21,11 @@ public interface IssueService extends DtoAssemblerFacade<TmIssue, IssueBean> {
 
 	void reAssignIssue(long issueId, String newUserId) throws DtoConversionException;
 
-	void reopenIssue(long issueId);
-
-	void markAsFixedIssue(long issueId);
-
-	void completeIssue(long issueId);
+	IssueHistoryBean completeIssue(long issueId) throws DaoException, DtoConversionException;
 
 	void removeIssue(long issueId);
+
+	IssueHistoryBean reOpenIssue(long issueId) throws DaoException, DtoConversionException;
+
+	IssueHistoryBean fixIssue(long issueId) throws DaoException, DtoConversionException;
 }

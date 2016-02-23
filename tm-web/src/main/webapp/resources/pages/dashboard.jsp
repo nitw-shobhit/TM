@@ -38,9 +38,9 @@
   		<tr>
   			<td style="padding: 30px;">
   				<div data-ng-click="openApplication('Notifications')" class="appBox">
-  					<span data-ng-controller="notificationController" class="glyphicon glyphicon-envelope" style="font-size: 90px; margin-top:10px; margin-left: 15px;">
+  					<span data-ng-controller="notificationController" class="glyphicon glyphicon-envelope" style="font-size: 90px; margin-top:10px; margin-left: 5px;">
   					</span>
-  					<span data-ng-show="countUnreadNotifications > 0" class="badge" ngCloak style="margin-top:10px; height: 16px; width: 15px;">{{countUnreadNotifications}}</span>
+  					<span data-ng-show="countUnreadNotifications > 0" class="badge" style="margin-top:10px; height: 16px; width: 15px;" data-ng-bind="countUnreadNotifications"></span>
   					<br><br>
   					<span>My Notifications</span>
   				</div>

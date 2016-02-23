@@ -1,5 +1,6 @@
 @CHARSET "ISO-8859-1";
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+
+.ng-cloak {
   display: none !important;
 }
 fieldset {
@@ -14,7 +15,7 @@ legend {
 	text-decoration: underline;
 }
 .baseBody {
-	background: url(../images/background.jpg);
+	background: url(../images/background.png) center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -33,6 +34,7 @@ legend {
 	height: 27px;
    	width: 996px;
    	margin-left: 2px;
+   	box-shadow: 0px 3px 3px #888;
 }
 .logoBoxSp {	
 	background: url(../images/logoSp.png);
@@ -41,6 +43,7 @@ legend {
 	height: 27px;
    	width: 996px;
    	margin-left: 2px;
+   	box-shadow: 0px 3px 3px #888;
 }
 .logo {
 	height: 27px;
@@ -142,6 +145,7 @@ legend {
 .userInfoProfilePic {
 	height: 27px;
 	width: 25px;
+	margin-left: 2px;
 }
 .underline {
 	text-decoration: underline;
@@ -507,6 +511,10 @@ legend {
 	height: 70px;
 	cursor: pointer;
 	box-shadow: 1px 0 0px #DDD, -1px -1px 5px #DDD;
+	text-align: right;
+	vertical-align: top;
+	padding: 5px;
+	color: #696969;
 }
 .enabledCalDates:active {
 	border: 1px solid #CCC;
@@ -514,6 +522,7 @@ legend {
 	height: 70px;
 	cursor: pointer;
 	box-shadow: 0 0 0 #DDD, 0 0 0 #DDD;
+	color: #000;
 }
 .disabledCalDates {
 	width: 130px;

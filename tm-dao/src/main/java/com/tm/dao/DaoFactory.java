@@ -2,6 +2,7 @@ package com.tm.dao;
 
 import com.tm.dao.db.impl_nosql.AuditDaoImpl;
 import com.tm.dao.db.impl_nosql.LoggerDaoImpl;
+import com.tm.dao.db.impl_sql.CalendarDaoImpl;
 import com.tm.dao.db.impl_sql.IssueAttachmentDaoImpl;
 import com.tm.dao.db.impl_sql.IssueCommentDaoImpl;
 import com.tm.dao.db.impl_sql.IssueDaoImpl;
@@ -15,6 +16,7 @@ import com.tm.dao.db.impl_sql.ReleaseDaoImpl;
 import com.tm.dao.db.impl_sql.UserDaoImpl;
 import com.tm.dao.db.impl_sql.UserProjectDaoImpl;
 import com.tm.dao.db_nosql.LoggerDao;
+import com.tm.dao.db_sql.CalendarDao;
 import com.tm.dao.db_sql.IssueAttachmentDao;
 import com.tm.dao.db_sql.IssueCommentDao;
 import com.tm.dao.db_sql.IssueDao;
@@ -47,6 +49,7 @@ public class DaoFactory {
 		private static final NotificationDao notificationDaoImpl = new NotificationDaoImpl();
 		private static final NotificationVariableDao notificationVariableDaoImpl = new NotificationVariableDaoImpl();
 		private static final ReleaseDao releaseDaoImpl = new ReleaseDaoImpl();
+		private static final CalendarDao calendarDaoImpl = new CalendarDaoImpl();
 		
 		private static final LoggerDao loggerDaoImpl = new LoggerDaoImpl();
 		private static final AuditDaoImpl auditDaoImpl = new AuditDaoImpl();
@@ -81,6 +84,8 @@ public class DaoFactory {
 			return DaoFactoryHelper.loggerDaoImpl;
 		} else if(dType.equals(DaoType.AUDIT)) {
 			return DaoFactoryHelper.auditDaoImpl;
+		} else if(dType.equals(DaoType.CALENDAR)) {
+			return DaoFactoryHelper.calendarDaoImpl;
 		} else {
 			return null;
 		}

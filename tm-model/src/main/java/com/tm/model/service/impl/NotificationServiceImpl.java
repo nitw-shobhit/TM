@@ -46,7 +46,7 @@ public class NotificationServiceImpl extends DtoAssemblerFacadeImpl<TmNotificati
 		NotificationDao notificationDao = (NotificationDao) DaoFactory.generateDao(DaoType.NOTIFICATION);
 		for(int notificationId : notificationIdList) {
 			TmNotification notificationEntity = notificationDao.findByPk((long) notificationId);
-			if(notificationEntity.getNotIsUnread()) {
+			if(notificationEntity.isNotIsUnread()) {
 				notificationEntity.setNotIsUnread(false);
 				notificationDao.merge(notificationEntity, true);
 				if(result.equals("Fail")) {

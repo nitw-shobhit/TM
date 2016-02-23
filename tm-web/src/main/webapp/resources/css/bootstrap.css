@@ -4735,11 +4735,11 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .breadcrumb > li + li:before {
   padding: 0 5px;
-  color: #000;
+  color: #aaa;
   content: ">>";
 }
 .breadcrumb > .active {
-  color: green;
+  color: #000;
 }
 .pagination {
   display: inline-block;
@@ -5088,11 +5088,11 @@ a.thumbnail.active {
 }
 .alert-success {
   color: #3c763d;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
+  background-color: #b7dda6;
+  border-color: #b7dda6;
 }
 .alert-success hr {
-  border-top-color: #c9e2b3;
+  border-top-color: #98c76d;
 }
 .alert-success .alert-link {
   color: #2b542c;
@@ -5121,7 +5121,7 @@ a.thumbnail.active {
 }
 .alert-danger {
   color: #a94442;
-  background-color: #f2dede;
+  background-color: #d79b9b;
   border-color: #ebccd1;
 }
 .alert-danger hr {

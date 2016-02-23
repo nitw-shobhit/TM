@@ -205,28 +205,53 @@ public class IssueServiceImpl extends DtoAssemblerFacadeImpl<TmIssue, IssueBean>
 		issueDao.merge(issueEntity, true);
 	}
 	
+
 	@Override
-	public void reopenIssue(long issueId) {
+	public IssueHistoryBean reOpenIssue(long issueId) throws DaoException, DtoConversionException {
 		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.REOPENED.toString());
-		issueDao.merge(issueEntity, true);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
+		TmUserInfo issueOwnerEntity = userDao.findByPk(issueEntity.getIssOwner());
+		TmIssueHistory issueHistoryEntity = IssueHistoryHelper.getHistoryEntity(issueOwnerEntity, IssueHistoryHelper.IssueHistoryType.ISSUE_HISTORY_REOPEN);
+		issueHistoryEntity.setIssId(issueId);
+		issueHistoryEntity = issueDao.updateIssueStatus(issueEntity, issueHistoryEntity);
+		IssueHistoryBean issueHistoryBean = issueHistoryService.toBean(issueHistoryEntity);
+		issueHistoryBean.setHisContent(issueHistoryService.getHistoryProperties()
+				.getProperty(IssueHistoryHelper.IssueHistoryType.ISSUE_HISTORY_REOPEN.getValue(), IssueHistoryService.DEFAULT_MESSG));
+		return issueHistoryBean;
 	}
-	
+
 	@Override
-	public void markAsFixedIssue(long issueId) {
+	public IssueHistoryBean fixIssue(long issueId) throws DaoException, DtoConversionException {
 		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.FIXED.toString());
-		issueDao.merge(issueEntity, true);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
+		TmUserInfo issueOwnerEntity = userDao.findByPk(issueEntity.getIssOwner());
+		TmIssueHistory issueHistoryEntity = IssueHistoryHelper.getHistoryEntity(issueOwnerEntity, IssueHistoryHelper.IssueHistoryType.ISSUE_HISTORY_MARK_FIXED);
+		issueHistoryEntity.setIssId(issueId);
+		issueHistoryEntity = issueDao.updateIssueStatus(issueEntity, issueHistoryEntity);
+		IssueHistoryBean issueHistoryBean = issueHistoryService.toBean(issueHistoryEntity);
+		issueHistoryBean.setHisContent(issueHistoryService.getHistoryProperties()
+				.getProperty(IssueHistoryHelper.IssueHistoryType.ISSUE_HISTORY_MARK_FIXED.getValue(), IssueHistoryService.DEFAULT_MESSG));
+		return issueHistoryBean;
 	}
 	
 	@Override
-	public void completeIssue(long issueId) {
+	public IssueHistoryBean completeIssue(long issueId) throws DaoException, DtoConversionException {
 		IssueDao issueDao = (IssueDao) DaoFactory.generateDao(DaoType.ISSUE);
 		TmIssue issueEntity = issueDao.findByPk(issueId);
 		issueEntity.setIssStatus(IssueStatus.COMPLETED.toString());
-		issueDao.merge(issueEntity, true);
+		UserDao userDao = (UserDao) DaoFactory.generateDao(DaoType.USER);
+		TmUserInfo issueOwnerEntity = userDao.findByPk(issueEntity.getIssOwner());
+		TmIssueHistory issueHistoryEntity = IssueHistoryHelper.getHistoryEntity(issueOwnerEntity, IssueHistoryHelper.IssueHistoryType.ISSUE_HISTORY_COMPLETE);
+		issueHistoryEntity.setIssId(issueId);
+		issueHistoryEntity = issueDao.updateIssueStatus(issueEntity, issueHistoryEntity);
+		IssueHistoryBean issueHistoryBean = issueHistoryService.toBean(issueHistoryEntity);
+		issueHistoryBean.setHisContent(issueHistoryService.getHistoryProperties()
+				.getProperty(IssueHistoryHelper.IssueHistoryType.ISSUE_HISTORY_COMPLETE.getValue(), IssueHistoryService.DEFAULT_MESSG));
+		return issueHistoryBean;
 	}
 	
 	@Override

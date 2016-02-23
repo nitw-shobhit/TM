@@ -79,6 +79,39 @@ public class IssueController {
 		return JsonUtils.toJson(issueHistoryBean);
 	}
 	
+	@RequestMapping(method = RequestMethod.POST, value="/completeIssue")
+	public @ResponseBody String completeIssue(@RequestParam("id") long issueId) throws InternalApplicationException {
+		IssueHistoryBean issueHistoryBean = null;
+		try {
+			issueHistoryBean = issueService.completeIssue(issueId);
+		} catch(Exception e) {
+			throw new InternalApplicationException("Something went wrong with the application", e);
+		}
+		return JsonUtils.toJson(issueHistoryBean);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/reOpenIssue")
+	public @ResponseBody String reOpenIssue(@RequestParam("id") long issueId) throws InternalApplicationException {
+		IssueHistoryBean issueHistoryBean = null;
+		try {
+			issueHistoryBean = issueService.reOpenIssue(issueId);
+		} catch(Exception e) {
+			throw new InternalApplicationException("Something went wrong with the application", e);
+		}
+		return JsonUtils.toJson(issueHistoryBean);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/fixIssue")
+	public @ResponseBody String fixIssue(@RequestParam("id") long issueId) throws InternalApplicationException {
+		IssueHistoryBean issueHistoryBean = null;
+		try {
+			issueHistoryBean = issueService.fixIssue(issueId);
+		} catch(Exception e) {
+			throw new InternalApplicationException("Something went wrong with the application", e);
+		}
+		return JsonUtils.toJson(issueHistoryBean);
+	}
+	
 	public IssueService getIssueService() {
 		return issueService;
 	}

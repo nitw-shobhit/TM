@@ -2,12 +2,16 @@ package com.tm.model.bean.ui;
 
 import java.io.Serializable;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import com.inspiresoftware.lib.dto.geda.annotations.Dto;
 import com.inspiresoftware.lib.dto.geda.annotations.DtoField;
 import com.tm.model.bean.BaseBean;
 
 @Dto
-public class IssueCommentBean extends BaseBean implements Serializable {
+@EqualsAndHashCode(callSuper=false)
+public @Data class IssueCommentBean extends BaseBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@DtoField
@@ -23,47 +27,4 @@ public class IssueCommentBean extends BaseBean implements Serializable {
 	private long userId;
 	
 	private String userIdString;
-
-	public IssueCommentBean() {
-	}
-
-	public long getId() {
-		return this.id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getComContent() {
-		return this.comContent;
-	}
-
-	public void setComContent(String comContent) {
-		this.comContent = comContent;
-	}
-
-	public long getIssId() {
-		return this.issId;
-	}
-
-	public void setIssId(long issId) {
-		this.issId = issId;
-	}
-
-	public long getUserId() {
-		return this.userId;
-	}
-
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
-
-	public String getUserIdString() {
-		return userIdString;
-	}
-
-	public void setUserIdString(String userIdString) {
-		this.userIdString = userIdString;
-	}
 }

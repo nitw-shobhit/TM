@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 
 /**
  * The persistent class for the tm_user_project database table.
@@ -16,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="tm_user_project")
-public class TmUserProject implements Serializable {
+public @Data class TmUserProject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -28,31 +30,4 @@ public class TmUserProject implements Serializable {
 
 	@Column(name="USER_ID")
 	private long userId;
-
-	public TmUserProject() {
-	}
-
-	public long getId() {
-		return this.id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public long getProjId() {
-		return this.projId;
-	}
-
-	public void setProjId(long projId) {
-		this.projId = projId;
-	}
-
-	public long getUserId() {
-		return this.userId;
-	}
-
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
 }

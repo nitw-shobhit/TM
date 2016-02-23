@@ -111,7 +111,7 @@
 <script type="text/ng-template" id="viewIssue">
 <fieldset class="popupFieldset">
 	<legend>
-		<span class="header">{{'section_header.issue_id' | translate}} :<b>{{ngDialogData.id}}</b></span>
+		<span class="header">{{'section_header.issue_id' | translate}} :<b>{{ngDialogData.issueBean.id}}</b></span>
 	</legend>
 	<div style="width: 745px; height:405px;">
 		<div style="width: 550px; height:400px; border:1px solid; float:left;">
@@ -122,7 +122,7 @@
 							<tr>
 								<td style="padding: 2px; text-align: left;"><label>Name: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
-									<input type="text" readonly="readonly" value="{{ngDialogData.issName}}" style="width:463px;"/>
+									<input type="text" readonly="readonly" value="{{ngDialogData.issueBean.issName}}" style="width:463px;"/>
 								</td>
 							</tr>
 						</table>
@@ -134,7 +134,7 @@
 							<tr>
 								<td style="padding: 2px; text-align: left;"><label>Description: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
-									<textarea row="2" readonly="readonly" style="width:463px;">{{ngDialogData.issDesc}}</textarea>
+									<textarea row="2" readonly="readonly" style="width:463px;">{{ngDialogData.issueBean.issDesc}}</textarea>
 								</td>
 							</tr>
 						</table>
@@ -146,9 +146,9 @@
 							<tr>
 								<td style="padding: 2px; text-align: left;"><label>Priority: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
-									<input data-ng-show="ngDialogData.issPriority == 'Low'" type="text" readonly="readonly" value="LOW" style="width:463px; background-color: green; color:white; font-weight: bold;"/>
-									<input data-ng-show="ngDialogData.issPriority == 'Medium'" type="text" readonly="readonly" value="MEDIUM" style="width:463px; background-color: blue; color:white; font-weight: bold;"/>
-									<input data-ng-show="ngDialogData.issPriority == 'High'" type="text" readonly="readonly" value="HIGH" style="width:463px; background-color: red; color:white; font-weight: bold;"/>
+									<input data-ng-show="ngDialogData.issueBean.issPriority == 'Low'" type="text" readonly="readonly" value="LOW" style="width:463px; background-color: green; color:white; font-weight: bold;"/>
+									<input data-ng-show="ngDialogData.issueBean.issPriority == 'Medium'" type="text" readonly="readonly" value="MEDIUM" style="width:463px; background-color: blue; color:white; font-weight: bold;"/>
+									<input data-ng-show="ngDialogData.issueBean.issPriority == 'High'" type="text" readonly="readonly" value="HIGH" style="width:463px; background-color: red; color:white; font-weight: bold;"/>
 								</td>
 							</tr>
 						</table>
@@ -160,11 +160,11 @@
 							<tr>
 								<td style="padding: 2px; text-align: left;"><label>Created on: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
-									<input type="text" readonly="readonly" value="{{ngDialogData.dtCreated}}" style="width:180px;"/>
+									<input type="text" readonly="readonly" value="{{ngDialogData.issueBean.dtCreated}}" style="width:180px;"/>
 								</td>
 								<td style="padding: 2px; text-align: left;"><label>Last update: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
-									<input type="text" readonly="readonly" value="{{ngDialogData.dtModified}}" style="width:200px;"/>
+									<input type="text" readonly="readonly" value="{{ngDialogData.issueBean.dtModified}}" style="width:200px;"/>
 								</td>
 							</tr>
 						</table>
@@ -180,7 +180,7 @@
 								</td>
 								<td style="padding: 2px; text-align: left;"><label>Logged by: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
-									<input type="text" readonly="readonly" value="{{ngDialogData.issOwnerString}}" style="width:200px;"/>
+									<input type="text" readonly="readonly" value="{{ngDialogData.issueBean.issOwnerString}}" style="width:200px;"/>
 								</td>
 							</tr>
 						</table>
@@ -192,7 +192,7 @@
 							<tr>
 								<td style="padding: 2px; text-align: left;"><label>Status: </label></td>
 								<td style="padding: 2px; padding-left: 4px; text-align: left; float:right;">
-									<input type="text" readonly="readonly" value="{{ngDialogData.issStatus}}" style="width:463px;"/>
+									<input type="text" readonly="readonly" value="{{ngDialogData.issueBean.issStatus}}" style="width:463px;"/>
 								</td>
 							</tr>
 						</table>
@@ -216,25 +216,25 @@
 			<table style="width:99%; margin-left:auto; margin-right:auto;">
 				<tr>
 					<td>
-						<button class="btn btn-default" data-ng-click="acceptIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;{{'button.accept' | translate}}</button>
+						<button ng-disabled="ngDialogData.btns.btnAccept" class="btn btn-default" data-ng-click="acceptIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;{{'button.accept' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="rejectIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;{{'button.reject' | translate}}</button>
+						<button ng-disabled="ngDialogData.btns.btnReject" class="btn btn-default" data-ng-click="rejectIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;{{'button.reject' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="openReassignIssueBox(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-random"></span>&nbsp;{{'button.re_assign' | translate}}</button>
+						<button ng-disabled="ngDialogData.btns.btnReassign" class="btn btn-default" data-ng-click="openReassignIssueBox(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-random"></span>&nbsp;{{'button.re_assign' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="removeIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ban-circle"></span>&nbsp;{{'button.remove' | translate}}</button>
+						<button ng-disabled="ngDialogData.btns.btnRemove" class="btn btn-default" data-ng-click="removeIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ban-circle"></span>&nbsp;{{'button.remove' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="reOpenIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-repeat"></span>&nbsp;{{'button.re_open' | translate}}</button>
+						<button ng-disabled="ngDialogData.btns.btnReopen" class="btn btn-default" data-ng-click="reOpenIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-repeat"></span>&nbsp;{{'button.re_open' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="markIssueAsFixed(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-tag"></span>&nbsp;{{'button.mark_as_fixed' | translate}}</button>
+						<button ng-disabled="ngDialogData.btns.btnFixed" class="btn btn-default" data-ng-click="markIssueAsFixed(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-tag"></span>&nbsp;{{'button.mark_as_fixed' | translate}}</button>
 					</td>
 					<td>
-						<button class="btn btn-default" data-ng-click="completeIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ok"></span>&nbsp;{{'button.complete' | translate}}</button>
+						<button ng-disabled="ngDialogData.btns.btnComplete" class="btn btn-default" data-ng-click="completeIssue(ngDialogData)" style="font-size: 11px; padding:5px;"><span class="glyphicon glyphicon-ok"></span>&nbsp;{{'button.complete' | translate}}</button>
 					</td>
 				</tr>
 			</table>
@@ -242,17 +242,17 @@
 		<div style="width: 190px; height: 400px; float:left;">
 			<div style="border: 1px solid; width: 190px; height: 250px; margin-left:5px; font-size:10px;">
 				<div style="height:196px; background-color:white; border:1px solid; overflow-x:auto;">
-					<div data-ng-repeat="comment in ngDialogData.issComments" style="margin:4px; line-height:1.2em;">
+					<div data-ng-repeat="comment in ngDialogData.issueBean.issComments" style="margin:4px; line-height:1.2em;">
 						<div><b>{{comment.userIdString}}</b> : {{comment.comContent}}</div>
 						<div style="font-size:8px; float:right; color:#999;">{{comment.dtCreated}}</div><br>
 					</div>
 				</div>
-				<textarea placeholder="Add a comment.." style="margin-left:2px; margin-top:4px; height:45px; width:135px;" data-ng-model="ngDialogData.newComment"></textarea>
-				<button data-ng-click="addCommentToIssue(ngDialogData)" class="btn btn-primary" style="height:45px; margin-top:4px; width: 47px; font-size:11px; padding:0;vertical-align:top;">{{'button.add' | translate}}</button>
+				<textarea placeholder="Add a comment.." style="margin-left:2px; margin-top:4px; height:45px; width:135px;" data-ng-model="ngDialogData.issueBean.newComment"></textarea>
+				<button data-ng-click="addCommentToIssue(ngDialogData.issueBean)" class="btn btn-primary" style="height:45px; margin-top:4px; width: 47px; font-size:11px; padding:0;vertical-align:top;">{{'button.add' | translate}}</button>
 			</div>
 			<div style="border: 1px solid; width: 190px; height: 145px; margin-left:5px; margin-top:5px;" >
 				<span style="margin-left:5px; font-size:11px; background-color:#FFF;"><u>Issue Subscribers</u></span>
-				<div data-ng-repeat="sub in ngDialogData.issSubscribe" style="margin-left:5px">
+				<div data-ng-repeat="sub in ngDialogData.issueBean.issSubscribe" style="margin-left:5px">
 					<font style="font-size:11px;">
 						<a style="color: #23527C;" class="underlinedLink" href="#">{{sub.userIdString}}</a>
 					</font>
@@ -262,7 +262,7 @@
 	</div>
 	<div style="width: 745px; height:100px; border: 1px solid; overflow-y: scroll;">
 		<span style="margin-left:5px; font-size:11px; background-color:#FFF;"><u>Issue History</u></span>
-		<div data-ng-repeat="act in ngDialogData.issHistory" style="margin-left:5px">
+		<div data-ng-repeat="act in ngDialogData.issueBean.issHistory" style="margin-left:5px">
 			<font style="font-size:10px; color:#999;">{{act.hisCreated}}</font> : <font style="font-size:11px;"><a style="color: #23527C;" class="underlinedLink" href="#">{{act.hisUser}}</a>&nbsp;{{act.hisContent}}</font>
 		</div>
 	</div>
@@ -293,16 +293,16 @@
 				STATUS TRACE
 			</div>
 			<div>
-				<table class="table table-striped statusTable" at-table at-paginated at-list="ngDialogData.statusList" at-config="config">
-					<thead />
+				<table class="table table-striped statusTable" at-table at-paginated at-list="ngDialogData.statusList" at-config="ngDialogData.config">
+					<thead></thead>
 					<tbody>
 						<tr>
-							<td at-implicit at-sortable at-attribute="status" at-title="STATUS" ></td>
+							<td at-implicit at-sortable at-attribute="status" at-title="STATUS" style="height: 50px;"></td>
 							<td at-implicit at-sortable at-attribute="date" at-initial-sorting="asc" at-title="DATE" ></td>
 						</tr>
 					</tbody>
 				</table>
-				<at-pagination at-list="statusTable" at-config="ngDialogData.config"></at-pagination>
+				<at-pagination at-list="ngDialogData.statusList" at-config="ngDialogData.config"></at-pagination>
 			</div>
 		</div>
 	</div> 

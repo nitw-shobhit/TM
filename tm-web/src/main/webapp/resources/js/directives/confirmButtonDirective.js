@@ -1,14 +1,17 @@
-angular.module('tm-confirm-button', ['ngDialog']).directive('confirmButton', function (ngDialog) {
+angular.module('tm-confirm-button', [ 'ngDialog' ]).directive('confirmButton', function(ngDialog) {
 	return {
-		restrict: "A",
-		link: function(scope, element, attrs) {
-			element.on('click',function(){
-				ngDialog.open({
-	    			template: 'confirmButton',
-	    			preCloseCallback: function(value) {
-	    				return true;
-	    			}
-	    		});
+		link : function(scope, element, attr) {
+			var msg = attr.confirmButton || "Are you sure you want to continue?";
+			var clickAction = attr.confirmAction;
+			element.bind('click', function(event) {
+				ngDialog.openConfirm({
+					scope : scope,
+					template : 'confirmButton',
+					className : 'ngdialog-theme-default confirmBox',
+				}).then(function(confirm) {
+					ngDialog.close();
+					scope.$eval(clickAction);
+				});
 			});
 		}
 	};
