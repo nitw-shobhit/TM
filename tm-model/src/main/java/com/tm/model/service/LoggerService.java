@@ -2,7 +2,7 @@ package com.tm.model.service;
 
 import java.util.List;
 
-import com.tm.core.entity_nosql.LoggerBean;
+import com.tm.core.entity.LoggerBean;
 import com.tm.util.logger.LogLevel;
 
 

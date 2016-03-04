@@ -42,7 +42,7 @@ angular.module('tm-app').controller("projectController", function ($scope, $stat
 		project.proj.projOwner = $rootScope.userBean.id;
 		
 		$.ajax({
-	        url: '/tm-web/tmProject/addProject.do?projectBean='+JSON.stringify(project.proj)+'&addDefaultModules='+project.addDefaultModulesFlag,
+	        url: '/tm-web/tmProject/addProject.do?projectBean='+JSON.stringify(project.proj)+'&addDefaultModules='+true,
 	        type: 'POST',
 	        dataType: 'json',
 	        async: false,

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tm.core.entity_nosql.LoggerBean;
+import com.tm.core.entity.LoggerBean;
 import com.tm.model.service.LoggerService;
 import com.tm.util.exceptions.FileLoadException;
 import com.tm.util.exceptions.InternalApplicationException;

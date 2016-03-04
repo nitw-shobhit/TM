@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.tm.core.entity_sql.TmCalendar;
+import com.tm.core.entity.TmCalendar;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
-import com.tm.dao.db_sql.CalendarDao;
+import com.tm.dao.db.CalendarDao;
 import com.tm.model.bean.ui.CalendarBean;
 import com.tm.model.service.CalendarService;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;

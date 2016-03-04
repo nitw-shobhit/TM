@@ -3,12 +3,12 @@ package com.tm.model.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tm.core.entity_sql.TmNotification;
-import com.tm.core.entity_sql.TmNotificationVariable;
+import com.tm.core.entity.TmNotification;
+import com.tm.core.entity.TmNotificationVariable;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
-import com.tm.dao.db_sql.NotificationDao;
-import com.tm.dao.db_sql.NotificationVariableDao;
+import com.tm.dao.db.NotificationDao;
+import com.tm.dao.db.NotificationVariableDao;
 import com.tm.model.bean.ui.NotificationBean;
 import com.tm.model.service.NotificationService;
 import com.tm.model.service.helper.NotificationHelper;

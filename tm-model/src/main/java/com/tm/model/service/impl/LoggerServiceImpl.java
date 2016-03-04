@@ -2,10 +2,10 @@ package com.tm.model.service.impl;
 
 import java.util.List;
 
-import com.tm.core.entity_nosql.LoggerBean;
+import com.tm.core.entity.LoggerBean;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
-import com.tm.dao.db_nosql.LoggerDao;
+import com.tm.dao.db.LoggerDao;
 import com.tm.model.service.LoggerService;
 import com.tm.model.service.helper.LoggerHelper;
 import com.tm.util.logger.LogLevel;

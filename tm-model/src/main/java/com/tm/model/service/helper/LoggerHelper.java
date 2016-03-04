@@ -3,7 +3,7 @@ package com.tm.model.service.helper;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import com.tm.core.entity_nosql.LoggerBean;
+import com.tm.core.entity.LoggerBean;
 
 public class LoggerHelper {
 

@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.tm.core.entity_sql.TmIssue;
-import com.tm.core.entity_sql.TmModule;
+import com.tm.core.entity.TmIssue;
+import com.tm.core.entity.TmModule;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
-import com.tm.dao.db_sql.IssueDao;
-import com.tm.dao.db_sql.ModuleDao;
+import com.tm.dao.db.IssueDao;
+import com.tm.dao.db.ModuleDao;
 import com.tm.model.bean.ui.IssueStatus;
 import com.tm.report.bean.IssueStatusBean;
 

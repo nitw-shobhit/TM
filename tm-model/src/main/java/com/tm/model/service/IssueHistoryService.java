@@ -3,7 +3,7 @@ package com.tm.model.service;
 import java.util.List;
 import java.util.Properties;
 
-import com.tm.core.entity_sql.TmIssueHistory;
+import com.tm.core.entity.TmIssueHistory;
 import com.tm.model.bean.ui.IssueHistoryBean;
 import com.tm.util.assembler.DtoAssemblerFacade;
 import com.tm.util.exceptions.DtoConversionException;

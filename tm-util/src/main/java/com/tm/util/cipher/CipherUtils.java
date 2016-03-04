@@ -10,7 +10,6 @@ import com.tm.util.exceptions.CipherException;
 import com.tm.util.exceptions.FileLoadException;
 import com.tm.util.file.PropertyUtils;
 
-@SuppressWarnings("restriction")
 public class CipherUtils {
 	
 	public static final String DEFAULT_ENCODING="UTF-8";
