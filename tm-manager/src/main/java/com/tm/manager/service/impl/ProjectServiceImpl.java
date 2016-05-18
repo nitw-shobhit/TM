@@ -1,4 +1,4 @@
-package com.tm.model.service.impl;
+package com.tm.manager.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,10 @@ import com.tm.core.entity.TmProject;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.ProjectDao;
+import com.tm.mode.service.helper.ModuleHelper;
 import com.tm.model.bean.ui.ProjectBean;
 import com.tm.model.service.ModuleService;
 import com.tm.model.service.ProjectService;
-import com.tm.model.service.helper.ModuleHelper;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
 import com.tm.util.exceptions.DaoException;
 import com.tm.util.exceptions.DtoConversionException;

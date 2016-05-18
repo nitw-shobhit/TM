@@ -1,4 +1,4 @@
-package com.tm.model.service.impl;
+package com.tm.manager.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,9 @@ import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.NotificationDao;
 import com.tm.dao.db.NotificationVariableDao;
+import com.tm.mode.service.helper.NotificationHelper;
 import com.tm.model.bean.ui.NotificationBean;
 import com.tm.model.service.NotificationService;
-import com.tm.model.service.helper.NotificationHelper;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
 import com.tm.util.exceptions.DtoConversionException;
 

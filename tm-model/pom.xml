@@ -25,7 +25,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.tm</groupId>
-			<artifactId>tm-dao</artifactId>
+			<artifactId>tm-util</artifactId>
 			<version>0.1</version>
 		</dependency>
 		<dependency>

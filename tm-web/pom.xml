@@ -36,6 +36,16 @@
 		</dependency>
 		<dependency>
 			<groupId>com.tm</groupId>
+			<artifactId>tm-manager</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tm</groupId>
+			<artifactId>tm-cache-manager</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tm</groupId>
 			<artifactId>tm-core</artifactId>
 			<version>0.1</version>
 		</dependency>

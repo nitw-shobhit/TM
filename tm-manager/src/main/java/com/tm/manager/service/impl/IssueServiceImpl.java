@@ -1,4 +1,4 @@
-package com.tm.model.service.impl;
+package com.tm.manager.service.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +20,10 @@ import com.tm.dao.DaoType;
 import com.tm.dao.db.IssueDao;
 import com.tm.dao.db.NotificationDao;
 import com.tm.dao.db.UserDao;
+import com.tm.mode.service.helper.IssueHistoryHelper;
+import com.tm.mode.service.helper.IssueSubscribeHelper;
+import com.tm.mode.service.helper.NotificationHelper;
+import com.tm.mode.service.helper.NotificationVariableHelper;
 import com.tm.model.bean.ui.IssueAttachmentBean;
 import com.tm.model.bean.ui.IssueBean;
 import com.tm.model.bean.ui.IssueCommentBean;
@@ -32,10 +36,6 @@ import com.tm.model.service.IssueHistoryService;
 import com.tm.model.service.IssueService;
 import com.tm.model.service.IssueSubscribeService;
 import com.tm.model.service.UserService;
-import com.tm.model.service.helper.IssueHistoryHelper;
-import com.tm.model.service.helper.IssueSubscribeHelper;
-import com.tm.model.service.helper.NotificationHelper;
-import com.tm.model.service.helper.NotificationVariableHelper;
 import com.tm.util.assembler.impl.DtoAssemblerFacadeImpl;
 import com.tm.util.exceptions.DaoException;
 import com.tm.util.exceptions.DtoConversionException;

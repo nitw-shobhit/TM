@@ -1,4 +1,4 @@
-package com.tm.model.service.impl;
+package com.tm.manager.service.impl;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import com.tm.core.entity.LoggerBean;
 import com.tm.dao.DaoFactory;
 import com.tm.dao.DaoType;
 import com.tm.dao.db.LoggerDao;
+import com.tm.mode.service.helper.LoggerHelper;
 import com.tm.model.service.LoggerService;
-import com.tm.model.service.helper.LoggerHelper;
 import com.tm.util.logger.LogLevel;
 
 public class LoggerServiceImpl implements LoggerService {

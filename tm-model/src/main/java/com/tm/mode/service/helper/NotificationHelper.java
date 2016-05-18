@@ -1,4 +1,4 @@
-package com.tm.model.service.helper;
+package com.tm.mode.service.helper;
 
 import java.util.HashMap;
 import java.util.List;

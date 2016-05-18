@@ -14,6 +14,8 @@
 		<module>tm-model</module>
 		<module>tm-web</module>
 		<module>tm-report</module>
+		<module>tm-manager</module>
+		<module>tm-cache-manager</module>
 	</modules>
 	<dependencies>
 		<dependency>

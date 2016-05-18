@@ -6,22 +6,8 @@
 		<artifactId>tm-parent</artifactId>
 		<version>0.1</version>
 	</parent>
-	<artifactId>tm-report</artifactId>
-	<name>tm-report</name>
-	<description>BIRT reports</description>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<artifactId>tm-manager</artifactId>
+	<name>tm-manager</name>
 	<dependencies>
 		<dependency>
 			<groupId>com.tm</groupId>
